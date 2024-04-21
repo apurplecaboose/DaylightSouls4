@@ -45,17 +45,19 @@ public class ComboPossibility : MonoBehaviour
             for (int i = 0; i < 1000 * percentageA; i++)
             {
                 comboTypes.Add(comboA);
-                print(comboTypes[i]);
             }
             for (int i = 0; i < 1000 * percentageB; i++)
             {
                 comboTypes.Add(comboB);
-                print(comboTypes[i]);
             }
             for (int i = 0; i < 1000 * percentageC; i++)
             {
                 comboTypes.Add(comboC);
-                print(comboTypes[i]);
+               
+            }
+            for (int i = 0; i < comboTypes.Count; i++)
+            {
+                print(comboTypes[i]); 
             }
         }
       
