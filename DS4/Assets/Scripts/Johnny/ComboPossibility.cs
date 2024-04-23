@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class ComboPossibility : MonoBehaviour
@@ -25,9 +26,25 @@ public class ComboPossibility : MonoBehaviour
     {
     }
 
-    public void AddComboToPool()
+    public void AddComboAToPool()
     {
-        SettingAmount(comboA, comboB, comboC, percentageA, percentageB, percentageC);
+        SettingAmount(comboA, percentageA);
+    }
+    public void AddComboBToPool()
+    {
+        SettingAmount(comboB, percentageB);
+    }
+    public void AddComboCToPool()
+    {
+        SettingAmount(comboC, percentageC);
+    }
+
+    public void ShowAllValue()
+    {
+        for (int i = 0; i < comboTypes.Count; i++)
+        {
+            print(comboTypes[i]);
+        }
     }
 
     public void ChooseCombo()
@@ -38,26 +55,12 @@ public class ComboPossibility : MonoBehaviour
 
     }
 
-    public void SettingAmount(ComboType comboA, ComboType comboB, ComboType comboC, float percentageA,float percentageB,float percentageC)
+    public void SettingAmount(ComboType combo, float percentage)
     {
-        if (1000 * percentageA + 1000 * percentageB + 1000 * percentageC <=1000)//make the total amounts stays in 1000
         {
-            for (int i = 0; i < 1000 * percentageA; i++)
+            for (int i = 0; i < 1000 * percentage; i++)
             {
-                comboTypes.Add(comboA);
-            }
-            for (int i = 0; i < 1000 * percentageB; i++)
-            {
-                comboTypes.Add(comboB);
-            }
-            for (int i = 0; i < 1000 * percentageC; i++)
-            {
-                comboTypes.Add(comboC);
-               
-            }
-            for (int i = 0; i < comboTypes.Count; i++)
-            {
-                print(comboTypes[i]); 
+                comboTypes.Add(combo);
             }
         }
       
