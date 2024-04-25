@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class ComboPossibility : MonoBehaviour
@@ -13,6 +14,7 @@ public class ComboPossibility : MonoBehaviour
     public BossDataSc bossData;
     private void Awake()
     {
+
         for (int i = 0; i < bossData.comboTypes.Count; i++)
         {
             comboTypes.Add(bossData.comboTypes[i]);
@@ -23,9 +25,10 @@ public class ComboPossibility : MonoBehaviour
             percentageList.Add(bossData.possibility[i]);
             print(percentageList[i]);
         }
-        for (int i = 0; i < comboTypes.Count; i++)
+
+        for(int i = 0;i < bossData.comboTypes.Count; i++)
         {
-            SettingAmount(comboTypes[i], percentageList[i]);
+            AddingCombo(comboTypes[i], percentageList[i]);
         }
     }
 
@@ -33,19 +36,6 @@ public class ComboPossibility : MonoBehaviour
     void Update()
     {
     }
-
-    //public void AddComboAToPool()
-    //{
-    //    SettingAmount(comboA, percentageA);
-    //}
-    //public void AddComboBToPool()
-    //{
-    //    SettingAmount(comboB, percentageB);
-    //}
-    //public void AddComboCToPool()
-    //{
-    //    SettingAmount(comboC, percentageC);
-    //}
 
     public void ShowAllValue()
     {
@@ -59,20 +49,15 @@ public class ComboPossibility : MonoBehaviour
     {
         comboIndex = Random.Range(0, comboTypes.Count);
         print(comboTypes[comboIndex]);
-        //comboTypes.Remove(comboTypes[comboIndex]);//remove the chosen number from the pool
-        ////number of a's / length = a percentage
-        ////for 
-        //// if(combotypes[i] == A)
-        //// int A number ++;
-
     }
 
-    public void SettingAmount(BossDataSc.ComboType combo, float percentage)
+    public void AddingCombo(BossDataSc.ComboType combo, float percentage)
     {
-        for (int i = 0; i < 100 * percentage; i++)
+        percentage = percentage * 100;//calculated before for loop
+        for (int i = 0; i < percentage; i++)
         {
             comboHolder.Add(combo);
-            print("SHit");
         }
     }
+
 }
