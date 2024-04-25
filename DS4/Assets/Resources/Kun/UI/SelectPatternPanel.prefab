@@ -397,7 +397,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &2310090240479303047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,7 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
+  m_AllowSwitchOff: 1
 --- !u!1 &5174257888359463170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,8 +2692,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnNext: {fileID: 2169351649282890163}
+  finalPattern: []
   patternAmount: 8
-  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  currentPatternIndex: 0
+  pts:
+  - {fileID: 4382900477918085651}
+  - {fileID: 5291054015419877468}
+  - {fileID: 2446005624469702928}
+  - {fileID: 5195795464327302725}
+  - {fileID: 7937053065648148520}
+  - {fileID: 7821568699381170744}
+  - {fileID: 8541313275600988802}
+  - {fileID: 2982846555488245813}
   tgPatternBar: {fileID: 7132285085760395248}
   togSelection1: {fileID: 4826432371417204594}
   togSelection2: {fileID: 7086338250234606730}
