@@ -12,13 +12,15 @@ public class PatternToggle : MonoBehaviour
     {
         owner = UIManager.Instance.GetPanel<SelectPatternPanel>();
         tog = GetComponent<Toggle>();
-        tog.onValueChanged.AddListener((isOn) =>
-        {
-            if (isOn)
-            {
-                owner.currentPatternIndex = index;
-                owner.UpdateSelection(index);
-            }
-        });
+        
+        
+        //tog.onValueChanged.AddListener((isOn) =>
+        //{
+        //    if (isOn)
+        //    {
+        //        owner.currentPatternIndex = index;
+        //        owner.UpdateSelection(index);
+        //    }
+        //});
     }
 }
