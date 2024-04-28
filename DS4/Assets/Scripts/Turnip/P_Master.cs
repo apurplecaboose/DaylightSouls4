@@ -76,9 +76,11 @@ public class P_Master : MonoBehaviour
     {
         if(inputState.performed)
         {
-            if(P_Action == P_Action_List.NULL_ACTION_STATE)
+            Debug.Log("dodge press");
+            if (P_Action == P_Action_List.NULL_ACTION_STATE)
             {
                 P_Action = P_Action_List.SwapDodge;
+                Debug.Log("changed state to dodge");
             }
             else
             {
@@ -90,12 +92,12 @@ public class P_Master : MonoBehaviour
     void SwapDodgeAction()
     {
         //swap player UNINTERUPTABLE
-        int startUpFrames = 2;
+        int startUpFrames = 1;
         int active_i_Frames = 13;
-        int recoveryFrames = 10;
+        int recoveryFrames = 8;
         int totalTicks = startUpFrames + active_i_Frames + recoveryFrames;
 
-        if (totalTicks >= _tickCount)
+        if (_tickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
             _tickCount = 0;
@@ -111,9 +113,25 @@ public class P_Master : MonoBehaviour
                 case int t when t == startUpFrames:
                     Invincible_P = true;
                     //fire off swap event
+
+                    Vector2 pVelCache = _P_rb.velocity;
+                    Vector2 gVelCache = _P_rb.velocity;
+                    _P_rb.velocity = gVelCache;
+                    _Ghost_rb.velocity = pVelCache;
+
+                    //_P_rb.velocity = Vector2.zero;
+                    //_Ghost_rb.velocity = Vector2.zero;
+
+                    Vector3 playertransformcache = _P_rb.transform.position;
+                    Vector3 ghosttransformcache = _Ghost_rb.transform.position;
+                    _P_rb.transform.position = ghosttransformcache;
+                    _Ghost_rb.transform.position = playertransformcache;
                     break;
                 case int t when t >= startUpFrames && t < startUpFrames + active_i_Frames:
                     Invincible_P = true;
+
+                    //_P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
+                    //_Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost
                     break;
                 case int t when t >= startUpFrames + active_i_Frames && t < totalTicks:
                     Invincible_P = false;
@@ -150,7 +168,7 @@ public class P_Master : MonoBehaviour
         int recoveryFrames = 10;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
-        if (totalTicks >= _tickCount)
+        if (_tickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
             _tickCount = 0;
