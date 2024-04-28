@@ -65,7 +65,7 @@
                     "id": "0baf1f4a-288e-47b8-8654-476102e4754e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -298,6 +298,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Light Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2f4434e-abcb-4245-9a2d-f55af8240f41",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Healing Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b65a0a95-bd14-49dd-9f7e-6a59732cbe52",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Healing Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
