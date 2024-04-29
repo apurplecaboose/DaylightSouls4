@@ -35,6 +35,7 @@ public abstract class BasePanel : MonoBehaviour
     /// 所以写成抽象方法 让子类必须去实现
     /// </summary>
     public abstract void Init();
+
     public virtual void ShowMe()
     {
         canvasGroup.alpha = 0;

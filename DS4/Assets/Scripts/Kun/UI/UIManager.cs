@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : BaseSingleton<UIManager>
 {
     //场景中的Canvas对象脚本，用于设置为面板的父对象
     private Transform canvasTrans;
-
+    public EventSystem eventSystem;
     //用于存储存在着的面板的字典 每一次显示一个面板都会录入该字典
     //需要隐藏面板时 直接获取字典中的对应面板进行隐藏
     private Dictionary<string, BasePanel> panelDic = new Dictionary<string, BasePanel>();
@@ -14,6 +15,7 @@ public class UIManager : BaseSingleton<UIManager>
     {
         //动态创建Canvas
         GameObject canvas = GameObject.Instantiate(Resources.Load<GameObject>("Kun/UI/Canvas"));
+        eventSystem = canvas.GetComponentInChildren<EventSystem>();
         //得到Canvas的Transform
         canvasTrans = canvas.transform;
         //过场景不移除Canvas 保证Canvas的唯一性
