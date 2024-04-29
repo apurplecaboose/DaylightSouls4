@@ -18,6 +18,7 @@ public class P_Master : MonoBehaviour
         //Stunned_S,//__ frame stun
         //Stunned_M,// __ frame stun
         //Stunned_L,//__ frame stun
+        SelectingBossAttackState
     }
 
     [SerializeField] int _tickCount; //Turnip:un-serialize when debug done
