@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectPatternPanel : BasePanel
@@ -15,24 +16,25 @@ public class SelectPatternPanel : BasePanel
     public int patternAmount = 8;
 
     public int currentPatternIndex;
-    public PatternToggle[] pts;
 
-    public ToggleGroup tgPatternBar;
+    public Image[] patternImages;
 
-    public Toggle togSelection1;
-    public Toggle togSelection2;
-    public Toggle togSelection3;
+    public Button btnSelection1;
+    public Button btnSelection2;
+    public Button btnSelection3;
     private Image imageSelection1;
     private Image imageSelection2;
     private Image imageSelection3;
 
     public override void Init()
     {
+        EventSystem.current.SetSelectedGameObject(btnSelection1.gameObject);
+
         btnNext.gameObject.SetActive(false);
 
-        imageSelection1 = togSelection1.gameObject.GetComponentInChildren<Image>();
-        imageSelection2 = togSelection2.gameObject.GetComponentInChildren<Image>();
-        imageSelection3 = togSelection3.gameObject.GetComponentInChildren<Image>();
+        imageSelection1 = btnSelection1.gameObject.GetComponentInChildren<Image>();
+        imageSelection2 = btnSelection2.gameObject.GetComponentInChildren<Image>();
+        imageSelection3 = btnSelection3.gameObject.GetComponentInChildren<Image>();
         //todo: Add patterns to the patternPool
         //patternPool.Add();
         //To test the functionality Now use a random colour for the representation
@@ -43,10 +45,6 @@ public class SelectPatternPanel : BasePanel
 
         finalPattern = new Color[patternAmount];
         
-
-        
-        
-
         btnNext.onClick.AddListener(() =>
         {
             //Hide myself
@@ -55,92 +53,62 @@ public class SelectPatternPanel : BasePanel
             //todo: Next move
         });
 
-        togSelection1.onValueChanged.AddListener((isOn) =>
+        btnSelection1.onClick.AddListener(() =>
         {
-            foreach (PatternToggle tog in pts)
-            {
-                if (tog.gameObject.GetComponent<PatternToggle>().index == currentPatternIndex)
-                {
-                    tog.gameObject.GetComponentInChildren<Image>().color = imageSelection1.color;
-                    finalPattern[currentPatternIndex] = imageSelection1.color;
-
-                    break;
-                }
-            }
-            currentPatternIndex++;
-            if (currentPatternIndex >= 8)
+            if (currentPatternIndex == 7)
             {
                 btnNext.gameObject.SetActive(true);
             }
-            else
+            if(currentPatternIndex <= 7)
             {
-                UpdateSelection(currentPatternIndex);
+                patternImages[currentPatternIndex].color = imageSelection1.color;
+                finalPattern[currentPatternIndex] = imageSelection1.color;
+
+                currentPatternIndex++;
+                if (currentPatternIndex < 8)
+                {
+                    UpdateSelection(currentPatternIndex);
+                }
             }
-            //foreach (Toggle tog in tgPatternBar.ActiveToggles())
-            //{
-            //    tog.gameObject.GetComponentInChildren<Image>().color = imageSelection1.color;
-            //    finalPattern[currentPatternIndex] = imageSelection1.color;
-            //}
+            
         });
-        togSelection2.onValueChanged.AddListener((isOn) =>
+        btnSelection2.onClick.AddListener(() =>
         {
-            foreach (PatternToggle tog in pts)
-            {
-                if (tog.gameObject.GetComponent<PatternToggle>().index == currentPatternIndex)
-                {
-                    tog.gameObject.GetComponentInChildren<Image>().color = imageSelection2.color;
-                    finalPattern[currentPatternIndex] = imageSelection2.color;
-
-                    break;
-                }
-            }
-            currentPatternIndex++;
-            if (currentPatternIndex>=8)
+            if (currentPatternIndex == 7)
             {
                 btnNext.gameObject.SetActive(true);
             }
-            else
+            if (currentPatternIndex <= 7)
             {
-                UpdateSelection(currentPatternIndex);
+                patternImages[currentPatternIndex].color = imageSelection2.color;
+                finalPattern[currentPatternIndex] = imageSelection2.color;
+
+                currentPatternIndex++;
+                if (currentPatternIndex < 8)
+                {
+                    UpdateSelection(currentPatternIndex);
+                }
             }
-
-
-
-            //foreach (Toggle tog in tgPatternBar.ActiveToggles())
-            //{
-            //    tog.gameObject.GetComponentInChildren<Image>().color = imageSelection2.color;
-            //    finalPattern[currentPatternIndex] = imageSelection2.color;
-            //}
         });
-        togSelection3.onValueChanged.AddListener((isOn) =>
+        btnSelection3.onClick.AddListener(() =>
         {
-            foreach (PatternToggle tog in pts)
-            {
-                if (tog.gameObject.GetComponent<PatternToggle>().index == currentPatternIndex)
-                {
-                    tog.gameObject.GetComponentInChildren<Image>().color = imageSelection3.color;
-                    finalPattern[currentPatternIndex] = imageSelection3.color;
-
-                    break;
-                }
-            }
-            currentPatternIndex++;
-            if (currentPatternIndex >= 8)
+            if (currentPatternIndex == 7)
             {
                 btnNext.gameObject.SetActive(true);
             }
-            else
+            if (currentPatternIndex <= 7)
             {
-                UpdateSelection(currentPatternIndex);
+                patternImages[currentPatternIndex].color = imageSelection3.color;
+                finalPattern[currentPatternIndex] = imageSelection3.color;
+
+                currentPatternIndex++;
+                if (currentPatternIndex < 8)
+                {
+                    UpdateSelection(currentPatternIndex);
+                }
             }
-            //foreach (Toggle tog in tgPatternBar.ActiveToggles())
-            //{
-            //    tog.gameObject.GetComponentInChildren<Image>().color = imageSelection3.color;
-            //    finalPattern[currentPatternIndex] = imageSelection3.color;
-            //}
         });
     }
-
 
     private void RandonInitializeColorPattern()
     {
@@ -174,12 +142,17 @@ public class SelectPatternPanel : BasePanel
         }
     }
 
-
     public void UpdateSelection(int index)
     {
         Color[] colors = patternPool[index];
         imageSelection1.color = colors[0];
         imageSelection2.color = colors[1];
         imageSelection3.color = colors[2];
+    }
+
+    protected override  void Update()
+    {
+        base.Update();
+        print(EventSystem.current.currentSelectedGameObject);
     }
 }

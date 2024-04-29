@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenuPanel : BasePanel
@@ -9,6 +10,8 @@ public class MainMenuPanel : BasePanel
     public Button btnQuit;
     public override void Init()
     {
+        EventSystem.current.firstSelectedGameObject = btnStart.gameObject;
+
         btnStart.onClick.AddListener(() =>
         {
             //Òþ²Ø×Ô¼ºÃæ°å
