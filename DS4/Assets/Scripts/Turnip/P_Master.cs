@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 public class P_Master : MonoBehaviour
 {
-    //nancy delivery code = 13
     public enum P_Action_List
     {
         NULL_ACTION_STATE,
@@ -129,9 +129,6 @@ public class P_Master : MonoBehaviour
                     break;
                 case int t when t >= startUpFrames && t < startUpFrames + active_i_Frames:
                     Invincible_P = true;
-
-                    //_P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
-                    //_Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost
                     break;
                 case int t when t >= startUpFrames + active_i_Frames && t < totalTicks:
                     Invincible_P = false;
@@ -211,6 +208,7 @@ public class P_Master : MonoBehaviour
     }
     void HealingAction()
     {
+        //UNINTERUPTABLE
         if (_tickCount <= 0)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
@@ -219,7 +217,7 @@ public class P_Master : MonoBehaviour
         }
         else
         {
-            if(_tickCount == 3)
+            if(_tickCount == 3) // same as healing input recoveryFrames
             {
                 //run healing stuff here
             }
