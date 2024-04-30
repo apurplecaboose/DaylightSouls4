@@ -1034,11 +1034,16 @@ MonoBehaviour:
   comboTypes: 
   comboHolder: 
   resultComboArray: 000000000000000000000000
+  resultComboArray1: 
+  resultComboArray2: 
+  resultComboArray3: 
+  resultComboArray4: 
+  resultComboArray5: 
+  resultComboArray6: 
+  resultComboArray7: 
   sampleCapacity: 100
   percentageList: []
-  comboOptionIndex: 0
-  comboOptionIndex1: 0
-  comboOptionIndex2: 0
+  comboOptionIndex: 
   bossData: {fileID: 11400000, guid: cbfa08ff1a85870448b7b1d0307e278a, type: 2}
 --- !u!114 &1182894758
 MonoBehaviour:
