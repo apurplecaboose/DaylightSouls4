@@ -47,8 +47,8 @@ public class ComboPossibility : MonoBehaviour
 
     public void ChooseCombo()
     {
-        comboIndex = Random.Range(0, comboTypes.Count);
-        print(comboTypes[comboIndex]);
+        comboIndex = Random.Range(0, comboHolder.Count);
+        print(comboHolder[comboIndex]);
     }
 
     public void AddingCombo(BossDataSc.ComboType combo, float percentage)
