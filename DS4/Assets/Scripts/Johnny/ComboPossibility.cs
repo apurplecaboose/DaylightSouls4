@@ -10,10 +10,14 @@ public class ComboPossibility : MonoBehaviour
     [SerializeField] List<BossDataSc.ComboType> comboHolder = new List<BossDataSc.ComboType>();
     [SerializeField] BossDataSc.ComboType[] resultComboArray, resultComboArray1, resultComboArray2, resultComboArray3, resultComboArray4, resultComboArray5, resultComboArray6, resultComboArray7;
     public BossDataSc.ComboType[][] resultComboArrayAllInOne;
-    [SerializeField] float sampleCapacity;
+    [SerializeField] float sampleCapacity,lowerPercentage;
     [SerializeField] List<float> percentageList = new List<float>();
     [SerializeField] int[] comboOptionIndex;
     public BossDataSc bossData;
+
+
+    public float A,B,C;
+
     private void Awake()
     {
         resultComboArrayAllInOne = new BossDataSc.ComboType[8][];
@@ -41,19 +45,28 @@ public class ComboPossibility : MonoBehaviour
             AddingCombo(comboTypes[i], percentageList[i]);
         }
 
-        ChooseCombo(resultComboArray);
-        ChooseCombo(resultComboArray1);
-        ChooseCombo(resultComboArray2);
-        ChooseCombo(resultComboArray3);
-        ChooseCombo(resultComboArray4);
-        ChooseCombo(resultComboArray5);
-        ChooseCombo(resultComboArray6);
-        ChooseCombo(resultComboArray7);
+        SetComboGroup(resultComboArray);
+        SetComboGroup(resultComboArray1);
+        SetComboGroup(resultComboArray2);
+        SetComboGroup(resultComboArray3);
+        SetComboGroup(resultComboArray4);
+        SetComboGroup(resultComboArray5);
+        SetComboGroup(resultComboArray6);
+        SetComboGroup(resultComboArray7);
 
 
         LoadingCombos();
 
 
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            LowerPossibility();
+        }
+    
     }
 
     // Update is called once per frame
@@ -66,7 +79,7 @@ public class ComboPossibility : MonoBehaviour
         }
     }
 
-    public void ChooseCombo(BossDataSc.ComboType[] resultCombo)
+    public void SetComboGroup(BossDataSc.ComboType[] resultCombo)
     {
         for (int i = 0; i < comboOptionIndex.Length; i++)
         {
@@ -99,9 +112,22 @@ public class ComboPossibility : MonoBehaviour
         resultComboArrayAllInOne[6] = resultComboArray6;
         resultComboArrayAllInOne[7] = resultComboArray7;
     }
+    
+    public void ChooseCombo()
+    {
+
+    }
 
     public void LowerPossibility()
     {
+        float newAmountA, newAmountB, newAmountC;
+
+        newAmountA = A * (1 - lowerPercentage / 100);
+        A = Mathf.Round(newAmountA / (newAmountA + B + C)*1000);
+        newAmountB = Mathf.Round(B / (newAmountA + B + C)*1000);
+        newAmountC = Mathf.Round(C / (newAmountA + B + C)*1000);
+        print(A + newAmountB + newAmountC);
+        B=newAmountB; C=newAmountC;
 
     }
 }
