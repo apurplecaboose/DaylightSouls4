@@ -50,26 +50,13 @@ public class ComboPossibility : MonoBehaviour
         ChooseCombo(resultComboArray6);
         ChooseCombo(resultComboArray7);
 
-        resultComboArrayAllInOne[0] = resultComboArray;
-        resultComboArrayAllInOne[1] = resultComboArray1;
-        resultComboArrayAllInOne[2] = resultComboArray2;
-        resultComboArrayAllInOne[3] = resultComboArray3;
-        resultComboArrayAllInOne[4] = resultComboArray4;
-        resultComboArrayAllInOne[5] = resultComboArray5;
-        resultComboArrayAllInOne[6] = resultComboArray6;
-        resultComboArrayAllInOne[7] = resultComboArray7;
+
+        LoadingCombos();
 
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print(resultComboArrayAllInOne[0][0]);
-        }
-    }
 
     public void ShowAllValue()
     {
@@ -92,12 +79,29 @@ public class ComboPossibility : MonoBehaviour
 
     }
 
-    public void AddingCombo(BossDataSc.ComboType combo, float amount)
+    public void AddingCombo(BossDataSc.ComboType combo, float percentage)
     {
+        float amount = 1000 * percentage;
         for (int i = 0; i < amount; i++)
         {
             comboHolder.Add(combo);
         }
     }
 
+    public void LoadingCombos()
+    {
+        resultComboArrayAllInOne[0] = resultComboArray;
+        resultComboArrayAllInOne[1] = resultComboArray1;
+        resultComboArrayAllInOne[2] = resultComboArray2;
+        resultComboArrayAllInOne[3] = resultComboArray3;
+        resultComboArrayAllInOne[4] = resultComboArray4;
+        resultComboArrayAllInOne[5] = resultComboArray5;
+        resultComboArrayAllInOne[6] = resultComboArray6;
+        resultComboArrayAllInOne[7] = resultComboArray7;
+    }
+
+    public void LowerPossibility()
+    {
+
+    }
 }

@@ -1044,7 +1044,7 @@ MonoBehaviour:
   sampleCapacity: 100
   percentageList: []
   comboOptionIndex: 
-  bossData: {fileID: 11400000, guid: cbfa08ff1a85870448b7b1d0307e278a, type: 2}
+  bossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
 --- !u!114 &1182894758
 MonoBehaviour:
   m_ObjectHideFlags: 0
