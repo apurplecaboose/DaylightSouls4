@@ -6,7 +6,9 @@ public class Main : MonoBehaviour
 {
     void Start()
     {
-        UIManager.Instance.ShowPanel<MainMenuPanel>();
+        //UIManager.Instance.ShowPanel<MainMenuPanel>();
+
+        UIManager.Instance.ShowPanel<GamePanel>();
     }
 
     void Update()

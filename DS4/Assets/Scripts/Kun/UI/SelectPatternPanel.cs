@@ -17,6 +17,8 @@ public class SelectPatternPanel : BasePanel
 
     public int currentPatternIndex;
 
+    public ComboPossibility comboPossibility;
+
     public Image[] patternImages;
 
     public Button btnSelection1;
@@ -28,6 +30,8 @@ public class SelectPatternPanel : BasePanel
 
     public override void Init()
     {
+        comboPossibility = GameObject.Find("GameData").GetComponent<ComboPossibility>();
+
         EventSystem.current.SetSelectedGameObject(btnSelection1.gameObject);
 
         btnNext.gameObject.SetActive(false);
@@ -109,7 +113,9 @@ public class SelectPatternPanel : BasePanel
             }
         });
     }
-
+    private  void LoadData()
+    {
+    }
     private void RandonInitializeColorPattern()
     {
         patternPool.Clear();
@@ -144,10 +150,16 @@ public class SelectPatternPanel : BasePanel
 
     public void UpdateSelection(int index)
     {
-        Color[] colors = patternPool[index];
-        imageSelection1.color = colors[0];
-        imageSelection2.color = colors[1];
-        imageSelection3.color = colors[2];
+
+
+        btnSelection1.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][0].ToString();
+        btnSelection2.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][1].ToString();
+        btnSelection3.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][2].ToString();
+
+        //Color[] colors = patternPool[index];
+        //imageSelection1.color = colors[0];
+        //imageSelection2.color = colors[1];
+        //imageSelection3.color = colors[2];
     }
 
     protected override  void Update()

@@ -11,6 +11,7 @@ public abstract class BaseMonoSingleton<T> : MonoBehaviour where T : MonoBehavio
     private static T instance;
     private static readonly object instanceLock = new object();
     private static bool quitting = false;
+    public bool dontDestroyOnLoad;
     public static T Instance
     {
         get
@@ -42,6 +43,10 @@ public abstract class BaseMonoSingleton<T> : MonoBehaviour where T : MonoBehavio
 
             //我希望每个场景都可以重新创建一个新的单例来管理这个场景
             //DontDestroyOnLoad(instance.gameObject);
+            if (dontDestroyOnLoad)
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
         }
         else if (instance.GetInstanceID() != GetInstanceID())
         {
