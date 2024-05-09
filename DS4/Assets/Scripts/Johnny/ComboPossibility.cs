@@ -11,6 +11,8 @@ public class ComboPossibility : MonoBehaviour
     [SerializeField] BossDataSc.ComboType[] resultComboArray, resultComboArray1, resultComboArray2, resultComboArray3, resultComboArray4, resultComboArray5, resultComboArray6, resultComboArray7;
     [SerializeField] float sampleCapacity, lowerPercentage, newTotalAmount;
     [SerializeField] List<float> percentageList = new List<float>();
+    [SerializeField] int[] chosenTime;
+    [SerializeField] float[] newAmountArray;
     [SerializeField] int[] comboOptionIndex;
 
     float newPercentage, originalAmount;
@@ -24,6 +26,8 @@ public class ComboPossibility : MonoBehaviour
 
     private void Awake()
     {
+        chosenTime = new int[] {1,0,0,0,0,0,0,0,0,0 };
+        newAmountArray = new float[10];
         resultComboArrayAllInOne = new BossDataSc.ComboType[8][];
         comboOptionIndex = new int[3];
         resultComboArray = new BossDataSc.ComboType[3];
@@ -69,31 +73,17 @@ public class ComboPossibility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             comboHolder.Clear();
-
-            //ObtainNewComboPos(1);
-            float newAmount = LowerPossibility(0, 1, comboTypes[0]);
-            float newAmount1 = LowerPossibility(1, 0, comboTypes[1]);
-            float newAmount2 = LowerPossibility(2, 0, comboTypes[2]);
-            float newAmount3 = LowerPossibility(3, 0, comboTypes[3]);
-            float newAmount4 = LowerPossibility(4, 0, comboTypes[4]);
-            float newAmount5 = LowerPossibility(5, 0, comboTypes[5]);
-            float newAmount6 = LowerPossibility(6, 0, comboTypes[6]);
-            float newAmount7 = LowerPossibility(7, 0, comboTypes[7]);
-            float newAmount8 = LowerPossibility(8, 0, comboTypes[8]);
-            float newAmount9 = LowerPossibility(9, 0, comboTypes[9]);
+            for(int i =0; i < comboTypes.Count; i++)
+            {
+                newAmountArray[i] = LowerPossibility(i, chosenTime[i], comboTypes[i]);
+            }
 
             print("this is new total amount:" + newTotalAmount);
             sampleCapacity = newTotalAmount;
-            percentageList[0] = Mathf.Round(newAmount / sampleCapacity * 1000) / 1000;
-            percentageList[1] = Mathf.Round(newAmount1 / sampleCapacity * 1000) / 1000;
-            percentageList[2] = Mathf.Round(newAmount2 / sampleCapacity * 1000) / 1000;
-            percentageList[3] = Mathf.Round(newAmount3 / sampleCapacity * 1000) / 1000;
-            percentageList[4] = Mathf.Round(newAmount4 / sampleCapacity * 1000) / 1000;
-            percentageList[5] = Mathf.Round(newAmount5 / sampleCapacity * 1000) / 1000;
-            percentageList[6] = Mathf.Round(newAmount6 / sampleCapacity * 1000) / 1000;
-            percentageList[7] = Mathf.Round(newAmount7 / sampleCapacity * 1000) / 1000;
-            percentageList[8] = Mathf.Round(newAmount8 / sampleCapacity * 1000) / 1000;
-            percentageList[9] = Mathf.Round(newAmount9 / sampleCapacity * 1000) / 1000;
+            for (int i = 0; i < comboTypes.Count; i++)
+            {
+                percentageList[i] = Mathf.Round(newAmountArray[i] / sampleCapacity * 1000) / 1000;
+            }
             newTotalAmount = 0;
 
             SetComboGroup(resultComboArray);
@@ -177,18 +167,4 @@ public class ComboPossibility : MonoBehaviour
         newTotalAmount += newAmount;
         return newAmount;
     }
-
-    //sampleCapacity = sampleCapacity-(originalAmount- newAmount);
-    //float newPercentage=newAmount/sampleCapacity;    
-    //return newPercentage;
-
-
-    //float newAmountA, newAmountB, newAmountC;
-
-    //newAmountA = A * (1 - lowerPercentage / 100);
-    //A = Mathf.Round(newAmountA / (newAmountA + B + C)*100);
-    //newAmountB = Mathf.Round(B / (newAmountA + B + C)*100);
-    //newAmountC = Mathf.Round(C / (newAmountA + B + C)*100);
-    //print(A + newAmountB + newAmountC);
-    //B=newAmountB; C=newAmountC;
 }

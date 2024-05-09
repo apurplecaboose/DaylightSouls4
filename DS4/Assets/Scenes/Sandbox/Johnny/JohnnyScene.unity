@@ -1045,6 +1045,8 @@ MonoBehaviour:
   lowerPercentage: 10
   newTotalAmount: 0
   percentageList: []
+  chosenTime: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
+  newAmountArray: []
   comboOptionIndex: 
   bossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
   A: 460
