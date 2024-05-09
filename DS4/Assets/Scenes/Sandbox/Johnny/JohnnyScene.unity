@@ -1041,11 +1041,12 @@ MonoBehaviour:
   resultComboArray5: 
   resultComboArray6: 
   resultComboArray7: 
-  sampleCapacity: 100
+  sampleCapacity: 1000
   lowerPercentage: 10
+  newTotalAmount: 0
   percentageList: []
   comboOptionIndex: 
-  bossData: {fileID: 11400000, guid: 94b0ef5438530cf4e8021f7d884e035e, type: 2}
+  bossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
   A: 460
   B: 230
   C: 310
