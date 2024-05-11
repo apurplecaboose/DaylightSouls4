@@ -24,7 +24,7 @@ public class _TestHeavyBehavior : MonoBehaviour
         //Stunned_L,//__ frame stun
         SelectingBossAttackState
     }
-    [SerializeField] TextMeshPro ParryStateText;//Turnip:un-serialize when debug done
+    
     [SerializeField] int _tickCount; //Turnip:un-serialize when debug done
 
     public P_Action_List P_Action;
@@ -34,6 +34,13 @@ public class _TestHeavyBehavior : MonoBehaviour
 
     bool chargeCancelled;
 
+    public enum ParryStateDebug
+    {
+        startup,
+        parry,
+        recovery
+    }
+    public ParryStateDebug ParryState;
     void FixedUpdate()
     {
         switch (P_Action)
@@ -137,6 +144,7 @@ public class _TestHeavyBehavior : MonoBehaviour
     }
     void ChargingHeavyAttackAction()//play charge animation, not able to move, disruptable by swap
     {
+        //seems vague because the input function handeled the state switch well enough.
         if (chargeCancelled)//catch case?
         {
             P_Action = P_Action_List.NeutralHeavy;
@@ -166,6 +174,7 @@ public class _TestHeavyBehavior : MonoBehaviour
             switch (_tickCount)
             {
                 case int t when t < startUpFrames://startup phase
+                    ParryState = ParryStateDebug.startup;
                     break;
                 case int t when t >= startUpFrames && t < startUpFrames + activeFrames://play swing animation&check if damage dealt 
                     break;
