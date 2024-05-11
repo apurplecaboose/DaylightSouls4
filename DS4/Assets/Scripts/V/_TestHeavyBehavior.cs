@@ -24,7 +24,7 @@ public class _TestHeavyBehavior : MonoBehaviour
         //Stunned_L,//__ frame stun
         SelectingBossAttackState
     }
-    [SerializeField] TextMeshPro InputStateText;//Turnip:un-serialize when debug done
+    [SerializeField] TextMeshPro ParryStateText;//Turnip:un-serialize when debug done
     [SerializeField] int _tickCount; //Turnip:un-serialize when debug done
 
     public P_Action_List P_Action;
@@ -52,7 +52,7 @@ public class _TestHeavyBehavior : MonoBehaviour
                 // if held for too long change state to held heavy (also set the time held varible to max as input)
                 break;
             case P_Action_List.ChargedHeavy:
-
+                ChargedHeavyAttackAction();
                 break;
 
         }
@@ -63,6 +63,11 @@ public class _TestHeavyBehavior : MonoBehaviour
         if (inputState.performed)
         {
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
+            {
+                P_Action = P_Action_List.NeutralHeavy;
+                Debug.Log("NeutralHeavy");
+            }
+            else if(P_Action == P_Action_List.ChargingUpForHeavy)
             {
                 P_Action = P_Action_List.NeutralHeavy;
                 Debug.Log("NeutralHeavy");
@@ -142,10 +147,45 @@ public class _TestHeavyBehavior : MonoBehaviour
     void NeutralHeavyAttackAction()
     {
         //swap player UNINTERUPTABLE
+        int startUpFrames = 6;
+
+
+        int activeFrames = 5;
+
+        int recoveryFrames = 10;
+        int totalTicks = startUpFrames + activeFrames + recoveryFrames;
+
+        if (_tickCount >= totalTicks)
+        { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
+            P_Action = P_Action_List.NULL_ACTION_STATE;
+            _tickCount = 0;
+            return;
+        }
+        else
+        { // Turnip: run logic 
+            switch (_tickCount)
+            {
+                case int t when t < startUpFrames://startup phase
+                    break;
+                case int t when t >= startUpFrames && t < startUpFrames + activeFrames://play swing animation&check if damage dealt 
+                    break;
+                case int t when t >= startUpFrames + activeFrames && t < totalTicks://play recover animation
+                    break;
+                case int t when t >= totalTicks:
+                    P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
+                    _tickCount = 0;
+                    break;
+            }
+            _tickCount += 1;
+        }
+    }
+    void ChargedHeavyAttackAction()
+    {
+        //swap player UNINTERUPTABLE
         int startUpFrames = 5;
 
 
-        int activeFrames = 13;
+        int activeFrames = 5;
 
         int recoveryFrames = 10;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
