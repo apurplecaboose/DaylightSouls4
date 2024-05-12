@@ -33,7 +33,8 @@ public class _TestHeavyBehavior : MonoBehaviour
     [SerializeField] Rigidbody2D _P_rb;//Turnip:un-serialize when debug done
 
     bool chargeCancelled;
-
+    //References for debug only below
+    
     public enum ParryStateDebug
     {
         startup,
@@ -106,7 +107,7 @@ public class _TestHeavyBehavior : MonoBehaviour
             if (inputState.performed)
             {
                 P_Action = P_Action_List.ChargedHeavy;
-                Debug.Log("hold");
+                Debug.Log("ChargedHeavy");
             }
         }
     }
