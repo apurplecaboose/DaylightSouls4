@@ -22,7 +22,7 @@ public class _TestHeavyBehavior : MonoBehaviour
         SelectingBossAttackState
     }
 
-    [SerializeField] int _tickCount, HeavyChargeTimer, chargeBonus, holdpoint = 20, maximumHoldPoint = 100; //Turnip:un-serialize when debug done
+    [SerializeField] int _tickCount, _heavyChargeTimer, _chargeBonusDamage, _holdthreshold = 20, _maxHoldThreshold = 100; //Turnip:un-serialize when debug done
 
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
@@ -37,7 +37,7 @@ public class _TestHeavyBehavior : MonoBehaviour
             case P_Action_List.NULL_ACTION_STATE:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
                 _tickCount = 0;
-                HeavyChargeTimer = 0; // V: catch case 
+                _heavyChargeTimer = 0; // V: catch case 
                 break;
 
             case P_Action_List.NeutralHeavy:
@@ -49,7 +49,7 @@ public class _TestHeavyBehavior : MonoBehaviour
                 // if held for too long change state to held heavy (also set the time held varible to max as input)
                 break;
             case P_Action_List.ChargedHeavy:
-                ChargedHeavyAttackAction(chargeBonus);
+                ChargedHeavyAttackAction(); //pass in 
                 break;
 
         }
@@ -71,11 +71,11 @@ public class _TestHeavyBehavior : MonoBehaviour
         {
             if (inputState.canceled)
             {
-                if (HeavyChargeTimer >= holdpoint)
+                if (_heavyChargeTimer >= _holdthreshold)
                 {
                     P_Action = P_Action_List.ChargedHeavy;
                 }
-                else if (HeavyChargeTimer < holdpoint )
+                else if (_heavyChargeTimer < _holdthreshold )
                 {
                     P_Action = P_Action_List.NeutralHeavy;
                 }
@@ -86,10 +86,10 @@ public class _TestHeavyBehavior : MonoBehaviour
     void ChargingUpHeavyAction()//play charge animation, not able to move, disruptable by swap
     {
         int maxCharge = 100;
-        HeavyChargeTimer += 1;
-        chargeBonus = HeavyChargeTimer - holdpoint;
-        chargeBonus = Mathf.Clamp(chargeBonus, 0, maxCharge);
-        if (HeavyChargeTimer >= maxCharge)
+        _heavyChargeTimer += 1;
+        _chargeBonusDamage = _heavyChargeTimer - _holdthreshold;
+        _chargeBonusDamage = Mathf.Clamp(_chargeBonusDamage, 0, maxCharge);
+        if (_heavyChargeTimer >= maxCharge)
         {
             P_Action = P_Action_List.ChargedHeavy;
         }
@@ -122,14 +122,14 @@ public class _TestHeavyBehavior : MonoBehaviour
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
                     _tickCount = 0;
-                    HeavyChargeTimer = 0;//catch case....?
+                    _heavyChargeTimer = 0;//catch case....?
 
                     break;
             }
             _tickCount += 1;
         }
     }
-    void ChargedHeavyAttackAction(int ChargeBonusTime)
+    void ChargedHeavyAttackAction()
     {
         int startUpFrames = 6;
 
@@ -155,8 +155,8 @@ public class _TestHeavyBehavior : MonoBehaviour
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
                     _tickCount = 0;
-                    HeavyChargeTimer = 0;
-                    chargeBonus = 0;
+                    _heavyChargeTimer = 0;
+                    _chargeBonusDamage = 0;
                     break;
             }
             _tickCount += 1;
