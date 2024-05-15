@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -20,13 +21,14 @@ public class P_Master : MonoBehaviour
         //Stunned_L,//__ frame stun
         SelectingBossAttackState
     }
-
+    [SerializeField] bool _targetLocked;
     [SerializeField] int _tickCount; //Turnip:un-serialize when debug done
     int _heavyChargeTimer, _chargeBonusDamage;
 
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
     Vector2 _P_moveVec, _Ghost_moveVec;
+    Vector2 _P_MoveVecCache;
     [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
 
     public bool Invincible_P;
@@ -35,9 +37,17 @@ public class P_Master : MonoBehaviour
     }
     void Update()
     {
+        if(_targetLocked) LockOn();
+        else ManualAngleControl();
+    }
+    void LockOn()
+    {
         
     }
+    void ManualAngleControl()
+    {
 
+    }
     
     void FixedUpdate()
     {
@@ -54,8 +64,6 @@ public class P_Master : MonoBehaviour
             case P_Action_List.LightAttack:
                 LightAttackAction();
                 break;
-
-
             case P_Action_List.ChargingUpForHeavy:
                 ChargingUpHeavyAction();
                 break;
@@ -72,6 +80,10 @@ public class P_Master : MonoBehaviour
                 break;
         }
     } 
+    public void TargetLock(InputAction.CallbackContext input)
+    {
+        if(input.performed) _targetLocked = !_targetLocked;
+    }
     /// <summary>
     /// Move Player and Ghost
     /// </summary>
