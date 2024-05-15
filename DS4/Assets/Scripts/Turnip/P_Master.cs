@@ -28,7 +28,6 @@ public class P_Master : MonoBehaviour
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
     Vector2 _P_moveVec, _Ghost_moveVec;
-    Vector2 _P_MoveVecCache;
     [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
 
     public bool Invincible_P;
@@ -42,11 +41,17 @@ public class P_Master : MonoBehaviour
     }
     void LockOn()
     {
-        
+        Vector2 Target = Vector2.zero; // change  to boss 
+        Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, Target);
+        _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, 750 * Time.deltaTime);
     }
     void ManualAngleControl()
     {
-
+        if (_P_moveVec != Vector2.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation( Vector3.forward, _P_moveVec);
+            _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, 750 * Time.deltaTime);
+        }
     }
     
     void FixedUpdate()
@@ -82,7 +87,7 @@ public class P_Master : MonoBehaviour
     } 
     public void TargetLock(InputAction.CallbackContext input)
     {
-        if(input.performed) _targetLocked = !_targetLocked;
+        if(input.performed) _targetLocked = !_targetLocked; print("reee");
     }
     /// <summary>
     /// Move Player and Ghost

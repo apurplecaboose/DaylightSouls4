@@ -66,7 +66,16 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Target Lock1",
+                    "type": "Value",
+                    "id": "9450ada5-6f9c-4d68-812f-8eb1c265f480",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -175,7 +184,7 @@
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
+                    "groups": "Gamepad",
                     "action": "Move Ghost",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -349,9 +358,9 @@
                     "name": "",
                     "id": "155a37eb-1e01-47d8-a622-31ff8eb8383f",
                     "path": "<XInputController>/leftTrigger",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Target Lock",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -360,10 +369,32 @@
                     "name": "",
                     "id": "a24018da-1615-4e38-b7fd-34b1b6fff1ff",
                     "path": "<Gamepad>/leftTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Target Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af31f383-d14b-4c93-b2af-5dcfa3c108a5",
+                    "path": "<XInputController>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Target Lock",
+                    "groups": "Gamepad",
+                    "action": "Target Lock1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a030c12d-7171-49f5-b126-1dee3287cb14",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Target Lock1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
