@@ -11,9 +11,9 @@ public class P_Master : MonoBehaviour
         //Turnip: cant move or limited movement in states below:
         SwapDodge,
         LightAttack,
-        TapHeavy,
+        NeutralHeavy,
         ChargingUpForHeavy,
-        HeldHeavy,
+        ChargedHeavy,
         Healing,
         //Stunned_S,//__ frame stun
         //Stunned_M,// __ frame stun
@@ -22,6 +22,7 @@ public class P_Master : MonoBehaviour
     }
 
     [SerializeField] int _tickCount; //Turnip:un-serialize when debug done
+    int _heavyChargeTimer, _chargeBonusDamage;
 
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
@@ -53,18 +54,28 @@ public class P_Master : MonoBehaviour
             case P_Action_List.LightAttack:
                 LightAttackAction();
                 break;
-            case P_Action_List.TapHeavy:
-                //UNINTERUPTABLE
-                break;
+
+
             case P_Action_List.ChargingUpForHeavy:
-                // if held for too long change state to held heavy (also set the time held varible to max as input)
+                ChargingUpHeavyAction();
                 break;
+            case P_Action_List.NeutralHeavy:
+                HeavyAttackAction(null);
+                break;
+            case P_Action_List.ChargedHeavy:
+                HeavyAttackAction(true);
+                break;
+
             case P_Action_List.Healing:
                 //hold down key to heal
                 HealingAction();
                 break;
         }
     } 
+    /// <summary>
+    /// Move Player and Ghost
+    /// </summary>
+    /// <param name="input"></param>
     public void P_Move(InputAction.CallbackContext input)
     {
         _P_moveVec = input.ReadValue<Vector2>(); //Turnip: writes to input to vector which will add force in the fixed update loop
@@ -73,6 +84,10 @@ public class P_Master : MonoBehaviour
     {
         _Ghost_moveVec = input.ReadValue<Vector2>(); //Turnip: same as P_move
     }
+    /// <summary>
+    /// Swap Position Dodge
+    /// </summary>
+    /// <param name="inputState"></param>
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
         if(inputState.performed)
@@ -143,6 +158,10 @@ public class P_Master : MonoBehaviour
             _tickCount += 1;
         }
     }
+    /// <summary>
+    /// Light Attack
+    /// </summary>
+    /// <param name="inputState"></param>
     public void LightAttackInput(InputAction.CallbackContext inputState)
     {
         if (inputState.performed)
@@ -190,6 +209,10 @@ public class P_Master : MonoBehaviour
             _tickCount += 1;
         }
     }
+    /// <summary>
+    /// Healing
+    /// </summary>
+    /// <param name="inputState"></param>
     public void HealingInput(InputAction.CallbackContext inputState)
     {
         if(inputState.performed)
@@ -225,4 +248,103 @@ public class P_Master : MonoBehaviour
             _tickCount -= 1; 
         }
     }
+    /// <summary>
+    /// Heavy Attack (Charged and Neutral) Charging State is inturuptable but attacking is not
+    /// </summary>
+    /// <param name="inputState"></param>
+    public void HeavyAttackInput(InputAction.CallbackContext inputState)
+    {
+        if (inputState.performed)
+        {
+            if (P_Action == P_Action_List.NULL_ACTION_STATE)
+            {
+                P_Action = P_Action_List.ChargingUpForHeavy;
+            }
+            else
+            {
+                Debug.Log("Busy... Currently in other action");
+            }
+        }
+        if (P_Action == P_Action_List.ChargingUpForHeavy)
+        {
+            if (inputState.canceled)
+            {
+                int holdthreshold = 20;
+                if (_heavyChargeTimer >= holdthreshold)
+                {
+                    P_Action = P_Action_List.ChargedHeavy;
+                }
+                else if (_heavyChargeTimer < holdthreshold)
+                {
+                    P_Action = P_Action_List.NeutralHeavy;
+                }
+            }
+        }
+    }
+    void ChargingUpHeavyAction()//play charge animation, not able to move, disruptable by swap
+    {
+        int maxChargeTime = 100;
+        int holdthreshold = 20;
+        _heavyChargeTimer += 1;
+        _chargeBonusDamage = _heavyChargeTimer - holdthreshold;
+        _chargeBonusDamage = Mathf.Clamp(_chargeBonusDamage, 0, maxChargeTime);
+        if (_heavyChargeTimer >= maxChargeTime)
+        {
+            P_Action = P_Action_List.ChargedHeavy;
+        }
+    }
+    void HeavyAttackAction(bool? charged)
+    {
+        Vector3Int? HeavyFrameData(bool? charged)
+        {
+            if (charged == null) // if neutral
+            {
+                int startUpFrames = 6;
+                int activeFrames = 5;
+                int recoveryFrames = 10;
+                return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
+            }
+            else if(charged.Value)// if charged
+            {
+                int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
+                int activeFrames = 5;
+                int recoveryFrames = 20; //longer recovery time
+                return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
+            }
+            else return null;
+        }
+        int startUpFrames = HeavyFrameData(charged).Value.x;
+        int activeFrames = HeavyFrameData(charged).Value.y;
+        int recoveryFrames = HeavyFrameData(charged).Value.z;
+        int totalTicks = startUpFrames + activeFrames + recoveryFrames;
+
+        if (_tickCount >= totalTicks)
+        { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
+            P_Action = P_Action_List.NULL_ACTION_STATE;
+            _tickCount = 0;
+            return;
+        }
+        else
+        { // Turnip: run logic 
+            switch (_tickCount)
+            {
+                // Instantiate Heavy Attack child pass in parameters
+                case int t when t < startUpFrames://startup phase
+                    break;
+                case int t when t >= startUpFrames && t < startUpFrames + activeFrames://play swing animation&check if damage dealt 
+                    break;
+                case int t when t >= startUpFrames + activeFrames && t < totalTicks://play recover animation
+                    break;
+                case int t when t >= totalTicks:
+                    P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
+                    _tickCount = 0;
+                    _heavyChargeTimer = 0;
+                    _chargeBonusDamage = 0;
+                    break;
+            }
+            _tickCount += 1;
+        }
+    }
+
+
 }
