@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4467859835b21524898b186f2dbe5435, type: 3}
-  m_Name: BossData_1
+  m_Name: Test
   m_EditorClassIdentifier: 
   possibility:
   - 0.1
   - 0.1
-  - 0.11
-  - 0.09
-  - 0.06
-  - 0.14
-  - 0.17
-  - 0.03
-  - 0.13
-  - 0.07
-  comboTypes: 0a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000013000000
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  comboTypes: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
