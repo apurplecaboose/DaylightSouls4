@@ -1162,13 +1162,21 @@ MonoBehaviour:
     m_ActionId: afbe8318-5812-4abb-8a03-e2aa1fbd63bd
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2021223776}
+        m_TargetAssemblyTypeName: P_Master, Assembly-CSharp
+        m_MethodName: HealingInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0baf1f4a-288e-47b8-8654-476102e4754e
     m_ActionName: Fighting/Healing Hold
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 640784f5-8941-4123-bcd4-6d55b2f863d6
-    m_ActionName: Fighting/Target Lock[/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2021223776}
@@ -1183,8 +1191,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 9450ada5-6f9c-4d68-812f-8eb1c265f480
-    m_ActionName: Fighting/Target Lock1[/XInputControllerWindows/leftTrigger]
+    m_ActionId: 640784f5-8941-4123-bcd4-6d55b2f863d6
+    m_ActionName: Fighting/Target Lock[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Fighting
@@ -1226,4 +1234,5 @@ MonoBehaviour:
   _Ghost_MoveSpeed: 25
   _P_rb: {fileID: 270587862}
   _Ghost_rb: {fileID: 502046209}
+  BossTargeting: {fileID: 453216927}
   Invincible_P: 0

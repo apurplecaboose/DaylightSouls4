@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEngine.ParticleSystem;
+
 public class P_Master : MonoBehaviour
 {
     public enum P_Action_List
@@ -16,9 +19,7 @@ public class P_Master : MonoBehaviour
         ChargingUpForHeavy,
         ChargedHeavy,
         Healing,
-        //Stunned_S,//__ frame stun
-        //Stunned_M,// __ frame stun
-        //Stunned_L,//__ frame stun
+        STUNNED,
         SelectingBossAttackState
     }
     [SerializeField] bool _targetLocked;
@@ -30,34 +31,57 @@ public class P_Master : MonoBehaviour
     Vector2 _P_moveVec, _Ghost_moveVec;
     [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
 
+    public Transform BossTransform;
+
     public bool Invincible_P;
     void Start()
     {
     }
     void Update()
     {
-        if(_targetLocked) LockOn();
-        else ManualAngleControl();
+        TurnPlayer();
+        TestStun();
     }
-    void LockOn()
+    void TestStun()
     {
-        Vector2 Target = Vector2.zero; // change  to boss 
-        Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, Target);
-        _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, 750 * Time.deltaTime);
-    }
-    void ManualAngleControl()
-    {
-        if (_P_moveVec != Vector2.zero)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Quaternion targetRot = Quaternion.LookRotation( Vector3.forward, _P_moveVec);
-            _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, 750 * Time.deltaTime);
+            P_StunInput(200);
         }
     }
-    
+    void TurnPlayer()
+    {
+        float turnspeed = 1000;
+        if (P_Action != P_Action_List.STUNNED) // dont let player turn when stunned
+        {
+            if (_targetLocked) LockOn();
+            else ManualAngleControl();
+        }
+
+        void LockOn()
+        {
+            Vector2 target = BossTransform.position - _P_rb.transform.position;
+            Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
+            _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
+
+            //_P_rb.transform.up = target; // for instant snaping lock on
+        }
+        void ManualAngleControl()
+        {
+            if (_P_moveVec != Vector2.zero)
+            {
+                Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, _P_moveVec);
+                _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
+            }
+        }
+    }
     void FixedUpdate()
     {
         switch (P_Action)
         {
+            case P_Action_List.STUNNED:
+                P_Stun();
+                break;
             case P_Action_List.NULL_ACTION_STATE:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
                 _Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost
@@ -78,21 +102,38 @@ public class P_Master : MonoBehaviour
             case P_Action_List.ChargedHeavy:
                 HeavyAttackAction(true);
                 break;
-
             case P_Action_List.Healing:
                 //hold down key to heal
                 HealingAction();
+                if (_healInputAction.Value.action.IsPressed()) _tickCount = 3; //get key down equivalant
                 break;
         }
-    } 
+    }
+    public void P_StunInput(int stunFrames)
+    {
+        _tickCount = stunFrames;
+        P_Action = P_Action_List.STUNNED;
+    }
+    void P_Stun()
+    {
+        if (_tickCount <= 0)
+        { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
+            P_Action = P_Action_List.NULL_ACTION_STATE;
+            _tickCount = 0;
+            return;
+        }
+        else _tickCount -= 1;
+
+
+    }
+    /*---------------------------------------------------------------------------------------------------------*/
     public void TargetLock(InputAction.CallbackContext input)
     {
-        if(input.performed) _targetLocked = !_targetLocked; print("reee");
+        if(input.performed && P_Action != P_Action_List.STUNNED)
+        {
+            _targetLocked = !_targetLocked; 
+        }
     }
-    /// <summary>
-    /// Move Player and Ghost
-    /// </summary>
-    /// <param name="input"></param>
     public void P_Move(InputAction.CallbackContext input)
     {
         _P_moveVec = input.ReadValue<Vector2>(); //Turnip: writes to input to vector which will add force in the fixed update loop
@@ -101,10 +142,7 @@ public class P_Master : MonoBehaviour
     {
         _Ghost_moveVec = input.ReadValue<Vector2>(); //Turnip: same as P_move
     }
-    /// <summary>
-    /// Swap Position Dodge
-    /// </summary>
-    /// <param name="inputState"></param>
+    /*---------------------------------------------------------------------------------------------------------*/
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
         if(inputState.performed)
@@ -175,10 +213,7 @@ public class P_Master : MonoBehaviour
             _tickCount += 1;
         }
     }
-    /// <summary>
-    /// Light Attack
-    /// </summary>
-    /// <param name="inputState"></param>
+    /*---------------------------------------------------------------------------------------------------------*/
     public void LightAttackInput(InputAction.CallbackContext inputState)
     {
         if (inputState.performed)
@@ -226,12 +261,14 @@ public class P_Master : MonoBehaviour
             _tickCount += 1;
         }
     }
-    /// <summary>
-    /// Healing
-    /// </summary>
-    /// <param name="inputState"></param>
+    /*---------------------------------------------------------------------------------------------------------*/
+    InputAction.CallbackContext? _healInputAction = null; //set inputaction callback context varible to null.
     public void HealingInput(InputAction.CallbackContext inputState)
     {
+        if(_healInputAction == null)
+        {
+            _healInputAction = inputState; //Will be assigned on first button press event
+        }
         if(inputState.performed)
         {
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
@@ -259,16 +296,15 @@ public class P_Master : MonoBehaviour
         else
         {
             if(_tickCount == 3) // same as healing input recoveryFrames
-            {
+            { // will only run heal when tick is 3 otherwise it is in recovery mode and no heal is done just cooldown
+                
+                
                 //run healing stuff here
             }
             _tickCount -= 1; 
         }
     }
-    /// <summary>
-    /// Heavy Attack (Charged and Neutral) Charging State is inturuptable but attacking is not
-    /// </summary>
-    /// <param name="inputState"></param>
+    /*---------------------------------------------------------------------------------------------------------*/
     public void HeavyAttackInput(InputAction.CallbackContext inputState)
     {
         if (inputState.performed)
@@ -362,6 +398,4 @@ public class P_Master : MonoBehaviour
             _tickCount += 1;
         }
     }
-
-
 }
