@@ -14,16 +14,20 @@ public class BossHeathbarTestBehavior : MonoBehaviour
     [SerializeField]
     TMP_Text _bossHp;
     [SerializeField]
-    Slider _bossHP_Slider;
+    Slider _bossHP_Slider,_decayHP_Slider;
+    [SerializeField]
+    float _lerpSpeed;
 
-    
+
     void Start()
     {
         _bossSR = this.GetComponent<SpriteRenderer>();
+        _lerpSpeed = 0.02f;
     }
    void Update()
     {
         DamageStackDisplay();
+        HealthDecayLerp();
     }
     private void OnTriggerEnter2D(Collider2D bossCollider)
     {
@@ -77,6 +81,13 @@ public class BossHeathbarTestBehavior : MonoBehaviour
             _stackedDamage = 0;
             _stackCountDwonTimer = 0;
 
+        }
+    }
+    void HealthDecayLerp()
+    {
+        if (_bossHP_Slider.value != _decayHP_Slider.value)
+        {
+            _decayHP_Slider.value = Mathf.Lerp(_decayHP_Slider.value,_bossHP_Slider.value, _lerpSpeed);
         }
     }
 
