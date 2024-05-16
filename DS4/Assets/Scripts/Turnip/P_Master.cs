@@ -105,7 +105,7 @@ public class P_Master : MonoBehaviour
             case P_Action_List.Healing:
                 //hold down key to heal
                 HealingAction();
-                if (_healInputAction.Value.action.IsPressed()) _tickCount = 3; //get key down equivalant
+                if (_healInputAction.Value.action.IsPressed()) _tickCount = 10; //get key down equivalant
                 break;
         }
     }
@@ -113,6 +113,7 @@ public class P_Master : MonoBehaviour
     {
         _tickCount = stunFrames;
         P_Action = P_Action_List.STUNNED;
+        //prob add some screenshake trigger here
     }
     void P_Stun()
     {
@@ -274,7 +275,7 @@ public class P_Master : MonoBehaviour
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
             {
                 P_Action = P_Action_List.Healing;
-                int recoveryFrames = 3;
+                int recoveryFrames = 10;
                 _tickCount = recoveryFrames;
             }
             else
@@ -295,7 +296,7 @@ public class P_Master : MonoBehaviour
         }
         else
         {
-            if(_tickCount == 3) // same as healing input recoveryFrames
+            if(_tickCount == 10) // same as healing input recoveryFrames
             { // will only run heal when tick is 3 otherwise it is in recovery mode and no heal is done just cooldown
                 
                 

@@ -54,7 +54,7 @@
                     "name": "Healing Hold",
                     "type": "Value",
                     "id": "0baf1f4a-288e-47b8-8654-476102e4754e",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

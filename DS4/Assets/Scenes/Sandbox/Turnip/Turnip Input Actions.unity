@@ -1234,5 +1234,5 @@ MonoBehaviour:
   _Ghost_MoveSpeed: 25
   _P_rb: {fileID: 270587862}
   _Ghost_rb: {fileID: 502046209}
-  BossTargeting: {fileID: 453216927}
+  BossTransform: {fileID: 453216927}
   Invincible_P: 0
