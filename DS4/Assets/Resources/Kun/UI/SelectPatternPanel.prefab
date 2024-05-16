@@ -2039,18 +2039,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnNext: {fileID: 2169351649282890163}
-  finalPattern: []
+  finalPattern: 
   patternAmount: 8
   currentPatternIndex: 0
-  patternImages:
-  - {fileID: 7867996031393116996}
-  - {fileID: 8862532040117600546}
-  - {fileID: 838915720522421235}
-  - {fileID: 4945407007954910965}
-  - {fileID: 1122126743731646015}
-  - {fileID: 2176072385931571239}
-  - {fileID: 7684181921457705136}
-  - {fileID: 3575001354776331267}
+  comboPossibility: {fileID: 0}
+  patternTexts:
+  - {fileID: 8508766111149587026}
+  - {fileID: 3467392063192467664}
+  - {fileID: 1760014764892073368}
+  - {fileID: 3944866486698143845}
+  - {fileID: 7884951737676590890}
+  - {fileID: 7124990747035410763}
+  - {fileID: 5037208372912109630}
+  - {fileID: 6879876899035644531}
   btnSelection1: {fileID: 2107454826520362585}
   btnSelection2: {fileID: 8245218793512685352}
   btnSelection3: {fileID: 6337513039447986100}

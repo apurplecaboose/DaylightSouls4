@@ -1,17 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class SelectPatternPanel : BasePanel
 {
     public Button btnNext;
 
-    public Dictionary<int,Color[]> patternPool = new Dictionary<int, Color[]>();
-
-    public Color[] finalPattern;
+    public List<BossDataSc.ComboType> finalPattern;
 
     public int patternAmount = 8;
 
@@ -19,7 +19,7 @@ public class SelectPatternPanel : BasePanel
 
     public ComboPossibility comboPossibility;
 
-    public Image[] patternImages;
+    public Text[] patternTexts;
 
     public Button btnSelection1;
     public Button btnSelection2;
@@ -39,16 +39,12 @@ public class SelectPatternPanel : BasePanel
         imageSelection1 = btnSelection1.gameObject.GetComponentInChildren<Image>();
         imageSelection2 = btnSelection2.gameObject.GetComponentInChildren<Image>();
         imageSelection3 = btnSelection3.gameObject.GetComponentInChildren<Image>();
-        //todo: Add patterns to the patternPool
-        //patternPool.Add();
-        //To test the functionality Now use a random colour for the representation
-        RandonInitializeColorPattern();
+
+        InitializeContainer();
 
         currentPatternIndex = 0;
         UpdateSelection(currentPatternIndex);
 
-        finalPattern = new Color[patternAmount];
-        
         btnNext.onClick.AddListener(() =>
         {
             //Hide myself
@@ -65,8 +61,8 @@ public class SelectPatternPanel : BasePanel
             }
             if(currentPatternIndex <= 7)
             {
-                patternImages[currentPatternIndex].color = imageSelection1.color;
-                finalPattern[currentPatternIndex] = imageSelection1.color;
+                patternTexts[currentPatternIndex].text = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][0].ToString();
+                finalPattern[currentPatternIndex] = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][0];
 
                 currentPatternIndex++;
                 if (currentPatternIndex < 8)
@@ -74,8 +70,8 @@ public class SelectPatternPanel : BasePanel
                     UpdateSelection(currentPatternIndex);
                 }
             }
-            
         });
+
         btnSelection2.onClick.AddListener(() =>
         {
             if (currentPatternIndex == 7)
@@ -84,8 +80,8 @@ public class SelectPatternPanel : BasePanel
             }
             if (currentPatternIndex <= 7)
             {
-                patternImages[currentPatternIndex].color = imageSelection2.color;
-                finalPattern[currentPatternIndex] = imageSelection2.color;
+                patternTexts[currentPatternIndex].text = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][1].ToString();
+                finalPattern[currentPatternIndex] = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][1];
 
                 currentPatternIndex++;
                 if (currentPatternIndex < 8)
@@ -94,6 +90,7 @@ public class SelectPatternPanel : BasePanel
                 }
             }
         });
+
         btnSelection3.onClick.AddListener(() =>
         {
             if (currentPatternIndex == 7)
@@ -102,8 +99,8 @@ public class SelectPatternPanel : BasePanel
             }
             if (currentPatternIndex <= 7)
             {
-                patternImages[currentPatternIndex].color = imageSelection3.color;
-                finalPattern[currentPatternIndex] = imageSelection3.color;
+                patternTexts[currentPatternIndex].text = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][2].ToString();
+                finalPattern[currentPatternIndex] = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][2];
 
                 currentPatternIndex++;
                 if (currentPatternIndex < 8)
@@ -113,58 +110,19 @@ public class SelectPatternPanel : BasePanel
             }
         });
     }
-    private  void LoadData()
+    void InitializeContainer()
     {
-    }
-    private void RandonInitializeColorPattern()
-    {
-        patternPool.Clear();
         for (int i = 0; i < patternAmount; i++)
         {
-            Color[] randomColor = new Color[3];
-            for (int j = 0; j < randomColor.Length; j++)
-            {
-                int randomNum = Random.Range(0, 5);
-                switch (randomNum)
-                {
-                    case 0:
-                        randomColor[j] = Color.white;
-                        break;
-                    case 1:
-                        randomColor[j] = Color.red;
-                        break;
-                    case 2:
-                        randomColor[j] = Color.green;
-                        break;
-                    case 3:
-                        randomColor[j] = Color.blue;
-                        break;
-                    case 4:
-                        randomColor[j] = Color.magenta;
-                        break;
-                }
-            }
-            patternPool.Add(i, randomColor);
+            finalPattern.Add(BossDataSc.ComboType.A);
+            print(finalPattern[i]);
         }
     }
 
     public void UpdateSelection(int index)
     {
-
-
         btnSelection1.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][0].ToString();
         btnSelection2.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][1].ToString();
         btnSelection3.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][2].ToString();
-
-        //Color[] colors = patternPool[index];
-        //imageSelection1.color = colors[0];
-        //imageSelection2.color = colors[1];
-        //imageSelection3.color = colors[2];
-    }
-
-    protected override  void Update()
-    {
-        base.Update();
-        print(EventSystem.current.currentSelectedGameObject);
     }
 }

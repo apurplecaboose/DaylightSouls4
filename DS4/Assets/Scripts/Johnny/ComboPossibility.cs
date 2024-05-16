@@ -11,7 +11,7 @@ public class ComboPossibility : MonoBehaviour
     [SerializeField] BossDataSc.ComboType[] resultComboArray, resultComboArray1, resultComboArray2, resultComboArray3, resultComboArray4, resultComboArray5, resultComboArray6, resultComboArray7;
     [SerializeField] float sampleCapacity, lowerPercentage, newTotalAmount;
     [SerializeField] List<float> percentageList = new List<float>();
-    [SerializeField] int[] chosenTime;
+    [SerializeField] public int[] chosenTime;
     [SerializeField] float[] newAmountArray;
     [SerializeField] int[] comboOptionIndex;
 

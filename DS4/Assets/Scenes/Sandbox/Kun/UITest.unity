@@ -206,10 +206,17 @@ MonoBehaviour:
   resultComboArray5: 
   resultComboArray6: 
   resultComboArray7: 
-  sampleCapacity: 0
+  sampleCapacity: 1000
+  lowerPercentage: 10
+  newTotalAmount: 0
   percentageList: []
+  chosenTime: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  newAmountArray: []
   comboOptionIndex: 
   bossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
+  A: 0
+  B: 0
+  C: 0
 --- !u!4 &613092897
 Transform:
   m_ObjectHideFlags: 0
@@ -218,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613092895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 910.22107, y: 549.2699, z: -2.830892}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
