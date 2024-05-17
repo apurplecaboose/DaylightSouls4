@@ -830,7 +830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325765375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.46, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1062,12 +1062,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b018d7e4b226c4e8183ec403be9663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossHp: 200
-  PlayerDamage: 100
+  BossHp: 500
+  PlayerDamage: 10
+  _healthDropDelay: 0
+  _healthDropDelayOriginal: 0
   _bossHp: {fileID: 451116206}
   _bossHP_Slider: {fileID: 1662149905}
   _decayHP_Slider: {fileID: 581605119}
-  _lerpSpeed: 0
+  duration: 0
+  elapsedTime: 0
+  t: 0
+  LerpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.64322466
+      outSlope: 0.64322466
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09166667
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 4.2235117
+      outSlope: 4.2235117
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.054166675
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!58 &1730495965
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1163,7 +1191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730495963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.67, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
