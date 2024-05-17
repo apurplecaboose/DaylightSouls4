@@ -1,30 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BossHeathbarTestBehavior : MonoBehaviour
 {// written intended to be attactch to Boss Object
-    public int BossHp,PlayerDamage;
+    //fix healthbar lerp, cant be a constant number and set a delay
+    public int BossHp, PlayerDamage;
     float _stackCountDwonTimer;
     int _stackedDamage;
-
+    [SerializeField] float _healthDropDelay, _healthDropDelayOriginal;
     SpriteRenderer _bossSR;
     [SerializeField]
     TMP_Text _bossHp;
     [SerializeField]
-    Slider _bossHP_Slider,_decayHP_Slider;
+    Slider _bossHP_Slider, _decayHP_Slider;
     [SerializeField]
-    float _lerpSpeed;
+    float  duration,elapsedTime,t;
+    
+    public AnimationCurve LerpCurve;
 
 
     void Start()
     {
+        _healthDropDelayOriginal = _healthDropDelay = 1;
+        _bossHP_Slider.maxValue = _decayHP_Slider.maxValue = BossHp;
         _bossSR = this.GetComponent<SpriteRenderer>();
-        _lerpSpeed = 0.02f;
+        duration = 1;
     }
-   void Update()
+    void Update()
     {
         DamageStackDisplay();
         HealthDecayLerp();
@@ -39,16 +45,16 @@ public class BossHeathbarTestBehavior : MonoBehaviour
             _bossHP_Slider.value = BossHp;
 
             _stackedDamage += PlayerDamage;
-            _stackCountDwonTimer += FrameToSec(18f+ 5f) + FrameToSec(500f / _stackedDamage);
+            _stackCountDwonTimer += FrameToSec(18f + 5f) + FrameToSec(500f / _stackedDamage);
         }
         if (bossCollider.CompareTag("HeavyAttack"))
         {
-            BossHp -= PlayerDamage*2;
+            BossHp -= PlayerDamage * 2;
             _bossSR.color = Color.red;
             _bossHP_Slider.value = BossHp;
 
             _stackedDamage += PlayerDamage;
-            _stackCountDwonTimer += FrameToSec(18f+ 5f) + FrameToSec(500f / _stackedDamage);
+            _stackCountDwonTimer += FrameToSec(18f + 5f) + FrameToSec(500f / _stackedDamage);
         }
     }
 
@@ -85,11 +91,28 @@ public class BossHeathbarTestBehavior : MonoBehaviour
     }
     void HealthDecayLerp()
     {
+        
+
         if (_bossHP_Slider.value != _decayHP_Slider.value)
         {
-            _decayHP_Slider.value = Mathf.Lerp(_decayHP_Slider.value,_bossHP_Slider.value, _lerpSpeed);
+            _healthDropDelay -= Time.deltaTime;
+        }
+
+        if (_healthDropDelay <= 0)
+        {
+             t = Mathf.Clamp01(elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            _decayHP_Slider.value = Mathf.Lerp(_decayHP_Slider.value, _bossHP_Slider.value, LerpCurve.Evaluate(t));
+            Debug.Log(_decayHP_Slider.value);
+        }
+        if ( _bossHP_Slider.value == _decayHP_Slider.value)
+        {
+            _healthDropDelay = _healthDropDelayOriginal;
+            elapsedTime = 0;
         }
     }
+
+    
 
     float FrameToSec(float frames)
     {
