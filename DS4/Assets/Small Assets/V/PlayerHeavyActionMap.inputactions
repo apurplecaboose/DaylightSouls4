@@ -1,0 +1,54 @@
+{
+    "name": "PlayerHeavyActionMap",
+    "maps": [
+        {
+            "name": "HeavyTest",
+            "id": "feb442e9-c985-4466-ae3c-aba8f09fc670",
+            "actions": [
+                {
+                    "name": "NeutralHeavy",
+                    "type": "Button",
+                    "id": "63753a18-c6d3-41ec-a422-1ee2281372ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChargedHeavy",
+                    "type": "Button",
+                    "id": "8860f132-348d-411b-8614-3fb659500e98",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8bad6c81-6fc4-44ca-89ce-dc25783011ac",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NeutralHeavy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "054864f1-55a4-497f-996c-b17d152216e1",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChargedHeavy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
