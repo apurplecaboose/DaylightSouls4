@@ -1227,7 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c15f7eec1434d84dbb69ff9cb79fd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetLocked: 0
+  _targetLocked: 1
   _tickCount: 0
   P_Action: 0
   _P_MoveSpeed: 15

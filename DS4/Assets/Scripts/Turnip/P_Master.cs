@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TreeEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEngine.ParticleSystem;
 
 public class P_Master : MonoBehaviour
 {
@@ -22,21 +22,22 @@ public class P_Master : MonoBehaviour
         STUNNED,
         SelectingBossAttackState
     }
-    [SerializeField] bool _targetLocked;
-    [SerializeField] int _tickCount; //Turnip:un-serialize when debug done
-    int _heavyChargeTimer, _chargeBonusDamage;
+    [SerializeField] bool _TargetLocked;
+    [SerializeField] int _TickCount; //Turnip:un-serialize when debug done
+    int _HeavyChargeTimer, _ChargeBonusDamage;
 
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
     Vector2 _P_moveVec, _Ghost_moveVec;
     [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
-
     public Transform BossTransform;
 
     public bool Invincible_P;
     void Start()
     {
+
     }
+
     void Update()
     {
         TurnPlayer();
@@ -46,17 +47,16 @@ public class P_Master : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            P_StunInput(200);
+            P_StunInput(200, P_StunSize.Large);
         }
     }
     void TurnPlayer()
     {
         float turnspeed = 1000;
-        if (P_Action != P_Action_List.STUNNED) // dont let player turn when stunned
-        {
-            if (_targetLocked) LockOn();
-            else ManualAngleControl();
-        }
+        if (P_Action == P_Action_List.STUNNED) return; // gaurd clause. If player is stunned dont rotate
+        if (_TargetLocked) LockOn();
+        else ManualAngleControl();
+
 
         void LockOn()
         {
@@ -68,11 +68,9 @@ public class P_Master : MonoBehaviour
         }
         void ManualAngleControl()
         {
-            if (_P_moveVec != Vector2.zero)
-            {
-                Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, _P_moveVec);
-                _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
-            }
+            if (_P_moveVec == Vector2.zero) return;
+            Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, _P_moveVec);
+            _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
         }
     }
     void FixedUpdate()
@@ -85,7 +83,7 @@ public class P_Master : MonoBehaviour
             case P_Action_List.NULL_ACTION_STATE:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
                 _Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost
-                _tickCount = 0;
+                _TickCount = 0;
                 break;
             case P_Action_List.SwapDodge:
                 SwapDodgeAction();
@@ -105,25 +103,66 @@ public class P_Master : MonoBehaviour
             case P_Action_List.Healing:
                 //hold down key to heal
                 HealingAction();
-                if (_healInputAction.Value.action.IsPressed()) _tickCount = 10; //get key down equivalant
+                if (_HealInputAction.Value.action.IsPressed()) _TickCount = 10; //get key down equivalant
                 break;
         }
     }
-    public void P_StunInput(int stunFrames)
+    public enum P_StunSize { Small, Large }
+    public void P_StunInput(int stunFrames, P_StunSize size)
     {
-        _tickCount = stunFrames;
-        P_Action = P_Action_List.STUNNED;
-        //prob add some screenshake trigger here
+        bool Stunnable()
+        {
+            if (size == P_StunSize.Small)
+            {
+                switch (P_Action)
+                {
+                    case P_Action_List.NULL_ACTION_STATE:
+                    case P_Action_List.ChargingUpForHeavy:
+                    case P_Action_List.Healing:
+                        return true;
+                    case P_Action_List.SwapDodge:
+                    case P_Action_List.ChargedHeavy: 
+                    case P_Action_List.NeutralHeavy:
+                    case P_Action_List.LightAttack:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            if(size == P_StunSize.Large)
+            {
+                switch (P_Action)
+                {
+                    case P_Action_List.NULL_ACTION_STATE:
+                    case P_Action_List.LightAttack:
+                    case P_Action_List.ChargingUpForHeavy:
+                    case P_Action_List.Healing:
+                        return true;
+                    case P_Action_List.SwapDodge or P_Action_List.ChargedHeavy or P_Action_List.NeutralHeavy:
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+            else return false;
+        }
+        if (Stunnable())
+        {
+            _TickCount = stunFrames;
+            P_Action = P_Action_List.STUNNED;
+            //prob add some screenshake trigger here
+        }
+        else Debug.Log("HyperArmor");
     }
     void P_Stun()
     {
-        if (_tickCount <= 0)
+        if (_TickCount <= 0)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
-        else _tickCount -= 1;
+        else _TickCount -= 1;
 
 
     }
@@ -132,7 +171,7 @@ public class P_Master : MonoBehaviour
     {
         if(input.performed && P_Action != P_Action_List.STUNNED)
         {
-            _targetLocked = !_targetLocked; 
+            _TargetLocked = !_TargetLocked; 
         }
     }
     public void P_Move(InputAction.CallbackContext input)
@@ -169,15 +208,15 @@ public class P_Master : MonoBehaviour
         int recoveryFrames = 8;
         int totalTicks = startUpFrames + active_i_Frames + recoveryFrames;
 
-        if (_tickCount >= totalTicks)
+        if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
         else
         { // Turnip: run logic 
-            switch (_tickCount)
+            switch (_TickCount)
             {
                 case int t when t < startUpFrames:
                     Invincible_P = false;
@@ -207,11 +246,11 @@ public class P_Master : MonoBehaviour
                     break;
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
-                    _tickCount = 0;
+                    _TickCount = 0;
                     Invincible_P = false;
                     break;
             }
-            _tickCount += 1;
+            _TickCount += 1;
         }
     }
     /*---------------------------------------------------------------------------------------------------------*/
@@ -238,15 +277,15 @@ public class P_Master : MonoBehaviour
         int recoveryFrames = 10;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
-        if (_tickCount >= totalTicks)
+        if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
         else
         { // Turnip: run logic 
-            switch (_tickCount)
+            switch (_TickCount)
             {
                 case int t when t < startUpFrames:
                     break;
@@ -256,19 +295,19 @@ public class P_Master : MonoBehaviour
                     break;
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
-                    _tickCount = 0;
+                    _TickCount = 0;
                     break;
             }
-            _tickCount += 1;
+            _TickCount += 1;
         }
     }
     /*---------------------------------------------------------------------------------------------------------*/
-    InputAction.CallbackContext? _healInputAction = null; //set inputaction callback context varible to null.
+    InputAction.CallbackContext? _HealInputAction = null; //set inputaction callback context varible to null.
     public void HealingInput(InputAction.CallbackContext inputState)
     {
-        if(_healInputAction == null)
+        if(_HealInputAction == null)
         {
-            _healInputAction = inputState; //Will be assigned on first button press event
+            _HealInputAction = inputState; //Will be assigned on first button press event
         }
         if(inputState.performed)
         {
@@ -276,7 +315,7 @@ public class P_Master : MonoBehaviour
             {
                 P_Action = P_Action_List.Healing;
                 int recoveryFrames = 10;
-                _tickCount = recoveryFrames;
+                _TickCount = recoveryFrames;
             }
             else
             {
@@ -288,21 +327,21 @@ public class P_Master : MonoBehaviour
     void HealingAction()
     {
         //UNINTERUPTABLE
-        if (_tickCount <= 0)
+        if (_TickCount <= 0)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
         else
         {
-            if(_tickCount == 10) // same as healing input recoveryFrames
-            { // will only run heal when tick is 3 otherwise it is in recovery mode and no heal is done just cooldown
+            if(_TickCount == 10) // same as healing input recoveryFrames
+            { // will only run heal when tick is 10 otherwise it is in recovery mode and no heal is done just cooldown
                 
                 
                 //run healing stuff here
             }
-            _tickCount -= 1; 
+            _TickCount -= 1; 
         }
     }
     /*---------------------------------------------------------------------------------------------------------*/
@@ -324,11 +363,11 @@ public class P_Master : MonoBehaviour
             if (inputState.canceled)
             {
                 int holdthreshold = 20;
-                if (_heavyChargeTimer >= holdthreshold)
+                if (_HeavyChargeTimer >= holdthreshold)
                 {
                     P_Action = P_Action_List.ChargedHeavy;
                 }
-                else if (_heavyChargeTimer < holdthreshold)
+                else if (_HeavyChargeTimer < holdthreshold)
                 {
                     P_Action = P_Action_List.NeutralHeavy;
                 }
@@ -339,10 +378,10 @@ public class P_Master : MonoBehaviour
     {
         int maxChargeTime = 100;
         int holdthreshold = 20;
-        _heavyChargeTimer += 1;
-        _chargeBonusDamage = _heavyChargeTimer - holdthreshold;
-        _chargeBonusDamage = Mathf.Clamp(_chargeBonusDamage, 0, maxChargeTime);
-        if (_heavyChargeTimer >= maxChargeTime)
+        _HeavyChargeTimer += 1;
+        _ChargeBonusDamage = _HeavyChargeTimer - holdthreshold;
+        _ChargeBonusDamage = Mathf.Clamp(_ChargeBonusDamage, 0, maxChargeTime);
+        if (_HeavyChargeTimer >= maxChargeTime)
         {
             P_Action = P_Action_List.ChargedHeavy;
         }
@@ -372,15 +411,15 @@ public class P_Master : MonoBehaviour
         int recoveryFrames = HeavyFrameData(charged).Value.z;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
-        if (_tickCount >= totalTicks)
+        if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
         else
         { // Turnip: run logic 
-            switch (_tickCount)
+            switch (_TickCount)
             {
                 // Instantiate Heavy Attack child pass in parameters
                 case int t when t < startUpFrames://startup phase
@@ -391,12 +430,12 @@ public class P_Master : MonoBehaviour
                     break;
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
-                    _tickCount = 0;
-                    _heavyChargeTimer = 0;
-                    _chargeBonusDamage = 0;
+                    _TickCount = 0;
+                    _HeavyChargeTimer = 0;
+                    _ChargeBonusDamage = 0;
                     break;
             }
-            _tickCount += 1;
+            _TickCount += 1;
         }
     }
 }
