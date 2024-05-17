@@ -1114,11 +1114,35 @@ MonoBehaviour:
     m_ActionId: 7ed55017-71b5-4bb9-9e5d-75b7a39fc5de
     m_ActionName: Fighting/Swap Dodge[/XInputControllerWindows/buttonEast,/XInputControllerWindows/rightStickPress]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2021223776}
+        m_TargetAssemblyTypeName: P_Master, Assembly-CSharp
+        m_MethodName: LightAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7796da31-0c12-4112-9659-a044f5d6ef0e
     m_ActionName: Fighting/Light Attack[/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2021223776}
+        m_TargetAssemblyTypeName: P_Master, Assembly-CSharp
+        m_MethodName: HeavyAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e751c35c-dcae-4390-ab37-5bda4ca0e0b3
     m_ActionName: Fighting/Quick Heavy
   - m_PersistentCalls:
@@ -1227,8 +1251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c15f7eec1434d84dbb69ff9cb79fd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetLocked: 1
-  _tickCount: 0
+  _TargetLocked: 0
+  _TickCount: 0
   P_Action: 0
   _P_MoveSpeed: 15
   _Ghost_MoveSpeed: 25

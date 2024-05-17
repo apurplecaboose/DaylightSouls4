@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using TreeEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -31,7 +28,6 @@ public class P_Master : MonoBehaviour
     Vector2 _P_moveVec, _Ghost_moveVec;
     [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
     public Transform BossTransform;
-
     public bool Invincible_P;
     void Start()
     {
@@ -61,10 +57,10 @@ public class P_Master : MonoBehaviour
         void LockOn()
         {
             Vector2 target = BossTransform.position - _P_rb.transform.position;
-            Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
-            _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
+            //Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
+            //_P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
 
-            //_P_rb.transform.up = target; // for instant snaping lock on
+            _P_rb.transform.up = target; // for instant snaping lock on
         }
         void ManualAngleControl()
         {
@@ -290,6 +286,8 @@ public class P_Master : MonoBehaviour
                 case int t when t < startUpFrames:
                     break;
                 case int t when t >= startUpFrames && t < startUpFrames + activeFrames:
+
+                    //instantiate 
                     break;
                 case int t when t >= startUpFrames + activeFrames && t < totalTicks:
                     break;
