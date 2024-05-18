@@ -6,9 +6,9 @@ using static BossDataSc;
 
 public class B_ComboLibrary : MonoBehaviour
 {
-    [HideInInspector]
-    public Boss_Master BossMasterRef; // used to change state from attack to opening
-    public B_ComboLibrary ComboLibraryRef;
+
+    [HideInInspector] public Boss_Master BossMasterRef; // used to change state from attack to opening
+    [HideInInspector] public B_ComboLibrary ComboLibraryRef;
     public List<GameObject> AllBossCombos;
 
     GameObject _CurrentAttack;
@@ -37,7 +37,3 @@ public class B_ComboLibrary : MonoBehaviour
         
     }
 }
-public class Boss_AttackDataTransfer : B_ComboLibrary
-{
-    public B_ComboLibrary ComboLibraryRef;
-    public Boss_Master Boss_MasterRef;

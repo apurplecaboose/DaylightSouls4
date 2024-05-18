@@ -34,6 +34,7 @@ public class Boss_Master : MonoBehaviour
         {
             //if() distance is less than amount and some amount of timer
             {
+                //Trigger Library Startup function
                 Boss_Action = Boss_Action_List.Attack;
                 //boss speed =5;
             }

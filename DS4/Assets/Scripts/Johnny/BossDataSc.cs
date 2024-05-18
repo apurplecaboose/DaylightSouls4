@@ -37,5 +37,4 @@ public class BossDataSc : ScriptableObject
         Z = 25
     }
     // convert combo name into its relative boss combo scriptable object
-
 }
