@@ -283,6 +283,8 @@ GameObject:
   - component: {fileID: 453216927}
   - component: {fileID: 453216926}
   - component: {fileID: 453216925}
+  - component: {fileID: 453216928}
+  - component: {fileID: 453216929}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -392,6 +394,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &453216928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453216924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03628eee4dfa20946a19b6e3676a2b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossDataSc: {fileID: 11400000, guid: cbfa08ff1a85870448b7b1d0307e278a, type: 2}
+  AttackArray: 
+  CurrentBossCombo: 0
+  BossPoiseAmount: 500
+  _OpeningTick: 0
+  _PoiseDamge: 0
+  _PoiseTickTimer: 0
+  Boss_Action: 0
+--- !u!114 &453216929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453216924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45ddb8cf31bdaa408ae62a131358a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossMasterRef: {fileID: 0}
+  AllBossCombos: []
 --- !u!1 &502046207
 GameObject:
   m_ObjectHideFlags: 0
