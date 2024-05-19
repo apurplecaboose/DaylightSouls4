@@ -15,6 +15,7 @@ public class ComboPossibility : MonoBehaviour
     [SerializeField] float[] newAmountArray;
     [SerializeField] int[] comboOptionIndex;
 
+    SelectPatternPanel refToSelectPattern;
     float newPercentage, originalAmount;
 
     public BossDataSc.ComboType[][] resultComboArrayAllInOne;
@@ -26,7 +27,8 @@ public class ComboPossibility : MonoBehaviour
 
     private void Awake()
     {
-        chosenTime = new int[] {1,0,0,0,0,0,0,0,0,0 };
+
+        chosenTime = new int[] {0,0,0,0,0,0,0,0,0,0 };
         newAmountArray = new float[10];
         resultComboArrayAllInOne = new BossDataSc.ComboType[8][];
         comboOptionIndex = new int[3];
@@ -72,6 +74,7 @@ public class ComboPossibility : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            GetFinalCombo();
             comboHolder.Clear();
             for(int i =0; i < comboTypes.Count; i++)
             {
@@ -150,6 +153,23 @@ public class ComboPossibility : MonoBehaviour
         }
     }
 
+    public void GetFinalCombo()
+    {
+        refToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
+        int finalLength = refToSelectPattern.finalPattern.Count;
+        for(int i =0; i < finalLength; i++)
+        {
+            for(int j = 0; j < comboTypes.Count; j++)
+            {
+                if(refToSelectPattern.finalPattern[i]== comboTypes[j])
+                {
+                    chosenTime[j]++;
+                }
+                
+            }
+        }
+       
+    }
 
     public float LowerPossibility(int percentageIndex, int chosenTimes, BossDataSc.ComboType combo)
     {
