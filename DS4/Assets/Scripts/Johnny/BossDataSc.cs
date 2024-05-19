@@ -7,6 +7,7 @@ public class BossDataSc : ScriptableObject
 {
     public List<float> possibility = new List<float>();
     public List<ComboType> comboTypes = new List<ComboType>();
+
     public enum ComboType
     {
         A = 0,
@@ -34,7 +35,16 @@ public class BossDataSc : ScriptableObject
         W = 22,
         X = 23,
         Y = 24,
-        Z = 25
+        Z = 25,
+
+        B1__Slam_Attack = 0,
+        B1__Punch_Attack = 1,
+        B1__Death_by_Covid = 2,
+
+        B2__Runny_nose = 0,
+        B2__Headache = 1,
+        B2__Death_by_Covid = 2
+
     }
     // convert combo name into its relative boss combo scriptable object
 }
