@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static P_Master;
 
 public class Boss_Master : MonoBehaviour
 {
-    public BossDataSc BossDataSc;
-    public BossDataSc.ComboType[] AttackArray;
-    public int CurrentBossCombo = 0;
+    B_ComboLibrary _Lib;
+    ComboPossibility _Combopossibility;
+
+    [Header("Boss Master")]
+    [SerializeField] int _CurrentBossComboIndex = 0;
     public int BossPoiseAmount = 500;
     [SerializeField] int _OpeningTick, _PoiseDamge;
     [SerializeField] int _PoiseTickTimer;
+    
     public enum Boss_Action_List
     {
         Chasing,
@@ -20,9 +22,11 @@ public class Boss_Master : MonoBehaviour
         SelectingBossAttackState
     }
     public Boss_Action_List Boss_Action;
+
     void Awake()
     {
-        
+        _Lib = this.GetComponent<B_ComboLibrary>();
+        _Combopossibility = this.GetComponent<ComboPossibility>();
     }
     void Start()
     {
@@ -32,11 +36,14 @@ public class Boss_Master : MonoBehaviour
     {
         if(Boss_Action == Boss_Action_List.Chasing)
         {
+            //boss speed = based on distance to player;
+
             //if() distance is less than amount and some amount of timer
             {
-                //Trigger Library Startup function
+                ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboArray[_CurrentBossComboIndex];
+                _Lib.StartUp(currentCombo);
                 Boss_Action = Boss_Action_List.Attack;
-                //boss speed =5;
+                
             }
         }
         else
@@ -50,31 +57,27 @@ public class Boss_Master : MonoBehaviour
     {
         BossPoiseLogic();
 
-        if(Boss_Action == Boss_Action_List.Opening)
+        if(Boss_Action == Boss_Action_List.Opening || Boss_Action == Boss_Action_List.STUNNED)
         {
             if(_OpeningTick <= 0)
             {
                 _OpeningTick = 0;
                 CycleNextCombo();
-
-                void CycleNextCombo()
-                {
-                    if (CurrentBossCombo < AttackArray.Length)
-                    {
-                        Boss_Action = Boss_Action_List.Chasing;
-                        CurrentBossCombo += 1;
-                    }
-                    else
-                    {
-                        //trigger next boss combo selection
-                    }
-                }
+                return;
             }
             _OpeningTick -= 1;
         }
-        if(Boss_Action == Boss_Action_List.STUNNED)
+    }
+    void CycleNextCombo()
+    {
+        if (_CurrentBossComboIndex < /*ChosenComboArray.ToArray().Length*/ 1 /*temp*/)
         {
-            Boss_Stun();
+            Boss_Action = Boss_Action_List.Chasing;
+            _CurrentBossComboIndex += 1;
+        }
+        else
+        {
+            //trigger next boss combo selection
         }
     }
     public void AddPoiseDamage(int poiseDamagetoAdd)
@@ -120,21 +123,12 @@ public class Boss_Master : MonoBehaviour
         {
             _OpeningTick = stunFrames;
             Boss_Action = Boss_Action_List.STUNNED;
+            _Lib.StunBoss_DestroyCurrentAttack();
             //prob add some screenshake trigger here
         }
 
         if (_PoiseTickTimer > 0) _PoiseTickTimer -= 1;// wait for "6" seconds before poise starts ticking down
         else if (_PoiseDamge > 0) _PoiseDamge -= 1; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
-    }
-    void Boss_Stun()
-    {
-        if (_OpeningTick <= 0)
-        { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
-            // reset to chase state
-            _OpeningTick = 0;
-            return;
-        }
-        else _OpeningTick -= 1;
     }
     public void StartBossOpening(int bossOpeningTimeinTicks)
     {
