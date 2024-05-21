@@ -2,35 +2,50 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static BossDataSc;
 
+[Serializable]
+public class AttackItem
+{
+    public ComboPossibility.ComboType ComboKey;
+    public GameObject GameObjectValue;
+}
 public class B_ComboLibrary : MonoBehaviour
 {
-
-    [HideInInspector] public Boss_Master BossMasterRef; // used to change state from attack to opening
-    [HideInInspector] public B_ComboLibrary ComboLibraryRef;
-    public List<GameObject> AllBossCombos;
+    [SerializeField] AttackItem[] _AttackGameObjectArray;
+    [SerializeField] Dictionary<ComboPossibility.ComboType, GameObject> _AttackDictionary;
 
     GameObject _CurrentAttack;
-    public void StartUp(ComboType combo_name)
+    Dictionary<ComboPossibility.ComboType,GameObject> InitializeInpectorValuesToDictionary()
     {
-        _CurrentAttack = Instantiate(AllBossCombos[(int)combo_name]); // cast as int (make sure your enum has an associated int index)
+        Dictionary<ComboPossibility.ComboType, GameObject> initializedDictionary = new Dictionary<ComboPossibility.ComboType, GameObject>();
+        foreach(var item in _AttackGameObjectArray)
+        {
+            initializedDictionary.Add(item.ComboKey, item.GameObjectValue);
+        }
+        return initializedDictionary;
     }
     void Awake()
     {
-        BossMasterRef = this.GetComponent<Boss_Master>();
-        ComboLibraryRef = this;
+        _AttackGameObjectArray = new AttackItem[Enum.GetNames(typeof(ComboPossibility.ComboType)).Length];
+        _AttackDictionary = InitializeInpectorValuesToDictionary();
     }
     void Start()
     {
         
     }
+    public void StartUp(ComboPossibility.ComboType combo_name)
+    {
+        _AttackDictionary.TryGetValue(combo_name, out GameObject value);
+        _CurrentAttack = Instantiate(value); // cast as int (make sure your enum has an associated int index)
+    }
+    public void StunBoss_DestroyCurrentAttack()
+    {
+        if (_CurrentAttack == null) return;
+        Destroy(_CurrentAttack);
+        _CurrentAttack = null;
+    }
     void Update()
     {
-        if(BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED)
-        {
-            Destroy(_CurrentAttack);
-        }
     }
     void FixedUpdate()
     {
