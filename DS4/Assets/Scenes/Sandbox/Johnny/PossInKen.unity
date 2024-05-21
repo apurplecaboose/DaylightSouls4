@@ -196,24 +196,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307311c972b42ff459df79b6c8796d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ComboTypes: 
-  _ComboHolder: 
-  _ResultComboArray: 
-  _ResultComboArray1: 
-  _ResultComboArray2: 
-  _ResultComboArray3: 
-  _ResultComboArray4: 
-  _ResultComboArray5: 
-  _ResultComboArray6: 
-  _ResultComboArray7: 
+  _BossNumber: 1
+  _ComboDropPercentage:
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
   _SampleCapacity: 1000
   _LowerPercentage: 10
   _NewTotalAmount: 0
-  _PercentageList: []
-  ChosenTime: 
+  _CurrentBossCombos: 
+  _ComboPool: 
+  NumberOfComboSelectionRepeats: 
   _AmountAfterDecrease: []
   _ComboOptionIndex: 
-  _BossNumber: 2
   ChosenComboFromKen: 
 --- !u!4 &613092897
 Transform:
