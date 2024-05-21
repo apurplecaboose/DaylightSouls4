@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class #SCRIPTNAME# : Boss_Master // inherit from Boss Combo Library and Monobehaviour
+{
+[SerializeField] Vector2 _RandomOpeningRange;
+//float BossSpeed;
+void Start()
+{
+#NOTRIM#
+}
+void Update()
+{
+#NOTRIM#
+}
+void EndCombo()
+{
+float randomOpening = Random.Range(_RandomOpeningRange.x, _RandomOpeningRange.y);
+StartBossOpening(randomOpening);
+Destroy(gameobject);
+}
+}

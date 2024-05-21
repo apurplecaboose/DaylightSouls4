@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class Node
 {
-    public bool walkable;
-    public Vector3 worldPosition;
+    public bool Walkable;
+    public Vector3 WorldPosition;
     /// <summary>
     /// create constructor(Similar to awake)
     /// Grammer for creating constructor is using the class name as function name
     /// It cannot has return type 
     /// </summary>
     /// 
-    public int gridX;
-    public int gridY;
+    public int GridX;
+    public int GridY;
 
-    public int gCost;
-    public int hCost;
-    public Node neighborParent;
+    public int GCost;
+    public int HCost;
+    public Node NeighborParent;
     public Node(bool walkable, Vector2 worldPosition, int gridX, int gridY)
     {
-        this.walkable = walkable;
-        this.worldPosition = worldPosition;
-        this.gridX = gridX;
-        this.gridY = gridY;
+        this.Walkable = walkable;
+        this.WorldPosition = worldPosition;
+        this.GridX = gridX;
+        this.GridY = gridY;
     }
 
     public int fCost()
     {
-        return gCost + hCost;
+        return GCost + HCost;
     }
 
 

@@ -209,12 +209,12 @@ MonoBehaviour:
   _SampleCapacity: 1000
   _LowerPercentage: 10
   _NewTotalAmount: 0
-  _OriginalAmount: 0
   _PercentageList: []
   ChosenTime: 
-  _NewAmountArray: []
+  _AmountAfterDecrease: []
   _ComboOptionIndex: 
-  BossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
+  _BossNumber: 2
+  ChosenComboFromKen: 
 --- !u!4 &613092897
 Transform:
   m_ObjectHideFlags: 0
