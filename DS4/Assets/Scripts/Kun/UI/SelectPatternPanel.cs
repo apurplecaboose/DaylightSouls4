@@ -11,7 +11,7 @@ public class SelectPatternPanel : BasePanel
 {
     public Button btnNext;
 
-    public List<BossDataSc.ComboType> finalPattern;
+    public List<ComboPossibility.ComboType> FinalPattern;//J: change the type use to the abandon of scriptable object
 
     public int patternAmount = 8;
 
@@ -61,8 +61,8 @@ public class SelectPatternPanel : BasePanel
             }
             if(currentPatternIndex <= 7)
             {
-                patternTexts[currentPatternIndex].text = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][0].ToString();
-                finalPattern[currentPatternIndex] = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][0];
+                patternTexts[currentPatternIndex].text = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0].ToString();
+                FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0];
 
                 currentPatternIndex++;
                 if (currentPatternIndex < 8)
@@ -80,8 +80,8 @@ public class SelectPatternPanel : BasePanel
             }
             if (currentPatternIndex <= 7)
             {
-                patternTexts[currentPatternIndex].text = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][1].ToString();
-                finalPattern[currentPatternIndex] = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][1];
+                patternTexts[currentPatternIndex].text = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1].ToString();
+                FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1];
 
                 currentPatternIndex++;
                 if (currentPatternIndex < 8)
@@ -99,8 +99,8 @@ public class SelectPatternPanel : BasePanel
             }
             if (currentPatternIndex <= 7)
             {
-                patternTexts[currentPatternIndex].text = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][2].ToString();
-                finalPattern[currentPatternIndex] = comboPossibility.resultComboArrayAllInOne[currentPatternIndex][2];
+                patternTexts[currentPatternIndex].text = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2].ToString();
+                FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2];
 
                 currentPatternIndex++;
                 if (currentPatternIndex < 8)
@@ -114,15 +114,15 @@ public class SelectPatternPanel : BasePanel
     {
         for (int i = 0; i < patternAmount; i++)
         {
-            finalPattern.Add(BossDataSc.ComboType.A);
-            print(finalPattern[i]);
+            FinalPattern.Add(ComboPossibility.ComboType.A);
+            print(FinalPattern[i]);
         }
     }
 
     public void UpdateSelection(int index)
     {
-        btnSelection1.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][0].ToString();
-        btnSelection2.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][1].ToString();
-        btnSelection3.GetComponentInChildren<Text>().text = comboPossibility.resultComboArrayAllInOne[index][2].ToString();
+        btnSelection1.GetComponentInChildren<Text>().text = comboPossibility.ResultComboArrayAllInOne[index][0].ToString();
+        btnSelection2.GetComponentInChildren<Text>().text = comboPossibility.ResultComboArrayAllInOne[index][1].ToString();
+        btnSelection3.GetComponentInChildren<Text>().text = comboPossibility.ResultComboArrayAllInOne[index][2].ToString();
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BossData", menuName = "BossAsset")]
 public class BossDataSc : ScriptableObject
 {
-    public List<float> possibility = new List<float>();
-    public List<ComboType> comboTypes = new List<ComboType>();
+    public List<float> Possibility = new List<float>();
+    public List<ComboType> ComboTypes = new List<ComboType>();
 
     public enum ComboType
     {

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PathFinding : MonoBehaviour
 {
-    public Transform boss, player;
+    public Transform Boss, Player;
 
-    Grid _grid;
+    Grid _Grid;
     private void Awake()
     {
-        _grid = GetComponent<Grid>();
+        _Grid = GetComponent<Grid>();
     }
     private void Update()
     {
-        PathFinder(boss.position, player.position);
+        PathFinder(Boss.position, Player.position);
         FollowThePath();
     }
     void PathFinder(Vector2 startPosition, Vector2 targetPosition)
     {
-        Node startNode = _grid.TranslateWorldPosToGrid(startPosition);
-        Node targetNode = _grid.TranslateWorldPosToGrid(targetPosition);
+        Node startNode = _Grid.TranslateWorldPosToGrid(startPosition);
+        Node targetNode = _Grid.TranslateWorldPosToGrid(targetPosition);
 
         List<Node> openSet = new List<Node>();
         HashSet<Node> closeSet = new HashSet<Node>();
@@ -31,7 +31,7 @@ public class PathFinding : MonoBehaviour
 
             for (int i = 1; i < openSet.Count; i++)
             {
-                if (openSet[i].fCost() < currentNode.fCost() || openSet[i].fCost() == currentNode.fCost() && openSet[i].hCost < currentNode.hCost)
+                if (openSet[i].fCost() < currentNode.fCost() || openSet[i].fCost() == currentNode.fCost() && openSet[i].HCost < currentNode.HCost)
                 {
                     currentNode = openSet[i];
                 }
@@ -52,19 +52,19 @@ public class PathFinding : MonoBehaviour
 
 
             //need more understanding
-            foreach (Node neighbor in _grid.GetNeiborNodes(currentNode))
+            foreach (Node neighbor in _Grid.GetNeiborNodes(currentNode))
             {
-                if (!neighbor.walkable || closeSet.Contains(neighbor))
+                if (!neighbor.Walkable || closeSet.Contains(neighbor))
                 {
                     continue;
                 }
 
-                int newMovementDisToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);//basically obtain the new G value to for the other neighbor
-                if (newMovementDisToNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
+                int newMovementDisToNeighbor = currentNode.GCost + GetDistance(currentNode, neighbor);//basically obtain the new G value to for the other neighbor
+                if (newMovementDisToNeighbor < neighbor.GCost || !openSet.Contains(neighbor))
                 {
-                    neighbor.gCost = newMovementDisToNeighbor;
-                    neighbor.hCost = GetDistance(neighbor, targetNode);
-                    neighbor.neighborParent = currentNode;
+                    neighbor.GCost = newMovementDisToNeighbor;
+                    neighbor.HCost = GetDistance(neighbor, targetNode);
+                    neighbor.NeighborParent = currentNode;
                     if (!openSet.Contains(neighbor))
                     {
                         openSet.Add(neighbor);//Add all the neighbor node to the openset to find out the shortest route
@@ -81,31 +81,31 @@ public class PathFinding : MonoBehaviour
         while (currentNode != startNode)
         {
             path.Add(currentNode);
-            currentNode = currentNode.neighborParent;
+            currentNode = currentNode.NeighborParent;
         }
         path.Reverse();
-        _grid.path = path;
-        print(_grid.path.Count);
+        _Grid.Path = path;
+        print(_Grid.Path.Count);
     }
 
-    public Vector3 target;
-    public int nodeIndex;
-    public float speed;
+    public Vector3 Target;
+    public int NodeIndex;
+    public float Speed;
     void FollowThePath()
     {
-        speed = 5 ;      
-        if (_grid.path.Count>0)
+        Speed = 5 ;      
+        if (_Grid.Path.Count>0)
         {
-            target = _grid.path[nodeIndex].worldPosition;
-            boss.position = Vector2.MoveTowards(boss.position, target, speed * Time.deltaTime);
+            Target = _Grid.Path[NodeIndex].WorldPosition;
+            Boss.position = Vector2.MoveTowards(Boss.position, Target, Speed * Time.deltaTime);
         }
     }
 
     int GetDistance(Node nodeA, Node nodeB)
     {
         //similar to calculate the distance between coordinates
-        int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);//only obstain the distance as magnitude
-        int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+        int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);//only obstain the distance as magnitude
+        int dstY = Mathf.Abs(nodeA.GridY - nodeB.GridY);
 
         if (dstX > dstY) { return 14 * dstY + 10 * (dstX - dstY); }           
         return 14 * dstX + 10 * (dstY - dstX);
