@@ -114,7 +114,7 @@ public class SelectPatternPanel : BasePanel
     {
         for (int i = 0; i < patternAmount; i++)
         {
-            FinalPattern.Add(ComboPossibility.ComboType.A);
+            FinalPattern.Add(ComboPossibility.ComboType.B999__PLACEHOLDER_FOR_KENS_CODE);
             print(FinalPattern[i]);
         }
     }

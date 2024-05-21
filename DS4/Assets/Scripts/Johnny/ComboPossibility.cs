@@ -1,7 +1,9 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class ComboPossibility : MonoBehaviour
@@ -14,51 +16,43 @@ public class ComboPossibility : MonoBehaviour
     [SerializeField] public int[] ChosenTime;
     [SerializeField] float[] _AmountAfterDecrease;
     [SerializeField] int[] _ComboOptionIndex;
-
+    [SerializeField] int _BossNumber;
     SelectPatternPanel _RefToSelectPattern;
-    public List<ComboType> ChosenCombo = new List<ComboType>(8);
+    public List<ComboType> ChosenComboFromKen = new List<ComboType>(8);
 
     public ComboType[][] ResultComboArrayAllInOne;
-    public BossDataSc BossData;
+
+    Dictionary<ComboType, float> _ComboWithPercentageDictionary = new Dictionary<ComboType, float>();
 
 
     public enum ComboType
     {
-        A = 0,
-        B = 1,
-        C = 2,
-        D = 3,
-        E = 4,
-        F = 5,
-        G = 6,
-        H = 7,
-        I = 8,
-        J = 9,
-        K = 10,
-        L = 11,
-        M = 12,
-        N = 13,
-        O = 14,
-        P = 15,
-        Q = 16,
-        R = 17,
-        S = 18,
-        T = 19,
-        U = 20,
-        V = 21,
-        W = 22,
-        X = 23,
-        Y = 24,
-        Z = 25,
+        B1__Slam_Attack = 0,
+        B1__Punch_Attack = 1,
+        B1__Death_by_Covid = 2,
+        B1__GomoGomo_Attack = 3,
+        B1__StripLife_Attack = 4,
+        B1__Ganster_Attack = 5,
+        B1__Italian_Attack = 6,
+        B1__JesusBless_Attack = 7,
+        B1__RockNRoll_Attack = 8,
+        B1__RapGod_Attack = 9,
 
-
-        //B1__Slam_Attack = 0,
-        //B1__Punch_Attack = 1,
-        //B1__Death_by_Covid = 2,
+        B2__Slam_Attack = 0,
+        B2__Punch_Attack = 1,
+        B2__Death_by_Covid = 2,
+        B2__GomoGomo_Attack = 3,
+        B2__StripLife_Attack = 4,
+        B2__Ganster_Attack = 5,
+        B2__Italian_Attack = 6,
+        B2__JesusBless_Attack = 7,
+        B2__RockNRoll_Attack = 8,
+        B2__RapGod_Attack = 9,
 
         //B2__Runny_nose = 0,
         //B2__Headache = 1,
         //B2__Death_by_Covid = 2
+        B999__PLACEHOLDER_FOR_KENS_CODE
 
     }
     // convert combo name into its relative boss combo scriptable object
@@ -81,12 +75,54 @@ public class ComboPossibility : MonoBehaviour
         _ResultComboArray6 = new ComboType[3];
         _ResultComboArray7 = new ComboType[3];
         ChosenTime = new int[10];
-        ChosenCombo = new List<ComboType>();
+        ChosenComboFromKen = new List<ComboType>();
         _AmountAfterDecrease = new float[10];
         ResultComboArrayAllInOne = new ComboType[8][];
         _ComboOptionIndex = new int[3];
 
         LoadInArraysToFinalPatern();
+
+        ///
+        _ComboWithPercentageDictionary.Add(ComboType.B1__Slam_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__Punch_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__Death_by_Covid, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__GomoGomo_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__StripLife_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__Ganster_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__Italian_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__JesusBless_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__RockNRoll_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B1__RapGod_Attack, 0.1f);
+
+        
+        _ComboWithPercentageDictionary.Add(ComboType.B2__Slam_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__Punch_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__Death_by_Covid, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__GomoGomo_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__StripLife_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__Ganster_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__Italian_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__JesusBless_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__RockNRoll_Attack, 0.1f);
+        _ComboWithPercentageDictionary.Add(ComboType.B2__RapGod_Attack, 0.1f);
+
+        foreach (ComboType key in _ComboWithPercentageDictionary.Keys)
+        {
+            float percentage = _ComboWithPercentageDictionary[key];
+            _PercentageList.Add(percentage);
+        }// load in the initial value for percentage
+        ///
+
+        foreach (ComboType combo in Enum.GetValues(typeof(ComboType)))
+        {
+            int currentbossnumber = ExtractBossNumberFromInput(combo.ToString());
+            if (currentbossnumber == _BossNumber)
+            {
+                //Debug.Log("SUCESS " + BossEnumStringCleanup(combo.ToString()) + " is in Boss " + _BossNumber + " moveset");
+                _ComboTypes.Add(combo);
+            }
+            else { }//Debug.Log("FAIL " + BossEnumStringCleanup(combo.ToString()) + " is not in Boss " + _BossNumber + " moveset");
+        }
 
         for (int i = 0; i < _ComboTypes.Count; i++)
         {
@@ -99,10 +135,13 @@ public class ComboPossibility : MonoBehaviour
             SetComboGroup(ResultComboArrayAllInOne[i]);
         }//provide the 3 randomm value as a grounp.
 
+
+
     }
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GetFinalCombo();
@@ -131,6 +170,28 @@ public class ComboPossibility : MonoBehaviour
     }
 
     // Update is called once per frame
+    public int ExtractBossNumberFromInput(string inputString)
+    {
+        Match match = Regex.Match(inputString, @"B(\d+)");
+        if (match.Success)
+        {
+            return int.Parse(match.Groups[1].Value);
+        }
+        else
+        {
+            Debug.LogError("null");
+            return -1;
+        }
+    }
+
+    public string BossEnumStringCleanup(string inputString)
+    {
+        string cleanedString = Regex.Replace(inputString, @"^[^_]*__", "");
+        cleanedString = cleanedString.Replace("_", " ");
+        return cleanedString;
+    }
+
+
 
     public void ShowAllValue()
     {
@@ -140,14 +201,12 @@ public class ComboPossibility : MonoBehaviour
         }
     }
 
-
-
     public void SetComboGroup(ComboType[] resultCombo)
     {
         print(resultCombo.Length);
         for (int i = 0; i < _ComboOptionIndex.Length; i++)
         {
-            _ComboOptionIndex[i] = Random.Range(0, _ComboHolder.Count);
+            _ComboOptionIndex[i] = UnityEngine.Random.Range(0, _ComboHolder.Count);
         }
         for (int i = 0; i < resultCombo.Length; i++)
         {
@@ -170,7 +229,6 @@ public class ComboPossibility : MonoBehaviour
     }
 
 
-
     public void AddingCombo(ComboType combo, float percentage)
     {
         float amount = Mathf.Round(_SampleCapacity * percentage);
@@ -182,9 +240,11 @@ public class ComboPossibility : MonoBehaviour
 
     public void GetFinalCombo()
     {
+
         _RefToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
         int finalLength = _RefToSelectPattern.FinalPattern.Count;
-        ChosenCombo = _RefToSelectPattern.FinalPattern;
+        ChosenComboFromKen = _RefToSelectPattern.FinalPattern;
+
         for (int i = 0; i < finalLength; i++)
         {
             for (int j = 0; j < _ComboTypes.Count; j++)
