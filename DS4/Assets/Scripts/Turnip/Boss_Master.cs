@@ -12,7 +12,10 @@ public class Boss_Master : MonoBehaviour
     public int BossPoiseAmount = 500;
     [SerializeField] int _OpeningTick, _PoiseDamge;
     [SerializeField] int _PoiseTickTimer;
-    
+    [HideInInspector] protected float Turnspeed = 1000f;
+    [SerializeField] Transform _PlayerTransform;
+    protected PathFinding BossPathfinding;
+    Collider2D _BossCollider;
     public enum Boss_Action_List
     {
         Chasing,
@@ -27,23 +30,22 @@ public class Boss_Master : MonoBehaviour
     {
         _Lib = this.GetComponent<B_ComboLibrary>();
         _Combopossibility = this.GetComponent<ComboPossibility>();
-    }
-    void Start()
-    {
-        
+        _BossCollider = this.GetComponent<Collider2D>();
+        BossPathfinding = this.GetComponent<PathFinding>();
     }
     void Update()
     {
+        RotateBoss();
         if(Boss_Action == Boss_Action_List.Chasing)
         {
             //boss speed = based on distance to player;
-
-            //if() distance is less than amount and some amount of timer
+            BossPathfinding.Speed = 5;
+            Turnspeed = 1000f;
+            if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
             {
                 ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
                 _Lib.StartUp(currentCombo);
                 Boss_Action = Boss_Action_List.Attack;
-                
             }
         }
         else
@@ -59,7 +61,8 @@ public class Boss_Master : MonoBehaviour
 
         if(Boss_Action == Boss_Action_List.Opening || Boss_Action == Boss_Action_List.STUNNED)
         {
-            if(_OpeningTick <= 0)
+            Turnspeed = 1000f;
+            if (_OpeningTick <= 0)
             {
                 _OpeningTick = 0;
                 CycleNextCombo();
@@ -79,6 +82,15 @@ public class Boss_Master : MonoBehaviour
         {
             //trigger next boss combo selection
         }
+    }
+    void RotateBoss()
+    {
+        if (Boss_Action == Boss_Action_List.STUNNED) return; // gaurd clause. If stunned dont rotate
+        if (Boss_Action == Boss_Action_List.Opening) return;
+
+        Vector2 target = _PlayerTransform.position - this.transform.position;
+        Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
+        _PlayerTransform.transform.rotation = Quaternion.RotateTowards(_PlayerTransform.transform.rotation, targetRot, Turnspeed * Time.deltaTime);
     }
     public void AddPoiseDamage(int poiseDamagetoAdd)
     {

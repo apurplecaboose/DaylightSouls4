@@ -36,12 +36,14 @@ public class B_ComboLibrary : MonoBehaviour
     public void StartUp(ComboPossibility.ComboType combo_name)
     {
         _AttackDictionary.TryGetValue(combo_name, out GameObject value);
-        _CurrentAttack = Instantiate(value); // cast as int (make sure your enum has an associated int index)
+        _CurrentAttack = Instantiate(value, this.transform);
+        _CurrentAttack.transform.position = this.transform.position; //set intital position
+        _CurrentAttack.transform.right = this.transform.right;//set intital rotation
     }
     public void StunBoss_DestroyCurrentAttack()
     {
         if (_CurrentAttack == null) return;
-        Destroy(_CurrentAttack);
+        Destroy(_CurrentAttack, 0.5f); //catch case
         _CurrentAttack = null;
     }
     void Update()
