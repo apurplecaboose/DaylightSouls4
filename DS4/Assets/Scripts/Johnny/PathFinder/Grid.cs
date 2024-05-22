@@ -6,7 +6,6 @@ public class Grid : MonoBehaviour
 {
     public LayerMask ObstacleLayer;
     public float NodeRadius, NodeDiameter;
-    public GameObject WayPointEmp;
     public Vector2 GridWorldSize;
     public Transform BossPosition;
     Node[,] _Grid;
