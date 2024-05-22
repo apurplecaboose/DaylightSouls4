@@ -22,7 +22,7 @@ public class Grid : MonoBehaviour
     }
 
 
-    void GenerateGrid()
+    public void GenerateGrid()
     {
         _Grid = new Node[_GridNumOnX, _GridNumOnY];//these two value represent the number of the grid(like setting up the capacity)
         Vector2 worldLeftCornorPos = new Vector2(transform.position.x - GridWorldSize.x / 2, transform.position.y - GridWorldSize.y / 2);
