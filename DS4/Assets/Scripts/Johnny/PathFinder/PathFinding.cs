@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class PathFinding : MonoBehaviour
 {
-    public Transform Boss, Player;  
+    [Header("References")]
+    [SerializeField] Transform _BossTransform;
+    [SerializeField] Transform _PlayerTransform;
+    [SerializeField] Grid _Grid;
+    [Header("Editable")]
     public int GridDisToStop;
+    public float Speed;
+    [Header("DEBUG DO NOT CHANGE")]
+    public Vector3 Target;
+    public int NodeIndex;
+    bool _StopMove;
 
-
-    Grid _Grid;
     private void Awake()
     {
-        _Grid = GetComponent<Grid>();
+        _BossTransform = this.transform;
+        //_PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Update()
     {
-        PathFinder(Boss.position, Player.position);
+        PathFinder(_BossTransform.position, _PlayerTransform.position);
         FollowThePath();
     }
     void PathFinder(Vector2 startPosition, Vector2 targetPosition)
@@ -89,18 +97,12 @@ public class PathFinding : MonoBehaviour
         _Grid.Path = path;
         print(_Grid.Path.Count);
     }
-
-    public Vector3 Target;
-    public int NodeIndex;
-    public float Speed;
-    bool _StopMove;
     void FollowThePath()
-    {
-        Speed = 5 ;      
+    {      
         if (_Grid.Path.Count> GridDisToStop&& !_StopMove)
         {
             Target = _Grid.Path[NodeIndex].WorldPosition;
-            Boss.position = Vector2.MoveTowards(Boss.position, Target, Speed * Time.deltaTime);
+            _BossTransform.position = Vector2.MoveTowards(_BossTransform.position, Target, Speed * Time.deltaTime);
         }
     }
 

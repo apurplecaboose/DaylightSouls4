@@ -37,7 +37,7 @@ public class Boss_Master : MonoBehaviour
         if(Boss_Action == Boss_Action_List.Chasing)
         {
             //boss speed = based on distance to player;
-            BossPathfinding.Speed = 5;
+            BossPathfinding.Speed = 3;
             Turnspeed = 1000f;
             if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
             {
