@@ -690,9 +690,9 @@ GameObject:
   - component: {fileID: 453216927}
   - component: {fileID: 453216926}
   - component: {fileID: 453216925}
+  - component: {fileID: 453216932}
   - component: {fileID: 453216928}
   - component: {fileID: 453216929}
-  - component: {fileID: 453216930}
   - component: {fileID: 453216931}
   m_Layer: 0
   m_Name: Boss
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453216924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03628eee4dfa20946a19b6e3676a2b53, type: 3}
   m_Name: 
@@ -852,18 +852,6 @@ MonoBehaviour:
   _AmountAfterDecrease: []
   _ComboOptionIndex: 
   ChosenComboFromKen: 
---- !u!114 &453216930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453216924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880f50b4eb7e88c48b5c2aac9c2d6c00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &453216931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +871,19 @@ MonoBehaviour:
   Speed: 3
   Target: {x: 0, y: 0, z: 0}
   NodeIndex: 0
+--- !u!114 &453216932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453216924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45ddb8cf31bdaa408ae62a131358a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AttackGameObjectArray: []
 --- !u!1 &502046207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1044,7 @@ GameObject:
   - component: {fileID: 591358522}
   - component: {fileID: 591358521}
   - component: {fileID: 591358524}
+  - component: {fileID: 591358525}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1168,6 +1170,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &591358525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591358520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880f50b4eb7e88c48b5c2aac9c2d6c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685493193
 GameObject:
   m_ObjectHideFlags: 0

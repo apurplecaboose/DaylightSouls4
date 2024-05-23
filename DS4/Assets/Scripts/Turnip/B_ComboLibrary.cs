@@ -26,7 +26,7 @@ public class B_ComboLibrary : MonoBehaviour
     }
     void Awake()
     {
-        _AttackGameObjectArray = new AttackItem[Enum.GetNames(typeof(ComboPossibility.ComboType)).Length];
+        //_AttackGameObjectArray = new AttackItem[Enum.GetNames(typeof(ComboPossibility.ComboType)).Length]; // currently disabled as it is causing a bug
         _AttackDictionary = InitializeInpectorValuesToDictionary();
     }
     public void StartUp(ComboPossibility.ComboType combo_name)

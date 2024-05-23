@@ -156,7 +156,7 @@ public class ComboPossibility : MonoBehaviour
 
     public void SetComboGroup(ComboType[] resultCombo)
     {
-        print(resultCombo.Length);
+        //print(resultCombo.Length);
         for (int i = 0; i < _ComboOptionIndex.Length; i++)
         {
             _ComboOptionIndex[i] = UnityEngine.Random.Range(0, _ComboPool.Count);

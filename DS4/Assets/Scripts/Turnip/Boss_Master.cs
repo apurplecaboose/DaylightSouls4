@@ -20,7 +20,7 @@ public class Boss_Master : MonoBehaviour
         Attack,
         Opening,
         STUNNED,
-        SelectingBossAttackState
+        SelectingBossAttackState // => chasing
     }
     public Boss_Action_List Boss_Action;
 
@@ -79,6 +79,7 @@ public class Boss_Master : MonoBehaviour
         else
         {
             //trigger next boss combo selection
+            // IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }
     void RotateBoss()

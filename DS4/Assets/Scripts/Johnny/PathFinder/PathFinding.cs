@@ -95,7 +95,7 @@ public class PathFinding : MonoBehaviour
         }
         path.Reverse();
         _Grid.Path = path;
-        print(_Grid.Path.Count);
+        //print(_Grid.Path.Count);
     }
     void FollowThePath()
     {      
