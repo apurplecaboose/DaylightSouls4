@@ -50,15 +50,8 @@ public class P_Master : MonoBehaviour
     {
         TurnPlayer();
         TestStun();
-        TESTStartKenPanel();
     }
-    void TESTStartKenPanel()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            UIManager.Instance.ShowPanel<SelectPatternPanel>();
-        }
-    }
+
     void TestStun()
     {
         if(Input.GetKeyDown(KeyCode.Space))

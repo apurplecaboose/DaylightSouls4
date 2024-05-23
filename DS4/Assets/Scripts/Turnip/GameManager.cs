@@ -14,10 +14,17 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        
+        TESTStartKenPanel();
     }
     void FixedUpdate()
     {
         
+    }
+    void TESTStartKenPanel()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            UIManager.Instance.ShowPanel<SelectPatternPanel>();
+        }
     }
 }
