@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PathFinding : MonoBehaviour
 {
-    public Transform Boss, Player;
+    public Transform Boss, Player;  
     public int GridDisToStop;
+
 
     Grid _Grid;
     private void Awake()
@@ -92,10 +93,11 @@ public class PathFinding : MonoBehaviour
     public Vector3 Target;
     public int NodeIndex;
     public float Speed;
+    bool _StopMove;
     void FollowThePath()
     {
         Speed = 5 ;      
-        if (_Grid.Path.Count> GridDisToStop)
+        if (_Grid.Path.Count> GridDisToStop&& !_StopMove)
         {
             Target = _Grid.Path[NodeIndex].WorldPosition;
             Boss.position = Vector2.MoveTowards(Boss.position, Target, Speed * Time.deltaTime);
