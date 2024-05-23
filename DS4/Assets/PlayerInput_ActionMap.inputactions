@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Tap Heavy",
+                    "name": "Heavy Attack ",
                     "type": "Button",
                     "id": "e751c35c-dcae-4390-ab37-5bda4ca0e0b3",
                     "expectedControlType": "Button",
@@ -51,21 +51,21 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Held Heavy",
-                    "type": "Button",
-                    "id": "49c2c6a8-ff6d-46c1-92c6-3b6a690659f2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Healing Hold",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0baf1f4a-288e-47b8-8654-476102e4754e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Target Lock",
+                    "type": "Button",
+                    "id": "640784f5-8941-4123-bcd4-6d55b2f863d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -175,7 +175,7 @@
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
+                    "groups": "Gamepad",
                     "action": "Move Ghost",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -320,6 +320,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Healing Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bcfb1b7-0d7e-4d2f-b516-fd9d29a799dc",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Heavy Attack ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcd9fdad-48b1-45c0-82a1-5213a3cd77c2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Heavy Attack ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "155a37eb-1e01-47d8-a622-31ff8eb8383f",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Target Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a24018da-1615-4e38-b7fd-34b1b6fff1ff",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Target Lock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

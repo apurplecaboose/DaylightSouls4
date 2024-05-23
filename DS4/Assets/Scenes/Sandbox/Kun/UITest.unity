@@ -196,27 +196,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307311c972b42ff459df79b6c8796d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comboTypes: 
-  comboHolder: 
-  resultComboArray: 
-  resultComboArray1: 
-  resultComboArray2: 
-  resultComboArray3: 
-  resultComboArray4: 
-  resultComboArray5: 
-  resultComboArray6: 
-  resultComboArray7: 
-  sampleCapacity: 1000
-  lowerPercentage: 10
-  newTotalAmount: 0
-  percentageList: []
-  chosenTime: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  newAmountArray: []
-  comboOptionIndex: 
-  bossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
-  A: 0
-  B: 0
-  C: 0
+  _ComboTypes: 
+  _ComboHolder: 
+  _ResultComboArray: 
+  _ResultComboArray1: 
+  _ResultComboArray2: 
+  _ResultComboArray3: 
+  _ResultComboArray4: 
+  _ResultComboArray5: 
+  _ResultComboArray6: 
+  _ResultComboArray7: 
+  _SampleCapacity: 1000
+  _LowerPercentage: 10
+  _NewTotalAmount: 0
+  _OriginalAmount: 0
+  _PercentageList: []
+  ChosenTime: 
+  _NewAmountArray: []
+  _ComboOptionIndex: 
+  BossData: {fileID: 11400000, guid: b2f9affae692783448ce08f9ab4039ac, type: 2}
 --- !u!4 &613092897
 Transform:
   m_ObjectHideFlags: 0

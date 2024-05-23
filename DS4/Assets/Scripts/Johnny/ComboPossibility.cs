@@ -1,170 +1,226 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Unity.Burst.Intrinsics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ComboPossibility : MonoBehaviour
 {
-    [SerializeField] List<BossDataSc.ComboType> comboTypes = new List<BossDataSc.ComboType>();
-    [SerializeField] List<BossDataSc.ComboType> comboHolder = new List<BossDataSc.ComboType>();
-    [SerializeField] BossDataSc.ComboType[] resultComboArray, resultComboArray1, resultComboArray2, resultComboArray3, resultComboArray4, resultComboArray5, resultComboArray6, resultComboArray7;
-    [SerializeField] float sampleCapacity, lowerPercentage, newTotalAmount;
-    [SerializeField] List<float> percentageList = new List<float>();
-    [SerializeField] public int[] chosenTime;
-    [SerializeField] float[] newAmountArray;
-    [SerializeField] int[] comboOptionIndex;
+    [Header ("MODIFY")]
+    [SerializeField] int _BossNumber;
+    [SerializeField] List<float> _ComboDropPercentage;
+    [SerializeField] float _SampleCapacity, _LowerPercentage, _NewTotalAmount;
 
-    float newPercentage, originalAmount;
+    [Header("DO NOT TOUCH")]
+    [SerializeField] List<ComboType> _CurrentBossCombos = new List<ComboType>();
+    [SerializeField] List<ComboType> _ComboPool = new List<ComboType>();
+    [SerializeField] public int[] NumberOfComboSelectionRepeats;
+    [SerializeField] float[] _AmountAfterDecrease;
+    [SerializeField] int[] _ComboOptionIndex;
+    ComboType[] _ResultComboArray, _ResultComboArray1, _ResultComboArray2, _ResultComboArray3, _ResultComboArray4, _ResultComboArray5, _ResultComboArray6, _ResultComboArray7;
+    [HideInInspector] public ComboType[][] ResultComboArrayAllInOne;
 
-    public BossDataSc.ComboType[][] resultComboArrayAllInOne;
-    public BossDataSc bossData;
+    [Header("OUTPUT: DO NOT TOUCH")]
+    public List<ComboType> ChosenComboFromKen = new List<ComboType>(8); // DONT TOUCH
 
+    SelectPatternPanel _RefToSelectPattern;
+    public enum ComboType
+    {
+        B1__Slam_Attack,//0
+        B1__Punch_Attack,//1
+        B1__Death_by_Covid,//2
+        B1__GomoGomo_Attack,//3
+        B1__StripLife_Attack,//4
+        B1__Ganster_Attack,//5
+        B1__Italian_Attack,//6
+        B1__JesusBless_Attack,//7
+        B1__RockNRoll_Attack,//8
+        B1__RapGod_Attack,//9
 
+        B2__Slam_Attack,//0
+        B2__Punch_Attack,//1
+        B2__Death_by_Covid,//2
+        B2__GomoGomo_Attack,//3
+        B2__StripLife_Attack,//4
+        B2__Ganster_Attack,//5
+        B2__Italian_Attack,//6
+        B2__JesusBless_Attack,//7
+        B2__RockNRoll_Attack,//8
+        B2__RapGod_Attack,//9
 
-    public float A, B, C;
+        B999__PLACEHOLDER_FOR_KENS_CODE
+    }
 
     private void Awake()
     {
-        chosenTime = new int[] {1,0,0,0,0,0,0,0,0,0 };
-        newAmountArray = new float[10];
-        resultComboArrayAllInOne = new BossDataSc.ComboType[8][];
-        comboOptionIndex = new int[3];
-        resultComboArray = new BossDataSc.ComboType[3];
-        resultComboArray1 = new BossDataSc.ComboType[3];
-        resultComboArray2 = new BossDataSc.ComboType[3];
-        resultComboArray3 = new BossDataSc.ComboType[3];
-        resultComboArray4 = new BossDataSc.ComboType[3];
-        resultComboArray5 = new BossDataSc.ComboType[3];
-        resultComboArray6 = new BossDataSc.ComboType[3];
-        resultComboArray7 = new BossDataSc.ComboType[3];
-
-        for (int i = 0; i < bossData.comboTypes.Count; i++)
+        //select emuns that pertain to this boss number
+        for (int i = 0; i < Enum.GetNames(typeof(ComboType)).Length; i++)
         {
-            comboTypes.Add(bossData.comboTypes[i]);
+            ComboType comboName = (ComboType)i;
+            int bossnumber = ExtractBossNumberFromInput(comboName.ToString());
+            if(bossnumber == _BossNumber)
+            {
+                _CurrentBossCombos.Add(comboName);
+            }
         }
-        for (int i = 0; i < bossData.possibility.Count; i++)
+        //checks if drop percentage sum is 100 
+        if(_ComboDropPercentage.Sum() != 1)
         {
-            percentageList.Add(bossData.possibility[i]);
+            Debug.LogError("Drop percentages do not add up to 100 percent");
+            return;
         }
 
-        for (int i = 0; i < bossData.comboTypes.Count; i++)
+        _ResultComboArray = new ComboType[3];
+        _ResultComboArray1 = new ComboType[3];
+        _ResultComboArray2 = new ComboType[3];
+        _ResultComboArray3 = new ComboType[3];
+        _ResultComboArray4 = new ComboType[3];
+        _ResultComboArray5 = new ComboType[3];
+        _ResultComboArray6 = new ComboType[3];
+        _ResultComboArray7 = new ComboType[3];
+        ResultComboArrayAllInOne = new ComboType[8][];
+        ChosenComboFromKen = new List<ComboType>();
+        _ComboOptionIndex = new int[3];
+        NumberOfComboSelectionRepeats = new int[10];
+        _AmountAfterDecrease = new float[10];
+
+        LoadInArraysToFinalPatern();
+
+        //Fill the pool with combos according to their percentage
+        for (int i = 0; i < _CurrentBossCombos.Count; i++)
         {
-            AddingCombo(comboTypes[i], percentageList[i]);
+            AddingCombo(_CurrentBossCombos[i], _ComboDropPercentage[i]);
         }
 
-        SetComboGroup(resultComboArray);
-        SetComboGroup(resultComboArray1);
-        SetComboGroup(resultComboArray2);
-        SetComboGroup(resultComboArray3);
-        SetComboGroup(resultComboArray4);
-        SetComboGroup(resultComboArray5);
-        SetComboGroup(resultComboArray6);
-        SetComboGroup(resultComboArray7);
 
-
-        LoadingCombos();
-
-
+        for (int i = 0;i< ResultComboArrayAllInOne.Length; i++)
+        {
+            SetComboGroup(ResultComboArrayAllInOne[i]);
+        }//provide the 3 randomm value as a grounp.
     }
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            comboHolder.Clear();
-            for(int i =0; i < comboTypes.Count; i++)
+            GetFinalCombo();
+            _ComboPool.Clear();
+            for(int i =0; i < _CurrentBossCombos.Count; i++)
             {
-                newAmountArray[i] = LowerPossibility(i, chosenTime[i], comboTypes[i]);
+                _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
             }
 
-            print("this is new total amount:" + newTotalAmount);
-            sampleCapacity = newTotalAmount;
-            for (int i = 0; i < comboTypes.Count; i++)
+            print("this is new total amount:" + _NewTotalAmount);
+            _SampleCapacity = _NewTotalAmount;
+            for (int i = 0; i < _CurrentBossCombos.Count; i++)
             {
-                percentageList[i] = Mathf.Round(newAmountArray[i] / sampleCapacity * 1000) / 1000;
-            }
-            newTotalAmount = 0;
+                _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
+            }//recalculate the percentage for each attack
+            _NewTotalAmount = 0;//prepare for the next decrease personality
 
-            SetComboGroup(resultComboArray);
-            SetComboGroup(resultComboArray1);
-            SetComboGroup(resultComboArray2);
-            SetComboGroup(resultComboArray3);
-            SetComboGroup(resultComboArray4);
-            SetComboGroup(resultComboArray5);
-            SetComboGroup(resultComboArray6);
-            SetComboGroup(resultComboArray7);
+            for (int i = 0; i < ResultComboArrayAllInOne.Length; i++)
+            {
+                SetComboGroup(ResultComboArrayAllInOne[i]);
+            }//provide the 3 randomm value as a grounp.
 
-
-            LoadingCombos();
+            LoadInArraysToFinalPatern();
         }
 
     }
 
-    // Update is called once per frame
-
+    int ExtractBossNumberFromInput(string inputString)
+    {
+        Match match = Regex.Match(inputString, @"B(\d+)");
+        if (match.Success)
+        {
+            return int.Parse(match.Groups[1].Value);
+        }
+        else
+        {
+            Debug.LogError("null");
+            return -1;
+        }
+    }
     public void ShowAllValue()
     {
-        for (int i = 0; i < comboHolder.Count; i++)
+        for (int i = 0; i < _ComboPool.Count; i++)
         {
-            print(comboHolder[i]);
+            print(_ComboPool[i]);
         }
     }
 
-
-
-    public void SetComboGroup(BossDataSc.ComboType[] resultCombo)
+    public void SetComboGroup(ComboType[] resultCombo)
     {
-        for (int i = 0; i < comboOptionIndex.Length; i++)
+        print(resultCombo.Length);
+        for (int i = 0; i < _ComboOptionIndex.Length; i++)
         {
-            comboOptionIndex[i] = Random.Range(0, comboHolder.Count);
+            _ComboOptionIndex[i] = UnityEngine.Random.Range(0, _ComboPool.Count);
         }
         for (int i = 0; i < resultCombo.Length; i++)
         {
-            resultCombo[i] = comboHolder[comboOptionIndex[i]];
+            resultCombo[i] = _ComboPool[_ComboOptionIndex[i]];
         }
 
     }
 
-
-    public void LoadingCombos()
+    public void LoadInArraysToFinalPatern()
     {
-        resultComboArrayAllInOne[0] = resultComboArray;
-        resultComboArrayAllInOne[1] = resultComboArray1;
-        resultComboArrayAllInOne[2] = resultComboArray2;
-        resultComboArrayAllInOne[3] = resultComboArray3;
-        resultComboArrayAllInOne[4] = resultComboArray4;
-        resultComboArrayAllInOne[5] = resultComboArray5;
-        resultComboArrayAllInOne[6] = resultComboArray6;
-        resultComboArrayAllInOne[7] = resultComboArray7;
+        ResultComboArrayAllInOne[0] = _ResultComboArray;
+        ResultComboArrayAllInOne[1] = _ResultComboArray1;
+        ResultComboArrayAllInOne[2] = _ResultComboArray2;
+        ResultComboArrayAllInOne[3] = _ResultComboArray3;
+        ResultComboArrayAllInOne[4] = _ResultComboArray4;
+        ResultComboArrayAllInOne[5] = _ResultComboArray5;
+        ResultComboArrayAllInOne[6] = _ResultComboArray6;
+        ResultComboArrayAllInOne[7] = _ResultComboArray7;
     }
 
-
-
-    public void AddingCombo(BossDataSc.ComboType combo, float percentage)
+    public void AddingCombo(ComboType combo, float percentage)
     {
-        float amount = Mathf.Round(sampleCapacity * percentage);
+        float amount = Mathf.Round(_SampleCapacity * percentage);
         for (int i = 0; i < amount; i++)
         {
-            comboHolder.Add(combo);
+            _ComboPool.Add(combo);
         }
     }
 
-
-    public float LowerPossibility(int percentageIndex, int chosenTimes, BossDataSc.ComboType combo)
+    public void GetFinalCombo()
     {
-        originalAmount = sampleCapacity * percentageList[percentageIndex];
+        _RefToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
+        int finalLength = _RefToSelectPattern.FinalPattern.Count;
+        ChosenComboFromKen = _RefToSelectPattern.FinalPattern;
+
+        for (int i = 0; i < finalLength; i++)
+        {
+            for (int j = 0; j < _CurrentBossCombos.Count; j++)
+            {
+                if (_RefToSelectPattern.FinalPattern[i] == _CurrentBossCombos[j])
+                {
+                    NumberOfComboSelectionRepeats[j]++;
+                }
+            }
+        }
+    }
+    // Need Adjustment with Ken Script
+
+    public float LowerPossibility(int percentageIndex, int chosenTimes, ComboType combo)
+    {
         for (int i = 0; i < chosenTimes; i++)
         {
-            percentageList[percentageIndex] = percentageList[percentageIndex] * (1 - lowerPercentage / 100);
-            print("This is percentage:" + percentageList[percentageIndex]);
+            _ComboDropPercentage[percentageIndex] = _ComboDropPercentage[percentageIndex] * (1 - _LowerPercentage / 100);
+            print("This is percentage:" + _ComboDropPercentage[percentageIndex]);
         }//calculate percentage 
-        float newAmount = Mathf.Round(sampleCapacity * percentageList[percentageIndex]);//calculate the amount
+        float newAmount = Mathf.Round(_SampleCapacity * _ComboDropPercentage[percentageIndex]);//calculate the amount
         for (int i = 0; i < newAmount; i++)
         {
-            comboHolder.Add(combo);
+            _ComboPool.Add(combo);//add the certain amount of certain attack into the combo holder
         }
-        newTotalAmount += newAmount;
+        _NewTotalAmount += newAmount;//recalculate the capacity
         return newAmount;
     }
 }

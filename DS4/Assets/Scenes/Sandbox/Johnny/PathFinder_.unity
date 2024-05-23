@@ -560,7 +560,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7830189, g: 0.73221654, b: 0.2991723, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -875,13 +875,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7df69e30de0532489f23880c3414760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleLayer:
+  ObstacleLayer:
     serializedVersion: 2
     m_Bits: 128
-  nodeRadius: 0.5
-  nodeDiameter: 0
-  wayPointEmp: {fileID: 1630311803880711080, guid: eccb3cf3430e0d4488623936a2fa722a, type: 3}
-  gridWorldSize: {x: 16, y: 9}
+  NodeRadius: 0.1
+  NodeDiameter: 0
+  GridWorldSize: {x: 16, y: 9}
   BossPosition: {fileID: 346328809}
 --- !u!4 &1964504050
 Transform:
@@ -910,11 +909,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aede09c91269745b5b460cd36757fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 346328809}
-  player: {fileID: 1004725576}
-  target: {x: 0, y: 0, z: 0}
-  nodeIndex: 0
-  speed: 0
+  Boss: {fileID: 346328809}
+  Player: {fileID: 1004725576}
+  GridDisToStop: 5
+  Target: {x: 0, y: 0, z: 0}
+  NodeIndex: 0
+  Speed: 5
 --- !u!1 &1985204714
 GameObject:
   m_ObjectHideFlags: 0
