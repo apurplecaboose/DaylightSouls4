@@ -98,7 +98,7 @@ public class BossHeathbarTestBehavior : MonoBehaviour
             _healthDropDelay -= Time.deltaTime;
         }
 
-        if (_healthDropDelay <= 0)
+        if (_healthDropDelay < 0)
         {
              t = Mathf.Clamp01(elapsedTime / duration);
             elapsedTime += Time.deltaTime;
