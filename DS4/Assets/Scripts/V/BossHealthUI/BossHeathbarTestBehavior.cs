@@ -48,7 +48,7 @@ public class BossHeathbarTestBehavior : MonoBehaviour
         _BossHP_Slider.value = BossHp;
         _StackedDamage += Damage;
         _StackCountDwonTimer += FrameToSec(18f + 5f) + FrameToSec(500f / _StackedDamage);
-        if (_HealthDropDelay < 1)
+        if (_HealthDropDelay < 0.5)
         {
             _HealthDropDelay += 0.3f;
 
@@ -80,7 +80,7 @@ public class BossHeathbarTestBehavior : MonoBehaviour
     {
         if (_BossHP_Slider.value != _DecayHP_Slider.value)
         {
-            if (_HealthDropDelay >= 0)
+            if (_HealthDropDelay > 0)
             {
                 _HealthDropDelay -= Time.deltaTime;
             }

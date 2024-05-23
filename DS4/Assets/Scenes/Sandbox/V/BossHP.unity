@@ -1101,34 +1101,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossHp: 500
   PlayerDamage: 10
-  _healthDropDelay: 0
-  _healthDropDelayOriginal: 0
-  _bossHp: {fileID: 451116206}
-  _bossHP_Slider: {fileID: 1662149905}
-  _decayHP_Slider: {fileID: 581605119}
-  duration: 0
-  elapsedTime: 0
-  t: 0
+  _HealthDropDelay: 0
+  _HealthDropDelayOriginal: 0
+  _BossHp: {fileID: 451116206}
+  _BossHP_Slider: {fileID: 1662149905}
+  _DecayHP_Slider: {fileID: 581605119}
+  _Duration: 0
+  _ElapsedTime: 0
+  _T: 0
   LerpCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.64322466
-      outSlope: 0.64322466
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.09166667
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 4.2235117
-      outSlope: 4.2235117
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.054166675
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
