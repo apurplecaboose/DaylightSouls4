@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LightAttack
   - HeavyAttack
+  - Boss
   layers:
   - Default
   - TransparentFX

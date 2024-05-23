@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Boss_Master : MonoBehaviour
 {
-    B_ComboLibrary _Lib;
+    B_ComboLibrary _Lib;    
     ComboPossibility _Combopossibility;
 
     [Header("Boss Master")]
-    [SerializeField] int _CurrentBossComboIndex = 0;
-    public int BossPoiseAmount = 500;
-    [SerializeField] int _OpeningTick, _PoiseDamge;
-    [SerializeField] int _PoiseTickTimer;
-    [HideInInspector] protected float Turnspeed = 1000f;
-    [SerializeField] Transform _PlayerTransform;
-    protected PathFinding BossPathfinding;
-    Collider2D _BossCollider;
+    int _CurrentBossComboIndex = 0;
+    [SerializeField] int _BossPoiseAmount = 500;
+    int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
+    [HideInInspector] public float Turnspeed = 1000f;
+    Transform _PlayerTransform;
+    public PathFinding BossPathfinding;
     public enum Boss_Action_List
     {
         Chasing,
@@ -30,8 +28,8 @@ public class Boss_Master : MonoBehaviour
     {
         _Lib = this.GetComponent<B_ComboLibrary>();
         _Combopossibility = this.GetComponent<ComboPossibility>();
-        _BossCollider = this.GetComponent<Collider2D>();
         BossPathfinding = this.GetComponent<PathFinding>();
+        _PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void Update()
     {
@@ -96,7 +94,7 @@ public class Boss_Master : MonoBehaviour
     {
         if (Boss_Action == Boss_Action_List.Opening)
         {
-            _PoiseDamge += poiseDamagetoAdd / 2; // half the poise damage dealt if the boss is in opening mode
+            _PoiseDamage += poiseDamagetoAdd / 2; // half the poise damage dealt if the boss is in opening mode
             int refreshtime = 50 * 3;// 50 tick/s * desiredSeconds
             if (_PoiseTickTimer < refreshtime) // if you have 3 seconds or more then refresh to 3 otherwise keep at the larger tick timer amount
             {
@@ -107,25 +105,25 @@ public class Boss_Master : MonoBehaviour
         }
         else if (Boss_Action != Boss_Action_List.STUNNED) // if stunned dont let the player do poise damage
         {
-            _PoiseDamge += poiseDamagetoAdd;
+            _PoiseDamage += poiseDamagetoAdd;
             _PoiseTickTimer = 50 * 6; // 50 tick/s * desiredSeconds
         }
     }
     void BossPoiseLogic()
     {
-        if(_PoiseDamge >= BossPoiseAmount)
+        if(_PoiseDamage >= _BossPoiseAmount)
         {
-            if(_PoiseDamge == BossPoiseAmount)
+            if(_PoiseDamage == _BossPoiseAmount)
             {
-                _PoiseDamge = 0;
+                _PoiseDamage = 0;
                 _PoiseTickTimer = 0;
                 Boss_StunInput(50*3);
             }
             else
             {
-                int surplusPoiseDamage = _PoiseDamge - BossPoiseAmount;
+                int surplusPoiseDamage = _PoiseDamage - _BossPoiseAmount;
                 int bonusStun = Mathf.RoundToInt(2 * Mathf.Pow( surplusPoiseDamage, 2)); // some arbitrary function, subject to change TM lel
-                _PoiseDamge = 0;
+                _PoiseDamage = 0;
                 _PoiseTickTimer = 0;
                 Boss_StunInput(50 * 3 + bonusStun);
             }
@@ -140,7 +138,7 @@ public class Boss_Master : MonoBehaviour
         }
 
         if (_PoiseTickTimer > 0) _PoiseTickTimer -= 1;// wait for "6" seconds before poise starts ticking down
-        else if (_PoiseDamge > 0) _PoiseDamge -= 1; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
+        else if (_PoiseDamage > 0) _PoiseDamage -= 1; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
     }
     public void StartBossOpening(int bossOpeningTimeinTicks)
     {

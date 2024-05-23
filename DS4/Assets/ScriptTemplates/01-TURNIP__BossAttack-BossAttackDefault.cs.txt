@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackDefault : Boss_Master // inherit from Boss Combo Library and Monobehaviour
+public class BossAttackDefault : MonoBehaviour // inherit from Boss Combo Library and Monobehaviour
 {
+    [SerializeField] Boss_Master _BossMasterRef;
     [Tooltip("Amount of Gap from this combo to the next")]
     [SerializeField] private Vector2Int _RandomOpeningRange;
     [Tooltip("Load up you attack prefabs here")]
@@ -12,7 +13,7 @@ public class BossAttackDefault : Boss_Master // inherit from Boss Combo Library 
     [SerializeField] private int _CurrentAttackIndex = 0;
     void Awake()
     {
-        Turnspeed = 1000f; //set to whatever initial value you want
+        _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
     }
     float TicksToSeconds(int ticks)
     {
@@ -24,8 +25,8 @@ public class BossAttackDefault : Boss_Master // inherit from Boss Combo Library 
         float invokeTimeCount = 0;
         invokeTimeCount += TicksToSeconds(2); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);
-        invokeTimeCount += TicksToSeconds(2);//length of combo
-        invokeTimeCount += TicksToSeconds(2); // length of gap
+        invokeTimeCount += TicksToSeconds(50);//length of combo
+        invokeTimeCount += TicksToSeconds(12); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);
         invokeTimeCount += TicksToSeconds(2);//length of combo
         invokeTimeCount += TicksToSeconds(2); // length of gap
@@ -34,7 +35,7 @@ public class BossAttackDefault : Boss_Master // inherit from Boss Combo Library 
     }
     void Update()
     {
-        if(Boss_Action == Boss_Action_List.STUNNED || Boss_Action == Boss_Action_List.STUNNED)
+        if(_BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED || _BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED)
         {
             Invoke("ResetEverything", 0.1f);
         }
@@ -56,7 +57,7 @@ public class BossAttackDefault : Boss_Master // inherit from Boss Combo Library 
     void EndCombo()
     {
         int randomOpening = UnityEngine.Random.Range(_RandomOpeningRange.x, _RandomOpeningRange.y);
-        StartBossOpening(randomOpening);
+        _BossMasterRef.StartBossOpening(randomOpening);
         Destroy(gameObject);
     }
     void ResetEverything()

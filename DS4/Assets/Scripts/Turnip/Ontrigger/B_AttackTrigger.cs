@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class B_AttackTrigger : Boss_Master
+public class B_AttackTrigger : MonoBehaviour
 {
     P_Master _Player;
     [SerializeField] int _AttackDamage = 10;

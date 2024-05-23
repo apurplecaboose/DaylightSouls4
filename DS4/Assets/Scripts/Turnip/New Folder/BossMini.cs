@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMini : Boss_Master // inherit from Boss Master and Monobehaviour
+public class BossMini : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
+    [SerializeField] Boss_Master _BossMasterRef;
     [SerializeField] int _AttackTick;
     [SerializeField] Animation _AttackAnimation;
     
     void Awake()
     {
-        Turnspeed = 1000f; //set to whatever initial value you want
+        _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
     }
     void Update()
     {
-        if (Boss_Action == Boss_Action_List.STUNNED || Boss_Action == Boss_Action_List.Opening)
+        if (_BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED || _BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.Opening)
         {
             ResetEverything();
         }
