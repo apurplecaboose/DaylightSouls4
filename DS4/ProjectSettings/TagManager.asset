@@ -7,6 +7,7 @@ TagManager:
   - LightAttack
   - HeavyAttack
   - Boss
+  - BossParry
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class P_Master : MonoBehaviour
 {
+    public P_Action_List P_Action;
     public enum P_Action_List
     {
         NULL_ACTION_STATE,
@@ -19,23 +20,44 @@ public class P_Master : MonoBehaviour
         STUNNED,
         SelectingBossAttackState
     }
-    [SerializeField] bool _TargetLocked;
+    [Header("Editable")]
+    [SerializeField] float _P_MoveSpeed = 15f;
+    [SerializeField] float _Ghost_MoveSpeed = 15f;
+
+    [Header("References")]
+    [SerializeField] GameObject _LightAttackPrefab;
+    [SerializeField] GameObject _HeavyAttackPrefab;
+    Rigidbody2D _P_rb, _Ghost_rb;
+    Transform _BossTransform;
+    GameObject _CurrentAttackPrefab;
+
+    [Header("DEBUG DO NOT EDIT")]
     [SerializeField] int _TickCount; //Turnip:un-serialize when debug done
-    int _ParryIFrames;
-    int _HeavyChargeTimer; 
-    public int ChargeBonusDamage;
-
-    public P_Action_List P_Action;
-    [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
-    Vector2 _P_moveVec, _Ghost_moveVec;
-    [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
-    public Transform BossTransform;
     public bool Dodging_Invincible, Parry_Invincible;
+    /*[HideInInspector]*/
+    public int ChargeBonusDamage;
+    bool _TargetLocked;
+    int _ParryIFrames, _HeavyChargeTimer; 
+    Vector2 _P_moveVec, _Ghost_moveVec;
 
+    void Awake()
+    {
+        _BossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
+        _P_rb = this.transform.GetChild(0).GetComponent<Rigidbody2D>();
+        _Ghost_rb = this.transform.GetChild(1).GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
         TurnPlayer();
         TestStun();
+        TESTStartKenPanel();
+    }
+    void TESTStartKenPanel()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            UIManager.Instance.ShowPanel<SelectPatternPanel>();
+        }
     }
     void TestStun()
     {
@@ -47,18 +69,17 @@ public class P_Master : MonoBehaviour
     void TurnPlayer()
     {
         float turnspeed = 1000;
-        if (P_Action == P_Action_List.STUNNED) return; // gaurd clause. If player is stunned dont rotate
+        if (P_Action == P_Action_List.STUNNED || P_Action == P_Action_List.LightAttack || P_Action == P_Action_List.NeutralHeavy || P_Action == P_Action_List.ChargedHeavy) return; // gaurd clause. If player is stunned dont rotate
         if (_TargetLocked) LockOn();
         else ManualAngleControl();
 
-
-        void LockOn()
+        void LockOn()   
         {
-            Vector2 target = BossTransform.position - _P_rb.transform.position;
-            //Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
-            //_P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
+            Vector2 target = _BossTransform.position - _P_rb.transform.position;
+            Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
+            _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
 
-            _P_rb.transform.up = target; // for instant snaping lock on
+            //_P_rb.transform.up = target; // for instant snaping lock on
         }
         void ManualAngleControl()
         {
@@ -279,12 +300,13 @@ public class P_Master : MonoBehaviour
     {
         //swap player UNINTERUPTABLE
         int startUpFrames = 2;
-        int activeFrames = 13;
-        int recoveryFrames = 10;
+        int activeFrames = 15;
+        int recoveryFrames = 6;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
         if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
+            Destroy(_CurrentAttackPrefab);
             P_Action = P_Action_List.NULL_ACTION_STATE;
             _TickCount = 0;
             return;
@@ -293,15 +315,16 @@ public class P_Master : MonoBehaviour
         { // Turnip: run logic 
             switch (_TickCount)
             {
-                case int t when t < startUpFrames:
+                case int t when t == startUpFrames:
+                    _CurrentAttackPrefab = Instantiate(_LightAttackPrefab, _P_rb.transform);
+                    _CurrentAttackPrefab.transform.right = _P_rb.transform.right;
                     break;
-                case int t when t >= startUpFrames && t < startUpFrames + activeFrames:
-
-                    //instantiate 
-                    break;
-                case int t when t >= startUpFrames + activeFrames && t < totalTicks:
+                case int T when T == totalTicks - recoveryFrames:
+                    Destroy(_CurrentAttackPrefab);
                     break;
                 case int t when t >= totalTicks:
+                    ///catch case dont run stuff here u idiot
+                    Destroy(_CurrentAttackPrefab);
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
                     _TickCount = 0;
                     break;
@@ -370,7 +393,7 @@ public class P_Master : MonoBehaviour
         {
             if (inputState.canceled)
             {
-                int holdthreshold = 20;
+                int holdthreshold = 10;
                 if (_HeavyChargeTimer >= holdthreshold)
                 {
                     P_Action = P_Action_List.ChargedHeavy;
@@ -384,10 +407,9 @@ public class P_Master : MonoBehaviour
     }
     void ChargingUpHeavyAction()//play charge animation, not able to move, disruptable by swap
     {
-        int maxChargeTime = 100;
-        int holdthreshold = 20;
+        int maxChargeTime = 150;
         _HeavyChargeTimer += 1;
-        ChargeBonusDamage = _HeavyChargeTimer - holdthreshold;
+        ChargeBonusDamage = _HeavyChargeTimer;
         ChargeBonusDamage = Mathf.Clamp(ChargeBonusDamage, 0, maxChargeTime);
         if (_HeavyChargeTimer >= maxChargeTime)
         {
@@ -400,16 +422,16 @@ public class P_Master : MonoBehaviour
         {
             if (charged == null) // if neutral
             {
-                int startUpFrames = 6;
-                int activeFrames = 5;
+                int startUpFrames = 5;
+                int activeFrames = 25;
                 int recoveryFrames = 10;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if(charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
-                int activeFrames = 5;
-                int recoveryFrames = 20; //longer recovery time
+                int activeFrames = 25;
+                int recoveryFrames = 15; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else return null;
@@ -421,8 +443,11 @@ public class P_Master : MonoBehaviour
 
         if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
+            Destroy(_CurrentAttackPrefab);
             P_Action = P_Action_List.NULL_ACTION_STATE;
             _TickCount = 0;
+            _HeavyChargeTimer = 0;
+            ChargeBonusDamage = 0;
             return;
         }
         else
@@ -432,12 +457,16 @@ public class P_Master : MonoBehaviour
                 // Instantiate Heavy Attack child pass in parameters
                 case int t when t < startUpFrames://startup phase
                     break;
-                case int t when t >= startUpFrames && t < startUpFrames + activeFrames://play swing animation&check if damage dealt 
+                case int t when t == startUpFrames:
+                    _CurrentAttackPrefab = Instantiate(_HeavyAttackPrefab, _P_rb.transform);
+                    _CurrentAttackPrefab.transform.right = _P_rb.transform.right;
                     break;
-                case int t when t >= startUpFrames + activeFrames && t < totalTicks://play recover animation
+                case int t when t == totalTicks - recoveryFrames:
+                    Destroy(_CurrentAttackPrefab);
                     break;
                 case int t when t >= totalTicks:
-                    P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
+                    // catch case DONT PUT STUFF HERE
+                    P_Action = P_Action_List.NULL_ACTION_STATE;
                     _TickCount = 0;
                     _HeavyChargeTimer = 0;
                     ChargeBonusDamage = 0;

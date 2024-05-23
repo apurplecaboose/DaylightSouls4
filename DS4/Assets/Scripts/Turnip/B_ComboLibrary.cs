@@ -29,10 +29,6 @@ public class B_ComboLibrary : MonoBehaviour
         _AttackGameObjectArray = new AttackItem[Enum.GetNames(typeof(ComboPossibility.ComboType)).Length];
         _AttackDictionary = InitializeInpectorValuesToDictionary();
     }
-    void Start()
-    {
-        
-    }
     public void StartUp(ComboPossibility.ComboType combo_name)
     {
         _AttackDictionary.TryGetValue(combo_name, out GameObject value);
@@ -45,12 +41,5 @@ public class B_ComboLibrary : MonoBehaviour
         if (_CurrentAttack == null) return;
         Destroy(_CurrentAttack, 0.5f); //catch case
         _CurrentAttack = null;
-    }
-    void Update()
-    {
-    }
-    void FixedUpdate()
-    {
-        
     }
 }

@@ -19,7 +19,7 @@ public class P_ParryTriggerEnter : MonoBehaviour
         {
 
             //remap the bonus damage to a multiplier first vector is the input range second is the multiplier range
-            float helddamagemultiplier = RemapValue(_Player.ChargeBonusDamage, new Vector2(0, 100), new Vector2(0, 1.5f));
+            float helddamagemultiplier = RemapValue(_Player.ChargeBonusDamage, new Vector2(0, 150), new Vector2(0, 1.5f));
             //multiply and round
             int chargedbonusPoiseDmg = Mathf.RoundToInt(_BaseParryPoiseDamage * helddamagemultiplier);
             _BossMasterRef.AddPoiseDamage(_BaseParryPoiseDamage + chargedbonusPoiseDmg);

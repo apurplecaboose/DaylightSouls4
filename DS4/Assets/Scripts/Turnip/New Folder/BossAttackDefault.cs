@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class BossAttackDefault : MonoBehaviour // inherit from Boss Combo Library and Monobehaviour
 {
-    [SerializeField] Boss_Master _BossMasterRef;
+    Boss_Master _BossMasterRef;
     [Tooltip("Amount of Gap from this combo to the next")]
     [SerializeField] private Vector2Int _RandomOpeningRange;
     [Tooltip("Load up you attack prefabs here")]
     [SerializeField] private List<GameObject> _AttackPrefabs;
-    [SerializeField] private int _CurrentAttackIndex = 0;
+    int _CurrentAttackIndex = 0;
     void Awake()
     {
+        _BossMasterRef = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Master>();
         _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
     }
     float TicksToSeconds(int ticks)

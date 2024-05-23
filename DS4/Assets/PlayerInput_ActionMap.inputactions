@@ -347,6 +347,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7b6b2d96-3d51-4ea2-aca3-d84b88348ac1",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heavy Attack ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "155a37eb-1e01-47d8-a622-31ff8eb8383f",
                     "path": "<XInputController>/leftTrigger",
                     "interactions": "",

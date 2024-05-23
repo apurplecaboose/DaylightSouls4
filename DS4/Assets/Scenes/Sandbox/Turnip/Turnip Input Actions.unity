@@ -283,12 +283,11 @@ GameObject:
   - component: {fileID: 453216927}
   - component: {fileID: 453216926}
   - component: {fileID: 453216925}
-  - component: {fileID: 453216931}
+  - component: {fileID: 453216928}
   - component: {fileID: 453216929}
-  - component: {fileID: 453216930}
   m_Layer: 0
-  m_Name: Circle
-  m_TagString: Untagged
+  m_Name: Boss
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +394,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &453216929
+--- !u!114 &453216928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,11 +403,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 453216924}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45ddb8cf31bdaa408ae62a131358a7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 03628eee4dfa20946a19b6e3676a2b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackGameObjectArray: []
---- !u!114 &453216930
+  _BossPoiseAmount: 500
+  Turnspeed: 1000
+  BossPathfinding: {fileID: 0}
+  Boss_Action: 0
+--- !u!114 &453216929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,35 +422,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307311c972b42ff459df79b6c8796d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ComboTypes: 
-  _ComboHolder: 
-  _SampleCapacity: 0
-  _LowerPercentage: 0
+  _BossNumber: 1
+  _ComboDropPercentage:
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  _SampleCapacity: 1000
+  _LowerPercentage: 10
   _NewTotalAmount: 0
-  _PercentageList: []
-  ChosenTime: 
+  _CurrentBossCombos: 
+  _ComboPool: 
+  NumberOfComboSelectionRepeats: 
   _AmountAfterDecrease: []
   _ComboOptionIndex: 
-  _BossNumber: 1
   ChosenComboFromKen: 
---- !u!114 &453216931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453216924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03628eee4dfa20946a19b6e3676a2b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _CurrentBossComboIndex: 0
-  BossPoiseAmount: 500
-  _OpeningTick: 0
-  _PoiseDamge: 0
-  _PoiseTickTimer: 0
-  Boss_Action: 0
 --- !u!1 &502046207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1086,7 @@ GameObject:
   - component: {fileID: 2021223776}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1308,12 +1302,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c15f7eec1434d84dbb69ff9cb79fd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TargetLocked: 0
-  _TickCount: 0
   P_Action: 0
   _P_MoveSpeed: 15
   _Ghost_MoveSpeed: 25
-  _P_rb: {fileID: 270587862}
-  _Ghost_rb: {fileID: 502046209}
-  BossTransform: {fileID: 453216927}
-  Invincible_P: 0
+  _LightAttackPrefab: {fileID: 3072555777684767625, guid: c27ba5139fba2e345843c9a84321bdca, type: 3}
+  _HeavyAttackPrefab: {fileID: 940927716894858381, guid: 2b2a2f8e1f5faa14a936f449eaf33934, type: 3}
+  _TickCount: 0
+  Dodging_Invincible: 0
+  Parry_Invincible: 0
+  ChargeBonusDamage: 0

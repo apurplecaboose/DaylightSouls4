@@ -30,7 +30,7 @@ public class SelectPatternPanel : BasePanel
 
     public override void Init()
     {
-        comboPossibility = GameObject.Find("GameData").GetComponent<ComboPossibility>();
+        comboPossibility = GameObject.FindGameObjectWithTag("Boss").GetComponent<ComboPossibility>();
 
         EventSystem.current.SetSelectedGameObject(btnSelection1.gameObject);
 
@@ -117,6 +117,7 @@ public class SelectPatternPanel : BasePanel
             FinalPattern.Add(ComboPossibility.ComboType.B999__PLACEHOLDER_FOR_KENS_CODE);
             print(FinalPattern[i]);
         }
+        comboPossibility.ChosenComboFromKen = FinalPattern; //Edward: output to johnny script
     }
 
     public void UpdateSelection(int index)

@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class BossMini : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
-    [SerializeField] Boss_Master _BossMasterRef;
+    Boss_Master _BossMasterRef;
+    [Header("Optional Feilds")]
     [SerializeField] int _AttackTick;
     [SerializeField] Animation _AttackAnimation;
     
     void Awake()
     {
+        _BossMasterRef = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Master>();
         _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
     }
     void Update()
