@@ -35,6 +35,10 @@ public class BossHeathbarTestBehavior : MonoBehaviour
         DamageStackDisplay();
         HealthDecayLerp();
     }
+    /// <summary>
+    /// Delete later for testing only
+    /// </summary>
+    /// <param name="bossCollider"></param>
     private void OnTriggerEnter2D(Collider2D bossCollider)
     {
         if (bossCollider.CompareTag("LightAttack"))
@@ -91,8 +95,6 @@ public class BossHeathbarTestBehavior : MonoBehaviour
     }
     void HealthDecayLerp()
     {
-        
-
         if (_bossHP_Slider.value != _decayHP_Slider.value)
         {
             _healthDropDelay -= Time.deltaTime;
@@ -111,9 +113,6 @@ public class BossHeathbarTestBehavior : MonoBehaviour
             elapsedTime = 0;
         }
     }
-
-    
-
     float FrameToSec(float frames)
     {
         frames *= 1 / 60f;
