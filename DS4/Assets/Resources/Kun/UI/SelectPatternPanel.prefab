@@ -68,10 +68,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -79,7 +79,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern4
+  m_Text: '
+
+'
 --- !u!1 &1361419957782989842
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,10 +150,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -159,7 +161,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern2
+  m_Text: '
+
+'
 --- !u!1 &1379150388717468739
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,10 +232,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -239,7 +243,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern8
+  m_Text: '
+
+'
 --- !u!1 &1503678320144705083
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,10 +314,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -319,7 +325,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern1
+  m_Text: '
+
+'
 --- !u!1 &1747049517183469216
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +407,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Selection3
+  m_Text: '
+
+'
 --- !u!1 &2687245582440183774
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,10 +478,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -479,7 +489,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern5
+  m_Text: '
+
+'
 --- !u!1 &2721391927905426057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1351,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Selection2
+  m_Text: '
+
+'
 --- !u!1 &4783934916561942894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,10 +1544,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1541,7 +1555,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern3
+  m_Text: '
+
+'
 --- !u!1 &5641734570223684962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1839,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Selection1
+  m_Text: '
+
+'
 --- !u!1 &6642272548688561982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,7 +2057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnNext: {fileID: 2169351649282890163}
-  finalPattern: 
+  FinalPattern: 
   patternAmount: 8
   currentPatternIndex: 0
   comboPossibility: {fileID: 0}
@@ -2123,10 +2141,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2134,7 +2152,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern7
+  m_Text: '
+
+'
 --- !u!1 &7138361951356860370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,10 +2223,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b7bcdb72fde2a49bcfb86c0119e58b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2214,7 +2234,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pattern6
+  m_Text: '
+
+'
 --- !u!1 &7466542730581566240
 GameObject:
   m_ObjectHideFlags: 0

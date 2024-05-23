@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -61,7 +62,8 @@ public class SelectPatternPanel : BasePanel
             }
             if(currentPatternIndex <= 7)
             {
-                patternTexts[currentPatternIndex].text = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0].ToString();
+                string malding = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0].ToString());
+                patternTexts[currentPatternIndex].text = malding;
                 FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0];
 
                 currentPatternIndex++;
@@ -80,7 +82,8 @@ public class SelectPatternPanel : BasePanel
             }
             if (currentPatternIndex <= 7)
             {
-                patternTexts[currentPatternIndex].text = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1].ToString();
+                string malding = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1].ToString());
+                patternTexts[currentPatternIndex].text = malding;
                 FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1];
 
                 currentPatternIndex++;
@@ -99,7 +102,8 @@ public class SelectPatternPanel : BasePanel
             }
             if (currentPatternIndex <= 7)
             {
-                patternTexts[currentPatternIndex].text = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2].ToString();
+                string malding = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2].ToString());
+                patternTexts[currentPatternIndex].text = malding;
                 FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2];
 
                 currentPatternIndex++;
@@ -122,8 +126,19 @@ public class SelectPatternPanel : BasePanel
 
     public void UpdateSelection(int index)
     {
-        btnSelection1.GetComponentInChildren<Text>().text = comboPossibility.ResultComboArrayAllInOne[index][0].ToString();
-        btnSelection2.GetComponentInChildren<Text>().text = comboPossibility.ResultComboArrayAllInOne[index][1].ToString();
-        btnSelection3.GetComponentInChildren<Text>().text = comboPossibility.ResultComboArrayAllInOne[index][2].ToString();
+        string string1 = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[index][0].ToString());
+        string string2 = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[index][1].ToString());
+        string string3 = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[index][2].ToString());
+        btnSelection1.GetComponentInChildren<Text>().text = string1;
+        btnSelection2.GetComponentInChildren<Text>().text = string2;
+        btnSelection3.GetComponentInChildren<Text>().text = string3;
+    }
+    string BossEnumStringCleanup(string inputString)
+    {
+        string cleanedString = Regex.Replace(inputString, @"^[^_]*__", "");
+
+        cleanedString = cleanedString.Replace("_", " ");
+
+        return cleanedString;
     }
 }
