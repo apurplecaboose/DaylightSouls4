@@ -10,14 +10,14 @@ public class Wall_Interact : MonoBehaviour
     }
 
     int _Attack_Taken_Time=3;
-    public bool IsAttacked;
+    public bool IsBroken;
     public Grid GridSc;
     void Wallbreaking()
     {
-        if (IsAttacked && _Attack_Taken_Time>0)
+        if (IsBroken && _Attack_Taken_Time>0)
         {
             _Attack_Taken_Time--;
-            IsAttacked = false;
+            IsBroken = false;
         }
         else if(_Attack_Taken_Time<=0)
         {
