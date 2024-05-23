@@ -19,8 +19,8 @@ public class BossHeathbarTestBehavior : MonoBehaviour
     [SerializeField]
     Slider _BossHP_Slider, _DecayHP_Slider;
     [SerializeField]
-    float  _Duration,_ElapsedTime,_T;
-    
+    float _Duration, _ElapsedTime, _T;
+
     public AnimationCurve LerpCurve;
 
 
@@ -48,9 +48,14 @@ public class BossHeathbarTestBehavior : MonoBehaviour
         _BossHP_Slider.value = BossHp;
         _StackedDamage += Damage;
         _StackCountDwonTimer += FrameToSec(18f + 5f) + FrameToSec(500f / _StackedDamage);
-        
+        if (_HealthDropDelay < 1)
+        {
+            _HealthDropDelay += 0.3f;
+
+        }
+
     }
- 
+
     void DamageStackDisplay()
     {
         if (_StackCountDwonTimer > 2f)
@@ -75,30 +80,28 @@ public class BossHeathbarTestBehavior : MonoBehaviour
     {
         if (_BossHP_Slider.value != _DecayHP_Slider.value)
         {
-            _HealthDropDelay -= Time.deltaTime;
+            if (_HealthDropDelay >= 0)
+            {
+                _HealthDropDelay -= Time.deltaTime;
+            }
         }
 
         if (_HealthDropDelay <= 0)
         {
-             _T = Mathf.Clamp01(_ElapsedTime / _Duration);
+            _T = Mathf.Clamp01(_ElapsedTime / _Duration);
             _ElapsedTime += Time.deltaTime;
             _DecayHP_Slider.value = Mathf.Lerp(_DecayHP_Slider.value, _BossHP_Slider.value, LerpCurve.Evaluate(_T));
             Debug.Log(_DecayHP_Slider.value);
         }
-        if (_HealthDropDelay <= -0.1&& _BossHP_Slider.value == _DecayHP_Slider.value)
-        {
-            _HealthDropDelay = _HealthDropDelayOriginal;
-            _ElapsedTime = 0;
-        }
 
-        if ( _BossHP_Slider.value == _DecayHP_Slider.value)
+        if (_BossHP_Slider.value == _DecayHP_Slider.value)
         {
             _HealthDropDelay = _HealthDropDelayOriginal;
             _ElapsedTime = 0;
         }
     }
 
-    
+
 
     float FrameToSec(float frames)
     {
