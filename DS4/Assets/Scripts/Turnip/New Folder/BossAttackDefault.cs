@@ -24,8 +24,8 @@ public class BossAttackDefault : Boss_Master // inherit from Boss Combo Library 
         float invokeTimeCount = 0;
         invokeTimeCount += TicksToSeconds(2); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);
-        invokeTimeCount += TicksToSeconds(2);//length of combo
-        invokeTimeCount += TicksToSeconds(2); // length of gap
+        invokeTimeCount += TicksToSeconds(50);//length of combo
+        invokeTimeCount += TicksToSeconds(12); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);
         invokeTimeCount += TicksToSeconds(2);//length of combo
         invokeTimeCount += TicksToSeconds(2); // length of gap

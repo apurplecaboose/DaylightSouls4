@@ -46,11 +46,15 @@ public class GamePanel : BasePanel
 
 
 
+        
+    }
+    private void FixedUpdate()
+    {
         Recover();
     }
     void Recover()
     {
-        Health += 30 * Time.deltaTime;
+        Health += 30 * Time.fixedDeltaTime;
     }
 
     void Hurt(float hurtValue)

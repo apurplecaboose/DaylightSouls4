@@ -14,7 +14,7 @@ public class BossMini : Boss_Master // inherit from Boss Master and Monobehaviou
     }
     void Update()
     {
-        if (Boss_Action == Boss_Action_List.STUNNED || Boss_Action == Boss_Action_List.STUNNED)
+        if (Boss_Action == Boss_Action_List.STUNNED || Boss_Action == Boss_Action_List.Opening)
         {
             ResetEverything();
         }
@@ -23,8 +23,8 @@ public class BossMini : Boss_Master // inherit from Boss Master and Monobehaviou
     {
         //run any neessicary special code here
     }
-    
-    void EndofLife()
+
+    void EndofLife() // end of attack
     {
         Destroy(gameObject);
         //run reset code here if nessicary

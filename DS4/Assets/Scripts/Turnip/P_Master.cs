@@ -21,18 +21,16 @@ public class P_Master : MonoBehaviour
     }
     [SerializeField] bool _TargetLocked;
     [SerializeField] int _TickCount; //Turnip:un-serialize when debug done
-    int _HeavyChargeTimer, _ChargeBonusDamage;
+    int _ParryIFrames;
+    int _HeavyChargeTimer; 
+    public int ChargeBonusDamage;
 
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
     Vector2 _P_moveVec, _Ghost_moveVec;
     [SerializeField] Rigidbody2D _P_rb, _Ghost_rb;//Turnip:un-serialize when debug done
     public Transform BossTransform;
-    public bool Invincible_P;
-    void Start()
-    {
-
-    }
+    public bool Dodging_Invincible, Parry_Invincible;
 
     void Update()
     {
@@ -71,6 +69,7 @@ public class P_Master : MonoBehaviour
     }
     void FixedUpdate()
     {
+        PogChampionParry();
         switch (P_Action)
         {
             case P_Action_List.STUNNED:
@@ -159,8 +158,6 @@ public class P_Master : MonoBehaviour
             return;
         }
         else _TickCount -= 1;
-
-
     }
     /*---------------------------------------------------------------------------------------------------------*/
     public void TargetLock(InputAction.CallbackContext input)
@@ -196,6 +193,19 @@ public class P_Master : MonoBehaviour
             }
         }
     }
+    public void PogChampionParry(int iframes)
+    {
+        _ParryIFrames = iframes;
+    }
+    void PogChampionParry()
+    {
+        if(_ParryIFrames > 0)
+        {
+            _ParryIFrames -= 1;
+            Parry_Invincible = true;
+        }           
+        else Parry_Invincible = false;
+    }
     void SwapDodgeAction()
     {
         //swap player UNINTERUPTABLE
@@ -215,10 +225,10 @@ public class P_Master : MonoBehaviour
             switch (_TickCount)
             {
                 case int t when t < startUpFrames:
-                    Invincible_P = false;
+                    Dodging_Invincible = false;
                     break;
                 case int t when t == startUpFrames:
-                    Invincible_P = true;
+                    Dodging_Invincible = true;
                     //fire off swap event
 
                     Vector2 pVelCache = _P_rb.velocity;
@@ -235,15 +245,15 @@ public class P_Master : MonoBehaviour
                     _Ghost_rb.transform.position = playertransformcache;
                     break;
                 case int t when t >= startUpFrames && t < startUpFrames + active_i_Frames:
-                    Invincible_P = true;
+                    Dodging_Invincible = true;
                     break;
                 case int t when t >= startUpFrames + active_i_Frames && t < totalTicks:
-                    Invincible_P = false;
+                    Dodging_Invincible = false;
                     break;
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
                     _TickCount = 0;
-                    Invincible_P = false;
+                    Dodging_Invincible = false;
                     break;
             }
             _TickCount += 1;
@@ -377,8 +387,8 @@ public class P_Master : MonoBehaviour
         int maxChargeTime = 100;
         int holdthreshold = 20;
         _HeavyChargeTimer += 1;
-        _ChargeBonusDamage = _HeavyChargeTimer - holdthreshold;
-        _ChargeBonusDamage = Mathf.Clamp(_ChargeBonusDamage, 0, maxChargeTime);
+        ChargeBonusDamage = _HeavyChargeTimer - holdthreshold;
+        ChargeBonusDamage = Mathf.Clamp(ChargeBonusDamage, 0, maxChargeTime);
         if (_HeavyChargeTimer >= maxChargeTime)
         {
             P_Action = P_Action_List.ChargedHeavy;
@@ -430,7 +440,7 @@ public class P_Master : MonoBehaviour
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
                     _TickCount = 0;
                     _HeavyChargeTimer = 0;
-                    _ChargeBonusDamage = 0;
+                    ChargeBonusDamage = 0;
                     break;
             }
             _TickCount += 1;
