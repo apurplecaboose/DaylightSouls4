@@ -5,7 +5,7 @@ using UnityEngine;
 public class PathFinding : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform _BossTransform;
+    Transform _BossTransform;
     [SerializeField] Transform _PlayerTransform;
     [SerializeField] Grid _Grid;
     [Header("Editable")]

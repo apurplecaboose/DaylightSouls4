@@ -10,10 +10,11 @@ public class Boss_Master : MonoBehaviour
     [Header("Boss Master")]
     int _CurrentBossComboIndex = 0;
     [SerializeField] int _BossPoiseAmount = 500;
-    int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
+    [SerializeField]int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
     [HideInInspector] public float Turnspeed = 1000f;
     Transform _PlayerTransform;
     public PathFinding BossPathfinding;
+    float _BossSpeedCache;
     public enum Boss_Action_List
     {
         Chasing,
@@ -30,6 +31,7 @@ public class Boss_Master : MonoBehaviour
         _Combopossibility = this.GetComponent<ComboPossibility>();
         BossPathfinding = this.GetComponent<PathFinding>();
         _PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _BossSpeedCache = BossPathfinding.Speed;
     }
     void Update()
     {
@@ -37,14 +39,14 @@ public class Boss_Master : MonoBehaviour
         if(Boss_Action == Boss_Action_List.Chasing)
         {
             //boss speed = based on distance to player;
-            BossPathfinding.Speed = 3;
+            BossPathfinding.Speed = _BossSpeedCache;
             Turnspeed = 1000f;
-            if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
-            {
-                ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
-                _Lib.StartUp(currentCombo);
-                Boss_Action = Boss_Action_List.Attack;
-            }
+            //if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
+            //{
+            //    ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
+            //    _Lib.StartUp(currentCombo);
+            //    Boss_Action = Boss_Action_List.Attack;
+            //}
         }
         else
         {
@@ -63,6 +65,7 @@ public class Boss_Master : MonoBehaviour
             if (_OpeningTick <= 0)
             {
                 _OpeningTick = 0;
+                Boss_Action = Boss_Action_List.Chasing;
                 CycleNextCombo();
                 return;
             }
@@ -73,11 +76,13 @@ public class Boss_Master : MonoBehaviour
     {
         if (_CurrentBossComboIndex < _Combopossibility.ChosenComboFromKen.ToArray().Length)
         {
-            Boss_Action = Boss_Action_List.Chasing;
-            _CurrentBossComboIndex += 1;
+            Boss_Action = Boss_Action_List.Chasing; //catch case
+            _CurrentBossComboIndex += 1;//increment index
         }
         else
         {
+            print("TESTING POST STUN BEHAVIOUR");
+            //Boss_Action = Boss_Action_List.Chasing; // for testing only delete later
             //trigger next boss combo selection
             // IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
@@ -89,7 +94,7 @@ public class Boss_Master : MonoBehaviour
 
         Vector2 target = _PlayerTransform.position - this.transform.position;
         Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
-        _PlayerTransform.transform.rotation = Quaternion.RotateTowards(_PlayerTransform.transform.rotation, targetRot, Turnspeed * Time.deltaTime);
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, targetRot, Turnspeed * Time.deltaTime);
     }
     public void AddPoiseDamage(int poiseDamagetoAdd)
     {
@@ -123,7 +128,8 @@ public class Boss_Master : MonoBehaviour
             else
             {
                 int surplusPoiseDamage = _PoiseDamage - _BossPoiseAmount;
-                int bonusStun = Mathf.RoundToInt(2 * Mathf.Pow( surplusPoiseDamage, 2)); // some arbitrary function, subject to change TM lel
+                float curve = Mathf.Clamp(0.15f * Mathf.Pow(surplusPoiseDamage, 1.5f), 0, 100);// some arbitrary function, subject to change TM lel
+                int bonusStun = Mathf.RoundToInt(curve); 
                 _PoiseDamage = 0;
                 _PoiseTickTimer = 0;
                 Boss_StunInput(50 * 3 + bonusStun);

@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class P_LightAttackTriggerEnter : MonoBehaviour
 {
+    GameObject _B;
     [SerializeField] Boss_Master _BossMasterRef;
+    [SerializeField] BossHeathbar _HeathbarRef;
     [SerializeField] int _LightAttackDamage = 10;
     [SerializeField] int _LightAttackPoiseDamage = 10;
     private void Awake()
     {
-        _BossMasterRef= GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Master>();
+        _B = GameObject.FindGameObjectWithTag("Boss");
+        _BossMasterRef = _B.GetComponent<Boss_Master>();
+        _HeathbarRef = _B.GetComponent<BossHeathbar>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Boss")) return;
         _BossMasterRef.AddPoiseDamage(_LightAttackPoiseDamage);
-        //damage boss _LightAttackDamage
+        _HeathbarRef.DamageBoss(_LightAttackDamage);
     }
 }

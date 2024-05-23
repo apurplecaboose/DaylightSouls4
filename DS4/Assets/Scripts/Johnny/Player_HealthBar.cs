@@ -15,11 +15,6 @@ public class Player_HealthBar : MonoBehaviour
         _ShieldOriginalValue = ShieldValue;
         _HealthOriginalValue = HealthValue;
     }
-
-    private void Update()
-    {
-    }
-
     public void RestoreHealth()
     {
         float restoreSpeed = 10;
@@ -37,7 +32,7 @@ public class Player_HealthBar : MonoBehaviour
         }
     }
 
-    public void ShieldDamageTaken(float damage)
+    void ShieldDamageTaken(float damage)
     {
         float currentValue = ShieldValue;
         currentValue -= damage;
@@ -45,7 +40,7 @@ public class Player_HealthBar : MonoBehaviour
         ShieldImage.fillAmount = t;
         ShieldValue = currentValue;
     }
-    public void HealthDamageTaken(float damage)
+    void HealthDamageTaken(float damage)
     {
         float currentValue = HealthValue;
         currentValue -= damage;

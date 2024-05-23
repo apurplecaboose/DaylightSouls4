@@ -386,7 +386,7 @@ public class P_Master : MonoBehaviour
         {
             if (inputState.canceled)
             {
-                int holdthreshold = 10;
+                int holdthreshold = 24;
                 if (_HeavyChargeTimer >= holdthreshold)
                 {
                     P_Action = P_Action_List.ChargedHeavy;
