@@ -50,7 +50,11 @@ public class GamePanel : BasePanel
     }
     private void FixedUpdate()
     {
-        Recover();
+        if(Input.GetKey(KeyCode.H))
+        {
+            Recover();
+        }
+
     }
     void Recover()
     {
