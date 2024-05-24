@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class SampleAttack1 : MonoBehaviour
 {
+    /// <summary>
+    /// Follow the pattern and touch only the start function
+    /// </summary>
     Boss_Master _BossMasterRef;
+    [Tooltip("IMPORTANT!@!!|#@#!@#!@# MUST FILL OUT")]
+    [SerializeField] int _LengthOfLastComboInTicks;
     [Tooltip("Amount of Gap from this combo to the next. IN TICKS 60! (ticks per second)")]
     [SerializeField] private Vector2Int _RandomOpeningRange;
     [Tooltip("Load up you attack prefabs here")]
@@ -14,25 +19,23 @@ public class SampleAttack1 : MonoBehaviour
     void Awake()
     {
         _BossMasterRef = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Master>();
-        _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
-    }
-    float TicksToSeconds(int ticks)
-    {
-        ticks *= 1 / 60;
-        return ticks;
     }
     void Start()
     {
+        _BossMasterRef.Turnspeed = 5000f;
         float invokeTimeCount = 0;
         /// Sample
-        invokeTimeCount += TicksToSeconds(2); // time you want to wait before invoking
+        invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(50);//length of combo
-        invokeTimeCount += TicksToSeconds(12); // length of gap
+        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20,30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
-        invokeTimeCount += TicksToSeconds(2);//length of combo
-        invokeTimeCount += TicksToSeconds(2); // length of gap
+        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
+        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
         //repeat etc
     }
     void Update()
@@ -44,18 +47,20 @@ public class SampleAttack1 : MonoBehaviour
     }
     void FirstAttack()
     {
-        GameObject a = Instantiate(_AttackPrefabs[_CurrentAttackIndex]); // instantiate the first attack
+        GameObject a = Instantiate(_AttackPrefabs[_CurrentAttackIndex], this.transform); // instantiate the first attack
         a.transform.up = this.transform.up;
+        _CurrentAttackIndex += 1;
     }
     void CycleNextAttack()
     {
+        GameObject a = Instantiate(_AttackPrefabs[_CurrentAttackIndex], this.transform);
+        a.transform.up = this.transform.up;
         _CurrentAttackIndex += 1;
-        if (_CurrentAttackIndex < _AttackPrefabs.Count)
+        if (_CurrentAttackIndex >= _AttackPrefabs.Count)//EndCombo();
         {
-           GameObject a = Instantiate(_AttackPrefabs[_CurrentAttackIndex], this.transform);
-            a.transform.up = this.transform.up;
+            float comboLength = TicksToSeconds(_LengthOfLastComboInTicks);
+            Invoke("EndCombo", comboLength);
         }
-        else EndCombo();
     }
     void EndCombo()
     {
@@ -68,5 +73,11 @@ public class SampleAttack1 : MonoBehaviour
         //foreach(GameObject attack in _AttackPrefabs) Destroy(attack);
         //_AttackPrefabs.Clear();
         Destroy(gameObject);
+    }
+    float TicksToSeconds(int ticks)
+    {
+        float tickrate = 1f / 60f; // Assuming 60 fps
+        float seconds = ticks * tickrate;
+        return seconds;
     }
 }

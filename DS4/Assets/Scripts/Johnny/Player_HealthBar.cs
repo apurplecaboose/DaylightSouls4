@@ -15,6 +15,13 @@ public class Player_HealthBar : MonoBehaviour
         _ShieldOriginalValue = ShieldValue;
         _HealthOriginalValue = HealthValue;
     }
+    private void Update()
+    {
+        //if(Input.GetKeyDown(KeyCode.O))
+        //{
+        //    DamagePlayerHealth(22);
+        //}
+    }
     public void RestoreHealth()
     {
         float restoreSpeed = 10;

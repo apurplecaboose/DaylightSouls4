@@ -9,6 +9,7 @@ public class SAMPLE_Mini : MonoBehaviour // inherit from Boss Master and Monobeh
     GameObject _P, _B;
     P_Master _P_MasterRef;
     Boss_Master _BossMasterRef;
+    PathFinding _B_Path;
     Player_HealthBar _P_Health;
 
     [Header("Required Fields MUST FILL!!!")]
@@ -28,7 +29,13 @@ public class SAMPLE_Mini : MonoBehaviour // inherit from Boss Master and Monobeh
         _P_MasterRef = _P.GetComponent<P_Master>();
         _P_Health = _P.GetComponent<Player_HealthBar>();
         _BossMasterRef = _B.GetComponent<Boss_Master>();
+        _B_Path = _B.GetComponent<PathFinding>();
         _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
+    }
+    private void Start()
+    {
+        _B_Path.Speed = 7f;//optional
+        _BossMasterRef.Turnspeed = 5000f;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,7 +53,8 @@ public class SAMPLE_Mini : MonoBehaviour // inherit from Boss Master and Monobeh
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime()
     {
-        //_BossMasterRef.Turnspeed = 10; // example
+        _BossMasterRef.Turnspeed = 10; // example
+        _B_Path.Speed = 1f;
     }
     public void EndofLife() // end of attack
     {

@@ -28,16 +28,12 @@ public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobe
         _P_MasterRef = _P.GetComponent<P_Master>();
         _P_Health = _P.GetComponent<Player_HealthBar>();
         _BossMasterRef = _B.GetComponent<Boss_Master>();
+        _B_Path = _B.GetComponent<PathFinding>();
         _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        if (!collision.CompareTag("Player")) return;
-        if (_P_MasterRef.Dodging_Invincible) return;
-        if (_P_MasterRef.Parry_Invincible) return;
-        //damage player
-        _P_Health.DamagePlayerHealth(_AttackDamage);
-        _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
+        //_B_Path.Speed = 4f;//optional
     }
     void FixedUpdate()
     {
@@ -47,6 +43,7 @@ public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobe
     public void EndMiyazakiTime()
     {
         //_BossMasterRef.Turnspeed = 10; // example
+        //_B_Path.Speed = 0.5f;
     }
     public void EndofLife() // end of attack
     {

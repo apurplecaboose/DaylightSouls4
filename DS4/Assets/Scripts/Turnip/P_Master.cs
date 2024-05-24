@@ -28,9 +28,11 @@ public class P_Master : MonoBehaviour
     [SerializeField] GameObject _LightAttackPrefab;
     [SerializeField] GameObject _HeavyAttackPrefab;
     [SerializeField] GameObject _HeavyChargePrefab;
+    [SerializeField] Stun_visual _StunPrefab;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
+    Player_HealthBar _Health;
 
     [Header("DEBUG DO NOT EDIT")]
     [SerializeField] int _TickCount; //Turnip:un-serialize when debug done
@@ -46,19 +48,18 @@ public class P_Master : MonoBehaviour
         _BossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
         _P_rb = this.transform.GetChild(0).GetComponent<Rigidbody2D>();
         _Ghost_rb = this.transform.GetChild(1).GetComponent<Rigidbody2D>();
+        _Health = this.gameObject.GetComponent<Player_HealthBar>();
     }
     void Update()
     {
         TurnPlayer();
-        TestStun();
-    }
-
-    void TestStun()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            P_StunInput(200, P_StunSize.Large);
-        }
+        //if (P_Action == P_Action_List.SelectingBossAttackState)
+        //{
+        //    if (_CurrentAttackPrefab != null)
+        //    {
+        //        Destroy(_CurrentAttackPrefab);
+        //    }
+        //}
     }
     void TurnPlayer()
     {
@@ -93,6 +94,10 @@ public class P_Master : MonoBehaviour
         {
             case P_Action_List.STUNNED:
                 P_Stun();
+                _HeavyChargeTimer = 0;
+                ChargeBonusDamage = 0;
+                if (_CurrentAttackPrefab == null) break;
+                Destroy(_CurrentAttackPrefab);
                 break;
             case P_Action_List.NULL_ACTION_STATE:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
@@ -133,12 +138,12 @@ public class P_Master : MonoBehaviour
                 {
                     case P_Action_List.NULL_ACTION_STATE:
                     case P_Action_List.ChargingUpForHeavy:
-                    case P_Action_List.Healing:
                         return true;
                     case P_Action_List.SwapDodge:
                     case P_Action_List.ChargedHeavy: 
                     case P_Action_List.NeutralHeavy:
                     case P_Action_List.LightAttack:
+                    case P_Action_List.Healing:
                         return false;
                     default:
                         return false;
@@ -163,6 +168,7 @@ public class P_Master : MonoBehaviour
         }
         if (Stunnable())
         {
+            LooneyTunesStar(stunFrames);
             _TickCount = stunFrames;
             P_Action = P_Action_List.STUNNED;
             //prob add some screenshake trigger here
@@ -178,6 +184,13 @@ public class P_Master : MonoBehaviour
             return;
         }
         else _TickCount -= 1;
+    }
+    void LooneyTunesStar(int frames)
+    {
+        Stun_visual star = Instantiate(_StunPrefab, Camera.main.transform);
+        star.ActiveFrames = frames;
+        star.Offset = 0.4f;
+        star.Target = _P_rb.transform;
     }
     /*---------------------------------------------------------------------------------------------------------*/
     public void TargetLock(InputAction.CallbackContext input)
@@ -195,6 +208,19 @@ public class P_Master : MonoBehaviour
     {
         _Ghost_moveVec = input.ReadValue<Vector2>(); //Turnip: same as P_move
     }
+    public void PogChampionParry(int iframes)
+    {
+        _ParryIFrames = iframes;
+    }
+    void PogChampionParry()
+    {
+        if (_ParryIFrames > 0)
+        {
+            _ParryIFrames -= 1;
+            Parry_Invincible = true;
+        }
+        else Parry_Invincible = false;
+    }
     /*---------------------------------------------------------------------------------------------------------*/
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
@@ -206,6 +232,22 @@ public class P_Master : MonoBehaviour
                 P_Action = P_Action_List.SwapDodge;
                 Debug.Log("changed state to dodge");
             }
+            if(P_Action == P_Action_List.ChargingUpForHeavy)
+            {
+                if(_TickCount > 16)
+                {
+                    _TickCount = 0; // reset 
+                    //fire off swap event
+                    Vector2 pVelCache = _P_rb.velocity;
+                    Vector2 gVelCache = _P_rb.velocity;
+                    _P_rb.velocity = gVelCache;
+                    _Ghost_rb.velocity = pVelCache;
+                    Vector3 playertransformcache = _P_rb.transform.position;
+                    Vector3 ghosttransformcache = _Ghost_rb.transform.position;
+                    _P_rb.transform.position = ghosttransformcache;
+                    _Ghost_rb.transform.position = playertransformcache;
+                }
+            }
             else
             {
                 Debug.Log("Busy... currently executing another action");
@@ -213,25 +255,12 @@ public class P_Master : MonoBehaviour
             }
         }
     }
-    public void PogChampionParry(int iframes)
-    {
-        _ParryIFrames = iframes;
-    }
-    void PogChampionParry()
-    {
-        if(_ParryIFrames > 0)
-        {
-            _ParryIFrames -= 1;
-            Parry_Invincible = true;
-        }           
-        else Parry_Invincible = false;
-    }
     void SwapDodgeAction()
     {
         //swap player UNINTERUPTABLE
         int startUpFrames = 1;
         int active_i_Frames = 13;
-        int recoveryFrames = 8;
+        int recoveryFrames = 13;
         int totalTicks = startUpFrames + active_i_Frames + recoveryFrames;
 
         if (_TickCount >= totalTicks)
@@ -284,9 +313,11 @@ public class P_Master : MonoBehaviour
     {
         if (inputState.performed)
         {
-            if (P_Action == P_Action_List.NULL_ACTION_STATE)
+            if (P_Action == P_Action_List.NULL_ACTION_STATE || P_Action == P_Action_List.SwapDodge)
             {
                 P_Action = P_Action_List.LightAttack;
+                _TickCount = 0;
+                Dodging_Invincible = false;
             }
             else
             {
@@ -367,9 +398,7 @@ public class P_Master : MonoBehaviour
         {
             if(_TickCount == 10) // same as healing input recoveryFrames
             { // will only run heal when tick is 10 otherwise it is in recovery mode and no heal is done just cooldown
-                
-                
-                //run healing stuff here
+                _Health.RestoreHealth();
             }
             _TickCount -= 1; 
         }
@@ -379,9 +408,11 @@ public class P_Master : MonoBehaviour
     {
         if (inputState.performed)
         {
-            if (P_Action == P_Action_List.NULL_ACTION_STATE)
+            if (P_Action == P_Action_List.NULL_ACTION_STATE || P_Action == P_Action_List.SwapDodge)
             {
                 P_Action = P_Action_List.ChargingUpForHeavy;
+                _TickCount = 0;
+                Dodging_Invincible = false;
             }
             else
             {
@@ -395,10 +426,12 @@ public class P_Master : MonoBehaviour
                 int holdthreshold = 24;
                 if (_HeavyChargeTimer >= holdthreshold)
                 {
+                    _TickCount = 0;
                     P_Action = P_Action_List.ChargedHeavy;
                 }
                 else if (_HeavyChargeTimer < holdthreshold)
                 {
+                    _TickCount = 0;
                     P_Action = P_Action_List.NeutralHeavy;
                 }
             }
@@ -408,11 +441,13 @@ public class P_Master : MonoBehaviour
     {
         int maxChargeTime = 150;
         _HeavyChargeTimer += 1;
+        _TickCount += 1;
         ChargeBonusDamage = _HeavyChargeTimer;
         ChargeBonusDamage = Mathf.Clamp(ChargeBonusDamage, 0, maxChargeTime);
         if (_HeavyChargeTimer >= maxChargeTime)
         {
             P_Action = P_Action_List.ChargedHeavy;
+            _TickCount = 0;
         }
         if (_HeavyChargeTimer == 5)
         {
