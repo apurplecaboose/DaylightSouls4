@@ -23,7 +23,7 @@ public class Player_HealthBar : MonoBehaviour
         float t = Mathf.InverseLerp(0, _ShieldOriginalValue, ShieldValue);
         ShieldImage.fillAmount = t;
     }
-    public void DamageLogic(float Damage)
+    public void DamagePlayerHealth(float Damage)
     {
         ShieldDamageTaken(Damage);
         if (ShieldImage.fillAmount == 0 && HealthImage.fillAmount > 0)

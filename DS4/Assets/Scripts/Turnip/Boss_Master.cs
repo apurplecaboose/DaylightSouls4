@@ -152,5 +152,4 @@ public class Boss_Master : MonoBehaviour
         _OpeningTick = bossOpeningTimeinTicks;
         Boss_Action = Boss_Action_List.Opening;
     }
-
 }

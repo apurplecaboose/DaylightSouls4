@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackDefault : MonoBehaviour // inherit from Boss Combo Library and Monobehaviour
+public class #SCRIPTNAME# : MonoBehaviour
 {
-    Boss_Master _BossMasterRef;
-    [Tooltip("Amount of Gap from this combo to the next")]
+Boss_Master _BossMasterRef;
+    [Tooltip("Amount of Gap from this combo to the next. IN TICKS 60! (ticks per second)")]
     [SerializeField] private Vector2Int _RandomOpeningRange;
     [Tooltip("Load up you attack prefabs here")]
     [SerializeField] private List<GameObject> _AttackPrefabs;
@@ -24,15 +24,16 @@ public class BossAttackDefault : MonoBehaviour // inherit from Boss Combo Librar
     void Start()
     {
         float invokeTimeCount = 0;
-        invokeTimeCount += TicksToSeconds(2); // time you want to wait before invoking
-        Invoke("FirstAttack", invokeTimeCount);
-        invokeTimeCount += TicksToSeconds(50);//length of combo
-        invokeTimeCount += TicksToSeconds(12); // length of gap
-        Invoke("CycleNextAttack", invokeTimeCount);
-        invokeTimeCount += TicksToSeconds(2);//length of combo
-        invokeTimeCount += TicksToSeconds(2); // length of gap
-        Invoke("CycleNextAttack", invokeTimeCount);
-        //repeat etc
+        ///// Sample
+        //invokeTimeCount += TicksToSeconds(2); // time you want to wait before invoking
+        //Invoke("FirstAttack", invokeTimeCount);
+        //invokeTimeCount += TicksToSeconds(50);//length of combo
+        //invokeTimeCount += TicksToSeconds(12); // length of gap
+        //Invoke("CycleNextAttack", invokeTimeCount);
+        //invokeTimeCount += TicksToSeconds(2);//length of combo
+        //invokeTimeCount += TicksToSeconds(2); // length of gap
+        //Invoke("CycleNextAttack", invokeTimeCount);
+        ////repeat etc
     }
     void Update()
     {
@@ -43,14 +44,16 @@ public class BossAttackDefault : MonoBehaviour // inherit from Boss Combo Librar
     }
     void FirstAttack()
     {
-        Instantiate(_AttackPrefabs[_CurrentAttackIndex]); // instantiate the first attack
+        GameObject a = Instantiate(_AttackPrefabs[_CurrentAttackIndex]); // instantiate the first attack
+        a.transform.up = this.transform.up;
     }
     void CycleNextAttack()
     {
         _CurrentAttackIndex += 1;
         if (_CurrentAttackIndex < _AttackPrefabs.Count)
         {
-            Instantiate(_AttackPrefabs[_CurrentAttackIndex], this.transform);
+           GameObject a = Instantiate(_AttackPrefabs[_CurrentAttackIndex], this.transform);
+            a.transform.up = this.transform.up;
         }
         else EndCombo();
     }
@@ -63,8 +66,8 @@ public class BossAttackDefault : MonoBehaviour // inherit from Boss Combo Librar
     }
     void ResetEverything()
     {
-        foreach(GameObject attack in _AttackPrefabs) Destroy(attack);
-        _AttackPrefabs.Clear();
+        //foreach(GameObject attack in _AttackPrefabs) Destroy(attack);
+        //_AttackPrefabs.Clear();
         Destroy(gameObject);
     }
 }
