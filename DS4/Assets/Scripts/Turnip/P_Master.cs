@@ -426,15 +426,15 @@ public class P_Master : MonoBehaviour
         {
             if (charged == null) // if neutral
             {
-                int startUpFrames = 10;
-                int activeFrames = 32;
+                int startUpFrames = 5;
+                int activeFrames = 44;
                 int recoveryFrames = 10;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if(charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
-                int activeFrames = 32;
+                int activeFrames = 44;
                 int recoveryFrames = 15; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
