@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949688450281793272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.089, z: 0}
-  m_LocalScale: {x: 5, y: 0.8333334, z: 0.8333334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 0.825, z: 0.825}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5260455149721771553}
@@ -109,14 +109,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056049320633134556}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7742007, w: 0.63294023}
-  m_LocalPosition: {x: 1.47, y: 2.48, z: 5.325058}
-  m_LocalScale: {x: 0.2, y: 1.155141, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.64987856, w: 0.7600381}
+  m_LocalPosition: {x: -0.09002292, y: 0.9157231, z: 0}
+  m_LocalScale: {x: 0.25003996, y: 1.8871212, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8102216076795019505}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 101.465}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 81.065}
 --- !u!212 &4894757108401059769
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3711493332294787291}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.570023, y: 1.8842769, z: 5.325058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -272,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5940178133057267249}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -1.15, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _BossMasterRef: {fileID: 0}
+  _HeathbarRef: {fileID: 0}
   _LightAttackDamage: 10
   _LightAttackPoiseDamage: 10
 --- !u!61 &6358102790289263626
@@ -443,7 +444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8875244079134120948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.570023, y: -1.8842769, z: -5.325058}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

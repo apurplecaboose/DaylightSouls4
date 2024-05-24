@@ -293,7 +293,7 @@ public class P_Master : MonoBehaviour
     {
         //swap player UNINTERUPTABLE
         int startUpFrames = 2;
-        int activeFrames = 15;
+        int activeFrames = 21;
         int recoveryFrames = 6;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
