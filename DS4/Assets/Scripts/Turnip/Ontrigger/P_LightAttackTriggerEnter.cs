@@ -17,8 +17,9 @@ public class P_LightAttackTriggerEnter : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        int damageRandomizere = Random.Range(-2, 2);
         if (!collision.CompareTag("Boss")) return;
         _BossMasterRef.AddPoiseDamage(_LightAttackPoiseDamage);
-        _HeathbarRef.DamageBoss(_LightAttackDamage);
+        _HeathbarRef.DamageBoss(_LightAttackDamage + damageRandomizere);
     }
 }

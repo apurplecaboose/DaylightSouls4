@@ -29,12 +29,14 @@ public class P_HeavyTriggerEnter : MonoBehaviour
             _BossMasterRef.AddPoiseDamage(_HeavyAttackPoiseDamage + chargedbonusPoiseDmg);
             
             int chargedbonusAttackDmg = Mathf.RoundToInt(_HeavyAttackDamage * helddamagemultiplier);
-            _HeathbarRef.DamageBoss(_HeavyAttackDamage + chargedbonusAttackDmg);
+            int damageRandomizere = Random.Range(-3, 10);
+            _HeathbarRef.DamageBoss(_HeavyAttackDamage + chargedbonusAttackDmg + damageRandomizere);
         }
         else
         {
+            int damageRandomizere = Random.Range(-3, 4);
             _BossMasterRef.AddPoiseDamage(_HeavyAttackPoiseDamage);
-            _HeathbarRef.DamageBoss(_HeavyAttackDamage);
+            _HeathbarRef.DamageBoss(_HeavyAttackDamage + damageRandomizere);
         }
     }
     float RemapValue(float inputvalue, Vector2 inputrange, Vector2 targetrange)

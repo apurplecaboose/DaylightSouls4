@@ -27,6 +27,7 @@ public class P_Master : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject _LightAttackPrefab;
     [SerializeField] GameObject _HeavyAttackPrefab;
+    [SerializeField] GameObject _HeavyChargePrefab;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
@@ -37,7 +38,7 @@ public class P_Master : MonoBehaviour
     /*[HideInInspector]*/
     public int ChargeBonusDamage;
     bool _TargetLocked;
-    int _ParryIFrames, _HeavyChargeTimer; 
+    [SerializeField] int _ParryIFrames, _HeavyChargeTimer; 
     Vector2 _P_moveVec, _Ghost_moveVec;
 
     void Awake()
@@ -84,6 +85,10 @@ public class P_Master : MonoBehaviour
     void FixedUpdate()
     {
         PogChampionParry();
+        if (P_Action != P_Action_List.STUNNED && P_Action != P_Action_List.SwapDodge && P_Action != P_Action_List.SelectingBossAttackState)
+        {
+            _Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost in any state except stunn and dodging
+        }
         switch (P_Action)
         {
             case P_Action_List.STUNNED:
@@ -91,7 +96,6 @@ public class P_Master : MonoBehaviour
                 break;
             case P_Action_List.NULL_ACTION_STATE:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
-                _Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost
                 _TickCount = 0;
                 break;
             case P_Action_List.SwapDodge:
@@ -101,6 +105,8 @@ public class P_Master : MonoBehaviour
                 LightAttackAction();
                 break;
             case P_Action_List.ChargingUpForHeavy:
+                float perecentofOriginalSpeed = 0.325f;
+                _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10 * perecentofOriginalSpeed); // move player
                 ChargingUpHeavyAction();
                 break;
             case P_Action_List.NeutralHeavy:
@@ -408,6 +414,11 @@ public class P_Master : MonoBehaviour
         {
             P_Action = P_Action_List.ChargedHeavy;
         }
+        if (_HeavyChargeTimer == 5)
+        {
+            _CurrentAttackPrefab = Instantiate(_HeavyChargePrefab, _P_rb.transform);
+            _CurrentAttackPrefab.transform.right = _P_rb.transform.right;
+        }
     }
     void HeavyAttackAction(bool? charged)
     {
@@ -449,8 +460,11 @@ public class P_Master : MonoBehaviour
             {
                 // Instantiate Heavy Attack child pass in parameters
                 case int t when t < startUpFrames://startup phase
+                    if (_CurrentAttackPrefab == null) break;
+                    else Destroy(_CurrentAttackPrefab);
                     break;
                 case int t when t == startUpFrames:
+                    if (_CurrentAttackPrefab != null) Destroy(_CurrentAttackPrefab);
                     _CurrentAttackPrefab = Instantiate(_HeavyAttackPrefab, _P_rb.transform);
                     _CurrentAttackPrefab.transform.right = _P_rb.transform.right;
                     break;

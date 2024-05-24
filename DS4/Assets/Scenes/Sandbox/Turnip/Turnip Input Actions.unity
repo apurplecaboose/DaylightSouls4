@@ -2214,10 +2214,13 @@ MonoBehaviour:
   _Ghost_MoveSpeed: 25
   _LightAttackPrefab: {fileID: 8875244079134120948, guid: ff7213f27e4a81e46bf5f0efed9b3a4b, type: 3}
   _HeavyAttackPrefab: {fileID: 8284224868045946118, guid: 153902fba094f344c801c553cb6cafee, type: 3}
+  _HeavyChargePrefab: {fileID: 8284224868045946118, guid: a8634853d9d392e4190f73e5c4d3942e, type: 3}
   _TickCount: 0
   Dodging_Invincible: 0
   Parry_Invincible: 0
   ChargeBonusDamage: 0
+  _ParryIFrames: 0
+  _HeavyChargeTimer: 0
 --- !u!114 &2021223777
 MonoBehaviour:
   m_ObjectHideFlags: 0
