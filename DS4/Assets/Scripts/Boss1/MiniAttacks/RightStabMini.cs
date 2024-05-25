@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stab1 : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
