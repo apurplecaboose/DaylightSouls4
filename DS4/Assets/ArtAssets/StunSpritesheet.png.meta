@@ -1,0 +1,2952 @@
+fileFormatVersion: 2
+guid: 66af5dc9df2c1284ba62d1a8259d9f90
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 3
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StunSpritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6bbee3bda32a814d82f0364e3c29fd0
+      internalID: 301418094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f94c76974abca34391d5bba7114f121
+      internalID: -1075563426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8fd99796cdabfe4398b2f7e2ab10492
+      internalID: -18275047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549b7ce0d03106a42a91f097a1ac6bc1
+      internalID: -1695610308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573696fe991e4f941bcb8fe2d82d2f25
+      internalID: -1618512600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db46353ba1fac70498c61280e79c737d
+      internalID: -166300632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc38eb68b5c575e4e871db9177606af8
+      internalID: 1625154293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420a48d3401918348979af4bf84206c3
+      internalID: -1083210777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef89355cc86169448b1d042592973d2
+      internalID: 1830182733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d326dab3bdf8f4249a4df3b6663f0960
+      internalID: -1998206287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae6f692fda9789541b2c24dcf8a42dcf
+      internalID: 360715269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1877.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb89e10531ea5f4b913ea5b7f978dda
+      internalID: -903209223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d87dc1fe5d60d1a47ab2fd102f754e27
+      internalID: 1468194717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96015becafec1d940986b62862291124
+      internalID: 1441311857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896f7bdf30f73a54d9f9e2496af7c08e
+      internalID: -1985230756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e9bad7a21e0f845b9d1e4633bfc1b2
+      internalID: -1598510010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96d40069b2e9f446a7aa4a23ec4e6e5
+      internalID: -565924981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8740dc20c27e1ee42acba34a07c8870b
+      internalID: 1091609150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db97fb7f9aaacf74ab46ab8e3f759d60
+      internalID: -67460815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645a41b858d2da84d97fbbad95379108
+      internalID: -85114061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee0a207159280d42b58c215819db4e5
+      internalID: -464628608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe33bd4b638bfdc4698a0a262041f2b5
+      internalID: 30259545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61da7d9436da8964ba4809c3053a6aba
+      internalID: 1050959002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1707.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcca37a4c9ac4dd44b173257026a3bb0
+      internalID: 1649405089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47301eaf37ecdf4a9822216b48069b2
+      internalID: 151133013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5f06bdcc5c1c3439d1d2e7f7347212
+      internalID: -1319442691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e971e1ea3d3b7424a89c07071b4bc726
+      internalID: -1811673298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab351b957f7204a4fbe52dc781755e5f
+      internalID: -976945410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 776a4c357b5d117469b4ebb7698901ae
+      internalID: 911702340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ff2e35f95f2f0468f0ef0ee1bbe9cf
+      internalID: -728155699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801c337f8e6496a46a1b668d43414edb
+      internalID: -2023581990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33c4b308be4d3f4998e49630c2a811b
+      internalID: 961179615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818fcbd44cc035f47864cdfd8f54bf21
+      internalID: 1519464631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450a8184c584725428a9cb00fa4f1344
+      internalID: 1755803101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372ffeed4d83d7249ac32d87e75c89ce
+      internalID: 1974060616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1537.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d4154e6182930243a1010bcd04b85ab
+      internalID: 1412386164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3266ff5c94f006408ceb9660740eec2
+      internalID: -501612320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577c499f79d8ade42a901521636335d6
+      internalID: 1007034538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5091836fe36d25048be8b7996fcfbf14
+      internalID: -511963847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014430f8a2effea4db558d82f38ae3e1
+      internalID: 541124476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb523d452714cef469df1a8066dcdeb5
+      internalID: 675832652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9d08919f13a6a438872be266ea9c14
+      internalID: -1620769935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b809894cefeb9443bd12269498c9810
+      internalID: 551383661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22dcf74a376fef14d8f05a2fa16acef0
+      internalID: 1304153538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97802e4c69c022a42a03bfb8b0b182cb
+      internalID: 1728653754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa71cc967575894c8037ca2b34ff8a9
+      internalID: -2005319612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533a92c7b34d07941800c74953c73111
+      internalID: 828170386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1367.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f860bd1fa90b3804197f436797c971be
+      internalID: -469043203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be92c82f8ad6644d8b39af32d0c3a26
+      internalID: -2050675314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a347b2c9545c14386e3c113c083353
+      internalID: 765374168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60248492b662c63419f1a55e7cb42a0f
+      internalID: 944742135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e55e89a3219ad44b04e1a9cd6ba726
+      internalID: 239944619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a7654c6e37f174d89c777e512ef08c
+      internalID: -1478734967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0d14b77e6707a488e4b216d766ef55
+      internalID: -232456221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2fb6cd5e44b1ec4990a3f79c04bbcf5
+      internalID: -995603923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27c932be0eebd84ab80e59ee401da0e
+      internalID: -1342845568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7606760304033784f844469eab68ec7d
+      internalID: -910202294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bfc8f0d5f633e46bd0cdde2c38010d
+      internalID: -1036918575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795cae6aeb39d2f458d4f240b63dcc5d
+      internalID: 466599151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1197.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cabe7fba4b4d9fe4bb82d23628e78de6
+      internalID: -859873611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4e8c01efea28947a65720b44ff9acf
+      internalID: -1799390119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 535c16193ae859946bedd6bb5fbe9ec0
+      internalID: -1863172647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f333ecdf501bee543b957acff8645d64
+      internalID: 586956326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84de1c381094d5b4c991d1fd2797fe5c
+      internalID: -1492656377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a56384ef9d8514d8d821830b8479c4
+      internalID: -2072348917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62fa56025e39bea4cb0602c8ebed8b1c
+      internalID: 1706085929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb50e5f17121024d97a13706e2779aa
+      internalID: -1919859722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e65f463967f5b468e2acce3524cf5c
+      internalID: 878900478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48f682f66d820554ea0023045b56299c
+      internalID: 1243572721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a60fee275efa34cb2200f7bc94853a
+      internalID: 548636699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a37238473cb0c42a256d3480e51780
+      internalID: 412210324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1027.3334
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57614545d7b7f904ca507788f687528b
+      internalID: -1348885217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f82de15d763e5e4db8b62942b54831d
+      internalID: 282870476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ad65862d342da43932dc1dc4739ddf
+      internalID: -1210437977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3830ae70ee76704281830bc6b79943a
+      internalID: -1005772339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78d45490b8fa7ed44aac2ccd71934051
+      internalID: 707636403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_76
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b714601541f2034469722ff9ffe84aa0
+      internalID: -1004085734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_77
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d3cd60234625844b0c0af40efe3b2c
+      internalID: 1490345546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_78
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50dd8ca4793f3a48be6d5a37d4f8a2c
+      internalID: -265246057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_79
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739e485cca0373e46b2724ebe4ee6e8d
+      internalID: 1634038503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_80
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4a02d53c921714793a4f44a58b962f
+      internalID: -1937613854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_81
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb9205c76c40bc747bc03b6bcc4b65ad
+      internalID: -1923785662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_82
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bdbeafcd09cca4b98aa48c405f8d1e
+      internalID: -1724461574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_83
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 857.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0b767b41465754085ab234b376b222
+      internalID: -1452432895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057186d84e3f42640a0e9776f58065d6
+      internalID: -1430356565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_85
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c6e21d29e143a4db84e8233feb259b
+      internalID: 1240204392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_86
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23c7af2db2101f44b4cb947920cef6d
+      internalID: -348514321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_87
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c6b74d68b5280439f1cbeae7de6b9b
+      internalID: -2048477462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_88
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3254246db2a128940b3665dd60f6042e
+      internalID: -181805990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_89
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61528df37c98a554c80a939ac427da32
+      internalID: 722707897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_90
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c257b972df3b54f8bb44e170e611be
+      internalID: 746902582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_91
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359192b1aef23b946bbabd1c25b8d1c6
+      internalID: -1467258479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_92
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271b69735022e1e41970bf43546787e1
+      internalID: 640974639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_93
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f966b45be3f1d4cb66d7dfdb76263b
+      internalID: 410811500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_94
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f329fae58709e86418eaea4f942e0066
+      internalID: 190210495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_95
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 687.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfe0605715f9504f8a56eaae7f1b415
+      internalID: 1451102288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c09d59679ac59f48a1f9bb2e059deb9
+      internalID: -727624266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_97
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d180d455e8630a84a8b6227e9bf8ac6d
+      internalID: -1320564428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_98
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98d9590a02edbd44b80d22ffd1578836
+      internalID: 754473103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_99
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 292d1b27421312f42a1840019aee2daf
+      internalID: -1884635923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_100
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 360a07b370f40864da840ea866861f9d
+      internalID: 733055407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_101
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e09a4bce896d22d4e8e9f3acb4721088
+      internalID: -1284845389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_102
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8765adf2728bb4b48a685d60f4be97ce
+      internalID: -406524016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_103
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477668da8b28f3c45bef9b1b5d90e8d4
+      internalID: 1278214928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_104
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88eb689db4f02424daacede1bb4f4a35
+      internalID: 1118763481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_105
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b2d251f6cd847409c33981bc4ac699
+      internalID: 1047741832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_106
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9433127e08bc28f438233bb62b9f95ea
+      internalID: 466538296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_107
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 517.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8acd027956c52e4583b2078bb1bfc9b
+      internalID: -219775127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63b0c62170f51b4fb7d31fa4a804128
+      internalID: 1513256976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_109
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b88f442c282c7c41a75b07093d9d1ff
+      internalID: 1627630653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_110
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8b33389f6006e4c89c7072df48739e
+      internalID: 462965768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_111
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4974bbc691c1a49ba98ea1a6a32275
+      internalID: -199392565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_112
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502b1cba83234924eb7d2330b68c098f
+      internalID: 2047983156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_113
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 600e348a2416aad4093f8a9e4d5f8e1b
+      internalID: -1563921848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_114
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337e9ba0858791b4ca6d4cdf5df25b59
+      internalID: 822615350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_115
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4572fafa0f6e8394db2dff06b30197ad
+      internalID: 372494718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_116
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2b3c73281bb6a49a3f3db735ac6798
+      internalID: 58845318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_117
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830b28c59795e674aa3678b46aa18f0f
+      internalID: 52770685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_118
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d6dd8accdf1ce46941e7537f952677
+      internalID: 1412058492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_119
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 347.3333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658b0597bd1e7524caa0b53372f4dcbc
+      internalID: -339038034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a23ff489043414089f3bd03151f2a2
+      internalID: -1922548377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_121
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c786aa71de23c44995444183ea023a
+      internalID: 163309947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_122
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653462d91f1a463469f337a5b9fb8252
+      internalID: -283268758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_123
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12fe50787e0853c47912cf6a3f2eebe1
+      internalID: 345860770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_124
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4481fa9916adfee4aaf4a746acff9a39
+      internalID: 808408245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_125
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e173e8b38f62904eaa5dfd188bcf204
+      internalID: -642061723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_126
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30babd373e3a2fe458cbf3ee208662b9
+      internalID: -992387393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StunSpritesheet_127
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 177.33333
+        width: 170.66667
+        height: 170.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdf0aeeac548c342a86ad70e3ff4da5
+      internalID: 1254419478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      StunSpritesheet_0: 301418094
+      StunSpritesheet_1: -1075563426
+      StunSpritesheet_10: 360715269
+      StunSpritesheet_100: 733055407
+      StunSpritesheet_101: -1284845389
+      StunSpritesheet_102: -406524016
+      StunSpritesheet_103: 1278214928
+      StunSpritesheet_104: 1118763481
+      StunSpritesheet_105: 1047741832
+      StunSpritesheet_106: 466538296
+      StunSpritesheet_107: -219775127
+      StunSpritesheet_108: 1513256976
+      StunSpritesheet_109: 1627630653
+      StunSpritesheet_11: -903209223
+      StunSpritesheet_110: 462965768
+      StunSpritesheet_111: -199392565
+      StunSpritesheet_112: 2047983156
+      StunSpritesheet_113: -1563921848
+      StunSpritesheet_114: 822615350
+      StunSpritesheet_115: 372494718
+      StunSpritesheet_116: 58845318
+      StunSpritesheet_117: 52770685
+      StunSpritesheet_118: 1412058492
+      StunSpritesheet_119: -339038034
+      StunSpritesheet_12: 1468194717
+      StunSpritesheet_120: -1922548377
+      StunSpritesheet_121: 163309947
+      StunSpritesheet_122: -283268758
+      StunSpritesheet_123: 345860770
+      StunSpritesheet_124: 808408245
+      StunSpritesheet_125: -642061723
+      StunSpritesheet_126: -992387393
+      StunSpritesheet_127: 1254419478
+      StunSpritesheet_13: 1441311857
+      StunSpritesheet_14: -1985230756
+      StunSpritesheet_15: -1598510010
+      StunSpritesheet_16: -565924981
+      StunSpritesheet_17: 1091609150
+      StunSpritesheet_18: -67460815
+      StunSpritesheet_19: -85114061
+      StunSpritesheet_2: -18275047
+      StunSpritesheet_20: -464628608
+      StunSpritesheet_21: 30259545
+      StunSpritesheet_22: 1050959002
+      StunSpritesheet_23: 1649405089
+      StunSpritesheet_24: 151133013
+      StunSpritesheet_25: -1319442691
+      StunSpritesheet_26: -1811673298
+      StunSpritesheet_27: -976945410
+      StunSpritesheet_28: 911702340
+      StunSpritesheet_29: -728155699
+      StunSpritesheet_3: -1695610308
+      StunSpritesheet_30: -2023581990
+      StunSpritesheet_31: 961179615
+      StunSpritesheet_32: 1519464631
+      StunSpritesheet_33: 1755803101
+      StunSpritesheet_34: 1974060616
+      StunSpritesheet_35: 1412386164
+      StunSpritesheet_36: -501612320
+      StunSpritesheet_37: 1007034538
+      StunSpritesheet_38: -511963847
+      StunSpritesheet_39: 541124476
+      StunSpritesheet_4: -1618512600
+      StunSpritesheet_40: 675832652
+      StunSpritesheet_41: -1620769935
+      StunSpritesheet_42: 551383661
+      StunSpritesheet_43: 1304153538
+      StunSpritesheet_44: 1728653754
+      StunSpritesheet_45: -2005319612
+      StunSpritesheet_46: 828170386
+      StunSpritesheet_47: -469043203
+      StunSpritesheet_48: -2050675314
+      StunSpritesheet_49: 765374168
+      StunSpritesheet_5: -166300632
+      StunSpritesheet_50: 944742135
+      StunSpritesheet_51: 239944619
+      StunSpritesheet_52: -1478734967
+      StunSpritesheet_53: -232456221
+      StunSpritesheet_54: -995603923
+      StunSpritesheet_55: -1342845568
+      StunSpritesheet_56: -910202294
+      StunSpritesheet_57: -1036918575
+      StunSpritesheet_58: 466599151
+      StunSpritesheet_59: -859873611
+      StunSpritesheet_6: 1625154293
+      StunSpritesheet_60: -1799390119
+      StunSpritesheet_61: -1863172647
+      StunSpritesheet_62: 586956326
+      StunSpritesheet_63: -1492656377
+      StunSpritesheet_64: -2072348917
+      StunSpritesheet_65: 1706085929
+      StunSpritesheet_66: -1919859722
+      StunSpritesheet_67: 878900478
+      StunSpritesheet_68: 1243572721
+      StunSpritesheet_69: 548636699
+      StunSpritesheet_7: -1083210777
+      StunSpritesheet_70: 412210324
+      StunSpritesheet_71: -1348885217
+      StunSpritesheet_72: 282870476
+      StunSpritesheet_73: -1210437977
+      StunSpritesheet_74: -1005772339
+      StunSpritesheet_75: 707636403
+      StunSpritesheet_76: -1004085734
+      StunSpritesheet_77: 1490345546
+      StunSpritesheet_78: -265246057
+      StunSpritesheet_79: 1634038503
+      StunSpritesheet_8: 1830182733
+      StunSpritesheet_80: -1937613854
+      StunSpritesheet_81: -1923785662
+      StunSpritesheet_82: -1724461574
+      StunSpritesheet_83: -1452432895
+      StunSpritesheet_84: -1430356565
+      StunSpritesheet_85: 1240204392
+      StunSpritesheet_86: -348514321
+      StunSpritesheet_87: -2048477462
+      StunSpritesheet_88: -181805990
+      StunSpritesheet_89: 722707897
+      StunSpritesheet_9: -1998206287
+      StunSpritesheet_90: 746902582
+      StunSpritesheet_91: -1467258479
+      StunSpritesheet_92: 640974639
+      StunSpritesheet_93: 410811500
+      StunSpritesheet_94: 190210495
+      StunSpritesheet_95: 1451102288
+      StunSpritesheet_96: -727624266
+      StunSpritesheet_97: -1320564428
+      StunSpritesheet_98: 754473103
+      StunSpritesheet_99: -1884635923
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
