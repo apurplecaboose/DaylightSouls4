@@ -34,7 +34,7 @@ public class DoubleWeaponAttack_Mini : MonoBehaviour // inherit from Boss Master
     private void Start() //Changable
     {
         _B_Path.Speed = 7f;//optional
-        _BossMasterRef.Turnspeed = 5000f;
+        _BossMasterRef.Turnspeed = 500f;
     }
     void FixedUpdate()
     {

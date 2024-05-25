@@ -483,11 +483,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &215323448 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-  m_PrefabInstance: {fileID: 971189405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &234506440
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +888,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 121593831}
-  - {fileID: 215323448}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -983,17 +977,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AttackGameObjectArray:
   - ComboKey: 0
-    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 1
-    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 2
-    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 3
-    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 4
-    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 5
-    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 6
     GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
   - ComboKey: 7
@@ -1759,67 +1753,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 25, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &971189405
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 453216927}
-    m_Modifications:
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7084908705212432155, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377350924548251626, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
-      propertyPath: m_Name
-      value: DoubleWeaponAttack
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9a656dfff099eb34da036517787aa0bd, type: 3}
 --- !u!114 &1081175502 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5794904457044391334, guid: 3014fa96de21e8c49b02ef5a8d939cbb, type: 3}
