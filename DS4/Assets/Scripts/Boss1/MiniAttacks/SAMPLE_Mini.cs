@@ -30,7 +30,6 @@ public class SAMPLE_Mini : MonoBehaviour // inherit from Boss Master and Monobeh
         _P_Health = _P.GetComponent<Player_HealthBar>();
         _BossMasterRef = _B.GetComponent<Boss_Master>();
         _B_Path = _B.GetComponent<PathFinding>();
-        _BossMasterRef.Turnspeed = 1000f; //set to whatever initial value you want
     }
     private void Start()
     {

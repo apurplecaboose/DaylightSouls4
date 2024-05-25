@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Stun_visual : MonoBehaviour
 {
-    float _Freq = 60f;
-    float _Amp = 0.005f, _Dtime;
+    float _Freq = 20f;
+    float _Amp = 0.075f;
 
     public int ActiveFrames = 25;
     public float Offset;
@@ -14,11 +14,8 @@ public class Stun_visual : MonoBehaviour
     void Update()
     {
         this.transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + Offset, 0); //dumb but it works
-
-        _Dtime += Time.deltaTime;
-        float time = _Dtime / 2.25f;
-        float x = Mathf.Sin(_Dtime * _Freq) * _Amp;
-        float y = Mathf.Cos(_Dtime * _Freq) * _Amp;
+        float x = Mathf.Sin(Time.time * _Freq) * _Amp;
+        float y = Mathf.Cos(Time.time * _Freq) * _Amp;
         this.transform.position += new Vector3(x, y, 0);
     }
     void FixedUpdate()

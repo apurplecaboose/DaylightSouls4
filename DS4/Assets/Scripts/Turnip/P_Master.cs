@@ -23,6 +23,7 @@ public class P_Master : MonoBehaviour
     [Header("Editable")]
     [SerializeField] float _P_MoveSpeed = 15f;
     [SerializeField] float _Ghost_MoveSpeed = 15f;
+    [SerializeField] float _SwapRadius = 5;
 
     [Header("References")]
     [SerializeField] GameObject _LightAttackPrefab;
@@ -53,13 +54,7 @@ public class P_Master : MonoBehaviour
     void Update()
     {
         TurnPlayer();
-        //if (P_Action == P_Action_List.SelectingBossAttackState)
-        //{
-        //    if (_CurrentAttackPrefab != null)
-        //    {
-        //        Destroy(_CurrentAttackPrefab);
-        //    }
-        //}
+        ClampGhostRadius();
     }
     void TurnPlayer()
     {
@@ -81,6 +76,18 @@ public class P_Master : MonoBehaviour
             if (_P_moveVec == Vector2.zero) return;
             Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, _P_moveVec);
             _P_rb.transform.rotation = Quaternion.RotateTowards(_P_rb.transform.rotation, targetRot, turnspeed * Time.deltaTime);
+        }
+    }
+    void ClampGhostRadius()
+    {
+        Vector2 p_Pos = _P_rb.transform.position;
+        Vector2 g_Pos = _Ghost_rb.transform.position;
+        Vector2 playerToGhostVector = g_Pos - p_Pos;
+
+        float pgMagnitude = playerToGhostVector.magnitude;
+        if (pgMagnitude > _SwapRadius)
+        {
+            _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius);
         }
     }
     void FixedUpdate()
@@ -174,6 +181,14 @@ public class P_Master : MonoBehaviour
             //prob add some screenshake trigger here
         }
         else Debug.Log("HyperArmor");
+
+        void LooneyTunesStar(int frames)
+        {
+            Stun_visual star = Instantiate(_StunPrefab, Camera.main.transform);
+            star.ActiveFrames = frames;
+            star.Offset = 0.4f;
+            star.Target = _P_rb.transform;
+        }
     }
     void P_Stun()
     {
@@ -184,13 +199,6 @@ public class P_Master : MonoBehaviour
             return;
         }
         else _TickCount -= 1;
-    }
-    void LooneyTunesStar(int frames)
-    {
-        Stun_visual star = Instantiate(_StunPrefab, Camera.main.transform);
-        star.ActiveFrames = frames;
-        star.Offset = 0.4f;
-        star.Target = _P_rb.transform;
     }
     /*---------------------------------------------------------------------------------------------------------*/
     public void TargetLock(InputAction.CallbackContext input)
@@ -208,29 +216,20 @@ public class P_Master : MonoBehaviour
     {
         _Ghost_moveVec = input.ReadValue<Vector2>(); //Turnip: same as P_move
     }
-    public void PogChampionParry(int iframes)
-    {
-        _ParryIFrames = iframes;
-    }
-    void PogChampionParry()
-    {
-        if (_ParryIFrames > 0)
-        {
-            _ParryIFrames -= 1;
-            Parry_Invincible = true;
-        }
-        else Parry_Invincible = false;
-    }
     /*---------------------------------------------------------------------------------------------------------*/
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
         if(inputState.performed)
         {
-            Debug.Log("dodge press");
+            if(Vector3.Distance(_P_rb.transform.position, _Ghost_rb.transform.position) > _SwapRadius)
+            {
+                //catch case
+                Debug.Log("Out of range of swap congrats you broke it");
+                return; // guard case
+            }
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
             {
                 P_Action = P_Action_List.SwapDodge;
-                Debug.Log("changed state to dodge");
             }
             if(P_Action == P_Action_List.ChargingUpForHeavy)
             {
@@ -309,6 +308,47 @@ public class P_Master : MonoBehaviour
         }
     }
     /*---------------------------------------------------------------------------------------------------------*/
+    InputAction.CallbackContext? _HealInputAction = null; //set inputaction callback context varible to null.
+    public void HealingInput(InputAction.CallbackContext inputState)
+    {
+        if (_HealInputAction == null)
+        {
+            _HealInputAction = inputState; //Will be assigned on first button press event
+        }
+        if (inputState.performed)
+        {
+            if (P_Action == P_Action_List.NULL_ACTION_STATE)
+            {
+                P_Action = P_Action_List.Healing;
+                int recoveryFrames = 10;
+                _TickCount = recoveryFrames;
+            }
+            else
+            {
+                Debug.Log("Busy... currently executing another action");
+                return;
+            }
+        }
+    }
+    void HealingAction()
+    {
+        //UNINTERUPTABLE
+        if (_TickCount <= 0)
+        { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
+            P_Action = P_Action_List.NULL_ACTION_STATE;
+            _TickCount = 0;
+            return;
+        }
+        else
+        {
+            if (_TickCount == 10) // same as healing input recoveryFrames
+            { // will only run heal when tick is 10 otherwise it is in recovery mode and no heal is done just cooldown
+                _Health.RestoreHealth();
+            }
+            _TickCount -= 1;
+        }
+    }
+    /*---------------------------------------------------------------------------------------------------------*/
     public void LightAttackInput(InputAction.CallbackContext inputState)
     {
         if (inputState.performed)
@@ -360,47 +400,6 @@ public class P_Master : MonoBehaviour
                     break;
             }
             _TickCount += 1;
-        }
-    }
-    /*---------------------------------------------------------------------------------------------------------*/
-    InputAction.CallbackContext? _HealInputAction = null; //set inputaction callback context varible to null.
-    public void HealingInput(InputAction.CallbackContext inputState)
-    {
-        if(_HealInputAction == null)
-        {
-            _HealInputAction = inputState; //Will be assigned on first button press event
-        }
-        if(inputState.performed)
-        {
-            if (P_Action == P_Action_List.NULL_ACTION_STATE)
-            {
-                P_Action = P_Action_List.Healing;
-                int recoveryFrames = 10;
-                _TickCount = recoveryFrames;
-            }
-            else
-            {
-                Debug.Log("Busy... currently executing another action");
-                return;
-            }
-        }
-    }
-    void HealingAction()
-    {
-        //UNINTERUPTABLE
-        if (_TickCount <= 0)
-        { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
-            P_Action = P_Action_List.NULL_ACTION_STATE;
-            _TickCount = 0;
-            return;
-        }
-        else
-        {
-            if(_TickCount == 10) // same as healing input recoveryFrames
-            { // will only run heal when tick is 10 otherwise it is in recovery mode and no heal is done just cooldown
-                _Health.RestoreHealth();
-            }
-            _TickCount -= 1; 
         }
     }
     /*---------------------------------------------------------------------------------------------------------*/
@@ -516,5 +515,18 @@ public class P_Master : MonoBehaviour
             }
             _TickCount += 1;
         }
+    }
+    public void PogChampionParry(int iframes)
+    {
+        _ParryIFrames = iframes;
+    }
+    void PogChampionParry()
+    {
+        if (_ParryIFrames > 0)
+        {
+            _ParryIFrames -= 1;
+            Parry_Invincible = true;
+        }
+        else Parry_Invincible = false;
     }
 }
