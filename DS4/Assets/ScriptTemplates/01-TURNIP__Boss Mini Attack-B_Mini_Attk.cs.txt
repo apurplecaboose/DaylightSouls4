@@ -45,6 +45,15 @@ public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobe
         //_BossMasterRef.Turnspeed = 10; // example
         //_B_Path.Speed = 0.5f;
     }
+    void OnTriggerEnter2D(Collider2D collision) // Don't Touch
+    {
+        if (!collision.CompareTag("Player")) return;
+        if (_P_MasterRef.Dodging_Invincible) return;
+        if (_P_MasterRef.Parry_Invincible) return;
+        //damage player
+        _P_Health.DamagePlayerHealth(_AttackDamage);
+        _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
+    }
     public void EndofLife() // end of attack
     {
         //run reset code here if nessicary
