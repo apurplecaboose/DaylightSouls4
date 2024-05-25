@@ -15,6 +15,13 @@ public class Player_HealthBar : MonoBehaviour
         _ShieldOriginalValue = ShieldValue;
         _HealthOriginalValue = HealthValue;
     }
+    private void Update()
+    {
+        //if(Input.GetKeyDown(KeyCode.O))
+        //{
+        //    DamagePlayerHealth(22);
+        //}
+    }
     public void RestoreHealth()
     {
         float restoreSpeed = 10;
@@ -23,7 +30,7 @@ public class Player_HealthBar : MonoBehaviour
         float t = Mathf.InverseLerp(0, _ShieldOriginalValue, ShieldValue);
         ShieldImage.fillAmount = t;
     }
-    public void DamageLogic(float Damage)
+    public void DamagePlayerHealth(float Damage)
     {
         ShieldDamageTaken(Damage);
         if (ShieldImage.fillAmount == 0 && HealthImage.fillAmount > 0)

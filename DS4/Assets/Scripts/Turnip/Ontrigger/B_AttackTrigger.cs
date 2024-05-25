@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class B_AttackTrigger : MonoBehaviour
 {
-    P_Master _Player;
+    GameObject _P;
+    P_Master _P_MasterRef;
+    Player_HealthBar _P_Health;
     [SerializeField] int _AttackDamage = 10;
-    private void Awake()
+    [Tooltip("Small Attack: x-y frames, Medium Attack: x-y frames, Poise Break Heavy Attack x-y frames")]
+    [SerializeField] int _StunFrames = 10;
+    public P_Master.P_StunSize AttackStunType;
+    void Awake()
     {
-        _Player = GameObject.FindGameObjectWithTag("Player").GetComponent<P_Master>();
+        _P = GameObject.FindGameObjectWithTag("Player");
+        _P_MasterRef = _P.GetComponent<P_Master>();
+        _P_Health = _P.GetComponent<Player_HealthBar>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
-
-        //if(not invincible)
+        if(_P_MasterRef.Dodging_Invincible) return;
+        if (_P_MasterRef.Parry_Invincible) return;
         //damage player
+        _P_Health.DamagePlayerHealth(_AttackDamage);
+        _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
     }
 }

@@ -12,9 +12,10 @@ public class Boss_Master : MonoBehaviour
     [SerializeField] int _BossPoiseAmount = 500;
     [SerializeField]int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
     [HideInInspector] public float Turnspeed = 1000f;
-    Transform _PlayerTransform;
+    [SerializeField] Transform _PlayerTransform;
     public PathFinding BossPathfinding;
     float _BossSpeedCache;
+    [SerializeField] Stun_visual _StunPrefab;
     public enum Boss_Action_List
     {
         Chasing,
@@ -30,7 +31,6 @@ public class Boss_Master : MonoBehaviour
         _Lib = this.GetComponent<B_ComboLibrary>();
         _Combopossibility = this.GetComponent<ComboPossibility>();
         BossPathfinding = this.GetComponent<PathFinding>();
-        _PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _BossSpeedCache = BossPathfinding.Speed;
     }
     void Update()
@@ -41,12 +41,12 @@ public class Boss_Master : MonoBehaviour
             //boss speed = based on distance to player;
             BossPathfinding.Speed = _BossSpeedCache;
             Turnspeed = 1000f;
-            //if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
-            //{
-            //    ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
-            //    _Lib.StartUp(currentCombo);
-            //    Boss_Action = Boss_Action_List.Attack;
-            //}
+            if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
+            {
+                ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
+                _Lib.StartUp(currentCombo);
+                Boss_Action = Boss_Action_List.Attack;
+            }
         }
         else
         {
@@ -62,6 +62,7 @@ public class Boss_Master : MonoBehaviour
         if(Boss_Action == Boss_Action_List.Opening || Boss_Action == Boss_Action_List.STUNNED)
         {
             Turnspeed = 1000f;
+            BossPathfinding.Speed = 0;
             if (_OpeningTick <= 0)
             {
                 _OpeningTick = 0;
@@ -138,6 +139,7 @@ public class Boss_Master : MonoBehaviour
 
         void Boss_StunInput(int stunFrames)
         {
+            LooneyTunesStar(stunFrames);
             _OpeningTick = stunFrames;
             Boss_Action = Boss_Action_List.STUNNED;
             _Lib.StunBoss_DestroyCurrentAttack();
@@ -152,5 +154,12 @@ public class Boss_Master : MonoBehaviour
         _OpeningTick = bossOpeningTimeinTicks;
         Boss_Action = Boss_Action_List.Opening;
     }
-
+    void LooneyTunesStar(int frames)
+    {
+        Stun_visual star = Instantiate(_StunPrefab, Camera.main.transform);
+        star.ActiveFrames = frames;
+        star.Target = this.transform;
+        star.Offset = 0.85f;
+        star.transform.localScale = new Vector3(1.25f, 1.25f, 1);
+    }
 }
