@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shake : MonoBehaviour
+public class ShakePlayerSword : MonoBehaviour
 {
     float _Freq = 60f;
     float _Amp, _Dtime;

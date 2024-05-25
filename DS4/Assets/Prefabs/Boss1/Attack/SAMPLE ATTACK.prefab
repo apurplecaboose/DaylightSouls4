@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _LengthOfLastComboInTicks: 60
   _RandomOpeningRange: {x: 60, y: 200}
-  _AttackPrefabs:
+  _MiniAttackPrefabs:
   - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
   - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
   - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
