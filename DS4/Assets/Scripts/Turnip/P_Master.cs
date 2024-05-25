@@ -461,14 +461,14 @@ public class P_Master : MonoBehaviour
             if (charged == null) // if neutral
             {
                 int startUpFrames = 5;
-                int activeFrames = 44;
+                int activeFrames = 38;
                 int recoveryFrames = 10;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if(charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
-                int activeFrames = 44;
+                int activeFrames = 38;
                 int recoveryFrames = 15; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
@@ -492,11 +492,6 @@ public class P_Master : MonoBehaviour
         { // Turnip: run logic 
             switch (_TickCount)
             {
-                // Instantiate Heavy Attack child pass in parameters
-                case int t when t < startUpFrames://startup phase
-                    if (_CurrentAttackPrefab == null) break;
-                    else Destroy(_CurrentAttackPrefab);
-                    break;
                 case int t when t == startUpFrames:
                     if (_CurrentAttackPrefab != null) Destroy(_CurrentAttackPrefab);
                     _CurrentAttackPrefab = Instantiate(_HeavyAttackPrefab, _P_rb.transform);
