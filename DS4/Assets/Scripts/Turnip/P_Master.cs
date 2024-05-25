@@ -30,6 +30,7 @@ public class P_Master : MonoBehaviour
     [SerializeField] GameObject _HeavyAttackPrefab;
     [SerializeField] GameObject _HeavyChargePrefab;
     [SerializeField] Stun_visual _StunPrefab;
+    [SerializeField] SpriteRenderer _PlayerGhostRangeUI;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
@@ -85,6 +86,11 @@ public class P_Master : MonoBehaviour
         Vector2 playerToGhostVector = g_Pos - p_Pos;
 
         float pgMagnitude = playerToGhostVector.magnitude;
+
+        Color sr_color = _PlayerGhostRangeUI.color;
+        sr_color.a = Mathf.InverseLerp(_SwapRadius * 0.55f, _SwapRadius, pgMagnitude);
+        _PlayerGhostRangeUI.color = sr_color;
+
         if (pgMagnitude > _SwapRadius)
         {
             _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius);
