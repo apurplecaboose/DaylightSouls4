@@ -346,8 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BossMasterRef: {fileID: 0}
   _HeathbarRef: {fileID: 0}
-  _LightAttackDamage: 10
-  _LightAttackPoiseDamage: 10
+  _LightAttackDamage: 35
+  _LightAttackPoiseDamage: 40
 --- !u!61 &6358102790289263626
 BoxCollider2D:
   m_ObjectHideFlags: 0

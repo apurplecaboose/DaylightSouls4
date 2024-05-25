@@ -277,8 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c54638c8182fb4889fe16d40578b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BossMasterRef: {fileID: 0}
-  _BaseParryPoiseDamage: 200
+  _BaseParryPoiseDamage: 185
 --- !u!1 &5366145789633541740
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,10 +378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ee2bf2f8671954e81e9f201cb28787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BossMasterRef: {fileID: 0}
-  _HeathbarRef: {fileID: 0}
-  _HeavyAttackDamage: 35
-  _HeavyAttackPoiseDamage: 45
+  _HeavyAttackDamage: 75
+  _HeavyAttackPoiseDamage: 50
 --- !u!61 &1330856260622031617
 BoxCollider2D:
   m_ObjectHideFlags: 0

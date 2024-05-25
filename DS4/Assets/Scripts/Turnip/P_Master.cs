@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -31,6 +32,8 @@ public class P_Master : MonoBehaviour
     [SerializeField] GameObject _HeavyChargePrefab;
     [SerializeField] Stun_visual _StunPrefab;
     [SerializeField] SpriteRenderer _PlayerGhostRangeUI;
+    [SerializeField] AudioSource _ParrySfx;
+    [SerializeField] Animator _PoofAnimator;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
@@ -470,14 +473,14 @@ public class P_Master : MonoBehaviour
             {
                 int startUpFrames = 5;
                 int activeFrames = 38;
-                int recoveryFrames = 10;
+                int recoveryFrames = 20;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if(charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
                 int activeFrames = 38;
-                int recoveryFrames = 15; //longer recovery time
+                int recoveryFrames = 30; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else return null;
@@ -521,6 +524,12 @@ public class P_Master : MonoBehaviour
     }
     public void PogChampionParry(int iframes)
     {
+        _PoofAnimator.transform.position = (_P_rb.transform.position + _BossTransform.position) * 0.5f;
+        _PoofAnimator.Play("parrysmoke");
+
+        AudioSource a = _ParrySfx;
+        a.pitch = Random.Range(0.85f, 1);
+        a.Play();
         _ParryIFrames = iframes;
     }
     void PogChampionParry()

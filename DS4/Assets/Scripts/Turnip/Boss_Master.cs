@@ -147,7 +147,7 @@ public class Boss_Master : MonoBehaviour
         }
 
         if (_PoiseTickTimer > 0) _PoiseTickTimer -= 1;// wait for "6" seconds before poise starts ticking down
-        else if (_PoiseDamage > 0) _PoiseDamage -= 1; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
+        else if (_PoiseDamage > 0) _PoiseDamage -= 3; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
     }
     public void StartBossOpening(int bossOpeningTimeinTicks)
     {
