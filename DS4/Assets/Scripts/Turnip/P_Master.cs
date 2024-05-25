@@ -51,6 +51,8 @@ public class P_Master : MonoBehaviour
         _P_rb = this.transform.GetChild(0).GetComponent<Rigidbody2D>();
         _Ghost_rb = this.transform.GetChild(1).GetComponent<Rigidbody2D>();
         _Health = this.gameObject.GetComponent<Player_HealthBar>();
+        float localscale = _SwapRadius * 2f;
+        _PlayerGhostRangeUI.transform.localScale = new Vector3(localscale, localscale, 1);
     }
     void Update()
     {
