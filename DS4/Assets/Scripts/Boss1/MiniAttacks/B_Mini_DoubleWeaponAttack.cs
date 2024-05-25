@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircleAttack_Mini : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class B_Mini_DoubleWeaponAttack : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
@@ -33,7 +33,18 @@ public class CircleAttack_Mini : MonoBehaviour // inherit from Boss Master and M
     }
     private void Start() //Changable
     {
-        //_B_Path.Speed = 4f;//optional
+        _B_Path.Speed = 7f;//optional
+        _BossMasterRef.Turnspeed = 500f;
+    }
+    void FixedUpdate()
+    {
+        //run any neessicary special code here
+    }
+    //put any public voids here to be triggered by animation events
+    public void EndMiyazakiTime() //Changable
+    {
+        _BossMasterRef.Turnspeed = 10; // example
+        _B_Path.Speed = 0.5f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {
@@ -43,16 +54,6 @@ public class CircleAttack_Mini : MonoBehaviour // inherit from Boss Master and M
         //damage player
         _P_Health.DamagePlayerHealth(_AttackDamage);
         _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
-    }
-    void FixedUpdate()
-    {
-        //run any neessicary special code here
-    }
-    //put any public voids here to be triggered by animation events
-    public void EndMiyazakiTime() //Changable
-    {
-        _BossMasterRef.Turnspeed = 10;
-        _B_Path.Speed = 0.5f;
     }
     public void EndofLife() // end of attack
     {
