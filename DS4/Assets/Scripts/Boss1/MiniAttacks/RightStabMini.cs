@@ -35,6 +35,15 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
     {
         //_B_Path.Speed = 4f;//optional
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player")) return;
+        if (_P_MasterRef.Dodging_Invincible) return;
+        if (_P_MasterRef.Parry_Invincible) return;
+        //damage player
+        _P_Health.DamagePlayerHealth(_AttackDamage);
+        _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
+    }
     void FixedUpdate()
     {
         //run any neessicary special code here
