@@ -30,6 +30,7 @@ public class P_Master : MonoBehaviour
     [SerializeField] GameObject _HeavyAttackPrefab;
     [SerializeField] GameObject _HeavyChargePrefab;
     [SerializeField] Stun_visual _StunPrefab;
+    [SerializeField] SpriteRenderer _PlayerGhostRangeUI;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
@@ -50,6 +51,8 @@ public class P_Master : MonoBehaviour
         _P_rb = this.transform.GetChild(0).GetComponent<Rigidbody2D>();
         _Ghost_rb = this.transform.GetChild(1).GetComponent<Rigidbody2D>();
         _Health = this.gameObject.GetComponent<Player_HealthBar>();
+        float localscale = _SwapRadius * 2f;
+        _PlayerGhostRangeUI.transform.localScale = new Vector3(localscale, localscale, 1);
     }
     void Update()
     {
@@ -85,6 +88,11 @@ public class P_Master : MonoBehaviour
         Vector2 playerToGhostVector = g_Pos - p_Pos;
 
         float pgMagnitude = playerToGhostVector.magnitude;
+
+        Color sr_color = _PlayerGhostRangeUI.color;
+        sr_color.a = Mathf.InverseLerp(_SwapRadius * 0.55f, _SwapRadius, pgMagnitude);
+        _PlayerGhostRangeUI.color = sr_color;
+
         if (pgMagnitude > _SwapRadius)
         {
             _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius);
