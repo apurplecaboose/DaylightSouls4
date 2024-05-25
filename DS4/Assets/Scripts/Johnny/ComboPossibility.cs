@@ -106,30 +106,30 @@ public class ComboPossibility : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetFinalCombo();
-            _ComboPool.Clear();
-            for(int i =0; i < _CurrentBossCombos.Count; i++)
-            {
-                _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
-            }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GetFinalCombo();
+        //    _ComboPool.Clear();
+        //    for(int i =0; i < _CurrentBossCombos.Count; i++)
+        //    {
+        //        _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
+        //    }
 
-            print("this is new total amount:" + _NewTotalAmount);
-            _SampleCapacity = _NewTotalAmount;
-            for (int i = 0; i < _CurrentBossCombos.Count; i++)
-            {
-                _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
-            }//recalculate the percentage for each attack
-            _NewTotalAmount = 0;//prepare for the next decrease personality
+        //    print("this is new total amount:" + _NewTotalAmount);
+        //    _SampleCapacity = _NewTotalAmount;
+        //    for (int i = 0; i < _CurrentBossCombos.Count; i++)
+        //    {
+        //        _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
+        //    }//recalculate the percentage for each attack
+        //    _NewTotalAmount = 0;//prepare for the next decrease personality
 
-            for (int i = 0; i < ResultComboArrayAllInOne.Length; i++)
-            {
-                SetComboGroup(ResultComboArrayAllInOne[i]);
-            }//provide the 3 randomm value as a grounp.
+        //    for (int i = 0; i < ResultComboArrayAllInOne.Length; i++)
+        //    {
+        //        SetComboGroup(ResultComboArrayAllInOne[i]);
+        //    }//provide the 3 randomm value as a grounp.
 
-            LoadInArraysToFinalPatern();
-        }
+        //    LoadInArraysToFinalPatern();
+        //}
 
     }
 

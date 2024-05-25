@@ -13,6 +13,7 @@ public class Boss_Master : MonoBehaviour
     [SerializeField]int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
     [HideInInspector] public float Turnspeed = 1000f;
     [SerializeField] Transform _PlayerTransform;
+    AudioSource _PoiseBreakSFX;
     public PathFinding BossPathfinding;
     float _BossSpeedCache;
     [SerializeField] Stun_visual _StunPrefab;
@@ -32,6 +33,7 @@ public class Boss_Master : MonoBehaviour
         _Combopossibility = this.GetComponent<ComboPossibility>();
         BossPathfinding = this.GetComponent<PathFinding>();
         _BossSpeedCache = BossPathfinding.Speed;
+        _PoiseBreakSFX = GameObject.FindGameObjectWithTag("AudioHolder").transform.GetChild(2).GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -120,7 +122,8 @@ public class Boss_Master : MonoBehaviour
     {
         if(_PoiseDamage >= _BossPoiseAmount)
         {
-            if(_PoiseDamage == _BossPoiseAmount)
+            _PoiseBreakSFX.Play();
+            if (_PoiseDamage == _BossPoiseAmount)
             {
                 _PoiseDamage = 0;
                 _PoiseTickTimer = 0;

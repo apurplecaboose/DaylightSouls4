@@ -32,7 +32,8 @@ public class P_Master : MonoBehaviour
     [SerializeField] GameObject _HeavyChargePrefab;
     [SerializeField] Stun_visual _StunPrefab;
     [SerializeField] SpriteRenderer _PlayerGhostRangeUI;
-    [SerializeField] AudioSource _ParrySfx;
+    Transform _AudioHolder;
+    AudioSource _ParrySfx, _Healing;
     [SerializeField] Animator _PoofAnimator;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
@@ -47,6 +48,7 @@ public class P_Master : MonoBehaviour
     bool _TargetLocked;
     [SerializeField] int _ParryIFrames, _HeavyChargeTimer; 
     Vector2 _P_moveVec, _Ghost_moveVec;
+    float _TargetVol = 0.5f;
 
     void Awake()
     {
@@ -56,11 +58,24 @@ public class P_Master : MonoBehaviour
         _Health = this.gameObject.GetComponent<Player_HealthBar>();
         float localscale = _SwapRadius * 2f;
         _PlayerGhostRangeUI.transform.localScale = new Vector3(localscale, localscale, 1);
+        _AudioHolder = GameObject.FindGameObjectWithTag("AudioHolder").transform;
+        _ParrySfx = _AudioHolder.GetChild(0).GetComponent<AudioSource>();
+        _Healing = _AudioHolder.GetChild(1).GetComponent<AudioSource>();
     }
     void Update()
     {
         TurnPlayer();
         ClampGhostRadius();
+        HealingAudio();
+    }
+    void HealingAudio()
+    {
+        if (P_Action != P_Action_List.Healing) _TargetVol = -0.5f;
+        else _TargetVol = 0.75f;
+        float curvol = _Healing.volume;
+        float audiosourcevol = Mathf.Lerp(curvol, _TargetVol, 2 * Time.smoothDeltaTime);
+        audiosourcevol = Mathf.Clamp(audiosourcevol, 0, 0.5f);
+        _Healing.volume = audiosourcevol;
     }
     void TurnPlayer()
     {
@@ -541,4 +556,5 @@ public class P_Master : MonoBehaviour
         }
         else Parry_Invincible = false;
     }
+
 }

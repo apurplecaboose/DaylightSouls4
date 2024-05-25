@@ -8,6 +8,7 @@ TagManager:
   - HeavyAttack
   - Boss
   - BossParry
+  - AudioHolder
   layers:
   - Default
   - TransparentFX
