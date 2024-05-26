@@ -33,7 +33,7 @@ public class B_Mini_DriverAttack : MonoBehaviour // inherit from Boss Master and
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 3f;//optional
+        _B_Path.Speed = 4f;//optional
         _BossMasterRef.Turnspeed = 300f;
     }
     void FixedUpdate()
@@ -43,8 +43,8 @@ public class B_Mini_DriverAttack : MonoBehaviour // inherit from Boss Master and
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 60f;
-        _B_Path.Speed = 1f;
+        _BossMasterRef.Turnspeed = 35f;
+        _B_Path.Speed = 0.5f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {

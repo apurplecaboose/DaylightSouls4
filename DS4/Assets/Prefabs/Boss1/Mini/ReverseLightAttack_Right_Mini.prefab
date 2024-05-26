@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6890360034777084640}
-  - component: {fileID: 6983837895640698203}
+  - component: {fileID: 5574561059583375713}
   - component: {fileID: 6939456309966617809}
   - component: {fileID: 2872010995740966604}
   m_Layer: 0
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 7084908705212432155}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &6983837895640698203
+--- !u!114 &5574561059583375713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3494615266393694834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055dec81d989a4e459a24ec2c0eae3fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c7cbc341c7413048a6e3f2da6190c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AttackDamage: 10
@@ -85,7 +85,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 1.0736794}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.5}
+  m_Size: {x: 1.1, y: 1.6473589}
   m_EdgeRadius: 0
 --- !u!95 &2872010995740966604
 Animator:
@@ -108,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 3494615266393694834}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7709ee2d3f43f39469bbd5eedb0505ab, type: 2}
+  m_Controller: {fileID: 9100000, guid: d35eddf8dd53a424795bff0f7c6be5ed, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7084908705212432155}
   m_Layer: 0
-  m_Name: CircleAttack
+  m_Name: ReverseLightAttack_Right_Mini
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

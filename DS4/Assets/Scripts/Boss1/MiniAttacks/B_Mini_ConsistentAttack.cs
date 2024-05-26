@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class B_Mini_SweepAttack : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class B_Mini_ConsistentAttack : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
@@ -33,8 +33,8 @@ public class B_Mini_SweepAttack : MonoBehaviour // inherit from Boss Master and 
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 0.5f;//optional
-        _BossMasterRef.Turnspeed = 200f;
+        _B_Path.Speed = 2f;//optional
+        _BossMasterRef.Turnspeed = 300f;
     }
     void FixedUpdate()
     {
@@ -43,8 +43,8 @@ public class B_Mini_SweepAttack : MonoBehaviour // inherit from Boss Master and 
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 10; // example
-        _B_Path.Speed = 0.5f;
+        _BossMasterRef.Turnspeed = 100f; // example
+        _B_Path.Speed = 2f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {

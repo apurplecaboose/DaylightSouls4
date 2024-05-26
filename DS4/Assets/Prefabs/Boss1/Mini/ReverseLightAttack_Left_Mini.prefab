@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6890360034777084640}
-  - component: {fileID: 1208892518676877538}
+  - component: {fileID: 8489496405808644675}
   - component: {fileID: 6939456309966617809}
   - component: {fileID: 2872010995740966604}
   m_Layer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3494615266393694834}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.7, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2543071973082696452}
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 7084908705212432155}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1208892518676877538
+--- !u!114 &8489496405808644675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3494615266393694834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024ff9d08b709324ca81f7c9d8d7d2d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e726be30a8211419628db5d4128d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AttackDamage: 10
@@ -85,7 +85,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 1.0736794}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.5}
+  m_Size: {x: 1.1, y: 1.6473589}
   m_EdgeRadius: 0
 --- !u!95 &2872010995740966604
 Animator:
@@ -108,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 3494615266393694834}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3be2dcce5e6cf348bf79033d5a699b1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3d082bc8ecd94db46be164f2e4b023f2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7084908705212432155}
   m_Layer: 0
-  m_Name: SweepAttack
+  m_Name: ReverseLightAttack_Left_Mini
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01f628683ecd030428831c9c8c9d6ec0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 941704763cdeba643b7e1a99220a8e32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
