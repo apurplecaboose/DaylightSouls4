@@ -53,7 +53,7 @@ public class B_Mini_CircleAttack : MonoBehaviour // inherit from Boss Master and
     public void EndMiyazakiTime() //Changable
     {
         _BossMasterRef.Turnspeed = 10;
-        _B_Path.Speed = 1f;
+        _B_Path.Speed = 2f;
     }
     public void EndofLife() // end of attack
     {
