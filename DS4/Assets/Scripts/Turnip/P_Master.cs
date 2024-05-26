@@ -72,10 +72,10 @@ public class P_Master : MonoBehaviour
     void HealingAudio()
     {
         if (P_Action != P_Action_List.Healing) _TargetVol = -0.5f;
-        else _TargetVol = 0.75f;
+        else _TargetVol = 1.25f;
         float curvol = _Healing.volume;
         float audiosourcevol = Mathf.Lerp(curvol, _TargetVol, 2 * Time.smoothDeltaTime);
-        audiosourcevol = Mathf.Clamp(audiosourcevol, 0, 0.5f);
+        audiosourcevol = Mathf.Clamp(audiosourcevol, 0, 1f);
         _Healing.volume = audiosourcevol;
     }
     void TurnPlayer()
@@ -111,10 +111,10 @@ public class P_Master : MonoBehaviour
         Color sr_color = _PlayerGhostRangeUI.color;
         sr_color.a = Mathf.InverseLerp(_SwapRadius * 0.55f, _SwapRadius, pgMagnitude);
         _PlayerGhostRangeUI.color = sr_color;
-
-        if (pgMagnitude > _SwapRadius)
+        float offset = 1; // offset the edge of the sprite and the actual position
+        if (pgMagnitude > _SwapRadius - offset)
         {
-            _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius);
+            _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius - offset);
         }
     }
     void FixedUpdate()
@@ -252,7 +252,9 @@ public class P_Master : MonoBehaviour
             if(Vector3.Distance(_P_rb.transform.position, _Ghost_rb.transform.position) > _SwapRadius)
             {
                 //catch case
+                Application.Quit();
                 Debug.Log("Out of range of swap congrats you broke it");
+
                 return; // guard case
             }
             if (P_Action == P_Action_List.NULL_ACTION_STATE)

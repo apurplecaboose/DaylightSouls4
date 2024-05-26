@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public enum G_State { Playing, Selecting };
+    public G_State PlayState;
     public GameObject ComboSelectionUI_Instance;
     void Awake()
     {
@@ -15,18 +17,11 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        TESTStartEdwardsPanel();
+        if(ComboSelectionUI_Instance == null) PlayState = G_State.Playing;
+        else PlayState = G_State.Selecting;
     }
     void FixedUpdate()
     {
 
-    }
-    void TESTStartEdwardsPanel()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            //UIManager.Instance.ShowPanel<SelectPatternPanel>();
-            Instantiate(ComboSelectionUI_Instance);
-        }
     }
 }

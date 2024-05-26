@@ -946,11 +946,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453216924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03628eee4dfa20946a19b6e3676a2b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ComboSelectionUI_Prefab: {fileID: 669891106224913273, guid: fdbf2cab8897ebc439f5cd616daf648d, type: 3}
   _BossPoiseAmount: 750
   _OpeningTick: 0
   _PoiseDamage: 0
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453216924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 307311c972b42ff459df79b6c8796d01, type: 3}
   m_Name: 
@@ -992,7 +993,7 @@ MonoBehaviour:
   NumberOfComboSelectionRepeats: 
   _AmountAfterDecrease: []
   _ComboOptionIndex: 
-  ChosenComboFromKen: 
+  FinalOutputComboArray: 
 --- !u!114 &453216931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,7 +1304,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c6e9f2cce6358be4ab5ca41ef2374e1c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1400,6 +1401,7 @@ GameObject:
   - component: {fileID: 591358521}
   - component: {fileID: 591358524}
   - component: {fileID: 591358525}
+  - component: {fileID: 591358526}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1537,7 +1539,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880f50b4eb7e88c48b5c2aac9c2d6c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayState: 0
   ComboSelectionUI_Instance: {fileID: 669891106224913273, guid: fdbf2cab8897ebc439f5cd616daf648d, type: 3}
+--- !u!114 &591358526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591358520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375cb4e9e7791934b87767ab5e1d1512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Follow: {fileID: 270587861}
 --- !u!1 &685493193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,10 +2473,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 238b7ab5e5bd397478a3743bfdc10ab4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fbd4122c57f504e499eb4946f381ca93, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
-  m_Pitch: 1
+  m_Pitch: 1.11
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -2621,7 +2637,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 40745c974a21c4942a70d91483801013, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

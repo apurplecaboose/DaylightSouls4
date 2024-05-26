@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss_Master : MonoBehaviour
 {
+    GameManager _GM;
     public GameObject ComboSelectionUI_Prefab;
     B_ComboLibrary _Lib;    
     ComboPossibility _Combopossibility;
@@ -30,6 +31,7 @@ public class Boss_Master : MonoBehaviour
 
     void Awake()
     {
+        _GM = Camera.main.GetComponent<GameManager>();
         _Lib = this.GetComponent<B_ComboLibrary>();
         _Combopossibility = this.GetComponent<ComboPossibility>();
         BossPathfinding = this.GetComponent<PathFinding>();
@@ -38,7 +40,8 @@ public class Boss_Master : MonoBehaviour
     }
     private void Start()
     {
-        Instantiate(ComboSelectionUI_Prefab);
+        GameObject selection = Instantiate(ComboSelectionUI_Prefab);
+        _GM.ComboSelectionUI_Instance = selection;
         Boss_Action = Boss_Action_List.SelectingBossAttackState;
     }
     void Update()
@@ -56,9 +59,15 @@ public class Boss_Master : MonoBehaviour
                 Boss_Action = Boss_Action_List.Attack;
             }
         }
+        //toggle between playing and selecting
         if (Boss_Action.Equals(Boss_Action_List.SelectingBossAttackState))
         {
             BossPathfinding.Speed = 0;
+            if (_GM.PlayState.Equals(GameManager.G_State.Playing)) Boss_Action = Boss_Action_List.Chasing;
+        }
+        else if(_GM.PlayState.Equals(GameManager.G_State.Selecting))
+        {
+            Boss_Action = Boss_Action_List.SelectingBossAttackState;
         }
     }
     void FixedUpdate()
@@ -88,8 +97,10 @@ public class Boss_Master : MonoBehaviour
         }
         else
         {
+            GameObject selection = Instantiate(ComboSelectionUI_Prefab);
+            _GM.ComboSelectionUI_Instance = selection;
             Boss_Action = Boss_Action_List.SelectingBossAttackState;
-            print("TESTING POST STUN BEHAVIOUR");
+
             //Boss_Action = Boss_Action_List.Chasing; // for testing only delete later
             //trigger next boss combo selection
             // IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
