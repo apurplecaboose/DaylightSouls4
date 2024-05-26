@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 17265052689442018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.7, z: 0.35}
+  m_LocalScale: {x: 0.5, y: 0.7, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2387948650049052178}
@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8921944191385185497}
   - component: {fileID: 64359460466911887}
+  - component: {fileID: 7121791810998429731}
+  - component: {fileID: 8405075817368864861}
   m_Layer: 0
   m_Name: Boss Parry Collider
   m_TagString: BossParry
@@ -148,9 +150,71 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034418464, y: -0.35565722}
-  m_Size: {x: 1.1811631, y: 1.2886856}
+  m_Offset: {x: -0.034418464, y: -0.7906102}
+  m_Size: {x: 1.1811631, y: 1.4413006}
   m_Direction: 0
+--- !u!114 &7121791810998429731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460836720430513616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997d0200d0f9d0c49a41b29fa89229d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AttackDamage: 10
+  _StunFrames: 10
+  AttackStunType: 0
+  _DestroyTarget: {fileID: 0}
+  _AttackTick: 0
+--- !u!114 &8405075817368864861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460836720430513616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ac9cd7b6aa66c4a8f2849cae03dceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ShakeLengthInFrames: 0
+  IntensityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _StartIntensity: 0
+  _EndIntensity: 0
+  _Amp: 0
+  _Dtime: 0
+  _ShakeFrequency: 60
+  _DontDestroyOnTimeUp: 0
+  _StartOnAwake: 0
+  _Trigger: 0
 --- !u!1 &1585392089874940993
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +283,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.022367448, y: 0.4035103}
+  m_Offset: {x: -0.04196915, y: 0.04196915}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -230,7 +294,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3411637, y: 0.72377163}
+  m_Size: {x: 0.19617939, y: 1.1358323}
   m_EdgeRadius: 0
 --- !u!95 &4040079553055738225
 Animator:
