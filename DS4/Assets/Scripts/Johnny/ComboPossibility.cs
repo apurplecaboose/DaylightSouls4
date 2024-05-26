@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ComboPossibility : MonoBehaviour
@@ -25,9 +23,9 @@ public class ComboPossibility : MonoBehaviour
     [HideInInspector] public ComboType[][] ResultComboArrayAllInOne;
 
     [Header("OUTPUT: DO NOT TOUCH")]
-    public List<ComboType> ChosenComboFromKen = new List<ComboType>(8); // DONT TOUCH
+    public List<ComboType> FinalOutputComboArray = new List<ComboType>(8); // DONT TOUCH
 
-    SelectPatternPanel _RefToSelectPattern;
+    //SelectPatternPanel _RefToSelectPattern;
     public enum ComboType
     {
         B1__Slam_Attack,//0
@@ -83,7 +81,7 @@ public class ComboPossibility : MonoBehaviour
         _ResultComboArray6 = new ComboType[3];
         _ResultComboArray7 = new ComboType[3];
         ResultComboArrayAllInOne = new ComboType[8][];
-        ChosenComboFromKen = new List<ComboType>();
+        FinalOutputComboArray = new List<ComboType>();
         _ComboOptionIndex = new int[3];
         NumberOfComboSelectionRepeats = new int[10];
         _AmountAfterDecrease = new float[10];
@@ -106,30 +104,30 @@ public class ComboPossibility : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetFinalCombo();
-            _ComboPool.Clear();
-            for(int i =0; i < _CurrentBossCombos.Count; i++)
-            {
-                _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
-            }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GetFinalCombo();
+        //    _ComboPool.Clear();
+        //    for(int i =0; i < _CurrentBossCombos.Count; i++)
+        //    {
+        //        _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
+        //    }
 
-            print("this is new total amount:" + _NewTotalAmount);
-            _SampleCapacity = _NewTotalAmount;
-            for (int i = 0; i < _CurrentBossCombos.Count; i++)
-            {
-                _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
-            }//recalculate the percentage for each attack
-            _NewTotalAmount = 0;//prepare for the next decrease personality
+        //    print("this is new total amount:" + _NewTotalAmount);
+        //    _SampleCapacity = _NewTotalAmount;
+        //    for (int i = 0; i < _CurrentBossCombos.Count; i++)
+        //    {
+        //        _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
+        //    }//recalculate the percentage for each attack
+        //    _NewTotalAmount = 0;//prepare for the next decrease personality
 
-            for (int i = 0; i < ResultComboArrayAllInOne.Length; i++)
-            {
-                SetComboGroup(ResultComboArrayAllInOne[i]);
-            }//provide the 3 randomm value as a grounp.
+        //    for (int i = 0; i < ResultComboArrayAllInOne.Length; i++)
+        //    {
+        //        SetComboGroup(ResultComboArrayAllInOne[i]);
+        //    }//provide the 3 randomm value as a grounp.
 
-            LoadInArraysToFinalPatern();
-        }
+        //    LoadInArraysToFinalPatern();
+        //}
 
     }
 
@@ -189,17 +187,32 @@ public class ComboPossibility : MonoBehaviour
         }
     }
 
-    public void GetFinalCombo()
-    {
-        _RefToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
-        int finalLength = _RefToSelectPattern.FinalPattern.Count;
-        ChosenComboFromKen = _RefToSelectPattern.FinalPattern;
+    //public void GetFinalCombo()
+    //{
+    //    _RefToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
+    //    int finalLength = _RefToSelectPattern.FinalPattern.Count;
+    //    ChosenComboFromKen = _RefToSelectPattern.FinalPattern;
 
-        for (int i = 0; i < finalLength; i++)
+    //    for (int i = 0; i < finalLength; i++)
+    //    {
+    //        for (int j = 0; j < _CurrentBossCombos.Count; j++)
+    //        {
+    //            if (_RefToSelectPattern.FinalPattern[i] == _CurrentBossCombos[j])
+    //            {
+    //                NumberOfComboSelectionRepeats[j]++;
+    //            }
+    //        }
+    //    }
+    //}
+    public void GetFinalCombo(List<ComboType> FinalOutput, string EdwardFixandRewriteEverythingEdition)
+    {
+        FinalOutputComboArray = FinalOutput;
+
+        for (int i = 0; i < FinalOutput.Count; i++)
         {
             for (int j = 0; j < _CurrentBossCombos.Count; j++)
             {
-                if (_RefToSelectPattern.FinalPattern[i] == _CurrentBossCombos[j])
+                if (FinalOutput[i] == _CurrentBossCombos[j])
                 {
                     NumberOfComboSelectionRepeats[j]++;
                 }

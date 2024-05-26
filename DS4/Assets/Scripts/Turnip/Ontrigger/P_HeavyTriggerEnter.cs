@@ -6,10 +6,10 @@ public class P_HeavyTriggerEnter : MonoBehaviour
 {
     P_Master _Player;
     GameObject _B;
-    [SerializeField] Boss_Master _BossMasterRef;
-    [SerializeField] BossHeathbar _HeathbarRef;
-    [SerializeField] int _HeavyAttackDamage = 35;
-    [SerializeField] int _HeavyAttackPoiseDamage = 35;
+    Boss_Master _BossMasterRef;
+    BossHeathbar _HeathbarRef;
+    [SerializeField] int _HeavyAttackDamage;
+    [SerializeField] int _HeavyAttackPoiseDamage;
     private void Awake()
     {
         _B = GameObject.FindGameObjectWithTag("Boss");
@@ -34,10 +34,13 @@ public class P_HeavyTriggerEnter : MonoBehaviour
         }
         else
         {
+            print("bigup[");
             int damageRandomizere = Random.Range(-3, 4);
             _BossMasterRef.AddPoiseDamage(_HeavyAttackPoiseDamage);
             _HeathbarRef.DamageBoss(_HeavyAttackDamage + damageRandomizere);
         }
+
+        Destroy(this); //only one damage per swing
     }
     float RemapValue(float inputvalue, Vector2 inputrange, Vector2 targetrange)
     {

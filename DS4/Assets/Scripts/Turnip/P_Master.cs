@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class P_Master : MonoBehaviour
 {
+    #region Varibles
     public P_Action_List P_Action;
     public enum P_Action_List
     {
@@ -31,6 +33,9 @@ public class P_Master : MonoBehaviour
     [SerializeField] GameObject _HeavyChargePrefab;
     [SerializeField] Stun_visual _StunPrefab;
     [SerializeField] SpriteRenderer _PlayerGhostRangeUI;
+    Transform _AudioHolder;
+    AudioSource _ParrySfx, _Healing;
+    [SerializeField] Animator _PoofAnimator;
     Rigidbody2D _P_rb, _Ghost_rb;
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
@@ -44,7 +49,8 @@ public class P_Master : MonoBehaviour
     bool _TargetLocked;
     [SerializeField] int _ParryIFrames, _HeavyChargeTimer; 
     Vector2 _P_moveVec, _Ghost_moveVec;
-
+    float _TargetVol = 0.5f;
+    #endregion
     void Awake()
     {
         _BossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
@@ -53,11 +59,24 @@ public class P_Master : MonoBehaviour
         _Health = this.gameObject.GetComponent<Player_HealthBar>();
         float localscale = _SwapRadius * 2f;
         _PlayerGhostRangeUI.transform.localScale = new Vector3(localscale, localscale, 1);
+        _AudioHolder = GameObject.FindGameObjectWithTag("AudioHolder").transform;
+        _ParrySfx = _AudioHolder.GetChild(0).GetComponent<AudioSource>();
+        _Healing = _AudioHolder.GetChild(1).GetComponent<AudioSource>();
     }
     void Update()
     {
         TurnPlayer();
         ClampGhostRadius();
+        HealingAudio();
+    }
+    void HealingAudio()
+    {
+        if (P_Action != P_Action_List.Healing) _TargetVol = -0.5f;
+        else _TargetVol = 1.25f;
+        float curvol = _Healing.volume;
+        float audiosourcevol = Mathf.Lerp(curvol, _TargetVol, 2 * Time.smoothDeltaTime);
+        audiosourcevol = Mathf.Clamp(audiosourcevol, 0, 1f);
+        _Healing.volume = audiosourcevol;
     }
     void TurnPlayer()
     {
@@ -92,10 +111,10 @@ public class P_Master : MonoBehaviour
         Color sr_color = _PlayerGhostRangeUI.color;
         sr_color.a = Mathf.InverseLerp(_SwapRadius * 0.55f, _SwapRadius, pgMagnitude);
         _PlayerGhostRangeUI.color = sr_color;
-
-        if (pgMagnitude > _SwapRadius)
+        float offset = 1; // offset the edge of the sprite and the actual position
+        if (pgMagnitude > _SwapRadius - offset)
         {
-            _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius);
+            _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius - offset);
         }
     }
     void FixedUpdate()
@@ -225,6 +244,7 @@ public class P_Master : MonoBehaviour
         _Ghost_moveVec = input.ReadValue<Vector2>(); //Turnip: same as P_move
     }
     /*---------------------------------------------------------------------------------------------------------*/
+    #region DodgeN'Heal
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
         if(inputState.performed)
@@ -232,7 +252,9 @@ public class P_Master : MonoBehaviour
             if(Vector3.Distance(_P_rb.transform.position, _Ghost_rb.transform.position) > _SwapRadius)
             {
                 //catch case
+                Application.Quit();
                 Debug.Log("Out of range of swap congrats you broke it");
+
                 return; // guard case
             }
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
@@ -356,7 +378,9 @@ public class P_Master : MonoBehaviour
             _TickCount -= 1;
         }
     }
+    #endregion
     /*---------------------------------------------------------------------------------------------------------*/
+    #region AttackStuff
     public void LightAttackInput(InputAction.CallbackContext inputState)
     {
         if (inputState.performed)
@@ -470,14 +494,14 @@ public class P_Master : MonoBehaviour
             {
                 int startUpFrames = 5;
                 int activeFrames = 38;
-                int recoveryFrames = 10;
+                int recoveryFrames = 20;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if(charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
                 int activeFrames = 38;
-                int recoveryFrames = 15; //longer recovery time
+                int recoveryFrames = 30; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else return null;
@@ -521,6 +545,12 @@ public class P_Master : MonoBehaviour
     }
     public void PogChampionParry(int iframes)
     {
+        _PoofAnimator.transform.position = (_P_rb.transform.position + _BossTransform.position) * 0.5f;
+        _PoofAnimator.Play("parrysmoke");
+
+        AudioSource a = _ParrySfx;
+        a.pitch = Random.Range(0.85f, 1);
+        a.Play();
         _ParryIFrames = iframes;
     }
     void PogChampionParry()
@@ -532,4 +562,5 @@ public class P_Master : MonoBehaviour
         }
         else Parry_Invincible = false;
     }
+    #endregion
 }

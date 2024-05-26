@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss_Master : MonoBehaviour
 {
+    GameManager _GM;
+    public GameObject ComboSelectionUI_Prefab;
     B_ComboLibrary _Lib;    
     ComboPossibility _Combopossibility;
 
@@ -13,6 +15,7 @@ public class Boss_Master : MonoBehaviour
     [SerializeField]int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
     [HideInInspector] public float Turnspeed = 1000f;
     [SerializeField] Transform _PlayerTransform;
+    AudioSource _PoiseBreakSFX;
     public PathFinding BossPathfinding;
     float _BossSpeedCache;
     [SerializeField] Stun_visual _StunPrefab;
@@ -28,31 +31,43 @@ public class Boss_Master : MonoBehaviour
 
     void Awake()
     {
+        _GM = Camera.main.GetComponent<GameManager>();
         _Lib = this.GetComponent<B_ComboLibrary>();
         _Combopossibility = this.GetComponent<ComboPossibility>();
         BossPathfinding = this.GetComponent<PathFinding>();
         _BossSpeedCache = BossPathfinding.Speed;
+        _PoiseBreakSFX = GameObject.FindGameObjectWithTag("AudioHolder").transform.GetChild(2).GetComponent<AudioSource>();
+    }
+    private void Start()
+    {
+        GameObject selection = Instantiate(ComboSelectionUI_Prefab);
+        _GM.ComboSelectionUI_Instance = selection;
+        Boss_Action = Boss_Action_List.SelectingBossAttackState;
     }
     void Update()
     {
         RotateBoss();
         if(Boss_Action == Boss_Action_List.Chasing)
         {
-            //boss speed = based on distance to player;
+            //boss speed = based on distance to player; maybe
             BossPathfinding.Speed = _BossSpeedCache;
             Turnspeed = 1000f;
             if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
             {
-                ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
+                ComboPossibility.ComboType currentCombo = _Combopossibility.FinalOutputComboArray[_CurrentBossComboIndex];
                 _Lib.StartUp(currentCombo);
                 Boss_Action = Boss_Action_List.Attack;
             }
         }
-        else
+        //toggle between playing and selecting
+        if (Boss_Action.Equals(Boss_Action_List.SelectingBossAttackState))
         {
-            //turn off boss movement?
-                //dumb idea move the boss in late update and set boss move speed to 0 at the end of the loop
-                //and if you want boss movement every frame in the update set the speed to something nonzero
+            BossPathfinding.Speed = 0;
+            if (_GM.PlayState.Equals(GameManager.G_State.Playing)) Boss_Action = Boss_Action_List.Chasing;
+        }
+        else if(_GM.PlayState.Equals(GameManager.G_State.Selecting))
+        {
+            Boss_Action = Boss_Action_List.SelectingBossAttackState;
         }
     }
     void FixedUpdate()
@@ -75,14 +90,17 @@ public class Boss_Master : MonoBehaviour
     }
     void CycleNextCombo()
     {
-        if (_CurrentBossComboIndex < _Combopossibility.ChosenComboFromKen.ToArray().Length)
+        if (_CurrentBossComboIndex < _Combopossibility.FinalOutputComboArray.ToArray().Length)
         {
             Boss_Action = Boss_Action_List.Chasing; //catch case
             _CurrentBossComboIndex += 1;//increment index
         }
         else
         {
-            print("TESTING POST STUN BEHAVIOUR");
+            GameObject selection = Instantiate(ComboSelectionUI_Prefab);
+            _GM.ComboSelectionUI_Instance = selection;
+            Boss_Action = Boss_Action_List.SelectingBossAttackState;
+
             //Boss_Action = Boss_Action_List.Chasing; // for testing only delete later
             //trigger next boss combo selection
             // IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -120,7 +138,8 @@ public class Boss_Master : MonoBehaviour
     {
         if(_PoiseDamage >= _BossPoiseAmount)
         {
-            if(_PoiseDamage == _BossPoiseAmount)
+            _PoiseBreakSFX.Play();
+            if (_PoiseDamage == _BossPoiseAmount)
             {
                 _PoiseDamage = 0;
                 _PoiseTickTimer = 0;
@@ -147,7 +166,7 @@ public class Boss_Master : MonoBehaviour
         }
 
         if (_PoiseTickTimer > 0) _PoiseTickTimer -= 1;// wait for "6" seconds before poise starts ticking down
-        else if (_PoiseDamage > 0) _PoiseDamage -= 1; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
+        else if (_PoiseDamage > 0) _PoiseDamage -= 3; // if waiting timer is 0 and poise is > 0 then tick down the poise damage 
     }
     public void StartBossOpening(int bossOpeningTimeinTicks)
     {
