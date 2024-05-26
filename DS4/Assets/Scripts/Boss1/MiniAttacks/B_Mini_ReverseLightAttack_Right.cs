@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class B_Mini_ReverseLightAttack_Right : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
@@ -33,7 +33,8 @@ public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobe
     }
     private void Start() //Changable
     {
-        //_B_Path.Speed = 4f;//optional
+        _B_Path.Speed = 3f;//optional
+        _BossMasterRef.Turnspeed = 300f;
     }
     void FixedUpdate()
     {
@@ -42,8 +43,8 @@ public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobe
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        //_BossMasterRef.Turnspeed = 10; // example
-        //_B_Path.Speed = 0.5f;
+        _BossMasterRef.Turnspeed = 10; // example
+        _B_Path.Speed = 1f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {

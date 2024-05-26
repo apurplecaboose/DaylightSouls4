@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class B_Mini_ShurikenCircleAttack : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
@@ -33,7 +33,7 @@ public class #SCRIPTNAME# : MonoBehaviour // inherit from Boss Master and Monobe
     }
     private void Start() //Changable
     {
-        //_B_Path.Speed = 4f;//optional
+        _B_Path.Speed = 0f;//optional
     }
     void FixedUpdate()
     {
