@@ -18,11 +18,21 @@ public class ComboSelectionUI : MonoBehaviour
 {
     #region Varibles
     public enum Fade { In, Out };
-    public Fade FadeStatus;
+    [HideInInspector] public Fade FadeStatus;
     float _LerpDtime;
+
+    [Header("Editable but change stuffs in the script too")]
+    int _MaxPatternCount = 8;
+
+    [Header("References AUTO")]
+    [HideInInspector] public ComboPossibility ComboPossibilityRef;
+    Button _Option1Button, _Option2Button, _Option3Button;
+    TMP_Text _Option1TMP, _Option2TMP, _Option3TMP;
+    Image _Option1_Image, _Option2_Image, _Option3_Image;
+
+    [Header("References")]
     [SerializeField] LinkPictures[] _ComboPictureArray;
     [SerializeField] Dictionary<ComboPossibility.ComboType, Sprite> _Pictionary;
-
     Dictionary<ComboPossibility.ComboType, Sprite> InitializeInpectorValuesToDictionary()
     {
         Dictionary<ComboPossibility.ComboType, Sprite> initializedDictionary = new Dictionary<ComboPossibility.ComboType, Sprite>();
@@ -33,25 +43,15 @@ public class ComboSelectionUI : MonoBehaviour
         return initializedDictionary;
     }
 
-    [Header("Editable but change stuffs in the script too")]
-    public int MaxPatternCount = 8;
-
-    [Header("References AUTO")]
-    [HideInInspector] public ComboPossibility ComboPossibilityRef;
-    Button _Option1Button, _Option2Button, _Option3Button;
-    TMP_Text _Option1TMP, _Option2TMP, _Option3TMP;
-    Image _Option1_Image, _Option2_Image, _Option3_Image;
-
-    [Header("References")]
     [SerializeField] CanvasGroup _CanvasGroup;
     [SerializeField] Transform _ComboOptionsParent;
-    [SerializeField] Transform _PatternsBar;
+    [SerializeField] Transform _EndComboDisplayParent;
     [SerializeField] Button _ExitComboSelectionButton;
     [SerializeField] Image[] _FinalComboImageComponents;
 
     [Header("Debug Purposes")]
-   /* [HideInInspector]*/ [SerializeField] List<ComboPossibility.ComboType> _FinalPattern;//OUTPUT
-    [HideInInspector] int _CurrentPatternIndex;
+    List<ComboPossibility.ComboType> _FinalPattern = new List<ComboPossibility.ComboType>(); //OUTPUT
+    int _CurrentPatternIndex;
     #endregion
     void Awake()
     {
@@ -75,16 +75,18 @@ public class ComboSelectionUI : MonoBehaviour
 
         _Pictionary = InitializeInpectorValuesToDictionary();
         EventSystem.current.SetSelectedGameObject(_Option1Button.gameObject); //selects first "selected" UI element 
+        float zoomScale = 1.5f;
+        button1transform.localScale = button1transform.transform.localScale = new Vector3(zoomScale, zoomScale, 1);
     }
     void Start()
     {
         //references
         _ExitComboSelectionButton.gameObject.SetActive(false);
-        _PatternsBar.gameObject.SetActive(false);
+        _EndComboDisplayParent.gameObject.SetActive(false);
 
         _CurrentPatternIndex = 0;
         // initialize the array for placement
-        for (int i = 0; i < MaxPatternCount; i++)
+        for (int i = 0; i < _MaxPatternCount; i++)
         {
             _FinalPattern.Add(ComboPossibility.ComboType.B999__PLACEHOLDER_FOR_KENS_CODE);
         }
@@ -95,13 +97,13 @@ public class ComboSelectionUI : MonoBehaviour
         _LerpDtime += Time.deltaTime;
         if(FadeStatus.Equals(Fade.In))
         {
-            float lerptotaltime = 0.5f;
+            float lerptotaltime = 1;
             float a = Mathf.Lerp(0, 1, _LerpDtime / lerptotaltime);
             _CanvasGroup.alpha = a;
         }
         if (FadeStatus.Equals(Fade.Out))
         {
-            float lerptotaltime = 0.5f;
+            float lerptotaltime = 1;
             float a = Mathf.Lerp(1, -0.1f, _LerpDtime / lerptotaltime);
             _CanvasGroup.alpha = a;
             if (a <= 0) Destroy(_CanvasGroup.gameObject);
@@ -129,15 +131,15 @@ public class ComboSelectionUI : MonoBehaviour
     #endregion
     void ComboSelected(int buttonindexNumber)
     {
-        if (_CurrentPatternIndex == MaxPatternCount - 1) Invoke("LastSelection", 0.1f);
-        if (_CurrentPatternIndex <= MaxPatternCount - 1)
+        if (_CurrentPatternIndex == _MaxPatternCount - 1) Invoke("LastSelection", 0.1f);
+        if (_CurrentPatternIndex <= _MaxPatternCount - 1)
         {
             string malding = BossEnumStringCleanup(ComboPossibilityRef.ResultComboArrayAllInOne[_CurrentPatternIndex][buttonindexNumber].ToString());
             //SelectedComboTexts[CurrentPatternIndex].text = malding;
             _FinalPattern[_CurrentPatternIndex] = ComboPossibilityRef.ResultComboArrayAllInOne[_CurrentPatternIndex][buttonindexNumber];
 
             _CurrentPatternIndex++;
-            if (_CurrentPatternIndex < MaxPatternCount)
+            if (_CurrentPatternIndex < _MaxPatternCount)
             {
                 UpdateSelection(_CurrentPatternIndex);
             }
@@ -150,10 +152,10 @@ public class ComboSelectionUI : MonoBehaviour
         //change game state
 
         _ExitComboSelectionButton.gameObject.SetActive(true);
-        _PatternsBar.gameObject.SetActive(true);
+        _EndComboDisplayParent.gameObject.SetActive(true);
         _ComboOptionsParent.gameObject.SetActive(false);
 
-        for (int i = 0; i < MaxPatternCount; i++)
+        for (int i = 0; i < _MaxPatternCount; i++)
         {
             ComboPossibility.ComboType combo = _FinalPattern[i];
             _Pictionary.TryGetValue(combo, out var sprite);

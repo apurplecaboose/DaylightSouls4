@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 public class SelectedZoom : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    float _ZoomScale = 1.15f;
+    float _ZoomScale = 1.5f;
     public void OnSelect(BaseEventData eventData)
     {
         this.transform.localScale = new Vector3(_ZoomScale, _ZoomScale, 1);
