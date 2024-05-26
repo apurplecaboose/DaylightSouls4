@@ -34,7 +34,6 @@ public class P_HeavyTriggerEnter : MonoBehaviour
         }
         else
         {
-            print("bigup[");
             int damageRandomizere = Random.Range(-3, 4);
             _BossMasterRef.AddPoiseDamage(_HeavyAttackPoiseDamage);
             _HeathbarRef.DamageBoss(_HeavyAttackDamage + damageRandomizere);
