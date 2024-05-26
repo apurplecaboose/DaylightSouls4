@@ -33,7 +33,7 @@ public class SpinSlash_MiniScript : MonoBehaviour // inherit from Boss Master an
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 1f;
+        _B_Path.Speed = 3f;
         _BossMasterRef.Turnspeed = 1000;
     }
     void FixedUpdate()
