@@ -263,7 +263,7 @@ public class P_Master : MonoBehaviour
             }
             if(P_Action == P_Action_List.ChargingUpForHeavy)
             {
-                if(_TickCount > 16)
+                if(_TickCount > 5) // used to count cooldown on charge heavy swap
                 {
                     _TickCount = 0; // reset 
                     //fire off swap event

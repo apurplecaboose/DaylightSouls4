@@ -952,6 +952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ComboSelectionUI_Prefab: {fileID: 669891106224913273, guid: fdbf2cab8897ebc439f5cd616daf648d, type: 3}
+  _CurrentBossComboIndex: 0
   _BossDefaultSpeed: 2
   _BossPoiseAmount: 750
   _OpeningTick: 0
@@ -961,6 +962,8 @@ MonoBehaviour:
   _PlayerTransform: {fileID: 270587861}
   BossPathfinding: {fileID: 453216931}
   _StunPrefab: {fileID: 5338599655631783590, guid: 6801aeae80c6f7148839f62cfe20d424, type: 3}
+  CurrentAttackMini: {fileID: 0}
+  LastAttackMini: {fileID: 0}
   Boss_Action: 0
 --- !u!114 &453216929
 MonoBehaviour:
@@ -1029,23 +1032,23 @@ MonoBehaviour:
   - ComboKey: 0
     GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
   - ComboKey: 1
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
   - ComboKey: 2
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 5b6462bdb9c51954d8e38cf0e5377a84, type: 3}
   - ComboKey: 3
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: a3b68668f91689a4dbd4c960c648387b, type: 3}
   - ComboKey: 4
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: a3b68668f91689a4dbd4c960c648387b, type: 3}
   - ComboKey: 5
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
   - ComboKey: 6
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: f109882d7a5c3084ea3caf0835c236d7, type: 3}
   - ComboKey: 7
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
   - ComboKey: 8
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: faf38d9edab35714d936ad04a51ab6fb, type: 3}
   - ComboKey: 9
-    GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 68baefa7be0e644498355fbd15ef90f7, type: 3}
 --- !u!114 &453216933
 MonoBehaviour:
   m_ObjectHideFlags: 0
