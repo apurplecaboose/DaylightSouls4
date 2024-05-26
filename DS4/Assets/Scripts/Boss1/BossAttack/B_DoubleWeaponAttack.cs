@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleWeaponAttack : MonoBehaviour
+public class B_DoubleWeaponAttack : MonoBehaviour
 {
     /// <summary>
     /// Follow the pattern and touch only the start function

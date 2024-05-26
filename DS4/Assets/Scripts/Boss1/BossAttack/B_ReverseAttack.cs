@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DriverAttack : MonoBehaviour
+public class B_ReverseAttack : MonoBehaviour
 {
     /// <summary>
     /// Follow the pattern and touch only the start function
@@ -27,15 +27,15 @@ public class DriverAttack : MonoBehaviour
         /// Sample
         invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(240);//length of combo
+        invokeTimeCount += TicksToSeconds(120);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
-        invokeTimeCount += TicksToSeconds(240);//length of combo
+        invokeTimeCount += TicksToSeconds(120);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
-        invokeTimeCount += TicksToSeconds(240);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
-        Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
+        //invokeTimeCount += TicksToSeconds(60);//length of combo
+        //invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        //Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
         //repeat etc
     }
     void Update() // Don't Touch
