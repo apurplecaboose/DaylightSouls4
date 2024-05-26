@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss_Master : MonoBehaviour
 {
+    public GameObject ComboSelectionUI_Prefab;
     B_ComboLibrary _Lib;    
     ComboPossibility _Combopossibility;
 
@@ -35,26 +36,29 @@ public class Boss_Master : MonoBehaviour
         _BossSpeedCache = BossPathfinding.Speed;
         _PoiseBreakSFX = GameObject.FindGameObjectWithTag("AudioHolder").transform.GetChild(2).GetComponent<AudioSource>();
     }
+    private void Start()
+    {
+        Instantiate(ComboSelectionUI_Prefab);
+        Boss_Action = Boss_Action_List.SelectingBossAttackState;
+    }
     void Update()
     {
         RotateBoss();
         if(Boss_Action == Boss_Action_List.Chasing)
         {
-            //boss speed = based on distance to player;
+            //boss speed = based on distance to player; maybe
             BossPathfinding.Speed = _BossSpeedCache;
             Turnspeed = 1000f;
             if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
             {
-                ComboPossibility.ComboType currentCombo = _Combopossibility.ChosenComboFromKen[_CurrentBossComboIndex];
+                ComboPossibility.ComboType currentCombo = _Combopossibility.FinalOutputComboArray[_CurrentBossComboIndex];
                 _Lib.StartUp(currentCombo);
                 Boss_Action = Boss_Action_List.Attack;
             }
         }
-        else
+        if (Boss_Action.Equals(Boss_Action_List.SelectingBossAttackState))
         {
-            //turn off boss movement?
-                //dumb idea move the boss in late update and set boss move speed to 0 at the end of the loop
-                //and if you want boss movement every frame in the update set the speed to something nonzero
+            BossPathfinding.Speed = 0;
         }
     }
     void FixedUpdate()
@@ -77,13 +81,14 @@ public class Boss_Master : MonoBehaviour
     }
     void CycleNextCombo()
     {
-        if (_CurrentBossComboIndex < _Combopossibility.ChosenComboFromKen.ToArray().Length)
+        if (_CurrentBossComboIndex < _Combopossibility.FinalOutputComboArray.ToArray().Length)
         {
             Boss_Action = Boss_Action_List.Chasing; //catch case
             _CurrentBossComboIndex += 1;//increment index
         }
         else
         {
+            Boss_Action = Boss_Action_List.SelectingBossAttackState;
             print("TESTING POST STUN BEHAVIOUR");
             //Boss_Action = Boss_Action_List.Chasing; // for testing only delete later
             //trigger next boss combo selection

@@ -23,7 +23,7 @@ public class ComboPossibility : MonoBehaviour
     [HideInInspector] public ComboType[][] ResultComboArrayAllInOne;
 
     [Header("OUTPUT: DO NOT TOUCH")]
-    public List<ComboType> ChosenComboFromKen = new List<ComboType>(8); // DONT TOUCH
+    public List<ComboType> FinalOutputComboArray = new List<ComboType>(8); // DONT TOUCH
 
     //SelectPatternPanel _RefToSelectPattern;
     public enum ComboType
@@ -81,7 +81,7 @@ public class ComboPossibility : MonoBehaviour
         _ResultComboArray6 = new ComboType[3];
         _ResultComboArray7 = new ComboType[3];
         ResultComboArrayAllInOne = new ComboType[8][];
-        ChosenComboFromKen = new List<ComboType>();
+        FinalOutputComboArray = new List<ComboType>();
         _ComboOptionIndex = new int[3];
         NumberOfComboSelectionRepeats = new int[10];
         _AmountAfterDecrease = new float[10];
@@ -206,7 +206,7 @@ public class ComboPossibility : MonoBehaviour
     //}
     public void GetFinalCombo(List<ComboType> FinalOutput, string EdwardFixandRewriteEverythingEdition)
     {
-        ChosenComboFromKen = FinalOutput;
+        FinalOutputComboArray = FinalOutput;
 
         for (int i = 0; i < FinalOutput.Count; i++)
         {
