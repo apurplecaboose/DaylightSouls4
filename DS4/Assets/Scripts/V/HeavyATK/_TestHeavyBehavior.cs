@@ -22,7 +22,7 @@ public class _TestHeavyBehavior : MonoBehaviour
         SelectingBossAttackState
     }
 
-    [SerializeField] int _tickCount, _heavyChargeTimer, _chargeBonusDamage, _holdthreshold = 20, _maxHoldThreshold = 100; //Turnip:un-serialize when debug done
+    [SerializeField] int _TickCount, _HeavyChargeTimer, _ChargeBonusDamage, _Holdthreshold = 20, _MaxHoldThreshold = 100; //Turnip:un-serialize when debug done
 
     public P_Action_List P_Action;
     [SerializeField] float _P_MoveSpeed = 15f, _Ghost_MoveSpeed = 15f;
@@ -36,8 +36,8 @@ public class _TestHeavyBehavior : MonoBehaviour
         {
             case P_Action_List.NULL_ACTION_STATE:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10f); // move player
-                _tickCount = 0;
-                _heavyChargeTimer = 0; // V: catch case 
+                _TickCount = 0;
+                _HeavyChargeTimer = 0; // V: catch case 
                 break;
 
             case P_Action_List.NeutralHeavy:
@@ -71,11 +71,11 @@ public class _TestHeavyBehavior : MonoBehaviour
         {
             if (inputState.canceled)
             {
-                if (_heavyChargeTimer >= _holdthreshold)
+                if (_HeavyChargeTimer >= _Holdthreshold)
                 {
                     P_Action = P_Action_List.ChargedHeavy;
                 }
-                else if (_heavyChargeTimer < _holdthreshold )
+                else if (_HeavyChargeTimer < _Holdthreshold )
                 {
                     P_Action = P_Action_List.NeutralHeavy;
                 }
@@ -86,10 +86,10 @@ public class _TestHeavyBehavior : MonoBehaviour
     void ChargingUpHeavyAction()//play charge animation, not able to move, disruptable by swap
     {
         int maxCharge = 100;
-        _heavyChargeTimer += 1;
-        _chargeBonusDamage = _heavyChargeTimer - _holdthreshold;
-        _chargeBonusDamage = Mathf.Clamp(_chargeBonusDamage, 0, maxCharge);
-        if (_heavyChargeTimer >= maxCharge)
+        _HeavyChargeTimer += 1;
+        _ChargeBonusDamage = _HeavyChargeTimer - _Holdthreshold;
+        _ChargeBonusDamage = Mathf.Clamp(_ChargeBonusDamage, 0, maxCharge);
+        if (_HeavyChargeTimer >= maxCharge)
         {
             P_Action = P_Action_List.ChargedHeavy;
         }
@@ -103,15 +103,15 @@ public class _TestHeavyBehavior : MonoBehaviour
         int recoveryFrames = 10;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
-        if (_tickCount >= totalTicks)
+        if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
         else
         { // Turnip: run logic 
-            switch (_tickCount)
+            switch (_TickCount)
             {
                 case int t when t < startUpFrames://startup phase
                     break;
@@ -121,12 +121,12 @@ public class _TestHeavyBehavior : MonoBehaviour
                     break;
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
-                    _tickCount = 0;
-                    _heavyChargeTimer = 0;//catch case....?
+                    _TickCount = 0;
+                    _HeavyChargeTimer = 0;//catch case....?
 
                     break;
             }
-            _tickCount += 1;
+            _TickCount += 1;
         }
     }
     void ChargedHeavyAttackAction()
@@ -136,15 +136,15 @@ public class _TestHeavyBehavior : MonoBehaviour
         int activeFrames = 5;
         int recoveryFrames = 10;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
-        if (_tickCount >= totalTicks)
+        if (_TickCount >= totalTicks)
         { //Turnip: done ticking reset back to null action state and set tickcount back to 0 for next action
             P_Action = P_Action_List.NULL_ACTION_STATE;
-            _tickCount = 0;
+            _TickCount = 0;
             return;
         }
         else
         { // Turnip: run logic 
-            switch (_tickCount)
+            switch (_TickCount)
             {
                 case int t when t < startUpFrames://startup phase
                     break;
@@ -154,12 +154,12 @@ public class _TestHeavyBehavior : MonoBehaviour
                     break;
                 case int t when t >= totalTicks:
                     P_Action = P_Action_List.NULL_ACTION_STATE;// catch case
-                    _tickCount = 0;
-                    _heavyChargeTimer = 0;
-                    _chargeBonusDamage = 0;
+                    _TickCount = 0;
+                    _HeavyChargeTimer = 0;
+                    _ChargeBonusDamage = 0;
                     break;
             }
-            _tickCount += 1;
+            _TickCount += 1;
         }
     }
 

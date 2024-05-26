@@ -40,7 +40,7 @@ public class GenericBossShake : MonoBehaviour
             
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Intensity Curve", GUILayout.MaxWidth(EditorGUIUtility.currentViewWidth / 6f));
-            script._IntensityCurve = EditorGUILayout.CurveField(script._IntensityCurve, GUILayout.MaxWidth(EditorGUIUtility.currentViewWidth / 1.3f));
+            script.IntensityCurve = EditorGUILayout.CurveField(script.IntensityCurve, GUILayout.MaxWidth(EditorGUIUtility.currentViewWidth / 1.3f));
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.Space();
@@ -66,7 +66,7 @@ public class GenericBossShake : MonoBehaviour
 #endif
     #endregion
     int _ShakeLengthInFrames;
-    AnimationCurve _IntensityCurve;
+    [HideInInspector]public AnimationCurve IntensityCurve;
     float _StartIntensity, _EndIntensity, _Amp, _Dtime, _ShakeFrequency = 60f;
     bool _DontDestroyOnTimeUp, _StartOnAwake, _Trigger;
 
@@ -85,7 +85,7 @@ public class GenericBossShake : MonoBehaviour
                 Destroy(this); //shake is finishied destroy script
                 return;
             }
-            _Amp = Mathf.Lerp(_StartIntensity, _EndIntensity, Mathf.Clamp01(_IntensityCurve.Evaluate(time)));
+            _Amp = Mathf.Lerp(_StartIntensity, _EndIntensity, Mathf.Clamp01(IntensityCurve.Evaluate(time)));
             float x = Mathf.Sin(_Dtime * _ShakeFrequency) * _Amp;
             float y = Mathf.Cos(_Dtime * _ShakeFrequency) * _Amp;
 
