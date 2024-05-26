@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject ComboSelectionUI_Instance;
     void Awake()
     {
-        
+
     }
     void Start()
     {
-        
+
     }
     void Update()
     {
-        TESTStartKenPanel();
+        TESTStartEdwardsPanel();
     }
     void FixedUpdate()
     {
-        
+
     }
-    void TESTStartKenPanel()
+    void TESTStartEdwardsPanel()
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            UIManager.Instance.ShowPanel<SelectPatternPanel>();
-    };
+            //UIManager.Instance.ShowPanel<SelectPatternPanel>();
+            Instantiate(ComboSelectionUI_Instance);
         }
+    }
 }

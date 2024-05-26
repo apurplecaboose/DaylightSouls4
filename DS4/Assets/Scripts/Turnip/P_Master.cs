@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class P_Master : MonoBehaviour
 {
+    #region Varibles
     public P_Action_List P_Action;
     public enum P_Action_List
     {
@@ -49,7 +50,7 @@ public class P_Master : MonoBehaviour
     [SerializeField] int _ParryIFrames, _HeavyChargeTimer; 
     Vector2 _P_moveVec, _Ghost_moveVec;
     float _TargetVol = 0.5f;
-
+    #endregion
     void Awake()
     {
         _BossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
@@ -243,6 +244,7 @@ public class P_Master : MonoBehaviour
         _Ghost_moveVec = input.ReadValue<Vector2>(); //Turnip: same as P_move
     }
     /*---------------------------------------------------------------------------------------------------------*/
+    #region DodgeN'Heal
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
         if(inputState.performed)
@@ -374,7 +376,9 @@ public class P_Master : MonoBehaviour
             _TickCount -= 1;
         }
     }
+    #endregion
     /*---------------------------------------------------------------------------------------------------------*/
+    #region AttackStuff
     public void LightAttackInput(InputAction.CallbackContext inputState)
     {
         if (inputState.performed)
@@ -556,5 +560,5 @@ public class P_Master : MonoBehaviour
         }
         else Parry_Invincible = false;
     }
-
+    #endregion
 }

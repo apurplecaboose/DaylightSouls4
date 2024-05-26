@@ -1,144 +1,154 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//using System.Text.RegularExpressions;
+//using UnityEngine;
+//using UnityEngine.EventSystems;
+//using UnityEngine.UI;
+//using TMPro;
+//using Random = UnityEngine.Random;
 
-public class SelectPatternPanel : BasePanel
-{
-    public Button btnNext;
+//[Serializable]
+//public class LinkPictures
+//{
+//    public ComboPossibility.ComboType ComboKey;
+//    public Sprite ComboImageValue;
+//}
 
-    public List<ComboPossibility.ComboType> FinalPattern;//J: change the type use to the abandon of scriptable object
+//public class SelectPatternPanel : BasePanel
+//{
+//    public LinkPictures[] _ComboPictureArray;
+//    public Dictionary<ComboPossibility.ComboType, Sprite> _Pictionary;
 
-    public int patternAmount = 8;
+//    Dictionary<ComboPossibility.ComboType, Sprite> InitializeInpectorValuesToDictionary()
+//    {
+//        Dictionary<ComboPossibility.ComboType, Sprite> initializedDictionary = new Dictionary<ComboPossibility.ComboType, Sprite>();
+//        foreach (var item in _ComboPictureArray)
+//        {
+//            initializedDictionary.Add(item.ComboKey, item.ComboImageValue);
+//        }
+//        return initializedDictionary;
+//    }
 
-    public int currentPatternIndex;
+//    [Header("Editable")]
+//    public int MaxPatternCount = 8;
 
-    public ComboPossibility comboPossibility;
+//    [Header("References AUTO")]
+//    [HideInInspector] public ComboPossibility ComboPossibilityRef;
 
-    public Text[] patternTexts;
+//    [Header("References")]
+//    public GameObject _ComboOptionsParent;
+//    public GameObject _PatternsBar;
 
-    public Button btnSelection1;
-    public Button btnSelection2;
-    public Button btnSelection3;
-    private Image imageSelection1;
-    private Image imageSelection2;
-    private Image imageSelection3;
+//    public Button ExitComboSelectionButton;
+//    public Button Option1Button, Option2Button, Option3Button;
+//    public TMP_Text _Option1TMP, _Option2TMP, _Option3TMP;
+//    public Image _Option1_Image, _Option2_Image, _Option3_Image;
+//    public Image[] _FinalComboImageComponents;
 
-    public override void Init()
-    {
-        comboPossibility = GameObject.FindGameObjectWithTag("Boss").GetComponent<ComboPossibility>();
+//    [Header("Debug Purposes")]
+//    [HideInInspector] public List<ComboPossibility.ComboType> FinalPattern;//OUTPUT
+//    [HideInInspector] public int CurrentPatternIndex;
+//    public override void Init() // start function in Base Panel 
+//    {
+//        //references
+//        ComboPossibilityRef = GameObject.FindGameObjectWithTag("Boss").GetComponent<ComboPossibility>();
+//        //_Option1_Image = Option1Button. gameObject.GetComponent<Image>();
+//        //_Option2_Image = Option2Button.gameObject.GetComponent<Image>();
+//        //_Option3_Image = Option3Button.gameObject.GetComponent<Image>();
 
-        EventSystem.current.SetSelectedGameObject(btnSelection1.gameObject);
+//        //_Option1TMP = Option1Button.gameObject.GetComponentInChildren<TMP_Text>();
+//        //_Option2TMP = Option1Button.gameObject.GetComponentInChildren<TMP_Text>();
+//        //_Option3TMP = Option1Button.gameObject.GetComponentInChildren<TMP_Text>();
 
-        btnNext.gameObject.SetActive(false);
+//        _Pictionary = InitializeInpectorValuesToDictionary();
 
-        imageSelection1 = btnSelection1.gameObject.GetComponentInChildren<Image>();
-        imageSelection2 = btnSelection2.gameObject.GetComponentInChildren<Image>();
-        imageSelection3 = btnSelection3.gameObject.GetComponentInChildren<Image>();
 
-        InitializeContainer();
+//        //run
+//        //EventSystem.current.SetSelectedGameObject(Option1Button.gameObject); //selects first "selected" UI element 
 
-        currentPatternIndex = 0;
-        UpdateSelection(currentPatternIndex);
+//        ExitComboSelectionButton.gameObject.SetActive(false);
+//        _PatternsBar.gameObject.SetActive(false);
 
-        btnNext.onClick.AddListener(() =>
-        {
-            //Hide myself
-            UIManager.Instance.HidePanel<SelectPatternPanel>();
+//        InitializeContainer();
 
-            //todo: Next move
-        });
+//        CurrentPatternIndex = 0;
+//        UpdateSelection(CurrentPatternIndex);
 
-        btnSelection1.onClick.AddListener(() =>
-        {
-            if (currentPatternIndex == 7)
-            {
-                btnNext.gameObject.SetActive(true);
-            }
-            if(currentPatternIndex <= 7)
-            {
-                string malding = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0].ToString());
-                patternTexts[currentPatternIndex].text = malding;
-                FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][0];
+//        //button on click events
+//        ExitComboSelectionButton.onClick.AddListener(() => { UIManager.Instance.HidePanel<SelectPatternPanel>(); });
+//        Option1Button.onClick.AddListener(() => { ComboSelected(0); });
+//        Option2Button.onClick.AddListener(() => { ComboSelected(1); });
+//        Option3Button.onClick.AddListener(() => { ComboSelected(2); });
+//    }
+//    void ComboSelected(int buttonindexNumber)
+//    {
+//        if (CurrentPatternIndex == MaxPatternCount - 1) Invoke("LastSelection",0.1f);
+//        if (CurrentPatternIndex <= MaxPatternCount - 1)
+//        {
+//            string malding = BossEnumStringCleanup(ComboPossibilityRef.ResultComboArrayAllInOne[CurrentPatternIndex][buttonindexNumber].ToString());
+//            //SelectedComboTexts[CurrentPatternIndex].text = malding;
+//            FinalPattern[CurrentPatternIndex] = ComboPossibilityRef.ResultComboArrayAllInOne[CurrentPatternIndex][buttonindexNumber];
 
-                currentPatternIndex++;
-                if (currentPatternIndex < 8)
-                {
-                    UpdateSelection(currentPatternIndex);
-                }
-            }
-        });
+//            CurrentPatternIndex++;
+//            if (CurrentPatternIndex < MaxPatternCount)
+//            {
+//                UpdateSelection(CurrentPatternIndex);
+//            }
+//        }
+//    }
+//    void LastSelection()
+//    {
+//        //run some code to move the UI elements
+//        ExitComboSelectionButton.gameObject.SetActive(true);
+//        _PatternsBar.gameObject.SetActive(true);
+//        _ComboOptionsParent.gameObject.SetActive(false);
 
-        btnSelection2.onClick.AddListener(() =>
-        {
-            if (currentPatternIndex == 7)
-            {
-                btnNext.gameObject.SetActive(true);
-            }
-            if (currentPatternIndex <= 7)
-            {
-                string malding = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1].ToString());
-                patternTexts[currentPatternIndex].text = malding;
-                FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][1];
+//        for (int i = 0; i < MaxPatternCount; i++)
+//        {
+//            ComboPossibility.ComboType combo = FinalPattern[i];
+//            _Pictionary.TryGetValue(combo, out var sprite);
+//            _FinalComboImageComponents[i].sprite = sprite;
+//        }
+//        EventSystem.current.SetSelectedGameObject(ExitComboSelectionButton.gameObject);
+//    }
+//    void InitializeContainer()
+//    {
+//        for (int i = 0; i < MaxPatternCount; i++)
+//        {
+//            FinalPattern.Add(ComboPossibility.ComboType.B999__PLACEHOLDER_FOR_KENS_CODE);
+//            print(FinalPattern[i]);
+//        }
+//        ComboPossibilityRef.ChosenComboFromKen = FinalPattern; //Edward: output to johnny script
+//    }
 
-                currentPatternIndex++;
-                if (currentPatternIndex < 8)
-                {
-                    UpdateSelection(currentPatternIndex);
-                }
-            }
-        });
+//    public void UpdateSelection(int index)
+//    {
+//        ComboPossibility.ComboType combooption1 = ComboPossibilityRef.ResultComboArrayAllInOne[index][0];
+//        ComboPossibility.ComboType combooption2 = ComboPossibilityRef.ResultComboArrayAllInOne[index][1];
+//        ComboPossibility.ComboType combooption3 = ComboPossibilityRef.ResultComboArrayAllInOne[index][2];
+//        string string1 = BossEnumStringCleanup(combooption1.ToString());
+//        string string2 = BossEnumStringCleanup(combooption2.ToString());
+//        string string3 = BossEnumStringCleanup(combooption3.ToString());
+//        _Option1TMP.text = string1;
+//        _Option2TMP.text = string2;
+//        _Option3TMP.text = string3;
 
-        btnSelection3.onClick.AddListener(() =>
-        {
-            if (currentPatternIndex == 7)
-            {
-                btnNext.gameObject.SetActive(true);
-            }
-            if (currentPatternIndex <= 7)
-            {
-                string malding = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2].ToString());
-                patternTexts[currentPatternIndex].text = malding;
-                FinalPattern[currentPatternIndex] = comboPossibility.ResultComboArrayAllInOne[currentPatternIndex][2];
+//        //update images here
+//        _Pictionary.TryGetValue(combooption1 , out var pic1);
+//        _Pictionary.TryGetValue(combooption2, out var pic2);
+//        _Pictionary.TryGetValue(combooption3, out var pic3);
+//        _Option1_Image.sprite = pic1;
+//        _Option2_Image.sprite = pic2;
+//        _Option3_Image.sprite = pic3;
+//    }
+//    string BossEnumStringCleanup(string inputString)
+//    {
+//        string cleanedString = Regex.Replace(inputString, @"^[^_]*__", "");
 
-                currentPatternIndex++;
-                if (currentPatternIndex < 8)
-                {
-                    UpdateSelection(currentPatternIndex);
-                }
-            }
-        });
-    }
-    void InitializeContainer()
-    {
-        for (int i = 0; i < patternAmount; i++)
-        {
-            FinalPattern.Add(ComboPossibility.ComboType.B999__PLACEHOLDER_FOR_KENS_CODE);
-            print(FinalPattern[i]);
-        }
-        comboPossibility.ChosenComboFromKen = FinalPattern; //Edward: output to johnny script
-    }
+//        cleanedString = cleanedString.Replace("_", " ");
 
-    public void UpdateSelection(int index)
-    {
-        string string1 = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[index][0].ToString());
-        string string2 = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[index][1].ToString());
-        string string3 = BossEnumStringCleanup(comboPossibility.ResultComboArrayAllInOne[index][2].ToString());
-        btnSelection1.GetComponentInChildren<Text>().text = string1;
-        btnSelection2.GetComponentInChildren<Text>().text = string2;
-        btnSelection3.GetComponentInChildren<Text>().text = string3;
-    }
-    string BossEnumStringCleanup(string inputString)
-    {
-        string cleanedString = Regex.Replace(inputString, @"^[^_]*__", "");
+//        return cleanedString;
+//    }
 
-        cleanedString = cleanedString.Replace("_", " ");
-
-        return cleanedString;
-    }
-}
+//}

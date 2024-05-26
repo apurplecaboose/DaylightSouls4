@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ComboPossibility : MonoBehaviour
@@ -27,7 +25,7 @@ public class ComboPossibility : MonoBehaviour
     [Header("OUTPUT: DO NOT TOUCH")]
     public List<ComboType> ChosenComboFromKen = new List<ComboType>(8); // DONT TOUCH
 
-    SelectPatternPanel _RefToSelectPattern;
+    //SelectPatternPanel _RefToSelectPattern;
     public enum ComboType
     {
         B1__Slam_Attack,//0
@@ -189,17 +187,32 @@ public class ComboPossibility : MonoBehaviour
         }
     }
 
-    public void GetFinalCombo()
-    {
-        _RefToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
-        int finalLength = _RefToSelectPattern.FinalPattern.Count;
-        ChosenComboFromKen = _RefToSelectPattern.FinalPattern;
+    //public void GetFinalCombo()
+    //{
+    //    _RefToSelectPattern = UIManager.Instance.GetPanel<SelectPatternPanel>();
+    //    int finalLength = _RefToSelectPattern.FinalPattern.Count;
+    //    ChosenComboFromKen = _RefToSelectPattern.FinalPattern;
 
-        for (int i = 0; i < finalLength; i++)
+    //    for (int i = 0; i < finalLength; i++)
+    //    {
+    //        for (int j = 0; j < _CurrentBossCombos.Count; j++)
+    //        {
+    //            if (_RefToSelectPattern.FinalPattern[i] == _CurrentBossCombos[j])
+    //            {
+    //                NumberOfComboSelectionRepeats[j]++;
+    //            }
+    //        }
+    //    }
+    //}
+    public void GetFinalCombo(List<ComboType> FinalOutput, string EdwardFixandRewriteEverythingEdition)
+    {
+        ChosenComboFromKen = FinalOutput;
+
+        for (int i = 0; i < FinalOutput.Count; i++)
         {
             for (int j = 0; j < _CurrentBossCombos.Count; j++)
             {
-                if (_RefToSelectPattern.FinalPattern[i] == _CurrentBossCombos[j])
+                if (FinalOutput[i] == _CurrentBossCombos[j])
                 {
                     NumberOfComboSelectionRepeats[j]++;
                 }
