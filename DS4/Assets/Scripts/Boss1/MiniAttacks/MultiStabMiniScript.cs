@@ -43,7 +43,7 @@ public class MultiStabMiniScript : MonoBehaviour // inherit from Boss Master and
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 3; // example
+        _BossMasterRef.Turnspeed = 120; // example
         _B_Path.Speed = 0.5f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch

@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea91caa8ffe33d4b9932343e22a1704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LengthOfLastComboInTicks: 120
+  _LengthOfLastComboInTicks: 300
   _RandomOpeningRange: {x: 0, y: 0}
   _MiniAttackPrefabs:
   - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
   - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
   - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
-  - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
+  - {fileID: 5494882110819875870, guid: 3b0e80990ab99414191e178c031fd61e, type: 3}

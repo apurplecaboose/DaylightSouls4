@@ -148,8 +148,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034418464, y: -0.6742191}
-  m_Size: {x: 1.1811631, y: 1.9258093}
+  m_Offset: {x: -0.034418464, y: -0.35565722}
+  m_Size: {x: 1.1811631, y: 1.2886856}
   m_Direction: 0
 --- !u!1 &1585392089874940993
 GameObject:
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2387948650049052178}
   - component: {fileID: 129937963871301415}
   - component: {fileID: 4040079553055738225}
-  - component: {fileID: 800647592796942627}
+  - component: {fileID: 1293785824258459348}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -219,7 +219,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.022367448, y: 0.042156637}
+  m_Offset: {x: -0.022367448, y: 0.4035103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -230,7 +230,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3411637, y: 1.446479}
+  m_Size: {x: 0.3411637, y: 0.72377163}
   m_EdgeRadius: 0
 --- !u!95 &4040079553055738225
 Animator:
@@ -242,7 +242,7 @@ Animator:
   m_GameObject: {fileID: 1585392089874940993}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ee7b7161365ee4b46970acc05b7ad6c0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7bb4af199ef19ae4892bf92f0981a79e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -253,7 +253,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &800647592796942627
+--- !u!114 &1293785824258459348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,10 +262,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1585392089874940993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d39d13a957d6c46a0a58be13b25c98, type: 3}
+  m_Script: {fileID: 11500000, guid: 8484342959b807748aa2e05b7ccd23ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackDamage: 20
+  _AttackDamage: 10
   _StunFrames: 10
   AttackStunType: 0
   _DestroyTarget: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1937165974661910599}
   m_Layer: 0
-  m_Name: SpinSlash
+  m_Name: 2_MiyazakiSpinSlash 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
