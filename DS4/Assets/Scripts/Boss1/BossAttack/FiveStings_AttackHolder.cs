@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightStab : MonoBehaviour
+public class FiveStings_AttackHolder : MonoBehaviour
 {
     /// <summary>
     /// Follow the pattern and touch only the start function
@@ -27,10 +27,10 @@ public class RightStab : MonoBehaviour
         /// Sample
         invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
-        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
         //invokeTimeCount += TicksToSeconds(60);//length of combo
