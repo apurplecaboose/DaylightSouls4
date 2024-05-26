@@ -10,15 +10,17 @@ public class Boss_Master : MonoBehaviour
     ComboPossibility _Combopossibility;
 
     [Header("Boss Master")]
-    int _CurrentBossComboIndex = 0;
+    [SerializeField] int _CurrentBossComboIndex = 0;
+    [SerializeField] float _BossDefaultSpeed;
     [SerializeField] int _BossPoiseAmount = 500;
     [SerializeField]int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
     [HideInInspector] public float Turnspeed = 1000f;
     [SerializeField] Transform _PlayerTransform;
     AudioSource _PoiseBreakSFX;
     public PathFinding BossPathfinding;
-    float _BossSpeedCache;
     [SerializeField] Stun_visual _StunPrefab;
+
+    public GameObject CurrentAttackMini, LastAttackMini;
     public enum Boss_Action_List
     {
         Chasing,
@@ -35,7 +37,6 @@ public class Boss_Master : MonoBehaviour
         _Lib = this.GetComponent<B_ComboLibrary>();
         _Combopossibility = this.GetComponent<ComboPossibility>();
         BossPathfinding = this.GetComponent<PathFinding>();
-        _BossSpeedCache = BossPathfinding.Speed;
         _PoiseBreakSFX = GameObject.FindGameObjectWithTag("AudioHolder").transform.GetChild(2).GetComponent<AudioSource>();
     }
     private void Start()
@@ -50,8 +51,17 @@ public class Boss_Master : MonoBehaviour
         if(Boss_Action == Boss_Action_List.Chasing)
         {
             //boss speed = based on distance to player; maybe
-            BossPathfinding.Speed = _BossSpeedCache;
+            BossPathfinding.Speed = _BossDefaultSpeed;
             Turnspeed = 1000f;
+            if(_CurrentBossComboIndex >= 8)
+            {
+                if (_GM.ComboSelectionUI_Instance != null) return;
+                _CurrentBossComboIndex = 0;
+                GameObject selection = Instantiate(ComboSelectionUI_Prefab);
+                _GM.ComboSelectionUI_Instance = selection;
+                Boss_Action = Boss_Action_List.SelectingBossAttackState;
+                return;
+            }
             if (Vector3.Distance(_PlayerTransform.position, this.transform.position) < 4) //distance is less than amount
             {
                 ComboPossibility.ComboType currentCombo = _Combopossibility.FinalOutputComboArray[_CurrentBossComboIndex];
@@ -95,15 +105,14 @@ public class Boss_Master : MonoBehaviour
             Boss_Action = Boss_Action_List.Chasing; //catch case
             _CurrentBossComboIndex += 1;//increment index
         }
-        else
+        else // combo past end of array
         {
+            //catch case
+            if (_GM.ComboSelectionUI_Instance != null) return;
+            _CurrentBossComboIndex = 0;
             GameObject selection = Instantiate(ComboSelectionUI_Prefab);
             _GM.ComboSelectionUI_Instance = selection;
             Boss_Action = Boss_Action_List.SelectingBossAttackState;
-
-            //Boss_Action = Boss_Action_List.Chasing; // for testing only delete later
-            //trigger next boss combo selection
-            // IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }
     void RotateBoss()

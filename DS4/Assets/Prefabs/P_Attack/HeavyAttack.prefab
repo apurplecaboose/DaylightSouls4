@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _HeavyAttackDamage: 75
-  _HeavyAttackPoiseDamage: 50
+  _HeavyAttackPoiseDamage: 75
 --- !u!61 &1330856260622031617
 BoxCollider2D:
   m_ObjectHideFlags: 0

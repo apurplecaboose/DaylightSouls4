@@ -15,6 +15,8 @@ public class P_ParryTriggerEnter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("BossParry")) return;
+        Destroy(_BossMasterRef.CurrentAttackMini);
+        Destroy(_BossMasterRef.LastAttackMini);
         if (_Player.ChargeBonusDamage > 0)
         {
             //remap the bonus damage to a multiplier first vector is the input range second is the multiplier range
