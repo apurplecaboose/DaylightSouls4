@@ -49,12 +49,30 @@ public class CresentMoon : MonoBehaviour
     {
         GameObject a = Instantiate(_MiniAttackPrefabs[_CurrentAttackIndex], this.transform); // instantiate the first attack
         a.transform.up = this.transform.up;
+        if (_BossMasterRef.CurrentAttackMini == null)
+        {
+            _BossMasterRef.CurrentAttackMini = a;
+        }
+        else
+        {
+            _BossMasterRef.LastAttackMini = _BossMasterRef.CurrentAttackMini;
+            _BossMasterRef.CurrentAttackMini = a;
+        }
         _CurrentAttackIndex += 1;
     }
     void CycleNextAttack() // Don't Touch
     {
         GameObject a = Instantiate(_MiniAttackPrefabs[_CurrentAttackIndex], this.transform);
         a.transform.up = this.transform.up;
+        if (_BossMasterRef.CurrentAttackMini == null)
+        {
+            _BossMasterRef.CurrentAttackMini = a;
+        }
+        else
+        {
+            _BossMasterRef.LastAttackMini = _BossMasterRef.CurrentAttackMini;
+            _BossMasterRef.CurrentAttackMini = a;
+        }
         _CurrentAttackIndex += 1;
         if (_CurrentAttackIndex >= _MiniAttackPrefabs.Count)//EndCombo();
         {

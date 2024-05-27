@@ -155,7 +155,7 @@ public class P_Master : MonoBehaviour
                 HeavyAttackAction(true);
                 break;
             case P_Action_List.Healing:
-                //hold down key to heal
+                _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10 * 0.25f); // move player
                 HealingAction();
                 if (_HealInputAction.Value.action.IsPressed()) _TickCount = 10; //get key down equivalant
                 break;
@@ -263,7 +263,7 @@ public class P_Master : MonoBehaviour
             }
             if(P_Action == P_Action_List.ChargingUpForHeavy)
             {
-                if(_TickCount > 16)
+                if(_TickCount > 5) // used to count cooldown on charge heavy swap
                 {
                     _TickCount = 0; // reset 
                     //fire off swap event
@@ -289,7 +289,7 @@ public class P_Master : MonoBehaviour
         //swap player UNINTERUPTABLE
         int startUpFrames = 1;
         int active_i_Frames = 13;
-        int recoveryFrames = 13;
+        int recoveryFrames = 5;
         int totalTicks = startUpFrames + active_i_Frames + recoveryFrames;
 
         if (_TickCount >= totalTicks)

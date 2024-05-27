@@ -11,6 +11,8 @@ public class B_AttackTrigger : MonoBehaviour
     [Tooltip("Small Attack: x-y frames, Medium Attack: x-y frames, Poise Break Heavy Attack x-y frames")]
     [SerializeField] int _StunFrames = 10;
     public P_Master.P_StunSize AttackStunType;
+    bool _StartDamageTimer;
+    int _TickTimer, _WaitforDamageinTicks = 3;
     void Awake()
     {
         _P = GameObject.FindGameObjectWithTag("Player");
@@ -23,7 +25,18 @@ public class B_AttackTrigger : MonoBehaviour
         if(_P_MasterRef.Dodging_Invincible) return;
         if (_P_MasterRef.Parry_Invincible) return;
         //damage player
-        _P_Health.DamagePlayerHealth(_AttackDamage);
-        _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
+        _StartDamageTimer = true;
+    }
+    private void FixedUpdate()
+    {
+        if (!_StartDamageTimer) return;
+        _TickTimer += 1;
+
+        if (_TickTimer >= 10)
+        {
+            _TickTimer -= 1;
+            _P_Health.DamagePlayerHealth(_AttackDamage);
+            _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
+        }
     }
 }
