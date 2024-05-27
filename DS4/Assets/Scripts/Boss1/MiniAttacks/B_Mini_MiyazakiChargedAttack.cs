@@ -61,6 +61,10 @@ public class B_Mini_MiyazakiChargedAttack : MonoBehaviour // inherit from Boss M
         if (_DestroyTarget == null) Destroy(gameObject);
         else Destroy(_DestroyTarget);
     }
+    public void MakeMeSlower()
+    {
+        _B_Path.Speed = 1f;
+    }
     public void ResetEverything() // Don't Touch
     {
         //run resetcode here

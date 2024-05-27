@@ -25,17 +25,14 @@ public class SampleAttack1 : MonoBehaviour
         _BossMasterRef.Turnspeed = 5000f;
         float invokeTimeCount = 0;
         /// Sample
-        invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(0, 30)); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(60);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20,30)); // length of gap
+        invokeTimeCount += TicksToSeconds(50);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(15,45)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
         invokeTimeCount += TicksToSeconds(60);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(50, 150)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
-        invokeTimeCount += TicksToSeconds(60);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
-        Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
         //repeat etc
     }
     void Update() // Don't Touch
