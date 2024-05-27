@@ -33,7 +33,7 @@ public class B_Mini_MiyazakiChargedAttack : MonoBehaviour // inherit from Boss M
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 8f;//optional
+        _B_Path.Speed = 6f;//optional
         _BossMasterRef.Turnspeed = 200;
     }
     void FixedUpdate()
