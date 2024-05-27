@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7832138002678295580}
-  - component: {fileID: 4205196354101926810}
+  - component: {fileID: 7917165781598520539}
   m_Layer: 0
-  m_Name: CresentMoon
+  m_Name: Pentathrust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4205196354101926810
+--- !u!114 &7917165781598520539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3291682989430892978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea91caa8ffe33d4b9932343e22a1704, type: 3}
+  m_Script: {fileID: 11500000, guid: d2b968eef222d8d46a84d380abb7cf10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LengthOfLastComboInTicks: 300
-  _RandomOpeningRange: {x: 0, y: 0}
+  _LengthOfLastComboInTicks: 240
+  _RandomOpeningRange: {x: 80, y: 200}
   _MiniAttackPrefabs:
-  - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
-  - {fileID: 5494882110819875870, guid: b39f34ff979cc264389c45cb83867555, type: 3}
-  - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
-  - {fileID: 5494882110819875870, guid: 3b0e80990ab99414191e178c031fd61e, type: 3}
+  - {fileID: 5892170635575372603, guid: edfda7b2fe59d8447bdffdccbc6cbf2c, type: 3}
+  - {fileID: 5494882110819875870, guid: 72fc033746972d44e850c29992710174, type: 3}
+  - {fileID: 5494882110819875870, guid: 522643ae85888b64f995425a7b425669, type: 3}

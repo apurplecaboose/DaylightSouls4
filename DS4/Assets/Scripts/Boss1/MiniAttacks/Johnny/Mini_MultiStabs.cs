@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class Mini_MultiStabs : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
@@ -31,11 +31,6 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
         _BossMasterRef = _B.GetComponent<Boss_Master>();
         _B_Path = _B.GetComponent<PathFinding>();
     }
-    private void Start() //Changable
-    {
-        _B_Path.Speed = 4f;//optional
-        _BossMasterRef.Turnspeed = 500;
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -45,6 +40,10 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
         _P_Health.DamagePlayerHealth(_AttackDamage);
         _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
     }
+    private void Start() //Changable
+    {
+        //_B_Path.Speed = 4f;//optional
+    }
     void FixedUpdate()
     {
         //run any neessicary special code here
@@ -52,8 +51,8 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 120; // example
-        _B_Path.Speed = 0.5f;
+        //_BossMasterRef.Turnspeed = 10; // example
+        //_B_Path.Speed = 0.5f;
     }
     public void EndofLife() // end of attack
     {

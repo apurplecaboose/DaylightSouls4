@@ -5,8 +5,38 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/StartMenu.unity
+    guid: f1021b8eca17cf249bd8c0a240582250
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/1Movement.unity
+    guid: 737b5f8ca09909d4287ec49c6a239b66
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/2Health.unity
+    guid: 27f536c4d4bf9044a8c79796c70cfe70
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/3SwapAndStamina.unity
+    guid: 397cf37e18f364645958cd04084818ef
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/4Lockon.unity
+    guid: 3823c6a05e28bf54dbbe0a415cbc1788
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/5LightAttack.unity
+    guid: 5732301b31b6c3441bea626908af496e
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/6HeavyParry.unity
+    guid: 8e66d31b7dcf0d84e9c750263e2f73c4
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/7PoiseBreak.unity
+    guid: c8538b7cb1fee074cb60a5b278688e5f
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/V/TutorialScenes/8ComboSelection.unity
+    guid: 4653ce05bbfe5dd468cfead1e8d7157c
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/Turnip/Turnip Input Actions.unity
+    guid: a99640100e63645499b6f8fcf6c95d97
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bbbfda765414b454f8e0760c22d9a004, type: 2}

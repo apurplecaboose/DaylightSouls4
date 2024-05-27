@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monobehaviour
+public class Mini_Wave_Attack : MonoBehaviour // inherit from Boss Master and Monobehaviour
 {
     //References
     GameObject _P, _B;
     P_Master _P_MasterRef;
-    PathFinding _B_Path;
     Boss_Master _BossMasterRef;
+    PathFinding _B_Path;
     Player_HealthBar _P_Health;
 
     [Header("Required Fields MUST FILL!!!")]
@@ -22,7 +22,7 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
     [Header("Optional Fields")]
     [SerializeField] GameObject _DestroyTarget;
     [SerializeField] int _AttackTick;
-    void Awake() // Don't Touch
+    void Awake()
     {
         _P = GameObject.FindGameObjectWithTag("Player");
         _B = GameObject.FindGameObjectWithTag("Boss");
@@ -31,10 +31,10 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
         _BossMasterRef = _B.GetComponent<Boss_Master>();
         _B_Path = _B.GetComponent<PathFinding>();
     }
-    private void Start() //Changable
+    private void Start()
     {
-        _B_Path.Speed = 4f;//optional
-        _BossMasterRef.Turnspeed = 500;
+        _B_Path.Speed = 7f;//optional
+        _BossMasterRef.Turnspeed = 5000f;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,10 +50,10 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
         //run any neessicary special code here
     }
     //put any public voids here to be triggered by animation events
-    public void EndMiyazakiTime() //Changable
+    public void EndMiyazakiTime()
     {
-        _BossMasterRef.Turnspeed = 120; // example
-        _B_Path.Speed = 0.5f;
+        _BossMasterRef.Turnspeed = 10; // example
+        _B_Path.Speed = 1f;
     }
     public void EndofLife() // end of attack
     {
@@ -61,13 +61,13 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
         if (_DestroyTarget == null) Destroy(gameObject);
         else Destroy(_DestroyTarget);
     }
-    public void ResetEverything() // Don't Touch
+    public void ResetEverything()
     {
         //run resetcode here
         if (_DestroyTarget == null) Destroy(gameObject);
         else Destroy(_DestroyTarget);
     }
-    void Update()// Don't Touch
+    void Update()
     {
         if (_BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED || _BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.Opening)
         {
