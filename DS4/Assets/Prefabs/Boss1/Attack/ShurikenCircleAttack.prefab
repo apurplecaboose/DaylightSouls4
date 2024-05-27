@@ -48,6 +48,6 @@ MonoBehaviour:
   _RandomOpeningRange: {x: 60, y: 200}
   _MiniAttackPrefabs:
   - {fileID: 8377350924548251626, guid: ce64dee8c140ab643b07827abd8d654b, type: 3}
-  - {fileID: 8377350924548251626, guid: ce64dee8c140ab643b07827abd8d654b, type: 3}
-  - {fileID: 8377350924548251626, guid: ce64dee8c140ab643b07827abd8d654b, type: 3}
-  - {fileID: 8377350924548251626, guid: ce64dee8c140ab643b07827abd8d654b, type: 3}
+  - {fileID: 8377350924548251626, guid: d75a7865c5a03a042a984bdaea562c7c, type: 3}
+  - {fileID: 8377350924548251626, guid: 6564e34d0f6b3b74ebaa2de3443e6688, type: 3}
+  - {fileID: 8377350924548251626, guid: bd3a14e8e286653428e159bbb6809232, type: 3}

@@ -33,8 +33,8 @@ public class B_Mini_DoubleWeaponAttack : MonoBehaviour // inherit from Boss Mast
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 2f;//optional
-        _BossMasterRef.Turnspeed = 300f;
+        _B_Path.Speed = 4f;//optional
+        _BossMasterRef.Turnspeed = 400f;
     }
     void FixedUpdate()
     {
@@ -43,7 +43,7 @@ public class B_Mini_DoubleWeaponAttack : MonoBehaviour // inherit from Boss Mast
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 100f; // example
+        _BossMasterRef.Turnspeed = 10f; // example
         _B_Path.Speed = 1f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch

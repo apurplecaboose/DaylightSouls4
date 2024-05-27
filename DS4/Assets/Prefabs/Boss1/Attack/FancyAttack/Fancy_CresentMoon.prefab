@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3291682989430892978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7832138002678295580}
+  - component: {fileID: 4205196354101926810}
+  m_Layer: 0
+  m_Name: Fancy_CresentMoon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7832138002678295580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291682989430892978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4205196354101926810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291682989430892978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea91caa8ffe33d4b9932343e22a1704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _LengthOfLastComboInTicks: 300
+  _RandomOpeningRange: {x: 0, y: 0}
+  _MiniAttackPrefabs:
+  - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
+  - {fileID: 5494882110819875870, guid: b39f34ff979cc264389c45cb83867555, type: 3}
+  - {fileID: 5494882110819875870, guid: baeeda8fffe023942bc39ef29ecc2b67, type: 3}
+  - {fileID: 5494882110819875870, guid: 3b0e80990ab99414191e178c031fd61e, type: 3}

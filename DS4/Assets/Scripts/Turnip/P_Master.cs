@@ -26,6 +26,7 @@ public class P_Master : MonoBehaviour
     [SerializeField] float _P_MoveSpeed = 15f;
     [SerializeField] float _Ghost_MoveSpeed = 15f;
     [SerializeField] float _SwapRadius = 5;
+    [SerializeField] int _DodgeStaminaCost = 15;
 
     [Header("References")]
     [SerializeField] GameObject _LightAttackPrefab;
@@ -40,16 +41,16 @@ public class P_Master : MonoBehaviour
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
     Player_HealthBar _Health;
+    Player_Stamina _Stamina;
     GameManager _GM;
 
     [Header("DEBUG DO NOT EDIT")]
     [SerializeField] int _TickCount; //Turnip:un-serialize when debug done
     public bool Dodging_Invincible, Parry_Invincible;
-    /*[HideInInspector]*/
-    public int ChargeBonusDamage;
+    [HideInInspector] public int ChargeBonusDamage;
     bool _TargetLocked;
-    [SerializeField] int _ParryIFrames, _HeavyChargeTimer;
-    [SerializeField] Vector2 _P_moveVec, _Ghost_moveVec;
+    int _ParryIFrames, _HeavyChargeTimer;
+    Vector2 _P_moveVec, _Ghost_moveVec;
     float _TargetVol = 0.5f;
     #endregion
     void Awake()
@@ -59,6 +60,7 @@ public class P_Master : MonoBehaviour
         _P_rb = this.transform.GetChild(0).GetComponent<Rigidbody2D>();
         _Ghost_rb = this.transform.GetChild(1).GetComponent<Rigidbody2D>();
         _Health = this.gameObject.GetComponent<Player_HealthBar>();
+        _Stamina = this.gameObject.GetComponent<Player_Stamina>();
         float localscale = _SwapRadius * 2f;
         _PlayerGhostRangeUI.transform.localScale = new Vector3(localscale, localscale, 1);
         _AudioHolder = GameObject.FindGameObjectWithTag("AudioHolder").transform;
@@ -274,14 +276,12 @@ public class P_Master : MonoBehaviour
                 Debug.Log("Out of swap range");
                 return; // guard case
             }
-            if (P_Action == P_Action_List.NULL_ACTION_STATE)
-            {
-                P_Action = P_Action_List.SwapDodge;
-            }
+            if (_Stamina.StamimaValue < _DodgeStaminaCost / 2) return;
             if (P_Action == P_Action_List.ChargingUpForHeavy)
             {
                 if (_TickCount > 5) // used to count cooldown on charge heavy swap
                 {
+                    _Stamina.StaminaConsuming(_DodgeStaminaCost / 2);
                     _TickCount = 0; // reset 
                     //fire off swap event
                     Vector2 pVelCache = _P_rb.velocity;
@@ -292,7 +292,15 @@ public class P_Master : MonoBehaviour
                     Vector3 ghosttransformcache = _Ghost_rb.transform.position;
                     _P_rb.transform.position = ghosttransformcache;
                     _Ghost_rb.transform.position = playertransformcache;
+                    return;
                 }
+            }
+            if (_Stamina.StamimaValue < _DodgeStaminaCost) return;
+            if (P_Action == P_Action_List.NULL_ACTION_STATE)
+            {
+                P_Action = P_Action_List.SwapDodge;
+                _Stamina.StaminaConsuming(_DodgeStaminaCost);
+                return;
             }
             else
             {
@@ -546,7 +554,7 @@ public class P_Master : MonoBehaviour
                     _CurrentAttackPrefab = Instantiate(_HeavyAttackPrefab, _P_rb.transform);
                     _CurrentAttackPrefab.transform.right = _P_rb.transform.right;
                     break;
-                case int t when t == totalTicks - recoveryFrames:
+                case int t when t == totalTicks - recoveryFrames + 5:
                     Destroy(_CurrentAttackPrefab);
                     break;
                 case int t when t >= totalTicks:

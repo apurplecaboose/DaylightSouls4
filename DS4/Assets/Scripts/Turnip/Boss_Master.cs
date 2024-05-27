@@ -20,7 +20,7 @@ public class Boss_Master : MonoBehaviour
     public PathFinding BossPathfinding;
     [SerializeField] Stun_visual _StunPrefab;
 
-    public GameObject CurrentAttackMini, LastAttackMini;
+    [HideInInspector] public GameObject CurrentAttackMini, LastAttackMini;
     public enum Boss_Action_List
     {
         Chasing,
