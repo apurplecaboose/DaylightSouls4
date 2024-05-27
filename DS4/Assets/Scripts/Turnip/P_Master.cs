@@ -577,6 +577,8 @@ public class P_Master : MonoBehaviour
         a.pitch = Random.Range(0.85f, 1);
         a.Play();
         _ParryIFrames = iframes;
+
+        _Health.RestoreParry();
     }
     void PogChampionParry()
     {

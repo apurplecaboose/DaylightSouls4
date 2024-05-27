@@ -3086,6 +3086,10 @@ MonoBehaviour:
     ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
   - ComboKey: 9
     ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+  - ComboKey: 10
+    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+  - ComboKey: 11
+    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
   _CanvasGroup: {fileID: 8880741999521186545}
   _ComboOptionsParent: {fileID: 1362345372204084471}
   _EndComboDisplayParent: {fileID: 4027624393598942063}

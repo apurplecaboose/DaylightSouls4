@@ -33,8 +33,8 @@ public class B_Mini_CircleAttack : MonoBehaviour // inherit from Boss Master and
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 2f;//optional
-        _BossMasterRef.Turnspeed = 1000f;
+        _B_Path.Speed = 1f;//optional
+        _BossMasterRef.Turnspeed = 500f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {
@@ -53,7 +53,11 @@ public class B_Mini_CircleAttack : MonoBehaviour // inherit from Boss Master and
     public void EndMiyazakiTime() //Changable
     {
         _BossMasterRef.Turnspeed = 10;
-        _B_Path.Speed = 2f;
+        _B_Path.Speed = 4f;
+    }
+    public void MakeMeSlower()
+    {
+        _B_Path.Speed = 1f;
     }
     public void EndofLife() // end of attack
     {

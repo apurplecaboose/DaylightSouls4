@@ -27,7 +27,7 @@ public class CresentMoon : MonoBehaviour
         /// Sample
         invokeTimeCount += TicksToSeconds(100); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(120);//length of combo
+        invokeTimeCount += TicksToSeconds(240);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(30, 60)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
         invokeTimeCount += TicksToSeconds(120);//length of combo
