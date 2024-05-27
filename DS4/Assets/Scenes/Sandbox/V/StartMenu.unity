@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6682200}
   - component: {fileID: 6682199}
   m_Layer: 5
-  m_Name: StartMenu
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6682200}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1936761546}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &6682200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +405,7 @@ GameObject:
   - component: {fileID: 377245625}
   - component: {fileID: 377245624}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +475,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 377245625}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1936761546}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: StartTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &377245625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,9 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9787b15b597604db5820a039839195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameSceneIndex: 0
-  TutorialSceneIndex: 0
-  NextPageIndex: 0
+  GameSceneIndex: 9
+  TutorialSceneStartIndex: 2
   MenuIndex: 0
 --- !u!4 &1936761547
 Transform:
