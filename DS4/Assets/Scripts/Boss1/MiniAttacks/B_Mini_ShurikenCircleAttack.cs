@@ -43,7 +43,7 @@ public class B_Mini_ShurikenCircleAttack : MonoBehaviour // inherit from Boss Ma
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 10f; // example
+        _BossMasterRef.Turnspeed = 50f; // example
         _B_Path.Speed = 0.5f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch

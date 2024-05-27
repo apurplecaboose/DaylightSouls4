@@ -44,7 +44,7 @@ public class B_Mini_DoubleWeaponAttack : MonoBehaviour // inherit from Boss Mast
     public void EndMiyazakiTime() //Changable
     {
         _BossMasterRef.Turnspeed = 100f; // example
-        _B_Path.Speed = 1f;
+        _B_Path.Speed = 2f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {
