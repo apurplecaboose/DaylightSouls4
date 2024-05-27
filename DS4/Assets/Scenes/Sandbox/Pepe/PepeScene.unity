@@ -1804,6 +1804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880f50b4eb7e88c48b5c2aac9c2d6c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TryndamereMode: 0
   PlayState: 0
   ComboSelectionUI_Instance: {fileID: 669891106224913273, guid: fdbf2cab8897ebc439f5cd616daf648d, type: 3}
 --- !u!114 &591358526
@@ -2812,6 +2813,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1179177889 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2113791864427476021, guid: 3014fa96de21e8c49b02ef5a8d939cbb, type: 3}
+  m_PrefabInstance: {fileID: 8396683656779353389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1219096647
 GameObject:
   m_ObjectHideFlags: 0
@@ -4320,6 +4326,7 @@ MonoBehaviour:
   DamageTaken: 0
   ShieldImage: {fileID: 2005430033}
   HealthImage: {fileID: 1081175502}
+  Animator: {fileID: 1179177889}
 --- !u!114 &2021223778
 MonoBehaviour:
   m_ObjectHideFlags: 0

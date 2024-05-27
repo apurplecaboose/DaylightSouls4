@@ -17,21 +17,11 @@ public class Player_HealthBar : MonoBehaviour
         _HealthOriginalValue = HealthValue;
         _Max_Health = HealthValue;
         _Max_Shield = ShieldValue;
-        Animator =GetComponent<Animator>();
-    }
-    private void Update()
-    {
     }
     private void LateUpdate()
     {
-        if (_PressedHealThisFrame)
-        {
-            Animator.SetBool("IsHealing", true);
-        }
-        else
-        {
-            Animator.SetBool("IsHealing", false);
-        }
+        if (_PressedHealThisFrame) Animator.SetBool("IsHealing", true);
+        else Animator.SetBool("IsHealing", false);
         _PressedHealThisFrame = false;
     }
     bool _PressedHealThisFrame;
@@ -48,24 +38,16 @@ public class Player_HealthBar : MonoBehaviour
     public void RestoreParry()
     {
         _PressedHealThisFrame = true;
-        float restoreSpeed = 10;
-        ShieldValue = Mathf.Clamp(ShieldValue, 0, _Max_Shield);
-        HealthValue = Mathf.Clamp(ShieldValue, 0, _Max_Health);
-        HealthValue += restoreSpeed * Time.deltaTime;
-        ShieldValue = HealthValue;
+        HealthValue += 10f;
+        ShieldValue += 15f;
+        ShieldValue = Mathf.Clamp(ShieldValue, 0, 100);
+        HealthValue = Mathf.Clamp(ShieldValue, 0, 100);
         float t = Mathf.InverseLerp(0, _Max_Shield, ShieldValue);
         float k= Mathf.InverseLerp(0, _Max_Health, HealthValue);
         ShieldImage.fillAmount = t;
         HealthImage.fillAmount = k;
         Animator.SetBool("IsHealing", true);
     }
-
-
-
-
-
-
-
     public void DamagePlayerHealth(float Damage)
     {
         ShieldDamageTaken(Damage);
@@ -74,7 +56,6 @@ public class Player_HealthBar : MonoBehaviour
             HealthDamageTaken(Damage);
         }
     }
-
     void ShieldDamageTaken(float damage)
     {
         float currentValue = ShieldValue;
