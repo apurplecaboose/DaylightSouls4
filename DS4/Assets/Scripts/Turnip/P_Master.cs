@@ -70,6 +70,7 @@ public class P_Master : MonoBehaviour
         if (_GM.PlayState.Equals(GameManager.G_State.Selecting))
         {
             _Healing.volume = 0;
+            if(_CurrentAttackPrefab != null) Destroy(_CurrentAttackPrefab);
             P_Action = P_Action_List.SelectingBossAttackState;
             return; // guard clause
         }
