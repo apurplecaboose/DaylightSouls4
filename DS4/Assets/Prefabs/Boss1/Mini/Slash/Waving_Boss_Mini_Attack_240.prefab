@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cecf931fde0302b44988e242524f0495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackDamage: 10
+  _AttackDamage: 20
   _StunFrames: 10
   AttackStunType: 1
   _DestroyTarget: {fileID: 0}
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cecf931fde0302b44988e242524f0495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackDamage: 10
+  _AttackDamage: 20
   _StunFrames: 10
   AttackStunType: 1
   _DestroyTarget: {fileID: 0}

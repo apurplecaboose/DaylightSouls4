@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7832138002678295580}
   - component: {fileID: -7525675055845289214}
   m_Layer: 0
-  m_Name: ShurikenCircleAttack
+  m_Name: Fancy_ShurikenCircleAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f2f2af0ce57074bbbc5507480f59a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LengthOfLastComboInTicks: 240
-  _RandomOpeningRange: {x: 60, y: 200}
+  _LengthOfLastComboInTicks: 150
+  _RandomOpeningRange: {x: 180, y: 240}
   _MiniAttackPrefabs:
   - {fileID: 8377350924548251626, guid: ce64dee8c140ab643b07827abd8d654b, type: 3}
   - {fileID: 8377350924548251626, guid: d75a7865c5a03a042a984bdaea562c7c, type: 3}
+  - {fileID: 251143543071789680, guid: 40ec11df8e547fd45a8574c4b0af7006, type: 3}
   - {fileID: 8377350924548251626, guid: 6564e34d0f6b3b74ebaa2de3443e6688, type: 3}
   - {fileID: 8377350924548251626, guid: bd3a14e8e286653428e159bbb6809232, type: 3}
+  - {fileID: 5494882110819875870, guid: b39f34ff979cc264389c45cb83867555, type: 3}

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7cbc341c7413048a6e3f2da6190c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackDamage: 17
+  _AttackDamage: 25
   _StunFrames: 10
   AttackStunType: 1
   _DestroyTarget: {fileID: 0}

@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AttackDamage: 20
   _StunFrames: 10
-  AttackStunType: 0
+  AttackStunType: 1
   _DestroyTarget: {fileID: 0}
   _AttackTick: 0
 --- !u!1 &5494882110819875870

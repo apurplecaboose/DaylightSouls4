@@ -28,14 +28,20 @@ public class B_ShurikenCircleAttack : MonoBehaviour
         invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
         invokeTimeCount += TicksToSeconds(240);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(10, 15)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
         invokeTimeCount += TicksToSeconds(240);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(10, 15)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
-        invokeTimeCount += TicksToSeconds(240);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        invokeTimeCount += TicksToSeconds(180);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(60, 90)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
+        invokeTimeCount += TicksToSeconds(240);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(10, 15)); // length of gap
+        Invoke("CycleNextAttack", invokeTimeCount);// Attk 5
+        invokeTimeCount += TicksToSeconds(240);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(10, 15)); // length of gap
+        Invoke("CycleNextAttack", invokeTimeCount);// Attk 6
         //repeat etc
     }
     void Update() // Don't Touch

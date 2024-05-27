@@ -40,10 +40,11 @@ public class Player_HealthBar : MonoBehaviour
     public void RestoreParry()
     {
         _PressedHealThisFrame = true;
+        //print restore parry
         HealthValue += 10f;
         ShieldValue += 15f;
         ShieldValue = Mathf.Clamp(ShieldValue, 0, 100);
-        HealthValue = Mathf.Clamp(ShieldValue, 0, 100);
+        HealthValue = Mathf.Clamp(HealthValue, 0, 100);
         float t = Mathf.InverseLerp(0, _Max_Shield, ShieldValue);
         float k= Mathf.InverseLerp(0, _Max_Health, HealthValue);
         ShieldImage.fillAmount = t;

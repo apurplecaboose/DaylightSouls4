@@ -76,7 +76,7 @@ public class ComboSelectionUI : MonoBehaviour
 
         _Pictionary = InitializeInpectorValuesToDictionary();
         EventSystem.current.SetSelectedGameObject(_Option1Button.gameObject); //selects first "selected" UI element 
-        float zoomScale = 1.5f;
+        float zoomScale = 1.15f;
         button1transform.localScale = button1transform.transform.localScale = new Vector3(zoomScale, zoomScale, 1);
     }
     void Start()
@@ -107,7 +107,7 @@ public class ComboSelectionUI : MonoBehaviour
         }
         if (FadeStatus.Equals(Fade.Out))
         {
-            float lerptotaltime = 0.5f;
+            float lerptotaltime = 0.2f;
             float a = Mathf.Lerp(1, -0.1f, _LerpDtime / lerptotaltime);
             _CanvasGroup.alpha = a;
             if (a <= 0) Destroy(_CanvasGroup.gameObject);

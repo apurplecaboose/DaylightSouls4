@@ -38,17 +38,19 @@ public class ComboPossibility : MonoBehaviour
         B1__JesusBless_Attack,//7
         B1__RockNRoll_Attack,//8
         B1__RapGod_Attack,//9
+        B1__BananaMan_Attack,//10
+        B1__ILoveChina_Attack,//11
 
-        B2__Slam_Attack,//0
-        B2__Punch_Attack,//1
-        B2__Death_by_Covid,//2
-        B2__GomoGomo_Attack,//3
-        B2__StripLife_Attack,//4
-        B2__Ganster_Attack,//5
-        B2__Italian_Attack,//6
-        B2__JesusBless_Attack,//7
-        B2__RockNRoll_Attack,//8
-        B2__RapGod_Attack,//9
+        //B2__Slam_Attack,//0
+        //B2__Punch_Attack,//1
+        //B2__Death_by_Covid,//2
+        //B2__GomoGomo_Attack,//3
+        //B2__StripLife_Attack,//4
+        //B2__Ganster_Attack,//5
+        //B2__Italian_Attack,//6
+        //B2__JesusBless_Attack,//7
+        //B2__RockNRoll_Attack,//8
+        //B2__RapGod_Attack,//9
 
         B999__PLACEHOLDER_FOR_KENS_CODE
     }
