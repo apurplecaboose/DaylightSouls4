@@ -126,6 +126,7 @@ public class ComboSelectionUI : MonoBehaviour
     {
         _LerpDtime = 0;
         FadeStatus = Fade.Out;
+        Destroy(_ExitComboSelectionButton);
         //hide panel resume game state
     }
     #endregion

@@ -11,8 +11,8 @@ public class Boss_Master : MonoBehaviour
 
     [Header("Boss Master")]
     [SerializeField] int _CurrentBossComboIndex = 0;
-    [SerializeField] float _BossDefaultSpeed;
-    [SerializeField] int _BossPoiseAmount = 500;
+    float _BossDefaultSpeed = 2;
+    [SerializeField] int _BossPoiseAmount = 750;
     [SerializeField]int _OpeningTick, _PoiseDamage, _PoiseTickTimer;
     [HideInInspector] public float Turnspeed = 1000f;
     [SerializeField] Transform _PlayerTransform;
