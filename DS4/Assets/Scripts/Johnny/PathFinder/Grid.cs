@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
@@ -10,6 +11,11 @@ public class Grid : MonoBehaviour
     public Transform BossPosition;
     Node[,] _Grid;
     int _GridNumOnX, _GridNumOnY;
+
+    public bool OnlyDisPlayPathGizmo;
+
+
+
     private void Awake()
     {
         NodeDiameter = NodeRadius * 2;
@@ -20,7 +26,13 @@ public class Grid : MonoBehaviour
 
 
     }
-
+    public int MaxSize
+    {
+        get
+        {
+            return _GridNumOnX * _GridNumOnY;
+        }
+    }
 
     public void GenerateGrid()
     {
@@ -78,27 +90,37 @@ public class Grid : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, GridWorldSize);
-        if (_Grid != null)
-        {
-            foreach (Node node in _Grid)
-            {
-                Node bossNodePos = TranslateWorldPosToGrid(BossPosition.position);//Obatin Boss Position
-                Gizmos.color = (node.Walkable) ? Color.white : Color.red;//if walkable is true ColorYello will be the result, vice versa  walkable is false, Color red will be the result(This is how ?; marks do)
-                if (bossNodePos == node)
-                {
-                    Gizmos.color = Color.yellow;
-                }//See Boss Position translate into node works or not
-                if(Path != null)
-                {
-                    if (Path.Contains(node))
-                    {
-                        Gizmos.color = Color.black;
-                    }
-                }
 
-                Gizmos.DrawCube(node.WorldPosition, Vector3.one * (NodeDiameter - 0.1f));
+        if (OnlyDisPlayPathGizmo)
+        {
+            if (Path != null)
+            {
+                foreach (Node n in Path)
+                {
+                    Gizmos.color = Color.black;
+                    Gizmos.DrawCube(n.WorldPosition, Vector3.one * (NodeDiameter - .1f));
+                }
             }
         }
-       
+        else
+        {
+            if (_Grid != null)
+            {
+                foreach (Node node in _Grid)
+                {
+                    Gizmos.color = (node.Walkable) ? Color.white : Color.red;//if walkable is true ColorYello will be the result, vice versa  walkable is false, Color red will be the result(This is how ?; marks do)
+                    if (Path != null)
+                    {
+                        if (Path.Contains(node))
+                        {
+                            Gizmos.color = Color.black;
+                        }
+                    }
+
+                    Gizmos.DrawCube(node.WorldPosition, Vector3.one * (NodeDiameter - 0.1f));
+                }
+            }
+
+        }
     }
 }

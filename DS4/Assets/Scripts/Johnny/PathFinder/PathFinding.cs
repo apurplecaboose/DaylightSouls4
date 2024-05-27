@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class PathFinding : MonoBehaviour
 {
@@ -23,40 +24,34 @@ public class PathFinding : MonoBehaviour
     }
     private void Update()
     {
+       if( Input.GetKeyDown(KeyCode.Space)){
+           
+        }
         PathFinder(_BossTransform.position, _PlayerTransform.position);
         FollowThePath();
     }
     void PathFinder(Vector2 startPosition, Vector2 targetPosition)
     {
+        Stopwatch sw=new Stopwatch();
+        sw.Start();//show how long it takes to calculate the path
+
         Node startNode = _Grid.TranslateWorldPosToGrid(startPosition);
         Node targetNode = _Grid.TranslateWorldPosToGrid(targetPosition);
 
-        List<Node> openSet = new List<Node>();
+        Heap<Node> openSet = new Heap<Node>(_Grid.MaxSize);
         HashSet<Node> closeSet = new HashSet<Node>();
-
         openSet.Add(startNode);
+
         while (openSet.Count > 0)
         {
-            Node currentNode = openSet[0];
-
-            for (int i = 1; i < openSet.Count; i++)
-            {
-                if (openSet[i].fCost() < currentNode.fCost() || openSet[i].fCost() == currentNode.fCost() && openSet[i].HCost < currentNode.HCost)
-                {
-                    currentNode = openSet[i];
-                }
-            }
-
-
-            openSet.Remove(currentNode);
+            Node currentNode = openSet.RemoveFirst();
             closeSet.Add(currentNode);
-
-            //print("Openset NUmber: " + openSet.Count);
-            //print("CloseSet NUmber:" + closeSet.Count);
 
             if (currentNode == targetNode)
             {
                 RetracePath(startNode, targetNode);
+                sw.Stop();
+                print("PathFind: "+sw.ElapsedMilliseconds+"ms");
                 return;//Reach the destination
             }
 
