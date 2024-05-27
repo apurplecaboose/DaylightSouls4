@@ -8,5 +8,32 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/StartScreen.unity
     guid: f66aa2d3908bf334bac33f49899067ff
+  - enabled: 1
+    path: Assets/Scenes/Production/StartMenu.unity
+    guid: f1021b8eca17cf249bd8c0a240582250
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/1Movement.unity
+    guid: 737b5f8ca09909d4287ec49c6a239b66
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/2Health.unity
+    guid: 27f536c4d4bf9044a8c79796c70cfe70
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/3SwapAndStamina.unity
+    guid: 397cf37e18f364645958cd04084818ef
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/4Lockon.unity
+    guid: 3823c6a05e28bf54dbbe0a415cbc1788
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/5LightAttack.unity
+    guid: 5732301b31b6c3441bea626908af496e
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/6HeavyParry.unity
+    guid: 8e66d31b7dcf0d84e9c750263e2f73c4
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/7PoiseBreak.unity
+    guid: c8538b7cb1fee074cb60a5b278688e5f
+  - enabled: 1
+    path: Assets/Scenes/Production/TutorialScenes/8ComboSelection.unity
+    guid: 4653ce05bbfe5dd468cfead1e8d7157c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bbbfda765414b454f8e0760c22d9a004, type: 2}
