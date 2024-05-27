@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveOut_Attack : MonoBehaviour
+public class B_SimpleStabAttack : MonoBehaviour
 {
     /// <summary>
     /// Follow the pattern and touch only the start function
@@ -27,14 +27,14 @@ public class WaveOut_Attack : MonoBehaviour
         /// Sample
         invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
-        invokeTimeCount += TicksToSeconds(60);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        invokeTimeCount += TicksToSeconds(70);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(60, 90)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
-        invokeTimeCount += TicksToSeconds(120);//length of combo
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(60, 120)); // length of gap
+        invokeTimeCount += TicksToSeconds(70);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
         //repeat etc
     }
@@ -49,12 +49,30 @@ public class WaveOut_Attack : MonoBehaviour
     {
         GameObject a = Instantiate(_MiniAttackPrefabs[_CurrentAttackIndex], this.transform); // instantiate the first attack
         a.transform.up = this.transform.up;
+        if (_BossMasterRef.CurrentAttackMini == null)
+        {
+            _BossMasterRef.CurrentAttackMini = a;
+        }
+        else
+        {
+            _BossMasterRef.LastAttackMini = _BossMasterRef.CurrentAttackMini;
+            _BossMasterRef.CurrentAttackMini = a;
+        }
         _CurrentAttackIndex += 1;
     }
     void CycleNextAttack() // Don't Touch
     {
         GameObject a = Instantiate(_MiniAttackPrefabs[_CurrentAttackIndex], this.transform);
         a.transform.up = this.transform.up;
+         if (_BossMasterRef.CurrentAttackMini == null)
+        {
+            _BossMasterRef.CurrentAttackMini = a;
+        }
+        else
+        {
+            _BossMasterRef.LastAttackMini = _BossMasterRef.CurrentAttackMini;
+            _BossMasterRef.CurrentAttackMini = a;
+        }
         _CurrentAttackIndex += 1;
         if (_CurrentAttackIndex >= _MiniAttackPrefabs.Count)//EndCombo();
         {

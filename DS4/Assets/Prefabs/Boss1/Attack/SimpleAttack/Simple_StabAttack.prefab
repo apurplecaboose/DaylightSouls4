@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7832138002678295580}
-  - component: {fileID: 2995433030090844634}
+  - component: {fileID: 5177014448999155951}
   m_Layer: 0
-  m_Name: SAMPLE ATTACK
+  m_Name: Simple_StabAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2995433030090844634
+--- !u!114 &5177014448999155951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3291682989430892978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22667a64c26bd34b8b0cf1179860cc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 97f288c3e17fc064e8bff34795a97dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LengthOfLastComboInTicks: 120
-  _RandomOpeningRange: {x: 60, y: 200}
+  _LengthOfLastComboInTicks: 70
+  _RandomOpeningRange: {x: 60, y: 120}
   _MiniAttackPrefabs:
-  - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
-  - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
-  - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
-  - {fileID: 8377350924548251626, guid: 447569513fb76c14f92a5f02d6c46fde, type: 3}
+  - {fileID: 5892170635575372603, guid: edfda7b2fe59d8447bdffdccbc6cbf2c, type: 3}
+  - {fileID: 5494882110819875870, guid: 72fc033746972d44e850c29992710174, type: 3}
+  - {fileID: 5892170635575372603, guid: edfda7b2fe59d8447bdffdccbc6cbf2c, type: 3}
+  - {fileID: 5494882110819875870, guid: 72fc033746972d44e850c29992710174, type: 3}

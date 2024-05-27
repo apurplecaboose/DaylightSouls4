@@ -33,9 +33,12 @@ public class B_ReverseAttack : MonoBehaviour
         invokeTimeCount += TicksToSeconds(120);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
-        //invokeTimeCount += TicksToSeconds(60);//length of combo
+        //invokeTimeCount += TicksToSeconds(120);//length of combo
         //invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         //Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
+        //invokeTimeCount += TicksToSeconds(120);//length of combo
+        //invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        //Invoke("CycleNextAttack", invokeTimeCount);// Attk 5
         //repeat etc
     }
     void Update() // Don't Touch

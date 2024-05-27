@@ -30,9 +30,9 @@ public class B_CircleAttack : MonoBehaviour
         invokeTimeCount += TicksToSeconds(60);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
-        //invokeTimeCount += TicksToSeconds(60);//length of combo
-        //invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
-        //Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
+        invokeTimeCount += TicksToSeconds(120);//length of combo
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
+        Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
         //invokeTimeCount += TicksToSeconds(60);//length of combo
         //invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         //Invoke("CycleNextAttack", invokeTimeCount);// Attk 4

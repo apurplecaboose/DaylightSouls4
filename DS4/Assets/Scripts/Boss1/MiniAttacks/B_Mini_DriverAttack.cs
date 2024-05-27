@@ -33,7 +33,7 @@ public class B_Mini_DriverAttack : MonoBehaviour // inherit from Boss Master and
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 5f;//optional
+        _B_Path.Speed = 6f;//optional
         _BossMasterRef.Turnspeed = 300f;
     }
     void FixedUpdate()
