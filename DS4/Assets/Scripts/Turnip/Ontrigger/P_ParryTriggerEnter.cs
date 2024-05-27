@@ -24,12 +24,12 @@ public class P_ParryTriggerEnter : MonoBehaviour
             //multiply and round
             int chargedbonusPoiseDmg = Mathf.RoundToInt(_BaseParryPoiseDamage * helddamagemultiplier);
             _BossMasterRef.AddPoiseDamage(_BaseParryPoiseDamage + chargedbonusPoiseDmg);
-            _Player.PogChampionParry(50); // give the player i frames after parry
+            _Player.PogChampionParry(30); // give the player i frames after parry
             collision.enabled = false;
         }
         else
         {
-            _Player.PogChampionParry(50);
+            _Player.PogChampionParry(30);
             _BossMasterRef.AddPoiseDamage(_BaseParryPoiseDamage);
             collision.enabled = false;
         }
