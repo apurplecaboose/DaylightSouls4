@@ -52,7 +52,7 @@ public class RightStabMini : MonoBehaviour // inherit from Boss Master and Monob
     //put any public voids here to be triggered by animation events
     public void EndMiyazakiTime() //Changable
     {
-        _BossMasterRef.Turnspeed = 10; // example
+        _BossMasterRef.Turnspeed = 120; // example
         _B_Path.Speed = 0.5f;
     }
     public void EndofLife() // end of attack

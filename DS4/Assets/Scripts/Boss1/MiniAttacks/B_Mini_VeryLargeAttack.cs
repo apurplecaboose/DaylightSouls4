@@ -33,8 +33,8 @@ public class B_Mini_VeryLargeAttack : MonoBehaviour // inherit from Boss Master 
     }
     private void Start() //Changable
     {
-        _BossMasterRef.Turnspeed = 120f;
-        _B_Path.Speed = 0f;//optional
+        _BossMasterRef.Turnspeed = 100f;
+        _B_Path.Speed = 2f;//optional
     }
     void FixedUpdate()
     {
@@ -44,7 +44,7 @@ public class B_Mini_VeryLargeAttack : MonoBehaviour // inherit from Boss Master 
     public void EndMiyazakiTime() //Changable
     {
         _BossMasterRef.Turnspeed = 50; // example
-        //_B_Path.Speed = 0.5f;
+        _B_Path.Speed = 0.5f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {
