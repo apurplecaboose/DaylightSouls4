@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 public class GenericBossShake : MonoBehaviour
 {
-    
     [SerializeField]int _ShakeLengthInFrames;
     public AnimationCurve IntensityCurve;
-    [SerializeField] float _StartIntensity, _EndIntensity, _Amp, _Dtime, _ShakeFrequency = 60f;
+    [SerializeField] float _StartIntensity, _EndIntensity, _Amp, _ShakeFrequency = 60f;
     [SerializeField] bool _DontDestroyOnTimeUp, _StartOnAwake, _Trigger;
+    //bool _Trigger;
+    float _Dtime;
 
     void Awake()
     {
@@ -46,5 +43,9 @@ public class GenericBossShake : MonoBehaviour
     public void StartShake()
     {
         _Trigger = true;
+    }
+    public void StopShake()
+    {
+        _Trigger = false;
     }
 }
