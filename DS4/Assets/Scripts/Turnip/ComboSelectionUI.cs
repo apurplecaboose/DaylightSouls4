@@ -48,6 +48,7 @@ public class ComboSelectionUI : MonoBehaviour
     [SerializeField] Transform _EndComboDisplayParent;
     [SerializeField] Button _ExitComboSelectionButton;
     [SerializeField] Image[] _FinalComboImageComponents;
+    [SerializeField] TMP_Text _CurrentComboNumberText;
 
     [Header("Debug Purposes")]
     List<ComboPossibility.ComboType> _FinalPattern = new List<ComboPossibility.ComboType>(); //OUTPUT
@@ -94,6 +95,9 @@ public class ComboSelectionUI : MonoBehaviour
     }
     void Update()
     {
+        int displaynumber = _CurrentPatternIndex + 1;
+        displaynumber = Mathf.Clamp(displaynumber, 0, 8);
+        _CurrentComboNumberText.text = "Combo Number " + displaynumber;
         _LerpDtime += Time.deltaTime;
         if(FadeStatus.Equals(Fade.In))
         {
@@ -154,7 +158,8 @@ public class ComboSelectionUI : MonoBehaviour
 
         _ExitComboSelectionButton.gameObject.SetActive(true);
         _EndComboDisplayParent.gameObject.SetActive(true);
-        _ComboOptionsParent.gameObject.SetActive(false);
+        _ComboOptionsParent.transform.parent.gameObject.SetActive(false);
+        //_ComboOptionsParent.gameObject.SetActive(false);
 
         for (int i = 0; i < _MaxPatternCount; i++)
         {
