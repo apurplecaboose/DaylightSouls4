@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool TryndamereMode;
     public enum G_State { Playing, Selecting };
     public G_State PlayState;
     public GameObject ComboSelectionUI_Instance;
