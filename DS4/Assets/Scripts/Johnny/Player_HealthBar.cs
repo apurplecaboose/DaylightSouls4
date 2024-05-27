@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player_HealthBar : MonoBehaviour
 {
+    GameManager _GM;
     public float HealthValue = 100, ShieldValue;
     float _ShieldOriginalValue, _HealthOriginalValue,_Max_Health,_Max_Shield;
     public float DamageTaken;
@@ -12,6 +13,7 @@ public class Player_HealthBar : MonoBehaviour
     public Animator Animator;
     private void Awake()
     {
+        _GM = Camera.main.gameObject.GetComponent<GameManager>();
         ShieldValue = HealthValue;
         _ShieldOriginalValue = ShieldValue;
         _HealthOriginalValue = HealthValue;
@@ -72,5 +74,15 @@ public class Player_HealthBar : MonoBehaviour
         HealthImage.fillAmount = t;
         HealthValue = currentValue;
     }
-
+    private void Update()
+    {
+        if (HealthValue <= 0)
+        {
+            //player is dead
+            if (!_GM.PlayerDead())
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

@@ -190,4 +190,13 @@ public class Boss_Master : MonoBehaviour
         star.Offset = 0.85f;
         star.transform.localScale = new Vector3(1.25f, 1.25f, 1);
     }
+    public void DestroyEverythingonBoss()
+    {
+        Destroy(_Combopossibility);
+        Destroy(_Lib);
+        Destroy(_StunPrefab);
+        Destroy(BossPathfinding);
+        Destroy(this.GetComponent<BossHeathbar>());
+        Destroy(this);
+    }
 }
