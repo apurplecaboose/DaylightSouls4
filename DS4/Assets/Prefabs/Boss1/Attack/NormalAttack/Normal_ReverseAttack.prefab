@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7832138002678295580}
-  - component: {fileID: 4875673217806480978}
+  - component: {fileID: -2389731640196699164}
   m_Layer: 0
-  m_Name: Normal_DriverAttack
+  m_Name: Normal_ReverseAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4875673217806480978
+--- !u!114 &-2389731640196699164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3291682989430892978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37ddccc388f78a4c97f1d45becb8bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6827d8f6d311c174ba9787d196de980b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LengthOfLastComboInTicks: 240
-  _RandomOpeningRange: {x: 120, y: 200}
+  _LengthOfLastComboInTicks: 360
+  _RandomOpeningRange: {x: 60, y: 200}
   _MiniAttackPrefabs:
-  - {fileID: 5494882110819875870, guid: 72fc033746972d44e850c29992710174, type: 3}
-  - {fileID: 5494882110819875870, guid: 1a54bc4b9c846444cb90b92ccf6d8765, type: 3}
-  - {fileID: 5494882110819875870, guid: 522643ae85888b64f995425a7b425669, type: 3}
-  - {fileID: 8377350924548251626, guid: 9afa0bf88682a1741b73e3f2d0b1eb92, type: 3}
+  - {fileID: 8377350924548251626, guid: 6dd4bcf69b8c5b944bf9a5b0c641d246, type: 3}
+  - {fileID: 8377350924548251626, guid: 1aa64e60be35c2c4c90b33e537c00a7f, type: 3}
+  - {fileID: 8377350924548251626, guid: 9e1cb5758ea1363468fc1dc18675c566, type: 3}
