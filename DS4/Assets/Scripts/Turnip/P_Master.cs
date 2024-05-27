@@ -40,6 +40,7 @@ public class P_Master : MonoBehaviour
     Transform _BossTransform;
     GameObject _CurrentAttackPrefab;
     Player_HealthBar _Health;
+    GameManager _GM;
 
     [Header("DEBUG DO NOT EDIT")]
     [SerializeField] int _TickCount; //Turnip:un-serialize when debug done
@@ -47,12 +48,13 @@ public class P_Master : MonoBehaviour
     /*[HideInInspector]*/
     public int ChargeBonusDamage;
     bool _TargetLocked;
-    [SerializeField] int _ParryIFrames, _HeavyChargeTimer; 
-    Vector2 _P_moveVec, _Ghost_moveVec;
+    [SerializeField] int _ParryIFrames, _HeavyChargeTimer;
+    [SerializeField] Vector2 _P_moveVec, _Ghost_moveVec;
     float _TargetVol = 0.5f;
     #endregion
     void Awake()
     {
+        _GM = Camera.main.GetComponent<GameManager>();  
         _BossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
         _P_rb = this.transform.GetChild(0).GetComponent<Rigidbody2D>();
         _Ghost_rb = this.transform.GetChild(1).GetComponent<Rigidbody2D>();
@@ -65,6 +67,19 @@ public class P_Master : MonoBehaviour
     }
     void Update()
     {
+        if (_GM.PlayState.Equals(GameManager.G_State.Selecting))
+        {
+            _Healing.volume = 0;
+            P_Action = P_Action_List.SelectingBossAttackState;
+            return; // guard clause
+        }
+        else if(_GM.PlayState.Equals(GameManager.G_State.Playing))
+        {
+            if (P_Action.Equals(P_Action_List.SelectingBossAttackState))
+            {
+                P_Action = P_Action_List.NULL_ACTION_STATE;
+            }
+        }
         TurnPlayer();
         ClampGhostRadius();
         HealingAudio();
@@ -85,7 +100,7 @@ public class P_Master : MonoBehaviour
         if (_TargetLocked) LockOn();
         else ManualAngleControl();
 
-        void LockOn()   
+        void LockOn()
         {
             Vector2 target = _BossTransform.position - _P_rb.transform.position;
             Quaternion targetRot = Quaternion.LookRotation(Vector3.forward, target);
@@ -109,18 +124,22 @@ public class P_Master : MonoBehaviour
         float pgMagnitude = playerToGhostVector.magnitude;
 
         Color sr_color = _PlayerGhostRangeUI.color;
-        sr_color.a = Mathf.InverseLerp(_SwapRadius * 0.55f, _SwapRadius, pgMagnitude);
+        float colorlerpT = Mathf.InverseLerp(_SwapRadius * 0.9995f, _SwapRadius, pgMagnitude);
+        sr_color = Color.Lerp(Color.white, Color.red, colorlerpT);
+        sr_color.a = Mathf.InverseLerp(_SwapRadius * 0.55f, _SwapRadius + 1.5f, pgMagnitude);
         _PlayerGhostRangeUI.color = sr_color;
-        float offset = 1; // offset the edge of the sprite and the actual position
+        float offset = 0.25f; // offset the edge of the sprite and the actual position
         if (pgMagnitude > _SwapRadius - offset)
         {
+            if (_Ghost_moveVec != Vector2.zero) return;
             _Ghost_rb.transform.position = p_Pos + Vector2.ClampMagnitude(playerToGhostVector, _SwapRadius - offset);
         }
     }
     void FixedUpdate()
     {
+        if (P_Action.Equals(P_Action_List.SelectingBossAttackState)) return;
         PogChampionParry();
-        if (P_Action != P_Action_List.STUNNED && P_Action != P_Action_List.SwapDodge && P_Action != P_Action_List.SelectingBossAttackState)
+        if (P_Action != P_Action_List.SwapDodge)
         {
             _Ghost_rb.AddForce(_Ghost_moveVec * _Ghost_MoveSpeed * 10f);// move Ghost in any state except stunn and dodging
         }
@@ -174,7 +193,7 @@ public class P_Master : MonoBehaviour
                     case P_Action_List.ChargingUpForHeavy:
                         return true;
                     case P_Action_List.SwapDodge:
-                    case P_Action_List.ChargedHeavy: 
+                    case P_Action_List.ChargedHeavy:
                     case P_Action_List.NeutralHeavy:
                     case P_Action_List.LightAttack:
                     case P_Action_List.Healing:
@@ -183,7 +202,7 @@ public class P_Master : MonoBehaviour
                         return false;
                 }
             }
-            if(size == P_StunSize.Large)
+            if (size == P_StunSize.Large)
             {
                 switch (P_Action)
                 {
@@ -230,9 +249,9 @@ public class P_Master : MonoBehaviour
     /*---------------------------------------------------------------------------------------------------------*/
     public void TargetLock(InputAction.CallbackContext input)
     {
-        if(input.performed && P_Action != P_Action_List.STUNNED)
+        if (input.performed && P_Action != P_Action_List.STUNNED)
         {
-            _TargetLocked = !_TargetLocked; 
+            _TargetLocked = !_TargetLocked;
         }
     }
     public void P_Move(InputAction.CallbackContext input)
@@ -247,23 +266,20 @@ public class P_Master : MonoBehaviour
     #region DodgeN'Heal
     public void SwapDodgeInput(InputAction.CallbackContext inputState)
     {
-        if(inputState.performed)
+        if (inputState.performed)
         {
-            if(Vector3.Distance(_P_rb.transform.position, _Ghost_rb.transform.position) > _SwapRadius)
+            if (Vector3.Distance(_P_rb.transform.position, _Ghost_rb.transform.position) > _SwapRadius)
             {
-                //catch case
-                Application.Quit();
-                Debug.Log("Out of range of swap congrats you broke it");
-
+                Debug.Log("Out of swap range");
                 return; // guard case
             }
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
             {
                 P_Action = P_Action_List.SwapDodge;
             }
-            if(P_Action == P_Action_List.ChargingUpForHeavy)
+            if (P_Action == P_Action_List.ChargingUpForHeavy)
             {
-                if(_TickCount > 5) // used to count cooldown on charge heavy swap
+                if (_TickCount > 5) // used to count cooldown on charge heavy swap
                 {
                     _TickCount = 0; // reset 
                     //fire off swap event
@@ -497,7 +513,7 @@ public class P_Master : MonoBehaviour
                 int recoveryFrames = 20;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
-            else if(charged.Value)// if charged
+            else if (charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
                 int activeFrames = 38;
