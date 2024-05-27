@@ -103,7 +103,7 @@ public class ComboSelectionUI : MonoBehaviour
         }
         if (FadeStatus.Equals(Fade.Out))
         {
-            float lerptotaltime = 1;
+            float lerptotaltime = 0.5f;
             float a = Mathf.Lerp(1, -0.1f, _LerpDtime / lerptotaltime);
             _CanvasGroup.alpha = a;
             if (a <= 0) Destroy(_CanvasGroup.gameObject);
