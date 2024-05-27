@@ -955,9 +955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9787b15b597604db5820a039839195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameSceneIndex: 9
-  TutorialSceneStartIndex: 2
-  MenuIndex: 0
 --- !u!4 &1936761547
 Transform:
   m_ObjectHideFlags: 0

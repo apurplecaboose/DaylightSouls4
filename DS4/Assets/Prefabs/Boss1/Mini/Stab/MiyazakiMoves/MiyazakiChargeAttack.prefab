@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17265052689442018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.7, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 2387948650049052178}
   - component: {fileID: 129937963871301415}
   - component: {fileID: 4040079553055738225}
-  - component: {fileID: 1293785824258459348}
+  - component: {fileID: 9047027844918727240}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -298,7 +298,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1293785824258459348
+--- !u!114 &9047027844918727240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1585392089874940993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8484342959b807748aa2e05b7ccd23ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ae7f392c74b34c43924220620fc0930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AttackDamage: 10
