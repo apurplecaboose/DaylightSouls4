@@ -6,30 +6,66 @@ using UnityEngine.UI;
 public class Player_HealthBar : MonoBehaviour
 {
     public float HealthValue = 100, ShieldValue;
-    float _ShieldOriginalValue, _HealthOriginalValue;
+    float _ShieldOriginalValue, _HealthOriginalValue,_Max_Health,_Max_Shield;
     public float DamageTaken;
     public Image ShieldImage, HealthImage;
+    public Animator Animator;
     private void Awake()
     {
         ShieldValue = HealthValue;
         _ShieldOriginalValue = ShieldValue;
         _HealthOriginalValue = HealthValue;
+        _Max_Health = HealthValue;
+        _Max_Shield = ShieldValue;
+        Animator =GetComponent<Animator>();
     }
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.O))
-        //{
-        //    DamagePlayerHealth(22);
-        //}
     }
+    private void LateUpdate()
+    {
+        if (_PressedHealThisFrame)
+        {
+            Animator.SetBool("IsHealing", true);
+        }
+        else
+        {
+            Animator.SetBool("IsHealing", false);
+        }
+        _PressedHealThisFrame = false;
+    }
+    bool _PressedHealThisFrame;
     public void RestoreHealth()
     {
+        _PressedHealThisFrame = true;
         float restoreSpeed = 10;
         ShieldValue = Mathf.Clamp(ShieldValue, 0, HealthValue);
         ShieldValue += restoreSpeed * Time.deltaTime;
         float t = Mathf.InverseLerp(0, _ShieldOriginalValue, ShieldValue);
         ShieldImage.fillAmount = t;
     }
+
+    public void RestoreParry()
+    {
+        _PressedHealThisFrame = true;
+        float restoreSpeed = 10;
+        ShieldValue = Mathf.Clamp(ShieldValue, 0, _Max_Shield);
+        HealthValue = Mathf.Clamp(ShieldValue, 0, _Max_Health);
+        HealthValue += restoreSpeed * Time.deltaTime;
+        ShieldValue = HealthValue;
+        float t = Mathf.InverseLerp(0, _Max_Shield, ShieldValue);
+        float k= Mathf.InverseLerp(0, _Max_Health, HealthValue);
+        ShieldImage.fillAmount = t;
+        HealthImage.fillAmount = k;
+        Animator.SetBool("IsHealing", true);
+    }
+
+
+
+
+
+
+
     public void DamagePlayerHealth(float Damage)
     {
         ShieldDamageTaken(Damage);
