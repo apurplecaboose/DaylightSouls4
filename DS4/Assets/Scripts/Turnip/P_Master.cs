@@ -546,7 +546,7 @@ public class P_Master : MonoBehaviour
                     _CurrentAttackPrefab = Instantiate(_HeavyAttackPrefab, _P_rb.transform);
                     _CurrentAttackPrefab.transform.right = _P_rb.transform.right;
                     break;
-                case int t when t == totalTicks - recoveryFrames:
+                case int t when t == totalTicks - recoveryFrames + 5:
                     Destroy(_CurrentAttackPrefab);
                     break;
                 case int t when t >= totalTicks:
