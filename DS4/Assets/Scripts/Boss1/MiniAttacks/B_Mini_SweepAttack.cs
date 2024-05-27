@@ -33,7 +33,7 @@ public class B_Mini_SweepAttack : MonoBehaviour // inherit from Boss Master and 
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 1f;//optional
+        _B_Path.Speed = 2f;//optional
         _BossMasterRef.Turnspeed = 200f;
     }
     void FixedUpdate()

@@ -33,8 +33,8 @@ public class B_Mini_CircleAttack : MonoBehaviour // inherit from Boss Master and
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 0f;//optional
-        _BossMasterRef.Turnspeed = 0f;
+        _B_Path.Speed = 2f;//optional
+        _BossMasterRef.Turnspeed = 1000f;
     }
     void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {
