@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AttackDamage: 10
   _StunFrames: 10
-  AttackStunType: 0
+  AttackStunType: 1
   _DestroyTarget: {fileID: 0}
   _AttackTick: 0
 --- !u!1 &3375061184163797686
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AttackDamage: 10
   _StunFrames: 10
-  AttackStunType: 0
+  AttackStunType: 1
   _DestroyTarget: {fileID: 0}
   _AttackTick: 0
 --- !u!1 &5676280709067567276

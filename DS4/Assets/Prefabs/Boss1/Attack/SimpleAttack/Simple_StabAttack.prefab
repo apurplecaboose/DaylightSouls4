@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7832138002678295580}
   - component: {fileID: 5177014448999155951}
   m_Layer: 0
-  m_Name: SimpleStabAttack
+  m_Name: Simple_StabAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
