@@ -956,8 +956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: 0}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: -100, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2846027535813937446
 CanvasRenderer:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2684,8 +2684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: 0}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: -100, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7196380857451952436
 CanvasRenderer:
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2894,7 +2894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4027624393598942063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3067,29 +3067,29 @@ MonoBehaviour:
   ComboPossibilityRef: {fileID: 0}
   _ComboPictureArray:
   - ComboKey: 0
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 27135d9844da9974496015d9b1e12e2f, type: 3}
   - ComboKey: 1
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 910a6e8eab79d6c45ad0163226791142, type: 3}
   - ComboKey: 2
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: fd695a2db14c26f4b8b6c5ad65b3979a, type: 3}
   - ComboKey: 3
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: d69f0b2e737427a41944e404cb813007, type: 3}
   - ComboKey: 4
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 37572df7e5fec394287e6c12ec09e03e, type: 3}
   - ComboKey: 5
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: fbd19cd81381ee24797398855b4bc112, type: 3}
   - ComboKey: 6
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: c278eb168e8ce9c40a1d9c76477d2386, type: 3}
   - ComboKey: 7
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 481f5ab7bbeebce4d964a277f1508ca5, type: 3}
   - ComboKey: 8
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 1582e68a5dc437c449ed1146e221a6fd, type: 3}
   - ComboKey: 9
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 1582e68a5dc437c449ed1146e221a6fd, type: 3}
   - ComboKey: 10
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 1582e68a5dc437c449ed1146e221a6fd, type: 3}
   - ComboKey: 11
-    ComboImageValue: {fileID: 21300000, guid: d8721f895e36ec44bacc4c9b9c679e0c, type: 3}
+    ComboImageValue: {fileID: 21300000, guid: 1582e68a5dc437c449ed1146e221a6fd, type: 3}
   _CanvasGroup: {fileID: 8880741999521186545}
   _ComboOptionsParent: {fileID: 1362345372204084471}
   _EndComboDisplayParent: {fileID: 4027624393598942063}
@@ -3217,8 +3217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: 0}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: -100, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9049161218108213556
 CanvasRenderer:
@@ -3283,7 +3283,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3842,7 +3842,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!1 &8411333870428885673
