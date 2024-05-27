@@ -27,13 +27,13 @@ public class B_SimpleStabAttack : MonoBehaviour
         /// Sample
         invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
-        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 2
-        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(60, 90)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 3
-        invokeTimeCount += TicksToSeconds(60);//length of combo
+        invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap
         Invoke("CycleNextAttack", invokeTimeCount);// Attk 4
         //repeat etc

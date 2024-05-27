@@ -47,7 +47,7 @@ MonoBehaviour:
   _LengthOfLastComboInTicks: 240
   _RandomOpeningRange: {x: 60, y: 200}
   _MiniAttackPrefabs:
+  - {fileID: 5494882110819875870, guid: 72fc033746972d44e850c29992710174, type: 3}
+  - {fileID: 5494882110819875870, guid: 1a54bc4b9c846444cb90b92ccf6d8765, type: 3}
   - {fileID: 8377350924548251626, guid: 9afa0bf88682a1741b73e3f2d0b1eb92, type: 3}
-  - {fileID: 8377350924548251626, guid: 4d127f7d1e570014aaa96b34f414510d, type: 3}
-  - {fileID: 8377350924548251626, guid: 9afa0bf88682a1741b73e3f2d0b1eb92, type: 3}
-  - {fileID: 8377350924548251626, guid: 4d127f7d1e570014aaa96b34f414510d, type: 3}
+  - {fileID: 5494882110819875870, guid: 522643ae85888b64f995425a7b425669, type: 3}

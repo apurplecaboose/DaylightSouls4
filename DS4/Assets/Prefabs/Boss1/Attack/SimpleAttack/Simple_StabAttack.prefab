@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f288c3e17fc064e8bff34795a97dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LengthOfLastComboInTicks: 60
+  _LengthOfLastComboInTicks: 70
   _RandomOpeningRange: {x: 60, y: 120}
   _MiniAttackPrefabs:
   - {fileID: 5892170635575372603, guid: edfda7b2fe59d8447bdffdccbc6cbf2c, type: 3}
