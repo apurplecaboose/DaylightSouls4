@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public int CurrentScene;
     public void StartGame()
     {
-        int scenenumb = 10;
+        int scenenumb = 9;
         SceneManager.LoadScene(scenenumb);
     }
     public void StartTutorial()
@@ -19,11 +20,11 @@ public class MenuScript : MonoBehaviour
     }
     public void NextPage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(CurrentScene + 1);
     }
     public void PreviousPage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        SceneManager.LoadScene(CurrentScene - 1);
     }
     public void BackToMenu()
     {
