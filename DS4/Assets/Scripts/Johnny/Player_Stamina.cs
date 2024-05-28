@@ -15,10 +15,10 @@ public class Player_Stamina : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            StaminaConsuming(10);
-        }
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    StaminaConsuming(10);
+        //}
         if (StamimaValue < _Max_Stamina)
         {
             RestoreStamina();
