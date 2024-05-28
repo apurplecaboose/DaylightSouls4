@@ -1023,6 +1023,7 @@ Transform:
   - {fileID: 121593831}
   - {fileID: 914626904}
   - {fileID: 1174509568}
+  - {fileID: 797603771}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1066,17 +1067,17 @@ MonoBehaviour:
   _BossNumber: 1
   _ComboDropPercentage:
   - 0.1
+  - 0.025
   - 0.1
   - 0.1
   - 0.1
   - 0.1
   - 0.1
+  - 0.025
+  - 0.125
   - 0.1
   - 0.1
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
+  - 0.025
   _SampleCapacity: 1000
   _LowerPercentage: 10
   _NewTotalAmount: 0
@@ -1118,11 +1119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AttackGameObjectArray:
   - ComboKey: 0
-    GameObjectValue: {fileID: 3291682989430892978, guid: 68baefa7be0e644498355fbd15ef90f7, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 42d52dccc3cf75a4b8d6a5517ccec7b9, type: 3}
   - ComboKey: 1
-    GameObjectValue: {fileID: 3291682989430892978, guid: a4f2aa9a63588a64487603f87194a7b7, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: c0335c5cbf8abf947ad7244f950a51d2, type: 3}
   - ComboKey: 2
-    GameObjectValue: {fileID: 3291682989430892978, guid: 3a1826822340f714da72f1697648c7d7, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 0f121839b285d5a44bd2d8917865cba9, type: 3}
   - ComboKey: 3
     GameObjectValue: {fileID: 3291682989430892978, guid: 7c28092925e40194b82bad88231f039b, type: 3}
   - ComboKey: 4
@@ -1134,11 +1135,11 @@ MonoBehaviour:
   - ComboKey: 7
     GameObjectValue: {fileID: 6481997475751821921, guid: 3169c56fcba4d434fa0a471aefb5ae44, type: 3}
   - ComboKey: 8
-    GameObjectValue: {fileID: 3291682989430892978, guid: 42d52dccc3cf75a4b8d6a5517ccec7b9, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 68baefa7be0e644498355fbd15ef90f7, type: 3}
   - ComboKey: 9
-    GameObjectValue: {fileID: 3291682989430892978, guid: c0335c5cbf8abf947ad7244f950a51d2, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: a4f2aa9a63588a64487603f87194a7b7, type: 3}
   - ComboKey: 10
-    GameObjectValue: {fileID: 3291682989430892978, guid: 0f121839b285d5a44bd2d8917865cba9, type: 3}
+    GameObjectValue: {fileID: 3291682989430892978, guid: 3a1826822340f714da72f1697648c7d7, type: 3}
   - ComboKey: 11
     GameObjectValue: {fileID: 3291682989430892978, guid: 6a84a3aba23851f41b6a5d3c8ba8883f, type: 3}
 --- !u!114 &453216933
@@ -1867,6 +1868,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &797603771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+  m_PrefabInstance: {fileID: 1570712261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &881962589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2823,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1570712261
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 453216927}
+    m_Modifications:
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538093392371679959, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282238860415423311, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
+      propertyPath: m_Name
+      value: Waving_Boss_Mini_Attack_240
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b36d76783982e949b5cdaf8a6b89896, type: 3}
 --- !u!1 &1572868181
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23783201, y: 1.1140424}
+  m_Offset: {x: 0.06927073, y: 1.1140424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8328756, y: 1.9608762}
+  m_Size: {x: 1.1699982, y: 1.9608762}
   m_EdgeRadius: 0
 --- !u!95 &3737555241592111747
 Animator:
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d484ff6d1d521be49b11545d0e491365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackDamage: 20
+  _AttackDamage: 10
   _StunFrames: 10
   AttackStunType: 1
   _DestroyTarget: {fileID: 0}
@@ -267,8 +267,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1330398, y: 0.07982271}
-  m_Size: {x: 1.2343308, y: 1.919838}
+  m_Offset: {x: -0.2715009, y: 0.2776242}
+  m_Size: {x: 1.511253, y: 2.3154414}
   m_Direction: 0
 --- !u!1 &5960142497622178680
 GameObject:
@@ -418,8 +418,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13303982, y: 0.07982271}
-  m_Size: {x: 1.2343308, y: 1.919838}
+  m_Offset: {x: 0.2594608, y: 0.28192407}
+  m_Size: {x: 1.4871728, y: 2.3240411}
   m_Direction: 0
 --- !u!1 &7057354203183894122
 GameObject:
@@ -522,7 +522,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.237832, y: 1.1140424}
+  m_Offset: {x: -0.09335095, y: 1.1140424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -533,7 +533,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8328756, y: 1.9608762}
+  m_Size: {x: 1.1218377, y: 1.9608762}
   m_EdgeRadius: 0
 --- !u!95 &7404425273599209167
 Animator:
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d484ff6d1d521be49b11545d0e491365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AttackDamage: 20
+  _AttackDamage: 10
   _StunFrames: 10
   AttackStunType: 1
   _DestroyTarget: {fileID: 0}
