@@ -8,8 +8,8 @@ public class Mini_WaveOut_Attack : MonoBehaviour // inherit from Boss Master and
     //References
     GameObject _P, _B;
     P_Master _P_MasterRef;
-    Boss_Master _BossMasterRef;
     PathFinding _B_Path;
+    Boss_Master _BossMasterRef;
     Player_HealthBar _P_Health;
 
     [Header("Required Fields MUST FILL!!!")]
@@ -22,7 +22,7 @@ public class Mini_WaveOut_Attack : MonoBehaviour // inherit from Boss Master and
     [Header("Optional Fields")]
     [SerializeField] GameObject _DestroyTarget;
     [SerializeField] int _AttackTick;
-    void Awake()
+    void Awake() // Don't Touch
     {
         _P = GameObject.FindGameObjectWithTag("Player");
         _B = GameObject.FindGameObjectWithTag("Boss");
@@ -31,12 +31,22 @@ public class Mini_WaveOut_Attack : MonoBehaviour // inherit from Boss Master and
         _BossMasterRef = _B.GetComponent<Boss_Master>();
         _B_Path = _B.GetComponent<PathFinding>();
     }
-    private void Start()
+    private void Start() //Changable
     {
-        _B_Path.Speed = 7f;//optional
-        _BossMasterRef.Turnspeed = 5000f;
+        _B_Path.Speed = 3f;//optional
+        _BossMasterRef.Turnspeed = 300f;
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    void FixedUpdate()
+    {
+        //run any neessicary special code here
+    }
+    //put any public voids here to be triggered by animation events
+    public void EndMiyazakiTime() //Changable
+    {
+        _BossMasterRef.Turnspeed = 10; // example
+        _B_Path.Speed = 1f;
+    }
+    void OnTriggerEnter2D(Collider2D collision) // Don't Touch
     {
         if (!collision.CompareTag("Player")) return;
         if (_P_MasterRef.Dodging_Invincible) return;
@@ -45,29 +55,19 @@ public class Mini_WaveOut_Attack : MonoBehaviour // inherit from Boss Master and
         _P_Health.DamagePlayerHealth(_AttackDamage);
         _P_MasterRef.P_StunInput(_StunFrames, AttackStunType);
     }
-    void FixedUpdate()
-    {
-        //run any neessicary special code here
-    }
-    //put any public voids here to be triggered by animation events
-    public void EndMiyazakiTime()
-    {
-        _BossMasterRef.Turnspeed = 10; // example
-        _B_Path.Speed = 1f;
-    }
     public void EndofLife() // end of attack
     {
         //run reset code here if nessicary
         if (_DestroyTarget == null) Destroy(gameObject);
         else Destroy(_DestroyTarget);
     }
-    public void ResetEverything()
+    public void ResetEverything() // Don't Touch
     {
         //run resetcode here
         if (_DestroyTarget == null) Destroy(gameObject);
         else Destroy(_DestroyTarget);
     }
-    void Update()
+    void Update()// Don't Touch
     {
         if (_BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED || _BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.Opening)
         {

@@ -33,8 +33,8 @@ public class B_Mini_SlashAttack : MonoBehaviour // inherit from Boss Master and 
     }
     private void Start() //Changable
     {
-        _B_Path.Speed = 4f;//optional
-        _BossMasterRef.Turnspeed = 500;
+        _B_Path.Speed = 3f;//optional
+        _BossMasterRef.Turnspeed = 300f;
     }
     void FixedUpdate()
     {

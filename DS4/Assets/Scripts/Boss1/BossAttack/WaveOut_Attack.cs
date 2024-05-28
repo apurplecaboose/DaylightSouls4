@@ -40,7 +40,7 @@ public class WaveOut_Attack : MonoBehaviour
     }
     void Update() // Don't Touch
     {
-        if(_BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED || _BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED)
+        if (_BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED || _BossMasterRef.Boss_Action == Boss_Master.Boss_Action_List.STUNNED)
         {
             Invoke("ResetEverything", 0.1f);
         }
@@ -49,12 +49,30 @@ public class WaveOut_Attack : MonoBehaviour
     {
         GameObject a = Instantiate(_MiniAttackPrefabs[_CurrentAttackIndex], this.transform); // instantiate the first attack
         a.transform.up = this.transform.up;
+        if (_BossMasterRef.CurrentAttackMini == null)
+        {
+            _BossMasterRef.CurrentAttackMini = a;
+        }
+        else
+        {
+            _BossMasterRef.LastAttackMini = _BossMasterRef.CurrentAttackMini;
+            _BossMasterRef.CurrentAttackMini = a;
+        }
         _CurrentAttackIndex += 1;
     }
     void CycleNextAttack() // Don't Touch
     {
         GameObject a = Instantiate(_MiniAttackPrefabs[_CurrentAttackIndex], this.transform);
         a.transform.up = this.transform.up;
+        if (_BossMasterRef.CurrentAttackMini == null)
+        {
+            _BossMasterRef.CurrentAttackMini = a;
+        }
+        else
+        {
+            _BossMasterRef.LastAttackMini = _BossMasterRef.CurrentAttackMini;
+            _BossMasterRef.CurrentAttackMini = a;
+        }
         _CurrentAttackIndex += 1;
         if (_CurrentAttackIndex >= _MiniAttackPrefabs.Count)//EndCombo();
         {

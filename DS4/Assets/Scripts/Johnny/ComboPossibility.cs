@@ -210,7 +210,7 @@ public class ComboPossibility : MonoBehaviour
     {
         FinalOutputComboArray = FinalOutput;
 
-        for (int i = 0; i < FinalOutput.Count; i++)
+        for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < _CurrentBossCombos.Count; j++)
             {
