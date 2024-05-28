@@ -13,6 +13,7 @@ public class Stun_visual : MonoBehaviour
 
     void Update()
     {
+        if(Target == null) return;
         this.transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + Offset, 0); //dumb but it works
         float x = Mathf.Sin(Time.time * _Freq) * _Amp;
         float y = Mathf.Cos(Time.time * _Freq) * _Amp;

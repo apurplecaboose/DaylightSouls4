@@ -47,6 +47,7 @@ public class Boss_Master : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.Backspace)) { Instantiate(ComboSelectionUI_Prefab); }
         RotateBoss();
         if(Boss_Action == Boss_Action_List.Chasing)
         {
@@ -194,7 +195,6 @@ public class Boss_Master : MonoBehaviour
     {
         Destroy(_Combopossibility);
         Destroy(_Lib);
-        Destroy(_StunPrefab);
         Destroy(BossPathfinding);
         Destroy(this.GetComponent<BossHeathbar>());
         Destroy(this);

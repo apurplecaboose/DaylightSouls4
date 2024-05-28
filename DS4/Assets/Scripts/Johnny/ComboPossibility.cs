@@ -85,8 +85,8 @@ public class ComboPossibility : MonoBehaviour
         ResultComboArrayAllInOne = new ComboType[8][];
         FinalOutputComboArray = new List<ComboType>();
         _ComboOptionIndex = new int[3];
-        NumberOfComboSelectionRepeats = new int[10];
-        _AmountAfterDecrease = new float[10];
+        NumberOfComboSelectionRepeats = new int[_CurrentBossCombos.Count]; // THIS SHOULD BE THE NUMBER OF COMBOS YOU HAVE 
+        _AmountAfterDecrease = new float[_CurrentBossCombos.Count];
 
         LoadInArraysToFinalPatern();
 
@@ -161,7 +161,7 @@ public class ComboPossibility : MonoBehaviour
         {
             _ComboOptionIndex[i] = UnityEngine.Random.Range(0, _ComboPool.Count);
         }
-        for (int i = 0; i < resultCombo.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             resultCombo[i] = _ComboPool[_ComboOptionIndex[i]];
         }
@@ -210,7 +210,7 @@ public class ComboPossibility : MonoBehaviour
     {
         FinalOutputComboArray = FinalOutput;
 
-        for (int i = 0; i < FinalOutput.Count; i++)
+        for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < _CurrentBossCombos.Count; j++)
             {
@@ -220,6 +220,27 @@ public class ComboPossibility : MonoBehaviour
                 }
             }
         }
+
+        _ComboPool.Clear();
+        for (int i = 0; i < _CurrentBossCombos.Count; i++)
+        {
+            _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
+        }
+
+        print("this is new total amount:" + _NewTotalAmount);
+        _SampleCapacity = _NewTotalAmount;
+        for (int i = 0; i < _CurrentBossCombos.Count; i++)
+        {
+            _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
+        }//recalculate the percentage for each attack
+        _NewTotalAmount = 0;//prepare for the next decrease personality
+
+        for (int i = 0; i < 8; i++)
+        {
+            SetComboGroup(ResultComboArrayAllInOne[i]);
+        }//provide the 3 randomm value as a grounp.
+
+        LoadInArraysToFinalPatern();
     }
     // Need Adjustment with Ken Script
 
