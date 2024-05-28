@@ -7521,9 +7521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0350554438148e34d8b50f200330016d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthValue: 100
-  ShieldValue: 0
-  DamageTaken: 0
   ShieldImage: {fileID: 2005430033}
   HealthImage: {fileID: 1081175502}
   Animator: {fileID: 1179177889}

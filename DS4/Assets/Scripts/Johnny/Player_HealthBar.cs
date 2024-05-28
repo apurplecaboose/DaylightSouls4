@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Player_HealthBar : MonoBehaviour
 {
     GameManager _GM;
-    public float HealthValue = 100, ShieldValue;
+    float HealthValue = 100, ShieldValue;
     float _ShieldOriginalValue, _HealthOriginalValue,_Max_Health,_Max_Shield;
-    public float DamageTaken;
+    float DamageTaken;
     public Image ShieldImage, HealthImage;
     public Animator Animator;
     private void Awake()
