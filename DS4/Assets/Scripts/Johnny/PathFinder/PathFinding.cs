@@ -51,7 +51,7 @@ public class PathFinding : MonoBehaviour
             {
                 RetracePath(startNode, targetNode);
                 sw.Stop();
-                print("PathFind: "+sw.ElapsedMilliseconds+"ms");
+                //print("PathFind: "+sw.ElapsedMilliseconds+"ms");
                 return;//Reach the destination
             }
 

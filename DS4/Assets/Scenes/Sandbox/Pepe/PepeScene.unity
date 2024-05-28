@@ -1638,6 +1638,8 @@ MonoBehaviour:
   TryndamereMode: 0
   PlayState: 0
   ComboSelectionUI_Instance: {fileID: 669891106224913273, guid: fdbf2cab8897ebc439f5cd616daf648d, type: 3}
+  B_DeathCutScenePrefab: {fileID: 3467221421819241112, guid: 098e7c7dcbbdfb642ad57adbc2929c5e, type: 3}
+  P_DeathCutScenePrefab: {fileID: 7366184382718017916, guid: 40f6cf7b4a9ae0e428a1d5165178f5d3, type: 3}
 --- !u!114 &591358526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3582,7 +3584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021223772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6, y: -3.18, z: 0}
+  m_LocalPosition: {x: -53038, y: -20579, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
