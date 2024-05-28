@@ -31,10 +31,10 @@ public class BossHeathbar : MonoBehaviour
     {
         DamageStackDisplay();
         HealthDecayLerp();
-        if(BossHp >= 0)
+        if(BossHp <= 0)
         {
             //boss is dead
-            if (!_GM.PlayerDead())
+            if (!_GM.BossDead())
             {
                 Destroy(gameObject);
             }

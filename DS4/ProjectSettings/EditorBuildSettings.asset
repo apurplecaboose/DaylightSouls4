@@ -35,5 +35,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/TutorialScenes/8ComboSelection.unity
     guid: 4653ce05bbfe5dd468cfead1e8d7157c
+  - enabled: 1
+    path: Assets/Scenes/Sandbox/Pepe/PepeScene.unity
+    guid: ae96eac2b83ef8b4a99d4f01ea88438c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bbbfda765414b454f8e0760c22d9a004, type: 2}

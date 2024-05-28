@@ -26,19 +26,18 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public bool PlayerDead()
     {
+        PlayState = G_State.Selecting;
         if (TryndamereMode) return true;
         Destroy(ComboSelectionUI_Instance);
         _BossMasterRef.DestroyEverythingonBoss();
-        Instantiate(B_DeathCutScenePrefab);
-        float deathcutscenelength = 2f;
-        Invoke("ReloadSceneBcDead", deathcutscenelength);
-        if (1 == 2) ReloadSceneBcDead();//stop ide from yelling at me for using invoke
-        //load you died
-        return TryndamereMode;
-        void ReloadSceneBcDead()
+        Instantiate(P_DeathCutScenePrefab);
+        foreach (Transform t in _BossMasterRef.transform)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Destroy(t.gameObject);
         }
+        float deathcutscenelength = 4;
+        Invoke("ReloadSceneBcDead", deathcutscenelength);
+        return TryndamereMode;
     }
     /// <summary>
     /// if return false then tryndamere mode is false, if true tryndamere is true then dont run death stuff
@@ -46,15 +45,19 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public bool BossDead()  
     {
-        if(TryndamereMode) return true;
+        PlayState = G_State.Selecting;
+        if (TryndamereMode) return true;
         Instantiate(B_DeathCutScenePrefab);
-        float deathcutscenelength = 2f;
+        float deathcutscenelength = 1.75f;
         Invoke("ToMenuSceneBcBossDead", deathcutscenelength);
         return TryndamereMode;
-        if (1 == 2) ToMenuSceneBcBossDead();
-        void ToMenuSceneBcBossDead()
-        {
-            SceneManager.LoadScene(1);
-        }
+    }
+    void ReloadSceneBcDead()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    void ToMenuSceneBcBossDead()
+    {
+        SceneManager.LoadScene(1);
     }
 }
