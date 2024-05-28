@@ -9,12 +9,12 @@ public class MenuScript : MonoBehaviour
 {
     public void StartGame()
     {
-        int scenenumb = 1;
+        int scenenumb = 10;
         SceneManager.LoadScene(scenenumb);
     }
     public void StartTutorial()
     {
-        int scenenumb = 1;
+        int scenenumb = 2;
         SceneManager.LoadScene(scenenumb);
     }
     public void NextPage()

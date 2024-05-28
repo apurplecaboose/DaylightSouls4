@@ -28,18 +28,21 @@ public class ComboPossibility : MonoBehaviour
     //SelectPatternPanel _RefToSelectPattern;
     public enum ComboType
     {
-        B1__Slam_Attack,//0
-        B1__Punch_Attack,//1
-        B1__Death_by_Covid,//2
-        B1__GomoGomo_Attack,//3
-        B1__StripLife_Attack,//4
-        B1__Ganster_Attack,//5
-        B1__Italian_Attack,//6
-        B1__JesusBless_Attack,//7
-        B1__RockNRoll_Attack,//8
-        B1__RapGod_Attack,//9
-        B1__BananaMan_Attack,//10
-        B1__ILoveChina_Attack,//11
+        B1__Switcharoo,
+        B1__Cresent_Slash,
+        B1__Forked_Flurry,
+
+        B1__Cyclone_Cleave,
+        B1__Dinner_Time,
+        B1__Piercing_Skewer,
+        B1__Whirl_n_Twirl,
+        B1__Mantis,
+
+        B1__Color_Guard,
+        B1__Hiramoto,
+        B1__Table_Sweeping_MASTER,
+        B1__bEaN,
+
 
         //B2__Slam_Attack,//0
         //B2__Punch_Attack,//1
@@ -85,8 +88,8 @@ public class ComboPossibility : MonoBehaviour
         ResultComboArrayAllInOne = new ComboType[8][];
         FinalOutputComboArray = new List<ComboType>();
         _ComboOptionIndex = new int[3];
-        NumberOfComboSelectionRepeats = new int[10];
-        _AmountAfterDecrease = new float[10];
+        NumberOfComboSelectionRepeats = new int[_CurrentBossCombos.Count]; // THIS SHOULD BE THE NUMBER OF COMBOS YOU HAVE 
+        _AmountAfterDecrease = new float[_CurrentBossCombos.Count];
 
         LoadInArraysToFinalPatern();
 
@@ -161,7 +164,7 @@ public class ComboPossibility : MonoBehaviour
         {
             _ComboOptionIndex[i] = UnityEngine.Random.Range(0, _ComboPool.Count);
         }
-        for (int i = 0; i < resultCombo.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             resultCombo[i] = _ComboPool[_ComboOptionIndex[i]];
         }
@@ -210,7 +213,8 @@ public class ComboPossibility : MonoBehaviour
     {
         FinalOutputComboArray = FinalOutput;
 
-        for (int i = 0; i < FinalOutput.Count; i++)
+        //from here below doesnt really work but keep the line above!!! 
+        for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < _CurrentBossCombos.Count; j++)
             {
@@ -220,21 +224,72 @@ public class ComboPossibility : MonoBehaviour
                 }
             }
         }
+
+        _ComboPool.Clear();
+        for (int i = 0; i < _CurrentBossCombos.Count; i++)
+        {
+            _AmountAfterDecrease[i] = LowerPossibility(i, NumberOfComboSelectionRepeats[i], _CurrentBossCombos[i]);
+        }
+
+        print("this is new total amount:" + _NewTotalAmount);
+        _SampleCapacity = _NewTotalAmount*2;
+        if (_ComboPool.Count > 1000)
+        {
+            int overflow = _ComboPool.Count - 1000;
+            for(int i = 0; i < overflow; i++)
+            {
+                _ComboPool.Remove(_ComboPool[UnityEngine.Random.Range(0, _ComboPool.Count - 1)]);
+            }
+            _SampleCapacity = 1000;
+        }
+
+
+        //for (int i = 0; i < _CurrentBossCombos.Count; i++)
+        //{
+        //    _ComboDropPercentage[i] = Mathf.Round(_AmountAfterDecrease[i] / _SampleCapacity * 1000) / 1000;
+        //}//recalculate the percentage for each attack
+        _NewTotalAmount = 0;//prepare for the next decrease personality
+
+        for (int i = 0; i < 8; i++)
+        {
+            SetComboGroup(ResultComboArrayAllInOne[i]);
+        }//provide the 3 randomm value as a grounp.
+
+        LoadInArraysToFinalPatern();
     }
     // Need Adjustment with Ken Script
 
-    public float LowerPossibility(int percentageIndex, int chosenTimes, ComboType combo)
+    public float LowerPossibility(int percentageIndex, int chosenTimes, ComboType combo) // this is some hacky code it doesnt really work
     {
+        float sumofpercentages = 0;
+        for (int i = 0; i < _ComboDropPercentage.Count; i++)
+        {
+            sumofpercentages += _ComboDropPercentage[i];
+        }
+        if (sumofpercentages < 1)
+        {
+            print("Low percentage");
+            float percentagemultiplier = 1 / sumofpercentages;
+            for (int i = 0; i < _ComboDropPercentage.Count; i++)
+            {
+                _ComboDropPercentage[i] *= percentagemultiplier;
+            }
+        }
         for (int i = 0; i < chosenTimes; i++)
         {
             _ComboDropPercentage[percentageIndex] = _ComboDropPercentage[percentageIndex] * (1 - _LowerPercentage / 100);
             print("This is percentage:" + _ComboDropPercentage[percentageIndex]);
         }//calculate percentage 
+
         float newAmount = Mathf.Round(_SampleCapacity * _ComboDropPercentage[percentageIndex]);//calculate the amount
         for (int i = 0; i < newAmount; i++)
         {
+            _ComboPool.Add(combo);
+            _ComboPool.Add(combo);
+            _ComboPool.Add(combo);
             _ComboPool.Add(combo);//add the certain amount of certain attack into the combo holder
         }
+
         _NewTotalAmount += newAmount;//recalculate the capacity
         return newAmount;
     }

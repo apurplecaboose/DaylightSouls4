@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class BossHeathbar : MonoBehaviour
 {
+    GameManager _GM;
     public int BossHp;
     float _StackCountDwonTimer;
     int _StackedDamage;
@@ -21,6 +22,7 @@ public class BossHeathbar : MonoBehaviour
     public AnimationCurve LerpCurve;
     void Start()
     {
+        _GM = Camera.main.GetComponent<GameManager>();
         _HealthDropDelayOriginal = _HealthDropDelay = 1;
         _BossHP_Slider.maxValue = _DecayHP_Slider.maxValue = BossHp;
         _Duration = 1;
@@ -29,13 +31,21 @@ public class BossHeathbar : MonoBehaviour
     {
         DamageStackDisplay();
         HealthDecayLerp();
+        if(BossHp <= 0)
+        {
+            //boss is dead
+            if (!_GM.BossDead())
+            {
+                Destroy(gameObject);
+            }
+        }
     }
     public void DamageBoss(int Damage)
     {
         BossHp -= Damage;
         _BossHP_Slider.value = BossHp;
         _StackedDamage += Damage;
-        _StackCountDwonTimer += FrameToSec(18f + 5f) + FrameToSec(500f / _StackedDamage);
+        _StackCountDwonTimer += FrameToSec(60f + 5f) + FrameToSec(400f / _StackedDamage);
         if (_HealthDropDelay < 0.5) _HealthDropDelay += 0.3f;
     }
     void DamageStackDisplay()

@@ -98,6 +98,7 @@ public class P_Master : MonoBehaviour
     }
     void TurnPlayer()
     {
+        if(_BossTransform == null) return;
         float turnspeed = 1000;
         if (P_Action == P_Action_List.STUNNED || P_Action == P_Action_List.LightAttack || P_Action == P_Action_List.NeutralHeavy || P_Action == P_Action_List.ChargedHeavy) return; // gaurd clause. If player is stunned dont rotate
         if (_TargetLocked) LockOn();

@@ -7,6 +7,7 @@ public class TestFollow : MonoBehaviour
     [SerializeField]Transform _Follow;
     void Update()
     {
+        if (_Follow == null) return;
         this.transform.position = new Vector3(_Follow.position.x, _Follow.position.y, this.transform.position.z);
     }
 }
