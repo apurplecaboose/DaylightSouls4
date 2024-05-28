@@ -28,18 +28,21 @@ public class ComboPossibility : MonoBehaviour
     //SelectPatternPanel _RefToSelectPattern;
     public enum ComboType
     {
-        B1__Slam_Attack,//0
-        B1__Punch_Attack,//1
-        B1__Death_by_Covid,//2
-        B1__GomoGomo_Attack,//3
-        B1__StripLife_Attack,//4
-        B1__Ganster_Attack,//5
-        B1__Italian_Attack,//6
-        B1__JesusBless_Attack,//7
-        B1__RockNRoll_Attack,//8
-        B1__RapGod_Attack,//9
-        B1__BananaMan_Attack,//10
-        B1__ILoveChina_Attack,//11
+        B1__Switcharoo,
+        B1__Cresent_Slash,
+        B1__Forked_Flurry,
+
+        B1__Cyclone_Cleave,
+        B1__Dinner_Time,
+        B1__Piercing_Skewer,
+        B1__Whirl_n_Twirl,
+        B1__Mantis,
+
+        B1__Color_Guard,
+        B1__Hiramoto,
+        B1__Table_Sweeping_MASTER,
+        B1__bEaN,
+
 
         //B2__Slam_Attack,//0
         //B2__Punch_Attack,//1
