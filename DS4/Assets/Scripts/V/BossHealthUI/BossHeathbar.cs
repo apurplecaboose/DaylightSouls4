@@ -45,7 +45,7 @@ public class BossHeathbar : MonoBehaviour
         BossHp -= Damage;
         _BossHP_Slider.value = BossHp;
         _StackedDamage += Damage;
-        _StackCountDwonTimer += FrameToSec(18f + 5f) + FrameToSec(500f / _StackedDamage);
+        _StackCountDwonTimer += FrameToSec(60f + 5f) + FrameToSec(400f / _StackedDamage);
         if (_HealthDropDelay < 0.5) _HealthDropDelay += 0.3f;
     }
     void DamageStackDisplay()
