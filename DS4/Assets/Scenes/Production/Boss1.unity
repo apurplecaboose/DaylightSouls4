@@ -7496,8 +7496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P_Action: 0
   _P_MoveSpeed: 7
-  _Ghost_MoveSpeed: 25
-  _SwapRadius: 6.85
+  _Ghost_MoveSpeed: 20
+  _SwapRadius: 6
   _DodgeStaminaCost: 25
   _LightAttackPrefab: {fileID: 8875244079134120948, guid: ff7213f27e4a81e46bf5f0efed9b3a4b, type: 3}
   _HeavyAttackPrefab: {fileID: 8284224868045946118, guid: 153902fba094f344c801c553cb6cafee, type: 3}
