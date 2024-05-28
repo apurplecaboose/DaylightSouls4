@@ -24,7 +24,7 @@ public class SAMPLE_Mini : MonoBehaviour // inherit from Boss Master and Monobeh
     [SerializeField] int _AttackTick;
     void Awake()
     {
-        _P = GameObject.FindGameObjectWithTag("Player");
+        _P = GameObject.FindGameObjectWithTag("PlayerTagTest");
         _B = GameObject.FindGameObjectWithTag("Boss");
         _P_MasterRef = _P.GetComponent<P_Master>();
         _P_Health = _P.GetComponent<Player_HealthBar>();

@@ -20,7 +20,7 @@ public class PathFinding : MonoBehaviour
     private void Awake()
     {
         _BossTransform = this.transform;
-        //_PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        //_PlayerTransform = GameObject.FindGameObjectWithTag("PlayerTagTest").transform;
     }
     private void Update()
     {

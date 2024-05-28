@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - BossParry
   - AudioHolder
+  - PlayerTagTest
   layers:
   - Default
   - TransparentFX
