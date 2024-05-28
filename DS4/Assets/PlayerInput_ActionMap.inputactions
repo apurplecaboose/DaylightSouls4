@@ -236,6 +236,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "IJKL",
+                    "id": "d69146d0-8bb4-44ed-b378-25409d34c7c8",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Ghost",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f8509d53-24c2-4671-bdae-6fe42c29612d",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Ghost",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "37bc3f12-94e0-402f-97dd-04a385b3f2b2",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Ghost",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a693d4ea-9457-4350-a746-26c09837549b",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Ghost",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "93658197-ea19-47f4-9b7b-a0866c42403a",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Ghost",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "2ec51a75-b021-4857-aa5e-97b7e5fd22a3",
                     "path": "<Gamepad>/buttonEast",
@@ -281,6 +336,17 @@
                 },
                 {
                     "name": "",
+                    "id": "89d1e89f-a267-4891-abed-ec9daf672c0b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swap Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "02374ab8-9a43-4ff4-b47d-bacd2b588911",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -303,6 +369,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1186c505-7c8c-4fc4-bae2-542fd28d0274",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Light Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a2f4434e-abcb-4245-9a2d-f55af8240f41",
                     "path": "<XInputController>/leftShoulder",
                     "interactions": "",
@@ -319,6 +396,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Healing Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45bbe748-16f0-4cf6-ae4c-050aa94a58df",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Healing Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -358,6 +446,17 @@
                 },
                 {
                     "name": "",
+                    "id": "227ba366-fa3a-4805-b0ba-6b0e8392213d",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heavy Attack ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "155a37eb-1e01-47d8-a622-31ff8eb8383f",
                     "path": "<XInputController>/leftTrigger",
                     "interactions": "",
@@ -374,6 +473,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Target Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b5017f5-e54d-470a-96f6-dfb9934573cd",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Target Lock",
                     "isComposite": false,
                     "isPartOfComposite": false
