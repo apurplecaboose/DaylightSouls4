@@ -374,7 +374,7 @@ public class P_Master : MonoBehaviour
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
             {
                 P_Action = P_Action_List.Healing;
-                int recoveryFrames = 10;
+                int recoveryFrames = 3;
                 _TickCount = recoveryFrames;
             }
             else
@@ -395,7 +395,7 @@ public class P_Master : MonoBehaviour
         }
         else
         {
-            if (_TickCount == 10) // same as healing input recoveryFrames
+            if (_TickCount == 3) // same as healing input recoveryFrames
             { // will only run heal when tick is 10 otherwise it is in recovery mode and no heal is done just cooldown
                 _Health.RestoreHealth();
             }
