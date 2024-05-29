@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         PlayState = G_State.Selecting;
         if (TryndamereMode) return true;
         Instantiate(B_DeathCutScenePrefab);
-        float deathcutscenelength = 1.75f;
+        float deathcutscenelength = 4;
         Invoke("ToMenuSceneBcBossDead", deathcutscenelength);
         return TryndamereMode;
     }

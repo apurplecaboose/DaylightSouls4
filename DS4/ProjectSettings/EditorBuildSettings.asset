@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Production/StartScreen.unity
-    guid: f66aa2d3908bf334bac33f49899067ff
+    path: Assets/Scenes/Production/WEBGL_1.unity
+    guid: a052cc1b41e2c9a408d46769721841f2
   - enabled: 1
     path: Assets/Scenes/Production/StartMenu.unity
     guid: f1021b8eca17cf249bd8c0a240582250
@@ -35,5 +35,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/Boss1.unity
     guid: c19958315238e1a4d8251da551f6ad0d
+  - enabled: 1
+    path: Assets/Scenes/Production/WEBGL_2.unity
+    guid: f7a888162c8468e4aacc3e55c09572a6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bbbfda765414b454f8e0760c22d9a004, type: 2}
