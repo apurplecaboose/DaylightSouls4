@@ -312,8 +312,8 @@ public class P_Master : MonoBehaviour
     {
         //swap player UNINTERUPTABLE
         int startUpFrames = 1;
-        int active_i_Frames = 13;
-        int recoveryFrames = 5;
+        int active_i_Frames = 14;
+        int recoveryFrames = 3;
         int totalTicks = startUpFrames + active_i_Frames + recoveryFrames;
 
         if (_TickCount >= totalTicks)
@@ -374,7 +374,7 @@ public class P_Master : MonoBehaviour
             if (P_Action == P_Action_List.NULL_ACTION_STATE)
             {
                 P_Action = P_Action_List.Healing;
-                int recoveryFrames = 10;
+                int recoveryFrames = 3;
                 _TickCount = recoveryFrames;
             }
             else
@@ -395,7 +395,7 @@ public class P_Master : MonoBehaviour
         }
         else
         {
-            if (_TickCount == 10) // same as healing input recoveryFrames
+            if (_TickCount == 3) // same as healing input recoveryFrames
             { // will only run heal when tick is 10 otherwise it is in recovery mode and no heal is done just cooldown
                 _Health.RestoreHealth();
             }
@@ -427,7 +427,7 @@ public class P_Master : MonoBehaviour
         //swap player UNINTERUPTABLE
         int startUpFrames = 2;
         int activeFrames = 21;
-        int recoveryFrames = 6;
+        int recoveryFrames = 5;
         int totalTicks = startUpFrames + activeFrames + recoveryFrames;
 
         if (_TickCount >= totalTicks)
@@ -518,14 +518,14 @@ public class P_Master : MonoBehaviour
             {
                 int startUpFrames = 5;
                 int activeFrames = 38;
-                int recoveryFrames = 20;
+                int recoveryFrames = 13;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if (charged.Value)// if charged
             {
                 int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
                 int activeFrames = 38;
-                int recoveryFrames = 30; //longer recovery time
+                int recoveryFrames = 16; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else return null;
