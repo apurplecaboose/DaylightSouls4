@@ -25,7 +25,7 @@ public class B_DriverAttack : MonoBehaviour
         _BossMasterRef.Turnspeed = 5000f;
         float invokeTimeCount = 0;
         /// Sample
-        invokeTimeCount += UnityEngine.Random.Range(0, 45); // time you want to wait before invoking
+        invokeTimeCount += TicksToSeconds(10); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
         invokeTimeCount += TicksToSeconds(70);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(20, 30)); // length of gap

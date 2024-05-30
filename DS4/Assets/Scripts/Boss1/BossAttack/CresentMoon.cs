@@ -25,7 +25,7 @@ public class CresentMoon : MonoBehaviour
         _BossMasterRef.Turnspeed = 5000f;
         float invokeTimeCount = 0;
         /// Sample
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(70, 120)); // time you want to wait before invoking
+        invokeTimeCount += TicksToSeconds(100); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
         invokeTimeCount += TicksToSeconds(240);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(30, 60)); // length of gap

@@ -2031,17 +2031,17 @@ MonoBehaviour:
   _BossNumber: 1
   _ComboDropPercentage:
   - 0.082
-  - 0.052
-  - 0.063
+  - 0.048
+  - 0.053
   - 0.152
   - 0.14
   - 0.14
   - 0.148
-  - 0.018
-  - 0.046
-  - 0.052
-  - 0.047
-  - 0.06
+  - 0.015
+  - 0
+  - 0.222
+  - 0
+  - 0
   _SampleCapacity: 1000
   _LowerPercentage: 10
   _NewTotalAmount: 0

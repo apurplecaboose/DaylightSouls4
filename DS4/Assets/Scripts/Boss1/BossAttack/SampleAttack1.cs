@@ -25,7 +25,7 @@ public class SampleAttack1 : MonoBehaviour
         _BossMasterRef.Turnspeed = 5000f;
         float invokeTimeCount = 0;
         /// Sample
-        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(0, 60)); // time you want to wait before invoking
+        invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(0, 30)); // time you want to wait before invoking
         Invoke("FirstAttack", invokeTimeCount);// Attk 1
         invokeTimeCount += TicksToSeconds(50);//length of combo
         invokeTimeCount += TicksToSeconds(UnityEngine.Random.Range(15,45)); // length of gap
