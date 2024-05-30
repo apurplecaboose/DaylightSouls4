@@ -120,7 +120,7 @@ public class ComboSelectionUI : MonoBehaviour
     }
     public void SelectOption2()
     {
-        ComboSelected(2);
+        ComboSelected(1);
     }
     public void SelectOption3()
     {
