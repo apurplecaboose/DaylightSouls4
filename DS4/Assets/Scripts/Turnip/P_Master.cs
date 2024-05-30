@@ -178,7 +178,7 @@ public class P_Master : MonoBehaviour
             case P_Action_List.Healing:
                 _P_rb.AddForce(_P_moveVec * _P_MoveSpeed * 10 * 0.25f); // move player
                 HealingAction();
-                if (_HealInputAction.Value.action.IsPressed()) _TickCount = 10; //get key down equivalant
+                if (_HealInputAction.Value.action.IsPressed()) _TickCount = 3; //get key down equivalant
                 break;
         }
     }
@@ -518,14 +518,14 @@ public class P_Master : MonoBehaviour
             {
                 int startUpFrames = 5;
                 int activeFrames = 38;
-                int recoveryFrames = 13;
+                int recoveryFrames = 15;
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else if (charged.Value)// if charged
             {
-                int startUpFrames = 0; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
+                int startUpFrames = 3; //no startupframes as you have hold frames already (SUBJECT TO PLAYTESTING)
                 int activeFrames = 38;
-                int recoveryFrames = 16; //longer recovery time
+                int recoveryFrames = 24; //longer recovery time
                 return new Vector3Int(startUpFrames, activeFrames, recoveryFrames);
             }
             else return null;

@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3291682989430892978}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-2389731640196699164
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _LengthOfLastComboInTicks: 360
-  _RandomOpeningRange: {x: 60, y: 200}
+  _RandomOpeningRange: {x: 45, y: 200}
   _MiniAttackPrefabs:
   - {fileID: 8377350924548251626, guid: 6dd4bcf69b8c5b944bf9a5b0c641d246, type: 3}
   - {fileID: 8377350924548251626, guid: 1aa64e60be35c2c4c90b33e537c00a7f, type: 3}
