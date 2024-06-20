@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949688450281793272}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 0.825, z: 0.825}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5260455149721771553}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9027096357592306320
 SpriteRenderer:
@@ -109,13 +109,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056049320633134556}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.64987856, w: 0.7600381}
   m_LocalPosition: {x: -0.09002292, y: 0.9157231, z: 0}
   m_LocalScale: {x: 0.25003996, y: 1.8871212, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8102216076795019505}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 81.065}
 --- !u!212 &4894757108401059769
 SpriteRenderer:
@@ -214,6 +214,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3711493332294787291}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -221,7 +222,6 @@ Transform:
   m_Children:
   - {fileID: 5260455149721771553}
   m_Father: {fileID: 8102216076795019505}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6473051156688049920
 Animator:
@@ -271,6 +271,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5940178133057267249}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -1.15, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 1.5, z: 1}
@@ -278,7 +279,6 @@ Transform:
   m_Children:
   - {fileID: 4598683250557200553}
   m_Father: {fileID: 4739200147858932217}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &7909272166033735804
 SpriteRenderer:
@@ -346,8 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BossMasterRef: {fileID: 0}
   _HeathbarRef: {fileID: 0}
-  _LightAttackDamage: 35
-  _LightAttackPoiseDamage: 40
+  _LightAttackDamage: 37
+  _LightAttackPoiseDamage: 27
 --- !u!61 &6358102790289263626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -443,6 +443,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8875244079134120948}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -451,5 +452,4 @@ Transform:
   - {fileID: 8609502877197121657}
   - {fileID: 4739200147858932217}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

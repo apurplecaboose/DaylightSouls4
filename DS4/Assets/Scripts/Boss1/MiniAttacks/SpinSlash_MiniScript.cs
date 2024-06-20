@@ -24,7 +24,7 @@ public class SpinSlash_MiniScript : MonoBehaviour // inherit from Boss Master an
     [SerializeField] int _AttackTick;
     void Awake() // Don't Touch
     {
-        _P = GameObject.FindGameObjectWithTag("Player");
+        _P = GameObject.FindGameObjectWithTag("PlayerTagTest");
         _B = GameObject.FindGameObjectWithTag("Boss");
         _P_MasterRef = _P.GetComponent<P_Master>();
         _P_Health = _P.GetComponent<Player_HealthBar>();

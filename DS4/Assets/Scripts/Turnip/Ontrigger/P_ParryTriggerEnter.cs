@@ -9,7 +9,7 @@ public class P_ParryTriggerEnter : MonoBehaviour
     [SerializeField] int _BaseParryPoiseDamage;
     private void Awake()
     {
-        _Player = GameObject.FindGameObjectWithTag("Player").GetComponent<P_Master>();
+        _Player = GameObject.FindGameObjectWithTag("PlayerTagTest").GetComponent<P_Master>();
         _BossMasterRef = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss_Master>();
     }
     private void OnTriggerEnter2D(Collider2D collision)

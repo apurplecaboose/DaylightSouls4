@@ -15,7 +15,7 @@ public class B_AttackTrigger : MonoBehaviour
     int _TickTimer, _WaitforDamageinTicks = 3;
     void Awake()
     {
-        _P = GameObject.FindGameObjectWithTag("Player");
+        _P = GameObject.FindGameObjectWithTag("PlayerTagTest");
         _P_MasterRef = _P.GetComponent<P_Master>();
         _P_Health = _P.GetComponent<Player_HealthBar>();
     }

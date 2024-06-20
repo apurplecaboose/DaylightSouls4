@@ -24,7 +24,7 @@ public class B_Mini_ShurikenCircleAttack : MonoBehaviour // inherit from Boss Ma
     [SerializeField] int _AttackTick;
     void Awake() // Don't Touch
     {
-        _P = GameObject.FindGameObjectWithTag("Player");
+        _P = GameObject.FindGameObjectWithTag("PlayerTagTest");
         _B = GameObject.FindGameObjectWithTag("Boss");
         _P_MasterRef = _P.GetComponent<P_Master>();
         _P_Health = _P.GetComponent<Player_HealthBar>();
@@ -34,7 +34,7 @@ public class B_Mini_ShurikenCircleAttack : MonoBehaviour // inherit from Boss Ma
     private void Start() //Changable
     {
         _B_Path.Speed = 2f;//optional
-        _BossMasterRef.Turnspeed = 300f;
+        _BossMasterRef.Turnspeed = 100f;
     }
     void FixedUpdate()
     {

@@ -13,7 +13,7 @@ public class P_HeavyTriggerEnter : MonoBehaviour
     private void Awake()
     {
         _B = GameObject.FindGameObjectWithTag("Boss");
-        _Player = GameObject.FindGameObjectWithTag("Player").GetComponent<P_Master>();
+        _Player = GameObject.FindGameObjectWithTag("PlayerTagTest").GetComponent<P_Master>();
         _BossMasterRef =_B.GetComponent<Boss_Master>();
         _HeathbarRef = _B.GetComponent<BossHeathbar>();
     }
